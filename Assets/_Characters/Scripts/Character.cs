@@ -8,6 +8,7 @@ namespace RPG.Characters
     [SelectionBase]
     public class Character : MonoBehaviour
     {
+		// TODO consider a CharacterConfig SO
         [Header("Animator")] [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;
@@ -32,13 +33,19 @@ namespace RPG.Characters
         [SerializeField] float navMeshAgentSteeringSpeed = 1.0f;
         [SerializeField] float navMeshAgentStoppingDistance = 1.3f;
 
-        NavMeshAgent navMeshAgent;
-        Animator animator;
-        Rigidbody ridigBody;
+
+		// private instance variables for state
         float turnAmount;
         float forwardAmount;
         bool isAlive = true;
+		
+		// cached references for readability
+        NavMeshAgent navMeshAgent;
+        Animator animator;
+        Rigidbody ridigBody;
 
+
+		// messages, then public methods, then private methods...
         void Awake()
         {
             AddRequiredComponents();

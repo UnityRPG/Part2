@@ -17,10 +17,11 @@ namespace RPG.Characters
 
         const string DEATH_TRIGGER = "Death";
 
-        float currentHealthPoints; 
         Animator animator;
         AudioSource audioSource;
         Character characterMovement;
+		
+        float currentHealthPoints; 
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -28,7 +29,7 @@ namespace RPG.Characters
         {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            characterMovement = GetComponent<Character>();
+            characterMovement = GetComponent<Character>(); // TODO resolve name conflict
 
             currentHealthPoints = maxHealthPoints;
         }
