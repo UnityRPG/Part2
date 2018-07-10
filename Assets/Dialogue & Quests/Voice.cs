@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using RPG.CameraUI;
 
 public class Voice : MonoBehaviour
@@ -16,12 +17,14 @@ public class Voice : MonoBehaviour
     // private instance variables for state
 
     // cached references for readability
+    Text dialogBox; // TODO consider singleton
 
     // messages, then public methods, then private methods...
     private void Start()
     {
         Instantiate(speechBubblePrefab, canvas);
         RegisterForMouseClicks();
+        dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>(); // TODO yuck
     }
 
     private void RegisterForMouseClicks()
@@ -34,6 +37,7 @@ public class Voice : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
         {
+            dialogBox.text = conversation.getConvoAsString();
             print(conversation.getConvoAsString());
         }
     }

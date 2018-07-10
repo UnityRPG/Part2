@@ -11,6 +11,6 @@ public class Conversation : ScriptableObject
     // TODO consdier creating cast from convo to string
     public string getConvoAsString()
     {
-        return "NPC says: " + openingGambit + "\nPlayer reples: " + playerResponse;
+        return "NPC says: " + openingGambit + "\nPlayer replies: " + playerResponse;
     }
 }
