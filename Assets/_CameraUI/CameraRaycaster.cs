@@ -21,6 +21,9 @@ namespace RPG.CameraUI
         public delegate void OnMouseOverEnemy(EnemyAI enemy);
 		public event OnMouseOverEnemy onMouseOverEnemy;
 
+        public delegate void OnMouseOverVoice(Voice voice);
+        public event OnMouseOverVoice onMouseOverVoice;
+
 		public delegate void OnMouseOverTerrain(Vector3 destination);
         public event OnMouseOverTerrain onMouseOverPotentiallyWalkable;
 
@@ -62,12 +65,12 @@ namespace RPG.CameraUI
             if (voiceHit)
             {
                 Cursor.SetCursor(talkCursor, cursorHotspot, CursorMode.Auto);
+                onMouseOverVoice(voiceHit);  // AviiNL suggests maybe filter click here
                 return true;
             }
             return false;
             // END of shared code
             // TODO make generic RaycastFor<Voice>() method
-                
         }
 
 	    private bool RaycastForEnemy(Ray ray)

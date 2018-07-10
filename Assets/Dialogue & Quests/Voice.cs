@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.CameraUI;
 
 public class Voice : MonoBehaviour
 {
@@ -16,8 +18,23 @@ public class Voice : MonoBehaviour
     // cached references for readability
 
     // messages, then public methods, then private methods...
-    private void OnEnable()
+    private void Start()
     {
         Instantiate(speechBubblePrefab, canvas);
+        RegisterForMouseClicks();
+    }
+
+    private void RegisterForMouseClicks()
+    {
+        var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
+        cameraRaycaster.onMouseOverVoice += OnClick;
+    }
+
+    private void OnClick(Voice voice)
+    {
+        if (Input.GetMouseButton(0))
+        {
+            print(conversation.getConvoAsString());
+        }
     }
 }
