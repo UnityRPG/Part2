@@ -32,7 +32,7 @@ public class Voice : MonoBehaviour
 
     private void OnClick(Voice voice)
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
         {
             print(conversation.getConvoAsString());
         }
