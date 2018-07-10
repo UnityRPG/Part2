@@ -10,6 +10,7 @@ namespace RPG.CameraUI
     {
 		[SerializeField] Texture2D walkCursor = null;
         [SerializeField] Texture2D enemyCursor = null;
+        [SerializeField] Texture2D talkCursor = null;
 		[SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
         const int POTENTIALLY_WALKABLE_LAYER = 8;
@@ -38,18 +39,38 @@ namespace RPG.CameraUI
             }
         }
 
-        void PerformRaycasts()
+        private void PerformRaycasts()
 		{
             if (currentScrenRect.Contains(Input.mousePosition))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 // Specify layer priorities below, order matters
-                if (RaycastForEnemy(ray)) { return; }
+                if (RaycastForVoice(ray)) { return; }// moral decision talk first!
+                if (RaycastForEnemy(ray)) { return; } 
                 if (RaycastForPotentiallyWalkable(ray)) { return; }
+                // TODO remove side-effects of these calls
             }
 		}
 
-	    bool RaycastForEnemy(Ray ray)
+        private bool RaycastForVoice(Ray ray)
+        {
+            // TODO start of shared code
+            RaycastHit hitInfo;
+            Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
+            var gameObjectHit = hitInfo.collider.gameObject;
+            var voiceHit = gameObjectHit.GetComponent<Voice>();
+            if (voiceHit)
+            {
+                Cursor.SetCursor(talkCursor, cursorHotspot, CursorMode.Auto);
+                return true;
+            }
+            return false;
+            // END of shared code
+            // TODO make generic RaycastFor<Voice>() method
+                
+        }
+
+	    private bool RaycastForEnemy(Ray ray)
 		{
             RaycastHit hitInfo;
             Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
