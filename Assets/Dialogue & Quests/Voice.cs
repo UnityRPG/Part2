@@ -11,6 +11,8 @@ public class Voice : MonoBehaviour
 
     // configuration parameters, consider SO
     [SerializeField] Conversation conversation;
+    [SerializeField] [Tooltip("Optional")]Quest quest;
+    [Space(15)]
     [SerializeField] Transform canvas;
     [SerializeField] GameObject speechBubblePrefab;
 
@@ -38,7 +40,12 @@ public class Voice : MonoBehaviour
         if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
         {
             dialogBox.text = conversation.getConvoAsString();
-            print(conversation.getConvoAsString());
+            GiveQuest();
         }
+    }
+
+    private void GiveQuest()
+    {
+        print(quest.GetQuestName());
     }
 }
