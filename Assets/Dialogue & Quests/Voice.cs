@@ -11,7 +11,7 @@ public class Voice : MonoBehaviour
 
     // configuration parameters, consider SO
     [SerializeField] Conversation conversation;
-    [SerializeField] [Tooltip("Optional")]Quest quest;
+    [SerializeField] [Tooltip("Optional")]QuestConfig quest;
     [Space(15)]
     [SerializeField] Transform canvas;
     [SerializeField] GameObject speechBubblePrefab;
@@ -46,6 +46,6 @@ public class Voice : MonoBehaviour
 
     private void GiveQuest()
     {
-        print(quest.GetQuestName());
+        FindObjectOfType<QuestJournal>().AddQuest(quest);
     }
 }

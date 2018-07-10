@@ -4,7 +4,7 @@ using UnityEngine;
 
 // TODO Rick make some nice icons for these AssetMenu items
 [CreateAssetMenu(menuName = "RPG/Quest")]
-public class Quest: ScriptableObject
+public class QuestConfig: ScriptableObject
 {
     [SerializeField] string questName;
 

@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786cd7087a4b0491485f1e957801c859, type: 3}
   m_Name: Heratio
   m_EditorClassIdentifier: 
-  openingGambit: Why you old duffer, I'm surprised you made it this far!
+  openingGambit: Why you old duffer, I'm surprised you made it this far! Go find the
+    bridge!
   playerResponse: Why I'll get you you young whipper-snapper.
