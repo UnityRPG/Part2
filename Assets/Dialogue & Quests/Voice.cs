@@ -11,7 +11,7 @@ public class Voice : MonoBehaviour
 
     // configuration parameters, consider SO
     [SerializeField] Conversation conversation;
-    [SerializeField] [Tooltip("Optional")]QuestConfig quest;
+    [SerializeField] [Tooltip("Optional")]QuestConfig questConfig;
     [Space(15)]
     [SerializeField] Transform canvas;
     [SerializeField] GameObject speechBubblePrefab;
@@ -34,18 +34,30 @@ public class Voice : MonoBehaviour
     private void RegisterForMouseClicks()
     {
         var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
-        cameraRaycaster.onMouseOverVoice += OnClick;
+        cameraRaycaster.onMouseOverVoice += OnMouseOverAnyVoice;
     }
 
-    private void OnClick(Voice voice)
+    private void OnMouseOverAnyVoice(Voice voice)
     {
+        if (voice.gameObject != gameObject) { return; } // filter for self
         if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
         {
-            // TODO Rick move towards then speak?
-            dialogBox.text = conversation.getConvoAsString();
-            FindObjectOfType<QuestJournal>().AddQuest(quest);
-            StartCoroutine(ExpireDialog());
+            ShowDialog();
+            TriggerQuestIfAny();
         }
+    }
+
+    private void TriggerQuestIfAny()
+    {
+        if (!questConfig) { return; }
+        FindObjectOfType<QuestJournal>().AddQuest(questConfig);
+    }
+
+    private void ShowDialog()
+    {
+        // TODO Rick move towards then speak?
+        dialogBox.text = conversation.getConvoAsString();
+        StartCoroutine(ExpireDialog());
     }
 
     IEnumerator ExpireDialog()

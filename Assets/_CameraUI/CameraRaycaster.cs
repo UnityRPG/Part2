@@ -66,7 +66,7 @@ namespace RPG.CameraUI
             if (voiceHit)
             {
                 Cursor.SetCursor(talkCursor, cursorHotspot, CursorMode.Auto);
-                onMouseOverVoice(voiceHit);  // AviiNL suggests maybe filter click here
+                onMouseOverVoice(voiceHit);
                 return true;
             }
             return false;
