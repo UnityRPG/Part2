@@ -16,13 +16,15 @@ public class Voice : MonoBehaviour
     [SerializeField] Transform canvas;
     [SerializeField] GameObject speechBubblePrefab;
 
+    const float DIALOG_LIFETIME = 5.0f;
+
     // private instance variables for state
 
     // cached references for readability
     Text dialogBox; // TODO consider singleton
 
     // messages, then public methods, then private methods...
-    private void Start()
+    void Start()
     {
         Instantiate(speechBubblePrefab, canvas);
         RegisterForMouseClicks();
@@ -39,13 +41,16 @@ public class Voice : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
         {
+            // TODO Rick move towards then speak?
             dialogBox.text = conversation.getConvoAsString();
-            GiveQuest();
+            FindObjectOfType<QuestJournal>().AddQuest(quest);
+            StartCoroutine(ExpireDialog());
         }
     }
 
-    private void GiveQuest()
+    IEnumerator ExpireDialog()
     {
-        FindObjectOfType<QuestJournal>().AddQuest(quest);
+        yield return new WaitForSeconds(DIALOG_LIFETIME);
+        dialogBox.text = "";
     }
 }
