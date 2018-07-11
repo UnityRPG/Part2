@@ -12,12 +12,13 @@ public class QuestJournal : MonoBehaviour  // todo really needs to be?
     // cached references for readability
 
     // messages, then public methods, then private methods...
-    public void AddQuest(QuestConfig questConfig)
+    public void AddQuest()
     {
-        GetComponent<Text>().text += questConfig.GetQuestName() + '\n';
+        // TODO get actual quest description
+        GetComponent<Text>().text += "Some random quest added";
     }
 
-    public void CompleteQuest(QuestConfig questConfig)
+    public void CompleteQuest()
     {
         GetComponent<Text>().text = "";
     }
