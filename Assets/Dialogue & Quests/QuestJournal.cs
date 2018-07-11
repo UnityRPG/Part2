@@ -14,6 +14,11 @@ public class QuestJournal : MonoBehaviour  // todo really needs to be?
     // messages, then public methods, then private methods...
     public void AddQuest(QuestConfig questConfig)
     {
-        GetComponent<Text>().text = questConfig.GetQuestName();
+        GetComponent<Text>().text += questConfig.GetQuestName() + '\n';
+    }
+
+    public void CompleteQuest(QuestConfig questConfig)
+    {
+        GetComponent<Text>().text = "";
     }
 }

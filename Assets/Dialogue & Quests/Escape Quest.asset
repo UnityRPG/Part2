@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 892282dc94f2f47f2a820c5f6694cf25, type: 3}
-  m_Name: Test Quest
+  m_Name: Escape Quest
   m_EditorClassIdentifier: 
-  questName: Find the bridge
+  questName: Escape the pen
