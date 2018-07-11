@@ -50,7 +50,7 @@ public class Voice : MonoBehaviour
     private void TriggerQuestIfAny()
     {
         if (!quest) { return; }
-        FindObjectOfType<QuestJournal>().AddQuest();
+        FindObjectOfType<QuestJournal>().AddQuest(quest);
     }
 
     private void ShowDialog()
