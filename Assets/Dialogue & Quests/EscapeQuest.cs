@@ -6,7 +6,7 @@ public class EscapeQuest : MonoBehaviour
 {
     [SerializeField] QuestConfig questConfig;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         FindObjectOfType<QuestJournal>().CompleteQuest(questConfig);
     }

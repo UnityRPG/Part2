@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 224792008850702374}
   - component: {fileID: 222277353342365318}
   - component: {fileID: 114012873896711366}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Dialog
   m_TagString: DialogBox
   m_Icon: {fileID: 0}
