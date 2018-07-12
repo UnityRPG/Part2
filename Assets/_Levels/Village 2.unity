@@ -10924,78 +10924,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb70b578d1fec1e4892024ee505eda1b, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &394253627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 394253628}
-  - component: {fileID: 394253630}
-  - component: {fileID: 394253629}
-  m_Layer: 0
-  m_Name: Sword
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &394253628
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 394253627}
-  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
-  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
-  m_LocalScale: {x: 2, y: 1.25, z: 3}
-  m_Children: []
-  m_Father: {fileID: 554364738}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
---- !u!23 &394253629
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 394253627}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &394253630
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 394253627}
-  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!4 &396607462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4270603620125530, guid: b519831091bd019409adbfa2a9ed7801,
@@ -13127,7 +13055,7 @@ Transform:
   m_LocalPosition: {x: 116.61, y: 2.6, z: -95.4}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 554364738}
+  - {fileID: 963272282}
   m_Father: {fileID: 1313306363}
   m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: -1.1, y: 49.77, z: -2.7680001}
@@ -16129,35 +16057,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!1 &554364737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 554364738}
-  m_Layer: 0
-  m_Name: Sword(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &554364738
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 554364737}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 394253628}
-  m_Father: {fileID: 470464124}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &556368558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 432296, guid: 2e767aec4381a214f902df4ac3e94fc9,
@@ -23566,10 +23465,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 765093898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb70d54784e814436bfc9f0639bc4ed9, type: 3}
+  m_Script: {fileID: 11500000, guid: a0d4b2ac8c50d4eb1b90e4e5abd60517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questName: 
 --- !u!65 &765093901
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28525,7 +28423,6 @@ GameObject:
   m_Component:
   - component: {fileID: 943961429}
   - component: {fileID: 943961431}
-  - component: {fileID: 943961430}
   m_Layer: 5
   m_Name: Escape Detector (1)
   m_TagString: Untagged
@@ -28546,18 +28443,6 @@ Transform:
   m_Father: {fileID: 104743504}
   m_RootOrder: 140
   m_LocalEulerAnglesHint: {x: 0, y: 28.070002, z: 0}
---- !u!114 &943961430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 943961428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb70d54784e814436bfc9f0639bc4ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questName: 
 --- !u!65 &943961431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29606,6 +29491,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4152144604972674, guid: 0a4f44b42ca6d604f966748e841b0e1b,
     type: 2}
   m_PrefabInternal: {fileID: 963083204}
+--- !u!1 &963272281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 963272282}
+  m_Layer: 0
+  m_Name: Sword(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &963272282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 963272281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2003380863}
+  m_Father: {fileID: 470464124}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &965086075
 Prefab:
   m_ObjectHideFlags: 0
@@ -34451,7 +34365,7 @@ GameObject:
   - component: {fileID: 1107961417}
   - component: {fileID: 1107961418}
   m_Layer: 0
-  m_Name: Quest 2
+  m_Name: Find the bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34478,10 +34392,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1107961416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb70d54784e814436bfc9f0639bc4ed9, type: 3}
+  m_Script: {fileID: 11500000, guid: 291b2772fedcf4226855c957f27805e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questName: Speak to Bob
+  questState: 1
 --- !u!1001 &1109746425
 Prefab:
   m_ObjectHideFlags: 0
@@ -41438,7 +41352,7 @@ GameObject:
   - component: {fileID: 1291537801}
   - component: {fileID: 1291537802}
   m_Layer: 0
-  m_Name: Quest 1
+  m_Name: Escape the pen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41465,10 +41379,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291537800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb70d54784e814436bfc9f0639bc4ed9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questName: Escape the pen
+  questState: 0
 --- !u!1001 &1292360849
 Prefab:
   m_ObjectHideFlags: 0
@@ -45423,7 +45337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: fea838e0d167b402fbde18d267d5c66a, type: 2}
-  quest: {fileID: 1291537802}
+  quest: {fileID: 0}
   canvas: {fileID: 1266296794}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -62620,7 +62534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: 94a97b44844a94cefa3df0f9ec38b72a, type: 2}
-  quest: {fileID: 0}
+  quest: {fileID: 1107961418}
   canvas: {fileID: 285062117}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -63478,6 +63392,78 @@ Transform:
   m_Father: {fileID: 425834768}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2003380862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003380863}
+  - component: {fileID: 2003380865}
+  - component: {fileID: 2003380864}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2003380863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003380862}
+  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
+  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
+  m_LocalScale: {x: 2, y: 1.25, z: 3}
+  m_Children: []
+  m_Father: {fileID: 963272282}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
+--- !u!23 &2003380864
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003380862}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &2003380865
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003380862}
+  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1001 &2003773733
 Prefab:
   m_ObjectHideFlags: 0

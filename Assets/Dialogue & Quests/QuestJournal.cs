@@ -16,10 +16,13 @@ public class QuestJournal : MonoBehaviour  // todo really needs to be?
     {
         // TODO get actual quest description
         GetComponent<Text>().text += quest.GetQuestAsString();
+        quest.SetQuestState(QuestState.Active);
     }
 
-    public void CompleteQuest()
+    public void CompleteQuest(Quest quest)
     {
+        print("completing " + quest);
         GetComponent<Text>().text = "";
+        quest.SetQuestState(QuestState.Complete);
     }
 }
