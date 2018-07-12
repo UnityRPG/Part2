@@ -4,6 +4,8 @@ using UnityEngine;
 
 // common data and behaviour for all quests
 // TODO consider persistence across scene loads
+
+[DisallowMultipleComponent]
 public class Quest : MonoBehaviour
 {
     enum QuestState { 
@@ -13,12 +15,11 @@ public class Quest : MonoBehaviour
         Complete
     }
 
-    [SerializeField] string questName;  // TODO use gameobject name?
     [SerializeField] QuestState questState;
 
     public string GetQuestAsString()
     {
-        return questName;
+        return gameObject.name;
     }
 	
 }
