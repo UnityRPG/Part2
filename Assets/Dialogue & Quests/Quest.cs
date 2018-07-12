@@ -7,9 +7,8 @@ using UnityEngine;
 
 public enum QuestState
 {
-    Locked,  // some pre-requisite not met
-    Unlocked,  // avilable to be issued
-    Active,
+    Available,
+    Started,
     Complete
 }
 

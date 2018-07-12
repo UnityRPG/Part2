@@ -16,7 +16,7 @@ public class QuestJournal : MonoBehaviour  // todo really needs to be?
     {
         // TODO get actual quest description
         GetComponent<Text>().text += quest.GetQuestAsString();
-        quest.SetQuestState(QuestState.Active);
+        quest.SetQuestState(QuestState.Started);
     }
 
     public void CompleteQuest(Quest quest)
