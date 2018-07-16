@@ -14,9 +14,6 @@ namespace RPG.Quests
         bool isEscorting = false;
         Coroutine followHandle;  // So we can stop surgically
 
-        // Follow the player IF IN RANGE
-        // TODO couple with Collision quest critera
-
         void Update()
         {
             var questStarted = questToComplete.GetQuestState() == QuestState.Started;
@@ -24,7 +21,7 @@ namespace RPG.Quests
             {
                 var player = GameObject.FindWithTag("Player");
                 followHandle = StartCoroutine(FollowPlayer(player));
-                isEscorting = true;  // TODO really need a boolean flag?
+                isEscorting = true;
             }
         }
 

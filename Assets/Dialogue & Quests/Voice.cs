@@ -23,7 +23,7 @@ namespace RPG.Quests
         // private instance variables for state
 
         // cached references for readability
-        Text dialogBox; // TODO consider singleton
+        Text dialogBox;
 
         // messages, then public methods, then private methods...
         void Start()

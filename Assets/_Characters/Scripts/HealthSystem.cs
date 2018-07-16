@@ -29,7 +29,7 @@ namespace RPG.Characters
         {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            characterMovement = GetComponent<Character>(); // TODO resolve name conflict
+            characterMovement = GetComponent<Character>();
 
             currentHealthPoints = maxHealthPoints;
         }

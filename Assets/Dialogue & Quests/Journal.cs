@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RPG.Quests
 {
-    public class Journal : MonoBehaviour  // todo really needs to be?
+    public class Journal : MonoBehaviour
     {
         // configuration parameters, consider SO
 
@@ -18,12 +18,11 @@ namespace RPG.Quests
         // messages, then public methods, then private methods...
         private void Update()
         {
-            UpdateQuestsFromScene(); // TODO on Update really?
+            UpdateQuestsFromScene();
         }
 
         public void AddQuest(Quest quest)
         {
-            // TODO get actual quest description
             GetComponent<Text>().text += quest.GetQuestAsString();
             quest.SetQuestState(QuestState.Started);
         }
