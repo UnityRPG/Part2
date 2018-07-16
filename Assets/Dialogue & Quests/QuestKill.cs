@@ -7,22 +7,13 @@ using System;
 namespace RPG.Quests
 {
     [RequireComponent(typeof(HealthSystem))]
-    public class QuestKill : MonoBehaviour
+    public class QuestKill : QuestionCompletion
     {
-        [SerializeField] Quest questToComplete;
-
-        // configuration parameters, consider SO
-
-        // private instance variables for state
-
-        // cached references for readability
-
-        // messages, then public methods, then private methods...
         void Update()
         {
             if (IsHostDead())
             {
-                FindObjectOfType<QuestJournal>().CompleteQuest(questToComplete);
+                CompleteQuest();
             }
         }
 
