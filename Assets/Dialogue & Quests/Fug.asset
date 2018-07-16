@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786cd7087a4b0491485f1e957801c859, type: 3}
   m_Name: Fug
   m_EditorClassIdentifier: 
-  openingGambit: I ain't a fug!
-  playerResponse: Sure, doesn't sound like it!
+  openingGambit: Ere mate, kill that they purple torso'd warrior and I'll give you
+    a Power Moon!
+  playerResponse: Sure, I'm on it!
