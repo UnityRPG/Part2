@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System;
 using RPG.Characters; // So we can detectect by type
+using RPG.Quests;
 
 // TODO ensure can click through dialog box, or close box before moving
 namespace RPG.CameraUI

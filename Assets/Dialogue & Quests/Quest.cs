@@ -5,31 +5,34 @@ using UnityEngine;
 // common data and behaviour for all quests
 // TODO consider persistence across scene loads
 
-public enum QuestState
+namespace RPG.Quests
 {
-    Available,
-    Started,
-    Complete
-}
-
-[DisallowMultipleComponent]
-public class Quest : MonoBehaviour
-{
-    [SerializeField] QuestState questState;
-
-    public QuestState GetQuestState()
+    public enum QuestState
     {
-        return questState;
+        Available,
+        Started,
+        Complete
     }
 
-    public void SetQuestState(QuestState questState)
+    [DisallowMultipleComponent]
+    public class Quest : MonoBehaviour
     {
-        this.questState = questState;
-    }
+        [SerializeField] QuestState questState;
 
-    public string GetQuestAsString()
-    {
-        return gameObject.name;
+        public QuestState GetQuestState()
+        {
+            return questState;
+        }
+
+        public void SetQuestState(QuestState questState)
+        {
+            this.questState = questState;
+        }
+
+        public string GetQuestAsString()
+        {
+            return gameObject.name;
+        }
+
     }
-	
 }

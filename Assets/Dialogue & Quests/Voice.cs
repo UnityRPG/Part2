@@ -5,64 +5,67 @@ using UnityEngine;
 using UnityEngine.UI;
 using RPG.CameraUI;
 
-public class Voice : MonoBehaviour
+namespace RPG.Quests
 {
-    // TODO rename "enemy canvas" to "NPC canvas"
-
-    // configuration parameters, consider SO
-    [SerializeField] Conversation conversation;
-    [SerializeField] [Tooltip("Optional")]Quest quest;
-    [Space(15)]
-    [SerializeField] Transform canvas;
-    [SerializeField] GameObject speechBubblePrefab;
-
-    const float DIALOG_LIFETIME = 5.0f;
-
-    // private instance variables for state
-
-    // cached references for readability
-    Text dialogBox; // TODO consider singleton
-
-    // messages, then public methods, then private methods...
-    void Start()
+    public class Voice : MonoBehaviour
     {
-        Instantiate(speechBubblePrefab, canvas);
-        RegisterForMouseClicks();
-        dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>(); // TODO yuck
-    }
+        // TODO rename "enemy canvas" to "NPC canvas"
 
-    private void RegisterForMouseClicks()
-    {
-        var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
-        cameraRaycaster.onMouseOverVoice += OnMouseOverAnyVoice;
-    }
+        // configuration parameters, consider SO
+        [SerializeField] Conversation conversation;
+        [SerializeField] [Tooltip("Optional")] Quest quest;
+        [Space(15)]
+        [SerializeField] Transform canvas;
+        [SerializeField] GameObject speechBubblePrefab;
 
-    private void OnMouseOverAnyVoice(Voice voice)
-    {
-        if (voice.gameObject != gameObject) { return; } // filter for self
-        if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
+        const float DIALOG_LIFETIME = 5.0f;
+
+        // private instance variables for state
+
+        // cached references for readability
+        Text dialogBox; // TODO consider singleton
+
+        // messages, then public methods, then private methods...
+        void Start()
         {
-            ShowDialog();
-            TriggerQuestIfAny();
+            Instantiate(speechBubblePrefab, canvas);
+            RegisterForMouseClicks();
+            dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>(); // TODO yuck
         }
-    }
 
-    private void TriggerQuestIfAny()
-    {
-        if (!quest) { return; }
-        FindObjectOfType<QuestJournal>().AddQuest(quest);
-    }
+        private void RegisterForMouseClicks()
+        {
+            var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
+            cameraRaycaster.onMouseOverVoice += OnMouseOverAnyVoice;
+        }
 
-    private void ShowDialog()
-    {
-        // TODO Rick move towards then speak?
-        dialogBox.text = conversation.getConvoAsString();
-        StartCoroutine(ExpireDialog());
-    }
+        private void OnMouseOverAnyVoice(Voice voice)
+        {
+            if (voice.gameObject != gameObject) { return; } // filter for self
+            if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
+            {
+                ShowDialog();
+                TriggerQuestIfAny();
+            }
+        }
 
-    IEnumerator ExpireDialog()
-    {
-        yield return new WaitForSeconds(DIALOG_LIFETIME);
-        dialogBox.text = "";
+        private void TriggerQuestIfAny()
+        {
+            if (!quest) { return; }
+            FindObjectOfType<QuestJournal>().AddQuest(quest);
+        }
+
+        private void ShowDialog()
+        {
+            // TODO Rick move towards then speak?
+            dialogBox.text = conversation.getConvoAsString();
+            StartCoroutine(ExpireDialog());
+        }
+
+        IEnumerator ExpireDialog()
+        {
+            yield return new WaitForSeconds(DIALOG_LIFETIME);
+            dialogBox.text = "";
+        }
     }
 }

@@ -4,50 +4,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestJournal : MonoBehaviour  // todo really needs to be?
+namespace RPG.Quests
 {
-    // configuration parameters, consider SO
-
-    // private instance variables for state
-
-    // cached references for readability
-    [SerializeField] Transform questParent;
-
-    // messages, then public methods, then private methods...
-    private void Update()
+    public class QuestJournal : MonoBehaviour  // todo really needs to be?
     {
-        UpdateQuestsFromScene(); // TODO on Update really?
-    }
+        // configuration parameters, consider SO
 
-    public void AddQuest(Quest quest)
-    {
-        // TODO get actual quest description
-        GetComponent<Text>().text += quest.GetQuestAsString();
-        quest.SetQuestState(QuestState.Started);
-    }
+        // private instance variables for state
 
-    public void CompleteQuest(Quest quest)
-    {
-        print("completing " + quest);
-        GetComponent<Text>().text = "";
-        quest.SetQuestState(QuestState.Complete);
-    }
+        // cached references for readability
+        [SerializeField] Transform questParent;
 
-    private void UpdateQuestsFromScene()
-    {
-        GetComponent<Text>().text = "";
-        foreach (Transform child in questParent)
+        // messages, then public methods, then private methods...
+        private void Update()
         {
-            ListQuestIfStarted(child);
+            UpdateQuestsFromScene(); // TODO on Update really?
         }
-    }
 
-    private void ListQuestIfStarted(Transform child)
-    {
-        var questState = child.gameObject.GetComponent<Quest>().GetQuestState();
-        if (questState == QuestState.Started)
+        public void AddQuest(Quest quest)
         {
-            GetComponent<Text>().text += child.gameObject.name + '\n';
+            // TODO get actual quest description
+            GetComponent<Text>().text += quest.GetQuestAsString();
+            quest.SetQuestState(QuestState.Started);
+        }
+
+        public void CompleteQuest(Quest quest)
+        {
+            print("completing " + quest);
+            GetComponent<Text>().text = "";
+            quest.SetQuestState(QuestState.Complete);
+        }
+
+        private void UpdateQuestsFromScene()
+        {
+            GetComponent<Text>().text = "";
+            foreach (Transform child in questParent)
+            {
+                ListQuestIfStarted(child);
+            }
+        }
+
+        private void ListQuestIfStarted(Transform child)
+        {
+            var questState = child.gameObject.GetComponent<Quest>().GetQuestState();
+            if (questState == QuestState.Started)
+            {
+                GetComponent<Text>().text += child.gameObject.name + '\n';
+            }
         }
     }
 }

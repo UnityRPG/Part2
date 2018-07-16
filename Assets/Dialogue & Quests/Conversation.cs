@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = ("RPG/Conversation"))]
-public class Conversation : ScriptableObject
+namespace RPG.Quests
 {
-    [TextArea][SerializeField] string openingGambit;
-    [TextArea][SerializeField] string playerResponse;
-
-    // TODO consdier creating cast from convo to string
-    public string getConvoAsString()
+    [CreateAssetMenu(menuName = ("RPG/Conversation"))]
+    public class Conversation : ScriptableObject
     {
-        return "NPC says: " + openingGambit + "\nYou reply: " + playerResponse;
+        [TextArea] [SerializeField] string openingGambit;
+        [TextArea] [SerializeField] string playerResponse;
+
+        // TODO consdier creating cast from convo to string
+        public string getConvoAsString()
+        {
+            return "NPC says: " + openingGambit + "\nYou reply: " + playerResponse;
+        }
     }
 }
