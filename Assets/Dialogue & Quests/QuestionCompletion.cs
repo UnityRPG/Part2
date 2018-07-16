@@ -19,7 +19,7 @@ namespace RPG.Quests
 
         protected void CompleteQuest()
         {
-            FindObjectOfType<QuestJournal>().CompleteQuest(questToComplete);
+            FindObjectOfType<Journal>().CompleteQuest(questToComplete);
         }
 
     }

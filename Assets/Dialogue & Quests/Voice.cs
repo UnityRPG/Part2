@@ -52,7 +52,7 @@ namespace RPG.Quests
         private void TriggerQuestIfAny()
         {
             if (!quest) { return; }
-            FindObjectOfType<QuestJournal>().AddQuest(quest);
+            FindObjectOfType<Journal>().AddQuest(quest);
         }
 
         private void ShowDialog()

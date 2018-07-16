@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RPG.Quests
 {
-    public class QuestJournal : MonoBehaviour  // todo really needs to be?
+    public class Journal : MonoBehaviour  // todo really needs to be?
     {
         // configuration parameters, consider SO
 

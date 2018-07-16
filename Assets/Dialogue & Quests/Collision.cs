@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Quests
 {
-    public class QuestCollision : QuestionCompletion // Not from quest
+    public class Collision : QuestionCompletion // Not from quest
     {
         private void OnTriggerEnter(Collider other)
         {
