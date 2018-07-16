@@ -7,7 +7,7 @@ using System;
 namespace RPG.Quests
 {
     [RequireComponent(typeof(HealthSystem))]
-    public class Kill : QuestionCompletion
+    public class Kill : QuestCompletion
     {
         void Update()
         {

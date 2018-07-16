@@ -12,7 +12,7 @@ namespace RPG.Quests
     // Combo if required @Rick?
     // Guess / Solve if required @Rick?
 
-    public class QuestionCompletion : MonoBehaviour
+    public class QuestCompletion : MonoBehaviour
     {
 
         [SerializeField] protected Quest questToComplete;
