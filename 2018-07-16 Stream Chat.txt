@@ -1,0 +1,510 @@
+﻿[00:00:15.593] justinhhorner: Hi Ben o/ from NC, USA
+[00:00:48.831] stresstest: good morning
+[00:01:04.665] terravice: good morning all
+[00:01:09.841] Michael_Bridges: Well hello there
+[00:01:14.383] PerceptualLucidityGames: good morning
+[00:01:16.233] Sascha258: good afternoon ;-)
+[00:01:37.439] stresstest: Canada Quebec here
+[00:01:37.745] AlenZkv: hi guy dude
+[00:01:38.417] Sascha258: Switzerland
+[00:01:38.977] AlenZkv: :D
+[00:01:52.470] Matorin_Talfax: Utah, USA
+[00:03:23.145] terravice: I think the alpha channel on your chat bubble texture is reversed?
+[00:06:03.810] SPECIALEC: Hello, part of which course is this? I would like to follow from beginning
+[00:06:05.184] AlenZkv: gz haha
+[00:06:05.762] PerceptualLucidityGames: been tight all the way so far today
+[00:06:14.753] GameDevTV: Follow my work on GitHub here: https://github.com/UnityRPG/Part2
+[00:06:27.958] SPECIALEC: Thanks :)
+[00:06:38.146] GameDevTV: https://www.udemy.com/unityrpg
+[00:07:10.850] SPECIALEC: Yes, I have done your unreal courses already, but this seems very interesting!
+[00:09:16.482] Hi_ImTemmy: Stable so far
+[00:09:37.008] terravice: I actually have only finished the 3D course and am catching up in the 2D course and still have to do the RPG pt1 course (learned later that I did this backwards, especially after missing so many basics) but I enjoy just watching Ben work through and listen to what he has to say.
+[00:09:41.067] terravice: of course I'll be there
+[00:09:49.925] MallNinjaMax: I will probably pop in
+[00:13:20.980] PerceptualLucidityGames: Ben, it's because it's not a collection
+[00:15:14.360] SnaKEZiTO: Maybe child.gameObject
+[00:15:17.727] PerceptualLucidityGames: GetComponentInChildren for game object
+[00:15:25.964] PerceptualLucidityGames: make an array of game objects
+[00:15:39.302] PerceptualLucidityGames: then iterate through
+[00:15:46.693] PerceptualLucidityGames: transform.gameobject
+[00:20:13.226] Hi_ImTemmy: @GameDevTV Off topic; what's with the one meal a day torture? Any particular benefit?
+[00:21:09.968] terravice: Ketosis
+[00:21:18.368] Hi_ImTemmy: Awesome.
+[00:25:48.147] bhindi1224: gdtvHeart
+[00:26:00.113] Hi_ImTemmy: With the profiler I've never used that before, do any of your Udemy courses explore how to use that as a mini tutorial?
+[00:26:08.021] bhindi1224: it worked
+[00:26:49.225] PerceptualLucidityGames: no aud or vid loss here
+[00:26:50.817] terravice: cheer100 cheer100 cheer100 wild west Ben!
+[00:26:53.452] MallNinjaMax: 7am here
+[00:27:05.628] MallNinjaMax: I still rolled out of bed for the stream, so still waking up
+[00:27:10.538] bhindi1224: 8:30 east coast is the best
+[00:27:56.502] terravice: I reflexively took a sip of my coffee, must be social behavior like yawning XD
+[00:28:44.056] GameDevTV: https://www.twitch.tv/events/nFzTYdLjSYS7mCema90DAw
+[00:30:09.764] bhindi1224: If it's helpful at all, I got the video chat from several videos in the channel. I used it to find something recently. It's easy to do and I can do it for all the videos if you like. https://1drv.ms/u/s!AvxWxkm23jcopTYhL5jVeaBpbAXv
+[00:30:49.361] bhindi1224: It's the chat window from the videos.
+[00:31:56.913] bhindi1224: I use this to get them. It's really easy. https://github.com/jdpurcell/RechatTool/releases
+[00:32:31.426] bhindi1224: I'm saying you could run the tool it's VERY fast.
+[00:33:32.359] terravice: I think the interaction with the viewers and unpredictability of topic exploration (be it coding on the subject at hand or handstands) keeps us watching :D
+[00:34:18.200] GameDevTV: clipping that
+[00:39:09.515] terravice: would it be too forward to ask if I could contribute by creating the quest chat icon asset?
+[00:41:23.248] terravice: I'll take a look
+[00:43:01.350] GameDevTV: Follow my work on GitHub here: https://github.com/UnityRPG/Part2
+[00:45:20.968] LucyGameDev: Squirrel - that's a chat icon we need ;)
+[00:45:48.283] PerceptualLucidityGames: @LucyGameDev well said pokketHS
+[00:46:25.280] MallNinjaMax: Thanks for wearing pants
+[00:46:28.639] MallNinjaMax: I stretched
+[00:47:32.568] MallNinjaMax: WUT, you guys are coming out with a lighting course?
+[00:47:49.758] MallNinjaMax: for unity?
+[00:48:22.209] bhindi1224: Copyclip isn't on PC. I've been looking for a clipboard app as well.
+[00:48:27.737] LucyGameDev: Yup for Unity :)
+[00:48:33.880] MallNinjaMax: :D
+[00:48:36.852] LucyGameDev: We'll be sending deets later in the month
+[00:49:36.348] LucyGameDev: Lighting course. Are you on GameDev.tv/subscribe @MallNinjaMax ? They'll find out first
+[00:49:44.895] PerceptualLucidityGames: the stream is O(2^n)
+[00:49:50.914] MallNinjaMax: I believe so
+[00:49:54.240] MallNinjaMax: I'll double check
+[00:50:28.677] MallNinjaMax: I am indeed already subscribed
+[00:50:59.318] LucyGameDev: Awesomes, you'll get an email later in the month gdtvHeart
+[00:51:31.865] PerceptualLucidityGames: you were talking about your squirreling being recursive
+[00:58:30.081] PerceptualLucidityGames: pokketHYPE pokketHS
+[00:59:09.378] terravice: clipped soundbyte
+[00:59:26.376] Metin34: hello
+[01:01:24.641] PerceptualLucidityGames: because the binary representation of signed floats is unreliable
+[01:03:05.609] antonc27: healThOfHost
+[01:03:06.567] PerceptualLucidityGames: lol
+[01:04:06.588] MallNinjaMax: can you change it if you set the inspector to debug mode?
+[01:05:23.408] terravice: Clipped you saying Yann is annoying, I'm tattling
+[01:06:21.562] MallNinjaMax: :D
+[01:06:36.399] PerceptualLucidityGames: we all do it too, so no reason for embarassment
+[01:07:05.810] PerceptualLucidityGames: delivery = item retrieval
+[01:08:30.456] GameDevTV: </pepTalk>
+[01:08:34.040] GameDevTV: <pepTalk>
+[01:08:38.302] GameDevTV: BSML
+[01:08:43.603] GameDevTV: Ben's Stream Markup Language
+[01:09:20.166] AndOProductions: u closed it first hehe
+[01:10:40.879] GameDevTV: BSUSB
+[01:10:51.102] PerceptualLucidityGames: inheritance is beautiful
+[01:13:45.717] PerceptualLucidityGames: protected
+[01:17:05.363] terravice: someone who understood the concept, please clip that advice :)
+[01:18:26.373] scorpion0195: Hello All!
+[01:18:46.408] PerceptualLucidityGames: @scorpion0195 pokketHEY
+[01:19:44.927] MallNinjaMax: It's a chitter!
+[01:20:01.822] PerceptualLucidityGames: lol
+[01:20:20.510] PerceptualLucidityGames: like when you wanted someone to get you a coffee
+[01:20:27.460] PerceptualLucidityGames: that was a delivery type quest
+[01:20:32.322] terravice: https://www.youtube.com/watch?v=o5QGr3MKfWc (squirrel sound)
+[01:21:04.012] terravice: just to illustrate :D
+[01:21:30.009] PerceptualLucidityGames: it would be great if you could use the "Squirrel" from the movie UP. Obviously copyright issue there though
+[01:21:35.511] MallNinjaMax: can you fake an invetory thing?
+[01:21:57.460] MallNinjaMax: Like we did with the weapon
+[01:22:26.522] terravice: you could just instantiate an empty game object with an array of carried items and check to see if the item exists in the array?
+[01:23:20.163] terravice: gather would still lead to inventory?
+[01:23:23.404] MallNinjaMax: IT's a big frog to eat
+[01:24:57.077] MallNinjaMax: WE could track the gather/delivery items from the class for now, with a // TODO
+[01:25:07.734] MallNinjaMax: from the quest*
+[01:25:40.357] terravice: gdtvQ DESIGN: NPC follows you or NPC heads to a point and you have to follow/defend?
+[01:26:03.075] GameDevTV: Follow my work on GitHub here: https://github.com/UnityRPG/Part2
+[01:26:03.238] AndOProductions: u desrve a break ben
+[01:26:46.771] PerceptualLucidityGames: a countdown timer would be awesome
+[01:26:57.996] PerceptualLucidityGames: back in:
+[01:27:11.694] terravice: you'd lose all chat history, etc
+[01:27:22.694] PerceptualLucidityGames: nah, other streamers stream for far more hours consecutive
+[01:27:34.096] LucyGameDev: Can make it harder to watch back if they're split
+[01:28:25.443] PerceptualLucidityGames: Ben's escort service
+[01:28:34.371] PerceptualLucidityGames: pokketLEWD
+[01:28:55.167] terravice: click back into unity :D
+[01:29:22.880] MallNinjaMax: Is the chat subscriber only?
+[01:29:41.003] AndOProductions: nope
+[01:30:00.513] AndOProductions: im just a follower
+[01:30:23.406] LucyGameDev: Currently just follower, as long as you've been following for 10 minutes
+[01:30:27.523] MallNinjaMax: oh had some guy msging me asking where to find the videos cause he cant chat. Looks like he just needs to follow
+[01:30:38.933] AndOProductions: lol i see
+[01:30:41.015] MallNinjaMax: I think I'll make him do that
+[01:34:18.308] Numn2Nutts: yes
+[01:34:21.353] MallNinjaMax: yep even louder
+[01:35:27.479] Numn2Nutts: Are these episodes available as a VOD after the fact?
+[01:35:39.647] MallNinjaMax: :) yup
+[01:35:44.653] GameDevTV: Boo
+[01:35:50.399] MallNinjaMax: Click ont he videos button at the top
+[01:35:53.677] MallNinjaMax: yep
+[01:35:55.212] xRaziel91x: yes
+[01:35:56.692] MallNinjaMax: on both
+[01:36:41.227] xRaziel91x: wow
+[01:36:49.535] Numn2Nutts: hahaha, this is hilarious
+[01:36:56.923] LucyGameDev: Someone definitely clip that please
+[01:37:00.880] AndOProductions: ohh ben ahahahaha
+[01:37:07.438] LucyGameDev: gdtvBen gdtvBen gdtvBen
+[01:37:21.168] PerceptualLucidityGames: @terravice did you follow what I was saying the other night on your code review about comparing input to 0? Two correct options would be for example: Mathf.Abs(hInput) < Mathf.Epsilon
+[01:37:41.384] Numn2Nutts: Your courses are amazing and now I know your live streams are even better
+[01:37:43.763] PerceptualLucidityGames: or: hInput Mathf.Approx(0)
+[01:37:51.467] MallNinjaMax: thanks for the anxiety
+[01:38:00.427] terravice: cheer100 cheer100 cheer100 cheer100 Well done!
+[01:38:16.711] Numn2Nutts: Slenderman, is that you?
+[01:39:16.231] PerceptualLucidityGames: @Numn2Nutts pokketHYPE pokketHYPE
+[01:39:33.624] Numn2Nutts: gdtvHeart
+[01:39:51.554] MallNinjaMax: not a ton worse
+[01:40:01.408] PerceptualLucidityGames: mic pack sounded fine to me
+[01:40:09.937] MallNinjaMax: Teh rode definitely sound better
+[01:40:27.605] MallNinjaMax: rock solid
+[01:40:29.749] PerceptualLucidityGames: zero issues here
+[01:40:36.621] TPBLive: Hello guys
+[01:40:57.243] PerceptualLucidityGames: @TPBLive pokketHEY
+[01:40:58.481] GameDevTV: Three reasons to become a Tier 2 subscriber… 1. Get your Twtich channel linked from ours. 2. An extra emote (coming soon). 3. You’re support us 240% more. Thanks for considering.
+[01:41:31.960] TPBLive: Just started the Unity 3d course, can't wait to catch up to the point where these streams will be relevant :)
+[01:42:10.511] TPBLive: are these streams tied in with a specific course?
+[01:42:30.227] AbhinayNegi: hi
+[01:42:32.870] PerceptualLucidityGames: @TPBLive this particular one is a part of the RPG series
+[01:43:04.365] PerceptualLucidityGames: @TPBLive but they are many other series currently also being streamed: Godot, Blender, Unreal Engine VR
+[01:43:18.136] TPBLive: I see, thanks
+[01:43:19.811] bhindi1224: I made a clip earlier, had to delete it. I am horrible at twitch. It started with the words, "Please nobody clip this"
+[01:44:40.541] LucyGameDev: @TPBLive you can see them all in events (future and past) - https://www.twitch.tv/gamedevtv/events
+[01:47:31.252] Numn2Nutts: This is something I ran into at work... foreach (var mewo in cat){ try{ meow.Action() } catch (var furball){ furball.Cough() } Sometimes I dont like my coworkers
+[01:47:59.244] Numn2Nutts: lol I thought I had formatted that better
+[01:49:39.308] Numn2Nutts: In the current iteration of the game, can quest givers only be npc's or can items give quest too, like a message in a bottle
+[01:50:05.905] MallNinjaMax: Just NPCs atm
+[01:51:13.004] FoxhoundOz: Hi guys! how is everyone. Hi Ben! No tech issues today :)
+[01:51:36.115] MallNinjaMax: We're trying to avoid getting into inventory/items too much at this time
+[01:51:41.011] PerceptualLucidityGames: @FoxhoundOz pokketHEY
+[01:52:05.647] Numn2Nutts: Sorry if that was a silly question on the NPC thing. I literally just started the RPG course and only got to the GDD part (like video 4 in the series) and I saw this event listed somewhere in there.
+[01:52:18.472] bhindi1224: I want rick to voice one of my characters in my future RPG.
+[01:52:20.991] GameDevTV: Follow my work on GitHub here: https://github.com/UnityRPG/Part2
+[01:52:35.457] bhindi1224: very far in the future.
+[01:52:49.182] GameDevTV: https://www.udemy.com/unityrpg
+[01:53:27.795] PerceptualLucidityGames: In a way, we kind of serve as a rubber duck
+[01:54:17.906] Zedarkymon: Sorry I just missed, was this an extension to the RPG course?
+[01:54:29.994] PerceptualLucidityGames: @Zedarkymon sure is
+[01:54:34.490] Zedarkymon: Thanks
+[01:55:32.976] bhindi1224: It's entertainment for me atm. I don't possess any of the Unity skills I need to follow it in real time. I get a lot of programming practices from it.
+[01:55:33.308] Numn2Nutts: I'm watching for entertainment, but only because I literally just started the course. When I get caught up I plan on going over the VODS
+[01:55:33.847] Zedarkymon: I think I'll have to come back once i get through the course. I assume the vods will be available
+[01:55:44.689] MallNinjaMax: I am very tempted to dust that thing off, but I'm mostly just watching for now, as I'm working on my own project atm
+[01:55:59.937] bhindi1224: I'll look, but voting doesn't seem to be in twitch desktop.
+[01:56:12.299] Numn2Nutts: https://strawpoll.com/
+[01:56:37.793] Numn2Nutts: voting behind a paywall?
+[01:57:07.546] MallNinjaMax: like 1 or 2 pennies
+[01:57:54.838] GameDevTV: https://strawpoll.com/9yg9h4c4
+[01:57:55.839] PerceptualLucidityGames: the chase ring in conjuction with stopping distance will work for follow
+[01:57:58.582] terravice: @Numn2Nutts I love your name, I'm working on something for work and Ben just goes "yeah, I tried that, numb nuts..."
+[01:58:09.458] GrassWhooper: hey everyone :)
+[01:58:20.008] GrassWhooper: did i miss much ? :D
+[01:58:20.229] PerceptualLucidityGames: just set the attack distance closer in than the stop distance
+[01:58:29.698] amarama1969: Where is the best place to find character control scripts or is it available in the Udemy course. I current have purchased but have not completed because is is so packed with information.
+[01:58:44.518] bhindi1224: You have to respond in a browser window. If you could limit the poll bit amount to one, it would be perfect.
+[01:59:05.683] bhindi1224: On the internal poll system.
+[01:59:12.626] Numn2Nutts: @terravice Might be worth getting the audio clip for cell notifications lol
+[02:00:13.848] bhindi1224: Actually, if you take into account people watching the VOD could vote, it might be more comprehensive and not limited to people watching live.
+[02:00:19.929] GrassWhooper: you aren't writing it into a function :D
+[02:00:24.372] GameDevTV: Follow my work on GitHub here: https://github.com/UnityRPG/Part2
+[02:00:35.766] terravice: don't you have to assign a variable
+[02:02:16.373] amarama1969: So it is referenced in the Udemy course for unity or what is your advice for reusable character control scripts?
+[02:02:50.035] GameDevTV: https://www.udemy.com/unityrpg
+[02:04:15.789] Numn2Nutts: I love these courses/tutorials offered at GameDevTV. I feel like every free tutorial I watch and follow along with comes to a certain point where the 'instructor' says something like "And now I'm just going to import my own custom library that you cant get access too. And look at that procedural generation of quest, environments and abilities are done!"
+[02:04:39.629] GrassWhooper: i'd like to note, WaitForEndOfFrame, is a bit buggy, when you use it in series of coroutines.
+[02:04:58.467] GrassWhooper: if you use it in a series of courtines, you might as well use return 0 or null
+[02:05:01.425] bhindi1224: I've given up on seeing voting studio inside of the twitch app on windows. If someone could point me to an option to enable it, I'd appreciate it. @Numn2Nutts I like how everything done on their tutorials has source code and assets that you can use.
+[02:05:56.390] Numn2Nutts: @bhindi1224 yeah, top quality content from these guys. Thats why their UE4 multiplayer tut is so highly revered
+[02:08:28.682] bhindi1224: @GameDevTV Just restating an opinion on the polls in case I accidentally deleted it with closing twich a second ago, strawpoll would be good to allow after-the-fact voting while people are watching VOD's.
+[02:08:49.982] bhindi1224: Also, try using this as your URL and see if it's inside twitch instead of a new window. https://strawpoll.com/embed/9yg9h4c4
+[02:08:56.438] amarama1969: So this course https://www.udemy.com/unityrpg/ is more focused on Character control scripting than the Complete C# Unity Developer 2D - Learn to Code Making course I currently have.
+[02:10:17.859] amarama1969: Also one other question does any of your courses teach one how to create character creator screens?
+[02:11:21.994] Numn2Nutts: Oh man, then you run around the fence and he gets stuck
+[02:12:45.432] terravice: @amarama1969 if you use https://community.gamedev.tv/ there is a format for course suggestions. I don't beleive a Character Creator tutorial currently exists but I am sure the community would agree that one should be made in the future :D
+[02:13:29.437] Numn2Nutts: Oh yeah, I'm saying your content is great and you dont skip steps
+[02:13:38.835] Numn2Nutts: Like most people do
+[02:13:43.923] terravice: @Numn2Nutts I actually like the idea of the boolean flag in the quest class because then if the NPC gets stuck and the distance is > maxDistance then the flag can be turned to false and some other state can be switched to for the Quest/NPC
+[02:13:59.640] jc_adventure_gamer: how do you deal with eye strain?
+[02:14:00.510] Zedarkymon: I think not everyone has bits
+[02:14:12.097] amarama1969: Thanks @terravice I will sing up to that
+[02:14:31.871] gnoevenimente: QSTN You didn’t list game maker is one of the engines that you officially support. I was wondering why? Your action rpg Course is pretty great
+[02:14:38.974] GameDevTV: https://www.udemy.com/blendercharacters
+[02:14:51.468] GameDevTV: https://www.kickstarter.com/projects/bentristem/discovering-godot-learn-to-code-by-making-games
+[02:14:57.004] amarama1969: I know blender already
+[02:14:59.322] amarama1969: ok
+[02:15:23.722] Numn2Nutts: https://i.kym-cdn.com/photos/images/newsfeed/000/572/078/d6d.jpg
+[02:15:30.424] Numn2Nutts: That image of how to draw
+[02:15:37.018] amarama1969: Ok then I guess this week I will have to get the Godot course then
+[02:15:37.754] bhindi1224: you can watch one ad and get at least 5 bits
+[02:15:49.475] GameDevTV: https://www.udemy.com/user/gamedevtv
+[02:16:22.645] Zedarkymon: Complete C# Unity Developer 2D - Learn to Code Making?
+[02:16:26.651] bhindi1224: https://www.udemy.com/make-an-action-rpg-in-gamemaker-studio-2/ Game Maker Course.
+[02:16:52.044] Numn2Nutts: OMG I'm sorry, I didnt notice the language at the bottom
+[02:17:08.307] amarama1969: My character mechanics get kinda complex so the character scripting and character creation screens would be fabulous then. So I will get both of those and look into the this week.
+[02:17:14.354] bhindi1224: The ads are located under the bits icon, you can get bits by watching an ad in the same place you buy them.
+[02:17:17.793] LucyGameDev: https://www.udemy.com/make-an-action-rpg-in-gamemaker-studio-2
+[02:17:19.332] Zedarkymon: Yeah I'm twitch prime and dont get ads..
+[02:17:31.443] Numn2Nutts: I do not get an add
+[02:17:33.148] Zedarkymon: Not for me.
+[02:17:33.942] MallNinjaMax: no ad for me
+[02:17:36.570] chluaid: no ad here
+[02:17:36.826] amarama1969: Yes I see the ads
+[02:17:41.886] Unratedpupet: No ad for me
+[02:17:44.560] amarama1969: Equalizer 2
+[02:17:47.901] Numn2Nutts: T.T Unsubbed :P
+[02:17:52.422] amarama1969: which is a go for me
+[02:18:07.767] GameDevTV: gdtvLucy
+[02:18:09.085] LucyGameDev: Haha, no
+[02:18:14.162] bhindi1224: gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy
+[02:18:14.554] terravice: gdtvLucy gdtvLucy gdtvLucy gdtvLucy
+[02:18:16.897] Zeffer_: no ad here :(
+[02:18:16.989] Zedarkymon: @bhindi1224 Yeah there is no option for prime it seems, just all purchase
+[02:18:17.338] PerceptualLucidityGames: she's been here in stealth mode for quite some time
+[02:18:22.630] Numn2Nutts: gdtvLucy gdtvLucy gdtvLucy gdtvLucy
+[02:18:23.786] Tastygraph: gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvLucy gdtvHeart
+[02:18:29.732] Numn2Nutts: gdtvLeaf gdtvLucy gdtvLeaf gdtvLucy gdtvLeaf
+[02:18:33.494] bhindi1224: gdtvHeart gdtvLucy gdtvHeart
+[02:18:33.943] amarama1969: it is fine
+[02:18:56.077] bhindi1224: https://help.twitch.tv/customer/portal/articles/2574978-how-to-link-your-amazon-account
+[02:18:56.083] LucyGameDev: zoom?
+[02:18:59.413] Zedarkymon: Sorry im talking about the Ads for bits Ben
+[02:19:31.840] MallNinjaMax: gdtvLucy gdtvLucy
+[02:19:37.434] amarama1969: yes
+[02:19:40.477] Numn2Nutts: Audio is all good here
+[02:19:41.256] terravice: read you both loud and clear
+[02:19:41.403] MallNinjaMax: can hear Lucy
+[02:20:01.040] Zedarkymon: cohhCheer cohhCheer
+[02:20:31.642] bhindi1224: I made a clip, I deleted it.
+[02:20:40.949] Numn2Nutts: Sorry, new to the community. What does Lucy do?
+[02:20:49.903] MallNinjaMax: I tried clipping once, and I had no idea wha tI was doing haha
+[02:21:07.199] chluaid: tech art! biteyLuv
+[02:21:15.272] Tastygraph: @LucyGameDev what does a "regular" day with your job, look like? gdtvQ
+[02:21:23.023] MallNinjaMax: I am absolutely onboard with the tech art course
+[02:21:31.978] MallNinjaMax: Who was it with again?
+[02:21:35.170] chluaid: @Tastygraph biteyHey
+[02:21:36.189] bhindi1224: https://www.dropbox.com/s/h5u27z3uj5eqe5i/2018-07-16_10-19-20.png?dl=0 Watch ad inside the buy bits interface.
+[02:22:21.650] chluaid: @GameDevTV any chance the tech art course come about from my request on Udemy?
+[02:22:23.160] PerceptualLucidityGames: street performer Ben
+[02:22:32.344] Tastygraph: hi @chluaid , how are you doing? I hope your game is progressing well, sorry i havent been able to pop by, been busy busy :D
+[02:22:33.122] Zedarkymon: @bhindi1224 Yes that isn't an option on prime.
+[02:22:33.939] GameDevTV: The amazing Wilmer Lin: https://www.udemy.com/make-a-puzzle-match-game-in-unity/#instructor. Watch-out for Unity tech art course coming soon
+[02:23:00.868] Tastygraph: @LucyGameDev thanks for the answer :)
+[02:23:19.106] MallNinjaMax: vampire
+[02:23:21.007] amarama1969: Yeah coders are typically reclusive people. Believe I know.
+[02:23:21.581] LucyGameDev: :)
+[02:24:07.249] MallNinjaMax: bye Lucy!
+[02:24:10.418] PerceptualLucidityGames: bye Lucy
+[02:24:11.049] xRaziel91x: bye
+[02:24:19.427] GameDevTV: gdtvLucy
+[02:24:19.676] Ugsquish: Do you encourage students to stick to your course until finished or is wandering off to use what you're learning warranted ?
+[02:24:30.141] PerceptualLucidityGames: gdtvLucy gdtvLucy gdtvLucy
+[02:24:33.664] chluaid: bye @LucyGameDev !
+[02:24:36.817] MallNinjaMax: gdtvLucy gdtvHeart gdtvHeart
+[02:24:37.171] Tastygraph: @GameDevTV oh yes, definetely check out @chluaid , he is an artist/animator/gamedev, very very talented :)
+[02:24:53.118] GameDevTV: https://streampoll.tv/44228
+[02:24:55.856] LucyGameDev: Aw, thanks guys. Feeling the gdtvHeart
+[02:24:57.255] amarama1969: bye @LucyGameDev
+[02:24:58.872] monky_mind: PoleDoge
+[02:25:07.510] Tastygraph: bye @LucyGameDev , have a good day :)
+[02:25:23.266] Zedarkymon: no vote options?
+[02:25:31.384] terravice: strawpoll is better than streampoll
+[02:25:36.136] chluaid: doing alright thanks @Tastygraph . I lurked in your stream for a bit recently. Rarely get time for watching too long these days
+[02:25:43.193] bhindi1224: I had to reload, I must have missed the poll. Going back and forth between chrome and windows app of twitch.
+[02:25:44.569] Numn2Nutts: um, I dont know how to use this streampoll, looks like there are no options for me
+[02:25:44.675] Tastygraph: poll says loading, on my end
+[02:25:57.649] stevenasonnenberg: ^
+[02:26:00.757] Numn2Nutts: ^
+[02:26:18.916] melkorz99: not voting on poll
+[02:26:35.212] Numn2Nutts: THANKS, reminds me of the Finish it series you have
+[02:26:47.662] terravice: use this
+[02:26:52.871] terravice: https://strawpoll.com/3rca7gpx
+[02:26:53.074] Tastygraph: @chluaid oh snap :D had no idea you had been at my place... i started drawing graphics for my game yesterday :D time to get rid of those ugly placeholder graphics. Glad you're doing alright :)
+[02:27:16.179] terravice: gdtvBen I made a new one for us
+[02:27:46.808] Tastygraph: what will the squirrel pixel art be used for ?
+[02:27:50.035] amarama1969: I believe I got overwhelm with the complete Unity course. I think courses on specific pitfall items for game developers would be great courses. Like Game design, Game mechanics, Debug, Game Optimization, Game marketing, etc.
+[02:27:56.546] gnoevenimente: QSTN I really want to finish the unity through the course but it seems that now you’re in the process of deBrice-ifying and updating it and I think I’ll just wait until then. Do you recommend doing that?
+[02:28:11.397] Numn2Nutts: I thought the poll was for making a squirrel icon or an rpg icon. I was going for the rpg icon :P
+[02:28:34.236] terravice: what are we using the icon for? Twitch emotes?
+[02:28:37.615] bhindi1224: https://pixabay.com/en/photos/?q=squirrel&image_type=vector&cat=&min_height=&min_width=&order= is what I use.
+[02:28:43.462] LucyGameDev: Love that we're now squirrelling by creating a squirrel twitch emote
+[02:29:01.243] amarama1969: the course it great just sometimes specialized course are good for got items as well when developing.
+[02:29:51.116] amarama1969: polls have not shown up
+[02:29:53.752] MallNinjaMax: no rotation
+[02:30:12.245] Numn2Nutts: Head lower than tail?
+[02:30:19.104] Numn2Nutts: for rotation
+[02:30:21.890] amarama1969: squirel is fine
+[02:30:42.473] MallNinjaMax: thats a good rotation
+[02:30:46.221] amarama1969: *REPOST*
+[02:30:48.427] amarama1969: I believe I got overwhelm with the complete Unity course. I think courses on specific pitfall items for game developers would be great courses. Like Game design, Game mechanics, Debug, Game Optimization, Game marketing, etc.
+[02:30:48.713] chluaid: gotta jump out, it's just cracked midnight here. have a great stream. Night all! biteyHey
+[02:30:55.630] MallNinjaMax: nn
+[02:30:55.953] amarama1969: the course it great just sometimes specialized course are good for got items as well when developing.
+[02:31:02.345] monky_mind: 🐿️
+[02:31:11.004] bhindi1224: testing something, please ignore PokerFace
+[02:31:11.230] Zedarkymon: @chluaid in adelaide?
+[02:31:18.240] Ugsquish: Welp off to work on Building Escape, thanks for what you do, its appreciated! Cheers
+[02:31:19.966] Tastygraph: @GameDevTV are you rushing a graphics job? ;) Where's the art-love gdtvQ
+[02:31:40.059] chluaid: @Zedarkymon Sydney, midnight was half hr ago haha
+[02:31:52.671] Zedarkymon: yeah im in Melb
+[02:32:16.859] bhindi1224: RageFace
+[02:32:56.376] bhindi1224: Have a dog Wowee
+[02:33:11.242] PerceptualLucidityGames: Sam will get around to his icon, he's still waiting for UE to compile
+[02:33:23.176] Numn2Nutts: I think they look pretty good
+[02:33:35.132] Tastygraph: i like the thumbnails, they draw attention to them, and seem to have a good visual flow to them. Nice job @GameDevTV
+[02:33:35.599] Numn2Nutts: Hey, dont you talk bad about UE
+[02:33:37.246] GameDevTV: How to make emotes: https://help.twitch.tv/customer/en/portal/articles/2348985-partner-emoticon-and-badge-guide
+[02:33:51.309] amarama1969: Look like you just need a good photoshop template to help with branding the thumbnails
+[02:33:56.391] bhindi1224: You should get official game engine emotes, surely they are available.
+[02:34:01.588] monky_mind: WutFace
+[02:34:19.086] MallNinjaMax: @bhindi1224 that's how wars are started
+[02:34:33.398] Zedarkymon: cohhWow
+[02:34:36.167] PerceptualLucidityGames: @Numn2Nutts just playful jabbing
+[02:35:04.865] GameDevTV: https://www.udemy.com/unitycourse
+[02:35:11.533] GameDevTV: https://www.udemy.com/unitycourse2
+[02:35:14.937] Tastygraph: PerceptualLucidityGames one does not simply playfully jab in console/engine/footballteam/politics KappaPride
+[02:35:42.963] PerceptualLucidityGames: @Tastygraph lol :)
+[02:35:51.182] Mbkgfx: I've heard C++ is a pain for beginners
+[02:35:53.498] GameDevTV: See our full catalog of Udemy courses here: https://www.udemy.com/user/gamedevtv
+[02:36:21.266] AlenZkv: could you say a few quick sentences about godot?
+[02:36:55.255] terravice: https://pasteboard.co/HuJyvAD.png
+[02:37:02.039] terravice: icon suggestion :D
+[02:37:37.988] bhindi1224: Ben even did a demonstration of how you might play rock, paper, scissors with the three engines, it reminded me of the ymca song: http://www.brainerdlakesymca.org/wp-lib/wp-content/uploads/2016/08/Photo_20100608_YMCA_18_0011_HR.jpeg
+[02:37:49.716] Numn2Nutts: @GameDevTV I have your Unity 2d, 3d, and rpg core. But I havent really got into any of them because I completed all your UE4 content. Which Unity course should I do first?
+[02:37:54.990] scorpion0195: Most definitely worth paying for!
+[02:38:03.371] amarama1969: GODOT is very fast
+[02:38:06.651] bhindi1224: I am learning gdscript with no effort at all.
+[02:38:09.621] GameDevTV: https://www.kickstarter.com/projects/bentristem/discovering-godot-learn-to-code-by-making-games
+[02:38:15.012] Tastygraph: i love photoshop :) it exports all 3 sizes of the Emojis with 1 click/batch :)
+[02:38:40.735] amarama1969: it is like Python
+[02:38:50.555] terravice: did you call me?
+[02:38:59.357] MallNinjaMax: I really like Godot, and might even switch to it from Unity eventually
+[02:39:06.312] terravice: json
+[02:39:10.143] AlenZkv: thank you vm :)
+[02:39:15.515] MallNinjaMax: the lack of terrain tools and navigation out of box gives me pause tho
+[02:39:17.318] GameDevTV: <funny> laksdjflasdkfja;lsdfjkas; </funny>
+[02:39:19.436] GameDevTV: BSML
+[02:39:20.689] amarama1969: been using photoshop for almost 25 years
+[02:39:24.863] GameDevTV: Ben's Steam Markup Language
+[02:39:28.779] PerceptualLucidityGames: lol
+[02:39:41.532] bhindi1224: @Tastygraph Gimp can do the same. I've learned Adobe just means mainstream and more resources. It's sort of like Godot vs Unity.
+[02:39:52.653] sandboxcastles: Does that make anything I say funny? I can use that with my wife.
+[02:40:01.562] Tastygraph: @GameDevTV another way to know if someone is being funny on Twitch, is when they end their sentence with a kappa -> Kappa
+[02:40:06.429] PerceptualLucidityGames: remember to click back into the game
+[02:40:20.459] bhindi1224: Blackappa
+[02:40:26.165] sandboxcastles: <interesting> programmer talk </interesting>
+[02:40:36.891] amarama1969: Twitch allows your to create your own markup lanquague?
+[02:40:50.238] bhindi1224: hmm, doesn't work, maybe this one will YetiZ
+[02:40:59.130] MallNinjaMax: stay clicked into unity
+[02:41:00.210] Tastygraph: amarama1969 i doubt it.. it was just a joke to make it easier for Ben to know when we're typing funny stuff
+[02:41:01.730] amarama1969: via and Rest API?
+[02:41:09.532] amarama1969: ok got it
+[02:41:24.240] Numn2Nutts: @GameDevTV I have your Unity 2d, 3d, and rpg core. But I havent really got into any of them because I completed all your UE4 content. Which Unity course should I do first?
+[02:42:36.495] Tastygraph: @GameDevTV technically you didnt do the same thing 3 times though :P you exported it with 3 different settings, so your sanity is safe <3
+[02:43:34.564] Tastygraph: @Numn2Nutts 2d -> 3d -> rpg , if you do it in that order, you'll gain the most from the rpg course. In my opionin
+[02:43:39.309] AlenZkv: i've tried unity on mac and found it considerably slower than on high end pc
+[02:43:39.460] Tastygraph: opinion*
+[02:43:55.995] Tastygraph: AlenZkv have you tried it on a high end mac? Kappa
+[02:43:56.104] terravice: did you see my suggestion for the icon?
+[02:44:03.938] terravice: https://pasteboard.co/HuJyvAD.png
+[02:44:16.290] Zedarkymon: back another the first
+[02:44:43.293] terravice: another time XD
+[02:44:47.439] AlenZkv: sort of, not top notch but close
+[02:44:53.459] terravice: I can make it up, that was made in MS paint so no alpha channels
+[02:44:56.813] MallNinjaMax: Squirrel++
+[02:45:25.557] MallNinjaMax: cointoss
+[02:45:27.571] melkorz99: Squirrel++
+[02:45:28.442] Tastygraph: i vote for the green, terravice did a nice job on it :)
+[02:45:32.277] Numn2Nutts: ++
+[02:45:36.114] manasbee: ++
+[02:45:38.952] Tastygraph: ++
+[02:45:38.956] Zedarkymon: ++
+[02:46:00.986] terravice: free to do with it as you'd like
+[02:46:19.188] Numn2Nutts: Can we have more backflips and horror movie references?
+[02:46:41.434] bhindi1224: You have a gimp course....just saying.
+[02:47:02.404] Numn2Nutts: Making me question that gimp purchase :P
+[02:48:26.518] Tastygraph: enjoy your break
+[02:49:09.325] Tastygraph: oh idea, @GameDevTV when you go on break, you should have a sign that says you're on a break, and then in the background, video trailers for the udemy courses as advertising :)
+[02:49:30.050] Numn2Nutts: @Tastygraph That is a pretty good idea
+[02:49:59.627] Tastygraph: Numn2Nutts im full of good ideas...its much easier than focusing on the job i should be doing right now Kappa
+[02:51:09.695] bhindi1224: There are some weird emotes: SexPanda
+[02:51:11.475] terravice: @Tastygraph right??! I'm doing work at about half my usual pace (not to worry though because I typically finish my work in a quarter of the time as everyone else so I can afford the procrastination)
+[02:51:44.071] GameDevTV: Thanks for waiting for me
+[02:52:01.340] Numn2Nutts: I am getting absolutely nothing done because this is too entertaining.
+[02:52:07.231] Tastygraph: @terravice its my vacation atm... but im working on my game atm... replacing all the 2d placeholder art with new art :)
+[02:52:29.542] terravice: hopefully with photoshop and not GIMP :P
+[02:52:42.145] bhindi1224: It's too much fun SourPls
+[02:53:24.145] Tastygraph: terravice i've been using photoshop since late 90s, so im too old to switch to GIMP :p
+[02:53:28.455] bhindi1224: Do you guys see these emotes or are they local only?
+[02:53:38.581] Tastygraph: bhindi1224 i see them, because i have them turned on.
+[02:53:47.324] bhindi1224: @Tastygraph Do you use cc or an older version?
+[02:54:04.489] Tastygraph: bhindi1224 i use the subscription cc version :)
+[02:54:40.816] JasonLeeDev: I use Corel :)
+[02:54:44.781] Numn2Nutts: deadlyHype
+[02:54:49.587] Tastygraph: tastygHype
+[02:54:54.629] terravice: @bhindi1224 I bought a student version of CS5 a few years back and it still works just fin e:D
+[02:54:58.584] bhindi1224: It would be great if Ben can code an escort quest better than most of the ones I've seen. Sometimes that AI is just stupid.
+[02:55:10.857] Numn2Nutts: Hardly on twitch, was just checking to see if my other emotes would work in here.
+[02:55:19.731] Numn2Nutts: If I stop subbing to a streamer do I lose their emotes?
+[02:55:36.530] Tastygraph: terravice for most things, you dont need an upgraded version... personally, i like paying a subscription and knowing my stuff is always up to date.
+[02:55:38.078] bhindi1224: I've got the student cc package right now, so I have it all, but honestly I don't seem to use it very often. I'm currently debating Inkscape vs Illustrator atm.
+[02:56:10.123] AlenZkv: how do you call the small black bits in watermellon?
+[02:56:18.104] bhindi1224: snagit summer sale, get updates for one year for a buck.
+[02:56:55.143] GameDevTV: https://www.udemy.com/gimpforgames
+[02:57:06.908] lingyinz: @bhindi1224 Idk what kind of art work you're doing, but I find clip studio to be really nice.
+[02:57:40.754] bhindi1224: clip studio paint?
+[02:57:45.885] lingyinz: Yea
+[02:58:18.646] PerceptualLucidityGames: yes
+[02:58:19.720] bhindi1224: Yes you can.
+[02:58:20.387] Zedarkymon: yes
+[02:58:21.714] Tastygraph: you can use your emotes in other streams
+[02:58:30.885] Zedarkymon: cohhFeels cohhCheer cohhGG cohhBoop
+[02:58:39.653] Zedarkymon: dayPwr dayBroken dayHot
+[02:58:42.459] PerceptualLucidityGames: pokketSIP pandafaceD
+[02:58:43.173] Numn2Nutts: deadlyButter deadlyButter
+[02:58:52.253] Tastygraph: tastygHype rtrLurk rtrOof seranoNo1fan gamedeW gamedeLove crazyb16Sad HSWP
+[02:59:37.160] terravice: drop the bridge prefab a little ways away
+[03:00:08.442] terravice: ^typed before Ben said "I haven't got a bridge"
+[03:02:29.552] Tastygraph: completely unrelated... but i was on a fleamarket today... and bought a 1989 comic book "The Hobbit" illustrated by David Wenzel...for 1£ it is in super nice condition, 134 pages... im super tastygHype about it :D I collect artbooks and specific comic books :D
+[03:02:40.964] AlenZkv: where can i buy unity rpg course for begginers in unity but extremely experienced in programming?
+[03:03:03.428] PerceptualLucidityGames: you need to make the collider a trigger
+[03:03:07.876] PerceptualLucidityGames: if you're going to use trigger
+[03:03:41.095] Numn2Nutts: @AlenZkv I dont have a link for you, but go to udemy and look up Ben Tristem. He has his course there
+[03:03:57.266] Tastygraph: !rpgcourse
+[03:04:02.835] Tastygraph: oh... hehe it was worth a try :D
+[03:04:12.497] Numn2Nutts: I thought it was going to work lol
+[03:04:18.837] GrassWhooper: maybe have a protected virtual void OnQuestCompleted that can be overridden by quests
+[03:04:28.541] Numn2Nutts: @GameDevTV We need twitch commands!!!
+[03:04:38.287] GrassWhooper: and have that function called when the quest is completed
+[03:04:41.220] terravice: @AlenZkv I would actually recommend the GameDevTV courses on Udemy even if super experienced in coding. Unity naming conventions are different from the MS C# recommendations and there's tons of good information about utilizing code with the interface features of Unity and you can watch at 1.5x or 2x speed on Udemy
+[03:05:02.013] terravice: https://www.udemy.com/courses/search/?q=ben%20tristem&src=ukw
+[03:05:04.872] Tastygraph: Numn2Nutts put it on the discord and they can get around to adding it when Ben is not busy coding :)
+[03:05:58.175] Shadowlight2017: yes
+[03:06:00.399] AlenZkv: okay, will check it out on udemy then, thank you!
+[03:06:01.241] GameDevTV: https://www.udemy.com/unityrpg
+[03:06:06.481] GameDevTV: https://www.udemy.com/unitycourse2
+[03:06:10.727] Shadowlight2017: yes you would have spoken german before
+[03:06:14.873] MallNinjaMax: My celebration usually just involves sighing a puff of air out my nose
+[03:06:48.157] Numn2Nutts: Ideally the @GameDevTV should get your attention
+[03:07:40.126] Tastygraph: @GameDevTV you would probably need a moderator who can see your chat, and then use a specific command that triggers an audio-cue on your end. Thats how i do it, sometimes im focusing on code and i can have my mods ping me
+[03:07:52.415] GameDevTV: See our full catalog of Udemy courses here: https://www.udemy.com/user/gamedevtv
+[03:09:22.243] MallNinjaMax: haven't had any issues
+[03:09:30.646] PerceptualLucidityGames: zero issues have occurred here today
+[03:09:40.185] Numn2Nutts: @GameDevTV Do you have any courses that are only available to kickstart supporters atm? If so, is there any other way to get into them before they are finished?
+[03:09:53.756] Tastygraph: @GameDevTV i see on your clock that its 16:07 at your place... im in Denmark where's its 17:07 ... just so you know, 1 hour from now, the sun is still shining, its hot as heck... and staying inside and coding seems like the sensible thing to do. #timezonedadjokes Kappa
+[03:13:32.401] bhindi1224: @lingyinz This clip studio looks awesome.
+[03:13:38.313] GameDevTV: https://www.udemy.com/unitycourse2
+[03:14:45.397] GameDevTV: Follow my work on GitHub here: https://github.com/UnityRPG/Part2
+[03:14:56.013] terravice: @Numn2Nutts https://www.kickstarter.com/profile/bentristem make sure to follow for future projects, backers get exclusive access to some awesome stuff, I'm looking forward to whatever comes next
+[03:16:33.985] terravice: "Becoming a tier 3 subscriber through Twitch was a valuable investment in my future success as I tackle the ever challenging endeavour of becoming an indie game developer."
+[03:16:36.645] amarama1969: how do you change your tier level?
+[03:17:10.140] Tastygraph: if ppl see my code, they will turn blind :(
+[03:17:47.115] terravice: I honestly am a super beginner programmer (always been an artist for games) and got to be roasted and look dumb over and over again for about 2 hours XD it was 100% worth it
+[03:18:07.592] terravice: "why did you do this?" "uhh.... lack of knowledge..."
+[03:18:12.770] Shadowlight2017: You dont have a discord do you?
+[03:18:21.452] MallNinjaMax: @terravice Mang u didn't look dumb
+[03:18:27.127] MallNinjaMax: not to me at least
+[03:18:28.478] GameDevTV: Join our thriving Discord live chat server now: http://gdev.tv/discord
+[03:18:32.776] Numn2Nutts: There is no reason to not accept donations right?
+[03:18:59.212] GameDevTV: Join our amazing community forum and make new friends today: https://community.gamedev.tv
+[03:19:22.018] Tastygraph: @GameDevTV be aware that donations often have the ability of refunding, up to 6 months. So be aware of that... Many streamers have fallen into the trap of getting large donations that were then later pulled back. Bit Donations cannot be refunded
+[03:19:34.955] amarama1969: ok gotta get back to work thanks for the stream
+[03:19:46.947] PerceptualLucidityGames: is there a subscriber on the docket already for tomorrow night gdtvQ
+[03:20:00.786] PerceptualLucidityGames: for code review^
+[03:20:09.291] terravice: it's supposed to function like a group review but only I showed up last week
+[03:21:02.761] JasonLeeDev: I was there last week I just didn't have any code to be reviewed. oops. didn't expect things to get rolling so fast
+[03:21:22.560] terravice: yeah I crammed to make something XD
+[03:21:53.452] scorpion0195: Ben, I am so glad I discovered Gamedev.tv - I'm currently enrolled in 4 courses and thrilled about it.
+[03:21:56.411] Zedarkymon: Thanks Ben
+[03:22:01.312] MallNinjaMax: later!
+[03:22:03.603] PerceptualLucidityGames: thanks Ben!
+[03:22:10.051] Tastygraph: see you tomorrow @GameDevTV , have a great rest of your day Ben :)
+[03:22:13.503] Numn2Nutts: @GameDevTV Oh man, now I can get something accomplished besides watching twitch :P
+[03:22:20.518] Tastygraph: everyone else, also have a great day :) see you lot on the discord
