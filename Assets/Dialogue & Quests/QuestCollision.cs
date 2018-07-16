@@ -16,7 +16,5 @@ namespace RPG.Quests
         {
             FindObjectOfType<QuestJournal>().CompleteQuest(questToComplete);
         }
-
-
     }
 }
