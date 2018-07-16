@@ -12,6 +12,7 @@ namespace RPG.Quests
 
         // private instance variables for state
         bool isEscorting = false;
+        Coroutine followHandle;  // So we can stop surgically
 
         // Follow the player IF IN RANGE
         // TODO couple with Collision quest critera
@@ -22,15 +23,18 @@ namespace RPG.Quests
             if (questStarted && isEscorting == false)
             {
                 var player = GameObject.FindWithTag("Player");
-                StartCoroutine(FollowPlayer(player));
+                followHandle = StartCoroutine(FollowPlayer(player));
                 isEscorting = true;  // TODO really need a boolean flag?
             }
         }
 
         private IEnumerator FollowPlayer(GameObject player)
         {
-            GetComponent<Character>().SetDestination(player.transform.position);
-            yield return new WaitForEndOfFrame();
+            while (true)
+            {
+                GetComponent<Character>().SetDestination(player.transform.position);
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         // Detect when at destination

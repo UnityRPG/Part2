@@ -30,7 +30,6 @@ namespace RPG.Quests
 
         public void CompleteQuest(Quest quest)
         {
-            print("completing " + quest);
             GetComponent<Text>().text = "";
             quest.SetQuestState(QuestState.Complete);
         }
