@@ -18,14 +18,14 @@ namespace RPG.Quests
     public class Quest : MonoBehaviour
     {
         [SerializeField] QuestState questState; // TODO consider get; set;
-        [SerializeField] int rewardSamlings;
+        [SerializeField] int rewardCoin;
 
         // This code written by refactor tool
-        public int RewardSamlings
+        public int RewardCoin
         {
             get
             {
-                return rewardSamlings;
+                return rewardCoin;
             }
         }
 

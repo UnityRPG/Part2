@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Characters;
 
 namespace RPG.Quests
 {
@@ -25,7 +26,8 @@ namespace RPG.Quests
 
         private void EarnReward()
         {
-            print("Received this much stuff: " + questToComplete.RewardSamlings);
+            var player = GameObject.FindWithTag("Player");
+            player.GetComponent<Inventory>().AddCoin(questToComplete.RewardCoin);
         }
     }
 }
