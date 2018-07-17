@@ -17,16 +17,29 @@ namespace RPG.Quests
     [DisallowMultipleComponent]
     public class Quest : MonoBehaviour
     {
-        [SerializeField] QuestState questState;
+        [SerializeField] QuestState questState; // TODO consider get; set;
+        [SerializeField] int rewardSamlings;
 
-        public QuestState GetQuestState()
+        // This code written by refactor tool
+        public int RewardSamlings
         {
-            return questState;
+            get
+            {
+                return rewardSamlings;
+            }
         }
 
-        public void SetQuestState(QuestState questState)
+        public QuestState QuestState
         {
-            this.questState = questState;
+            get
+            {
+                return questState;
+            }
+
+            set
+            {
+                questState = value;
+            }
         }
 
         public string GetQuestAsString()

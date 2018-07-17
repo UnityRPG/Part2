@@ -24,13 +24,13 @@ namespace RPG.Quests
         public void AddQuest(Quest quest)
         {
             GetComponent<Text>().text += quest.GetQuestAsString();
-            quest.SetQuestState(QuestState.Started);
+            quest.QuestState = (QuestState.Started);
         }
 
         public void CompleteQuest(Quest quest)
         {
             GetComponent<Text>().text = "";
-            quest.SetQuestState(QuestState.Complete);
+            quest.QuestState= (QuestState.Complete);
         }
 
         private void UpdateQuestsFromScene()
@@ -44,7 +44,7 @@ namespace RPG.Quests
 
         private void ListQuestIfStarted(Transform child)
         {
-            var questState = child.gameObject.GetComponent<Quest>().GetQuestState();
+            var questState = child.gameObject.GetComponent<Quest>().QuestState;
             if (questState == QuestState.Started)
             {
                 GetComponent<Text>().text += child.gameObject.name + '\n';

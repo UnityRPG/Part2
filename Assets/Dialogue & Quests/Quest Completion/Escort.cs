@@ -16,7 +16,7 @@ namespace RPG.Quests
 
         void Update()
         {
-            var questStarted = questToComplete.GetQuestState() == QuestState.Started;
+            var questStarted = questToComplete.QuestState == QuestState.Started;
             if (questStarted && isEscorting == false)
             {
                 var player = GameObject.FindWithTag("Player");

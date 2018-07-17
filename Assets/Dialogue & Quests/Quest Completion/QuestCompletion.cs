@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,12 +15,17 @@ namespace RPG.Quests
 
     public class QuestCompletion : MonoBehaviour
     {
-
         [SerializeField] protected Quest questToComplete;
 
         protected void CompleteQuest()
         {
             FindObjectOfType<Journal>().CompleteQuest(questToComplete);
+            EarnReward();
+        }
+
+        private void EarnReward()
+        {
+            print("Received this much stuff: " + questToComplete.RewardSamlings);
         }
     }
 }
