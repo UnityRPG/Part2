@@ -9,8 +9,6 @@ namespace RPG.Quests
 {
     public class Voice : MonoBehaviour
     {
-        // TODO rename "enemy canvas" to "NPC canvas"
-
         // configuration parameters, consider SO
         [SerializeField] Conversation conversation;
         [SerializeField] [Tooltip("Optional")] Quest quest;
@@ -30,7 +28,7 @@ namespace RPG.Quests
         {
             Instantiate(speechBubblePrefab, canvas);
             RegisterForMouseClicks();
-            dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>(); // TODO yuck
+            dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>();
         }
 
         private void RegisterForMouseClicks()
@@ -57,7 +55,6 @@ namespace RPG.Quests
 
         private void ShowDialog()
         {
-            // TODO Rick move towards then speak?
             dialogBox.text = conversation.getConvoAsString();
             StartCoroutine(ExpireDialog());
         }

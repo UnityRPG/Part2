@@ -8,7 +8,6 @@ namespace RPG.Characters
     [SelectionBase]
     public class Character : MonoBehaviour
     {
-		// TODO consider a CharacterConfig SO
         [Header("Animator")] [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;

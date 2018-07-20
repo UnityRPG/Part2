@@ -5,7 +5,6 @@ using System;
 using RPG.Characters; // So we can detectect by type
 using RPG.Quests;
 
-// TODO ensure can click through dialog box, or close box before moving
 namespace RPG.CameraUI
 {
     public class CameraRaycaster : MonoBehaviour
@@ -50,16 +49,15 @@ namespace RPG.CameraUI
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 // Specify layer priorities below, order matters
-                if (RaycastForVoice(ray)) { return; }// moral decision talk first!
-                if (RaycastForEnemy(ray)) { return; } 
-                if (RaycastForPotentiallyWalkable(ray)) { return; }
-                // TODO remove side-effects of these calls
+                if (InteractWithVoice(ray)) { return; }
+                if (InteractWithEnemyAI(ray)) { return; } 
+                if (NavigateToWalkable(ray)) { return; }
             }
 		}
 
-        private bool RaycastForVoice(Ray ray)
+        private bool InteractWithVoice(Ray ray)
         {
-            // TODO start of shared code
+            // Consider making generic RaycastFor<Type>() method
             RaycastHit hitInfo;
             Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
             var gameObjectHit = hitInfo.collider.gameObject;
@@ -71,11 +69,10 @@ namespace RPG.CameraUI
                 return true;
             }
             return false;
-            // END of shared code
-            // TODO make generic RaycastFor<Voice>() method
+
         }
 
-	    private bool RaycastForEnemy(Ray ray)
+	    private bool InteractWithEnemyAI(Ray ray)
 		{
             RaycastHit hitInfo;
             Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
@@ -90,7 +87,7 @@ namespace RPG.CameraUI
             return false;
 		}
 
-        private bool RaycastForPotentiallyWalkable(Ray ray)
+        private bool NavigateToWalkable(Ray ray)
         {
             RaycastHit hitInfo;
             LayerMask potentiallyWalkableLayer = 1 << POTENTIALLY_WALKABLE_LAYER;

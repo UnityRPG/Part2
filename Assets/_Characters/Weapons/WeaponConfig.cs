@@ -50,7 +50,6 @@ namespace RPG.Characters
         // So that asset packs cannot cause crashes
         private void RemoveAnimationEvents()
         {
-            // TODO look into this still happening on the Player
             attackAnimation.events = new AnimationEvent[0];
         }
     }
