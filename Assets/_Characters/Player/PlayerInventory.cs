@@ -7,6 +7,7 @@ namespace RPG.Characters
     public class PlayerInventory : MonoBehaviour
     {
         int coin;
+        List<GameObject> inventory = new List<GameObject>();
 
         public void AddCoin(int amount)
         {
@@ -16,6 +17,11 @@ namespace RPG.Characters
         public int GetCoinAmount()
         {
             return coin;
+        }
+
+        public void AddToInventory(GameObject gameObject)
+        {
+            inventory.Add(gameObject);
         }
     }
 }

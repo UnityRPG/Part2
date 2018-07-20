@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Characters;
 
 namespace RPG.Quests
 {
     public class Gather : QuestCompletion
     {
-        void OnCollisionEnter() // 1st copy from Collision.cs
+        void OnCollisionEnter(Collision collision) // 1st copy from Collision.cs
         {
             if (questToComplete.QuestState == QuestState.Started)
             {   
-                Destroy(gameObject);
-                // TODO put object in inventory
+                var player = GameObject.FindWithTag("Player");
+                player.GetComponent<PlayerInventory>().AddToInventory(gameObject);
+                gameObject.SetActive(false); // leave inactive "ghose" in scene
                 CompleteQuest();
             }
         }
