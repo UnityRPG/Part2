@@ -13152,7 +13152,7 @@ Transform:
   m_LocalPosition: {x: 116.61, y: 2.6, z: -95.4}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 572110534}
+  - {fileID: 1281386236}
   m_Father: {fileID: 1313306363}
   m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: -1.1, y: 49.77, z: -2.7680001}
@@ -16527,35 +16527,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b143f01723bee1c409ca3134abb4088d, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &572110533
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 572110534}
-  m_Layer: 0
-  m_Name: Sword(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &572110534
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 572110533}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1223244011}
-  m_Father: {fileID: 470464124}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &572112804
 Prefab:
   m_ObjectHideFlags: 0
@@ -18163,6 +18134,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 218
       objectReference: {fileID: 0}
+    - target: {fileID: 2370122, guid: 105f2418cc866b6439b211cb0181b50e, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2fcbc021f7791345b1be5ed1f1db694, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 105f2418cc866b6439b211cb0181b50e, type: 2}
   m_IsPrefabAsset: 0
@@ -22520,6 +22495,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 62
       objectReference: {fileID: 0}
+    - target: {fileID: 2370122, guid: 105f2418cc866b6439b211cb0181b50e, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2fcbc021f7791345b1be5ed1f1db694, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 105f2418cc866b6439b211cb0181b50e, type: 2}
   m_IsPrefabAsset: 0
@@ -39660,78 +39639,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416864, guid: d66c89601ce96d4419ce36a4dce3c401,
     type: 2}
   m_PrefabInternal: {fileID: 1223112071}
---- !u!1 &1223244010
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1223244011}
-  - component: {fileID: 1223244013}
-  - component: {fileID: 1223244012}
-  m_Layer: 0
-  m_Name: Sword
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1223244011
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1223244010}
-  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
-  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
-  m_LocalScale: {x: 2, y: 1.25, z: 3}
-  m_Children: []
-  m_Father: {fileID: 572110534}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
---- !u!23 &1223244012
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1223244010}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1223244013
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1223244010}
-  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1 &1224068246
 GameObject:
   m_ObjectHideFlags: 0
@@ -41392,6 +41299,35 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c0a242be029464eba9de31eb920091, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1281386235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281386236}
+  m_Layer: 0
+  m_Name: Sword(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1281386236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281386235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1967103123}
+  m_Father: {fileID: 470464124}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1281512198
 Prefab:
   m_ObjectHideFlags: 0
@@ -62637,6 +62573,78 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 576b6d70e3da01b489b5b99e260ddc93, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1967103122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1967103123}
+  - component: {fileID: 1967103125}
+  - component: {fileID: 1967103124}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1967103123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967103122}
+  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
+  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
+  m_LocalScale: {x: 2, y: 1.25, z: 3}
+  m_Children: []
+  m_Father: {fileID: 1281386236}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
+--- !u!23 &1967103124
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967103122}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1967103125
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967103122}
+  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1001 &1968178611
 Prefab:
   m_ObjectHideFlags: 0

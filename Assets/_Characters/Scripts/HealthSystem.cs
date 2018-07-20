@@ -80,7 +80,7 @@ namespace RPG.Characters
             }
             else // assume is enemy fr now, reconsider on other NPCs
             {
-                DestroyObject(gameObject, deathVanishSeconds);
+                Destroy(gameObject, deathVanishSeconds);
             }
         }
     }
