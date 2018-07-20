@@ -12,7 +12,6 @@ namespace RPG.Quests
 
         // private instance variables for state
         bool isEscorting = false;
-        Coroutine followHandle;  // So we can stop surgically
 
         void Update()
         {
@@ -20,7 +19,7 @@ namespace RPG.Quests
             if (questStarted && isEscorting == false)
             {
                 var player = GameObject.FindWithTag("Player");
-                followHandle = StartCoroutine(FollowPlayer(player));
+                StartCoroutine(FollowPlayer(player));
                 isEscorting = true;
             }
         }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // common data and behaviour for all quests
-// TODO consider persistence across scene loads
 
 namespace RPG.Quests
 {
@@ -17,7 +16,7 @@ namespace RPG.Quests
     [DisallowMultipleComponent]
     public class Quest : MonoBehaviour
     {
-        [SerializeField] QuestState questState; // TODO consider get; set;
+        [SerializeField] QuestState questState;
         [SerializeField] int rewardCoin;
 
         // This code written by refactor tool
@@ -46,6 +45,5 @@ namespace RPG.Quests
         {
             return gameObject.name;
         }
-
     }
 }
