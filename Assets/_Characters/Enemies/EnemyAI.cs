@@ -24,7 +24,7 @@ namespace RPG.Characters
         float distanceToPlayer;
 
         enum State { idle, patrolling, attacking, chasing }
-        State state = State.idle;
+        State state;
 
         void Start()
         {

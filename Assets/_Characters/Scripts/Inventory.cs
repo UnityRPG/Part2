@@ -12,5 +12,10 @@ namespace RPG.Characters
         {
             coin += amount;
         }
+
+        public int GetCoinAmount()
+        {
+            return coin;
+        }
     }
 }
