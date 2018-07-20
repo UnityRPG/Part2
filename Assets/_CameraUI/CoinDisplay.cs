@@ -6,13 +6,13 @@ using RPG.Characters;
 
 public class CoinDisplay : MonoBehaviour {
 
-    Inventory playerInventory;
+    PlayerInventory playerInventory;
     Text coinText;
 
 	// Use this for initialization
 	void Start ()
     {
-        playerInventory = FindObjectOfType<Inventory>(); // assuming only player
+        playerInventory = FindObjectOfType<PlayerInventory>(); // assuming only player
         coinText = GetComponent<Text>();
 	}
 	

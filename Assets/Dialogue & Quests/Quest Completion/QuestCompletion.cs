@@ -23,7 +23,7 @@ namespace RPG.Quests
         private void EarnReward()
         {
             var player = GameObject.FindWithTag("Player");
-            player.GetComponent<Inventory>().AddCoin(questToComplete.RewardCoin);
+            player.GetComponent<PlayerInventory>().AddCoin(questToComplete.RewardCoin);
         }
     }
 }
