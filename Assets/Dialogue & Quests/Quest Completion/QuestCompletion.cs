@@ -7,7 +7,6 @@ using RPG.Characters;
 namespace RPG.Characters
 {
     // Quest completion criteria, idea is to compose more complex criteria
-    // Gather (just before inventory)
     // Delivery (after inventory)
 
     public class QuestCompletion : MonoBehaviour

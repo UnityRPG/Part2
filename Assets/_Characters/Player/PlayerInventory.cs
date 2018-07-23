@@ -8,6 +8,7 @@ namespace RPG.Characters
     {
         int coin;
         List<GameObject> inventory = new List<GameObject>();
+        [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
 
         public void AddCoin(int amount)
         {
@@ -22,6 +23,11 @@ namespace RPG.Characters
         public void AddToInventory(GameObject gameObject)
         {
             inventory.Add(gameObject);
+        }
+
+        public bool IsPlayerCarrying()  // TODO pass paramater
+        {
+            return hasDeliveryItem;
         }
     }
 }
