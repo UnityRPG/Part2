@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using RPG.CameraUI;
 
 namespace RPG.Quests
 {
@@ -27,19 +24,11 @@ namespace RPG.Quests
         void Start()
         {
             Instantiate(speechBubblePrefab, canvas);
-            RegisterForMouseClicks();
             dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>();
         }
 
-        private void RegisterForMouseClicks()
+        public void VoiceClicked()
         {
-            var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
-            cameraRaycaster.onMouseOverVoice += OnMouseOverAnyVoice;
-        }
-
-        private void OnMouseOverAnyVoice(Voice voice)
-        {
-            if (voice.gameObject != gameObject) { return; } // filter for self
             if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
             {
                 ShowDialog();

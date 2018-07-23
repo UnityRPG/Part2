@@ -65,11 +65,10 @@ namespace RPG.CameraUI
             if (voiceHit)
             {
                 Cursor.SetCursor(talkCursor, cursorHotspot, CursorMode.Auto);
-                onMouseOverVoice(voiceHit);
+                voiceHit.VoiceClicked();
                 return true;
             }
             return false;
-
         }
 
 	    private bool InteractWithEnemyAI(Ray ray)
