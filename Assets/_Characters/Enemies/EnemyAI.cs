@@ -19,6 +19,8 @@ namespace RPG.Characters
 
         PlayerControl player = null;
         Character character;
+        WeaponSystem weaponSystem;
+
         int nextWaypointIndex;
         float currentWeaponRange;
         float distanceToPlayer;
@@ -30,37 +32,59 @@ namespace RPG.Characters
         {
             character = GetComponent<Character>();
             player = FindObjectOfType<PlayerControl>();
+            weaponSystem = GetComponent<WeaponSystem>();
         }
 
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            WeaponSystem weaponSystem = GetComponent<WeaponSystem>();
+
             currentWeaponRange = weaponSystem.GetCurrentWeapon().GetMaxAttackRange();
 
             bool inWeaponCircle = distanceToPlayer <= currentWeaponRange;
             bool inChaseRing = distanceToPlayer > currentWeaponRange 
-                                 && 
-                                 distanceToPlayer <= chaseRadius;
+                               && 
+                               distanceToPlayer <= chaseRadius;
             bool outsideChaseRing = distanceToPlayer > chaseRadius;
 
             if (outsideChaseRing)
             {
-                StopAllCoroutines();
-                weaponSystem.StopAttacking();
-                StartCoroutine(Patrol());
+                StartPatrol();
             }
             if (inChaseRing)
             {
-                StopAllCoroutines();
-                weaponSystem.StopAttacking();
-                StartCoroutine(ChasePlayer());
+                StartChase();
             }
             if (inWeaponCircle)
             {
+                StartAttack();
+            }
+        }
+
+        private void StartAttack()
+        {
+            StopAllCoroutines();
+            state = State.attacking;
+            weaponSystem.AttackTarget(player.gameObject);
+        }
+
+        private void StartChase()
+        {
+            weaponSystem.StopAttacking();
+            if (state != State.chasing)
+            {
                 StopAllCoroutines();
-                state = State.attacking;
-                weaponSystem.AttackTarget(player.gameObject);
+                StartCoroutine(ChasePlayer());
+            }
+        }
+
+        private void StartPatrol()
+        {
+            weaponSystem.StopAttacking();
+            if (state != State.patrolling)
+            {
+                StopAllCoroutines();
+                StartCoroutine(Patrol());
             }
         }
 
