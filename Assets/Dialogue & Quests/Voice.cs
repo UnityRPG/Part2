@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Quests
+namespace RPG.Characters
 {
     public class Voice : MonoBehaviour
     {

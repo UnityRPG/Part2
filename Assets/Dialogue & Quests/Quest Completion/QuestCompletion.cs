@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
 
-namespace RPG.Quests
+namespace RPG.Characters
 {
     // Quest completion criteria, idea is to compose more complex criteria
     // Gather (just before inventory)

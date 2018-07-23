@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Quests
+namespace RPG.Characters
 {
     public class Trigger : QuestCompletion // Not from quest
     {

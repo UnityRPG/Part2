@@ -4,7 +4,7 @@ using UnityEngine;
 using RPG.Characters;
 using System;
 
-namespace RPG.Quests
+namespace RPG.Characters
 {
     [RequireComponent(typeof(HealthSystem))]
     public class Kill : QuestCompletion

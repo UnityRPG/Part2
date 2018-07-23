@@ -4,7 +4,7 @@ using UnityEngine;
 
 // common data and behaviour for all quests
 
-namespace RPG.Quests
+namespace RPG.Characters
 {
     public enum QuestState
     {
