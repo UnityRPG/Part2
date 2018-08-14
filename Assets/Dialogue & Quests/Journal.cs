@@ -24,13 +24,13 @@ namespace RPG.Characters
         public void AddQuest(Quest quest)
         {
             GetComponent<Text>().text += quest.GetQuestAsString();
-            quest.QuestState = (QuestState.Started);
+            quest.QuestState = QuestState.Started;
         }
 
         public void CompleteQuest(Quest quest)
         {
             GetComponent<Text>().text = "";
-            quest.QuestState= (QuestState.Complete);
+            quest.QuestState= QuestState.Complete;
         }
 
         private void UpdateQuestsFromScene()

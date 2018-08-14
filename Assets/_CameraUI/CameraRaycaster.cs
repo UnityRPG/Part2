@@ -2,8 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System;
-using RPG.Characters; // So we can detectect by type
-using RPG.Characters;
+using RPG.Characters; // So we can detect by type
 
 namespace RPG.CameraUI
 {
@@ -17,7 +16,7 @@ namespace RPG.CameraUI
         const int POTENTIALLY_WALKABLE_LAYER = 8;
         float maxRaycastDepth = 100f; // Hard coded value
 
-        Rect currentScrenRect;
+        Rect currentScreenRect;
 
         public delegate void OnMouseOverEnemy(EnemyAI enemy);
 		public event OnMouseOverEnemy onMouseOverEnemy;
@@ -30,7 +29,7 @@ namespace RPG.CameraUI
 
 		void Update()
         {
-            currentScrenRect = new Rect(0, 0, Screen.width, Screen.height);
+            currentScreenRect = new Rect(0, 0, Screen.width, Screen.height);
 
             // Check if pointer is over an interactable UI element
             if (EventSystem.current.IsPointerOverGameObject())
@@ -45,7 +44,7 @@ namespace RPG.CameraUI
 
         private void PerformRaycasts()
 		{
-            if (currentScrenRect.Contains(Input.mousePosition))
+            if (currentScreenRect.Contains(Input.mousePosition))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 // Specify layer priorities below, order matters
