@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Core.Saving;
 
 namespace RPG.Characters
 {
     [SelectionBase]
-    public class Character : MonoBehaviour
+    public class Character : MonoBehaviour, ISaveable
     {
         [Header("Animator")] [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
@@ -156,6 +156,26 @@ namespace RPG.Characters
                 velocity.y = ridigBody.velocity.y;
                 ridigBody.velocity = velocity;
             }
+        }
+
+        [System.Serializable]
+        struct CharacterState
+        {
+            public SerializableVector3 position;
+        }
+
+        public object CaptureState()
+        {
+            return new CharacterState
+            {
+                position = GetComponent<Transform>().position
+            };
+        }
+
+        public void RestoreState(object state)
+        {
+            var characterState = (CharacterState)state;
+            GetComponent<Transform>().position = characterState.position;
         }
     }
 }

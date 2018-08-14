@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using RPG.Core.Saving;
 
 namespace RPG.Characters
 {
-    public class HealthSystem : MonoBehaviour
+    public class HealthSystem : MonoBehaviour, ISaveable
     {
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] Image healthBar;
@@ -82,6 +83,26 @@ namespace RPG.Characters
             {
                 Destroy(gameObject, deathVanishSeconds);
             }
+        }
+
+        [Serializable]
+        struct HealthState
+        {
+            public float currentHealthPoints;
+        }
+
+        public object CaptureState()
+        {
+            return new HealthState
+            {
+                currentHealthPoints = currentHealthPoints
+            };
+        }
+
+        public void RestoreState(object state)
+        {
+            var healthState = (HealthState)state;
+            currentHealthPoints = healthState.currentHealthPoints;
         }
     }
 }

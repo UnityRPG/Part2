@@ -1,4 +1,4 @@
-﻿namespace RPG.Saving
+﻿namespace RPG.Core.Saving
 {
     using System.Runtime.Serialization.Formatters.Binary;
     using System.IO;
@@ -8,12 +8,12 @@
     public class SaveLoad : MonoBehaviour
     {
 
-        SaveableBase[] saveables;
+        SaveableEntity[] saveables;
 
 
         void Start()
         {
-            saveables = FindObjectsOfType<SaveableBase>();
+            saveables = FindObjectsOfType<SaveableEntity>();
             Load();
         }
 
