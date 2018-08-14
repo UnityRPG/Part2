@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿namespace RPG.Saving
+{
+    using UnityEngine;
 
-public abstract class SaveableBase : MonoBehaviour {
-    [SerializeField]
-    string _UniqueIdentifier;
-
-    public string UniqueIdentifier
+    public abstract class SaveableBase : MonoBehaviour
     {
-        get { return _UniqueIdentifier; }
-    }
+        [SerializeField]
+        string _UniqueIdentifier;
 
-    public abstract object CaptureState();
-    public abstract void RestoreState(object state);
+        public string UniqueIdentifier
+        {
+            get { return _UniqueIdentifier; }
+        }
+
+        public abstract object CaptureState();
+        public abstract void RestoreState(object state);
+    }
 }

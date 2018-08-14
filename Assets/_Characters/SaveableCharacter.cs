@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SaveableCharacter : SaveableBase
+﻿namespace RPG.Characters
 {
-    [System.Serializable]
-    class CharacterState
-    {
-        public Vector3 position;
-    }
+    using UnityEngine;
+    using RPG.Saving;
 
-    public override object CaptureState()
+    public class SaveableCharacter : SaveableBase
     {
-        var state = new CharacterState
+        [System.Serializable]
+        class CharacterState
         {
-            position = GetComponent<Transform>().position
-        };
-        return state;
-    }
+            public SerializableVector3 position;
+        }
 
-    public override void RestoreState(object State)
-    {
-        var characterState = (CharacterState)State;
-        GetComponent<Transform>().position = characterState.position;
+        public override object CaptureState()
+        {
+            var state = new CharacterState
+            {
+                position = GetComponent<Transform>().position
+            };
+            return state;
+        }
+
+        public override void RestoreState(object State)
+        {
+            var characterState = (CharacterState)State;
+            GetComponent<Transform>().position = characterState.position;
+            print((Vector3)characterState.position);
+        }
     }
 }
