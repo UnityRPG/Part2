@@ -159,15 +159,12 @@ namespace RPG.Characters
             }
         }
 
-        public IDictionary<string, object> CaptureState()
+        public void CaptureState(IDictionary<string, object> state)
         {
-            return new Dictionary<string, object>
-            {
-                { "position", (SerializableVector3)GetComponent<Transform>().position }
-            };
+            state["position"] = (SerializableVector3)GetComponent<Transform>().position;
         }
 
-        public void RestoreState(IDictionary<string, object> state)
+        public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
             GetComponent<Transform>().position = (SerializableVector3)state["position"];
         }

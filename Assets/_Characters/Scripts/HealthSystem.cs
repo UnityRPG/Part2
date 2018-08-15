@@ -85,15 +85,12 @@ namespace RPG.Characters
             }
         }
 
-        public IDictionary<string, object> CaptureState()
+        public void CaptureState(IDictionary<string, object> state)
         {
-            return new Dictionary<string, object>
-            {
-                { "currentHealthPoints", currentHealthPoints }
-            };
+            state["currentHealthPoints"] = currentHealthPoints;
         }
 
-        public void RestoreState(IDictionary<string, object> state)
+        public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
             currentHealthPoints = (float)state["currentHealthPoints"];
         }

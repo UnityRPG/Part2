@@ -22,7 +22,9 @@
             var entityState = new Dictionary<string, object>();
             foreach (var saveable in saveables)
             {
-                entityState[saveable.GetType().ToString()] = saveable.CaptureState();
+                var state = new Dictionary<string, object>();
+                saveable.CaptureState(state);
+                entityState[saveable.GetType().ToString()] = state;
             }
             return entityState;
         }
@@ -33,7 +35,7 @@
             var saveables = GetComponents<ISaveable>();
             foreach (var saveable in saveables)
             {
-                saveable.RestoreState((IDictionary<string, object>)entityState[saveable.GetType().ToString()]);
+                saveable.RestoreState((Dictionary<string, object>)entityState[saveable.GetType().ToString()]);
             }
         }
     }
