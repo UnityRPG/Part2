@@ -85,24 +85,17 @@ namespace RPG.Characters
             }
         }
 
-        [Serializable]
-        struct HealthState
+        public IDictionary<string, object> CaptureState()
         {
-            public float currentHealthPoints;
-        }
-
-        public object CaptureState()
-        {
-            return new HealthState
+            return new Dictionary<string, object>
             {
-                currentHealthPoints = currentHealthPoints
+                { "currentHealthPoints", currentHealthPoints }
             };
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(IDictionary<string, object> state)
         {
-            var healthState = (HealthState)state;
-            currentHealthPoints = healthState.currentHealthPoints;
+            currentHealthPoints = (float)state["currentHealthPoints"];
         }
     }
 }

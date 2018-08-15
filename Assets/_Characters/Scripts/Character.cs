@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core.Saving;
+using System.Collections.Generic;
 
 namespace RPG.Characters
 {
@@ -158,24 +159,17 @@ namespace RPG.Characters
             }
         }
 
-        [System.Serializable]
-        struct CharacterState
+        public IDictionary<string, object> CaptureState()
         {
-            public SerializableVector3 position;
-        }
-
-        public object CaptureState()
-        {
-            return new CharacterState
+            return new Dictionary<string, object>
             {
-                position = GetComponent<Transform>().position
+                { "position", (SerializableVector3)GetComponent<Transform>().position }
             };
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(IDictionary<string, object> state)
         {
-            var characterState = (CharacterState)state;
-            GetComponent<Transform>().position = characterState.position;
+            GetComponent<Transform>().position = (SerializableVector3)state["position"];
         }
     }
 }

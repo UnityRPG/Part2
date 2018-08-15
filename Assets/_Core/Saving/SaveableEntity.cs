@@ -15,6 +15,9 @@
 
         public object CaptureState()
         {
+            foreach (var component in GetComponents<MonoBehaviour>())
+            { 
+            }
             var saveables = GetComponents<ISaveable>();
             var entityState = new Dictionary<string, object>();
             foreach (var saveable in saveables)
@@ -30,7 +33,7 @@
             var saveables = GetComponents<ISaveable>();
             foreach (var saveable in saveables)
             {
-                saveable.RestoreState(entityState[saveable.GetType().ToString()]);
+                saveable.RestoreState((IDictionary<string, object>)entityState[saveable.GetType().ToString()]);
             }
         }
     }

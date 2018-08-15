@@ -1,8 +1,10 @@
-﻿namespace RPG.Core.Saving
+﻿using System.Collections.Generic;
+
+namespace RPG.Core.Saving
 {
     public interface ISaveable
     {
-        object CaptureState();
-        void RestoreState(object state);
+        IDictionary<string, object> CaptureState();
+        void RestoreState(IDictionary<string, object> state);
     }
 }
