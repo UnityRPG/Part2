@@ -166,7 +166,9 @@ namespace RPG.Characters
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
+            gameObject.SetActive(false);
             GetComponent<Transform>().position = (SerializableVector3)state["position"];
+            gameObject.SetActive(true);
         }
     }
 }

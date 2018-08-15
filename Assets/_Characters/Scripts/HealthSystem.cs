@@ -22,7 +22,8 @@ namespace RPG.Characters
         AudioSource audioSource;
         Character characterMovement;
 		
-        float currentHealthPoints; 
+        float currentHealthPoints;
+        bool healthPointsSetByRestore = false;
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -32,12 +33,16 @@ namespace RPG.Characters
             audioSource = GetComponent<AudioSource>();
             characterMovement = GetComponent<Character>();
 
-            currentHealthPoints = maxHealthPoints;
+            if (!healthPointsSetByRestore)
+            {
+                currentHealthPoints = maxHealthPoints;
+            }
         }
 
         void Update()
         {
             UpdateHealthBar();
+            CheckShouldCharacterDie();
         }
 
         void UpdateHealthBar()
@@ -50,10 +55,14 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
-            bool characterDies = (currentHealthPoints - damage <= 0);
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
             var clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
             audioSource.PlayOneShot(clip);
+        }
+
+        private void CheckShouldCharacterDie()
+        {
+            bool characterDies = currentHealthPoints <= 0;
             if (characterDies)
             {
                 StartCoroutine(KillCharacter());
@@ -93,6 +102,7 @@ namespace RPG.Characters
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
             currentHealthPoints = (float)state["currentHealthPoints"];
+            healthPointsSetByRestore = true;
         }
     }
 }

@@ -8,12 +8,8 @@
     public class SaveLoad : MonoBehaviour
     {
 
-        SaveableEntity[] saveables;
-
-
         void Start()
         {
-            saveables = FindObjectsOfType<SaveableEntity>();
             Load();
         }
 
@@ -26,6 +22,10 @@
             if (Input.GetKeyDown(KeyCode.L))
             {
                 Load();
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                Clear();
             }
         }
 
@@ -55,8 +55,17 @@
             return true;
         }
 
+        public void Clear()
+        {
+            if (File.Exists(GetSavePath()))
+            {
+                File.Delete(GetSavePath());
+            }
+        }
+
         LevelState GetLevelState()
         {
+            var saveables = FindObjectsOfType<SaveableEntity>();
             var levelState = new LevelState();
             foreach (var saveable in saveables)
             {
@@ -73,12 +82,16 @@
 
         void UpdateLevelFromState(LevelState levelState)
         {
+            var saveables = FindObjectsOfType<SaveableEntity>();
             foreach (var saveable in saveables)
             {
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
                     var saveableState = levelState[saveable.UniqueIdentifier];
                     saveable.RestoreState(saveableState);
+                } else
+                {
+                    Destroy(saveable.gameObject);
                 }
             }
         }

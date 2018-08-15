@@ -3,10 +3,19 @@
     using System.Collections.Generic;
     using UnityEngine;
 
+    [ExecuteInEditMode]
     public class SaveableEntity : MonoBehaviour
     {
         [SerializeField]
         string _UniqueIdentifier;
+
+        void Awake()
+        {
+            if (_UniqueIdentifier == "")
+            {
+                _UniqueIdentifier = gameObject.name;
+            }
+        }
 
         public string UniqueIdentifier
         {
