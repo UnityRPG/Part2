@@ -91,6 +91,7 @@
                     saveable.RestoreState(saveableState);
                 } else
                 {
+                    Debug.Log(saveable.UniqueIdentifier);
                     Destroy(saveable.gameObject);
                 }
             }

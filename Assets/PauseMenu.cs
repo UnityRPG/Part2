@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Core.Saving;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -13,10 +14,13 @@ public class PauseMenu : MonoBehaviour {
 
     GameObject currentlyActiveMenu;
 
+    SaveLoad SaveSystem;
+
     void Start()
     {
         mainMenu.SetActive(false);
         loadMenu.SetActive(false);
+        SaveSystem = FindObjectOfType<SaveLoad>();
     }
 
     // Update is called once per frame
@@ -65,6 +69,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void Save()
     {
+        SaveSystem.Save();
         ShowMenu(saveConfirmationMenu);
     }
 }

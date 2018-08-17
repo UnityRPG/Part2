@@ -7,19 +7,19 @@
     public class SaveableEntity : MonoBehaviour
     {
         [SerializeField]
-        string _UniqueIdentifier;
+        string UUID;
 
         void Awake()
         {
-            if (_UniqueIdentifier == "")
+            if (UUID == "")
             {
-                _UniqueIdentifier = gameObject.name;
+                UUID = System.Guid.NewGuid().ToString();
             }
         }
 
         public string UniqueIdentifier
         {
-            get { return _UniqueIdentifier; }
+            get { return UUID; }
         }
 
         public object CaptureState()
