@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 114175396375359532}
   - component: {fileID: 114785661588108902}
   - component: {fileID: 114585847089741524}
-  - component: {fileID: 114826668011207618}
+  - component: {fileID: 114948340906959852}
   m_Layer: 0
   m_Name: Green Critter
   m_TagString: Untagged
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
---- !u!114 &114826668011207618
+--- !u!114 &114948340906959852
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2501,7 +2501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
+  UUID: 
 --- !u!137 &137116955402985846
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

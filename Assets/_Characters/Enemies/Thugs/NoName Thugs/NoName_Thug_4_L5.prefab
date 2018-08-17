@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 114481102219613596}
   - component: {fileID: 114418508798418112}
   - component: {fileID: 114073990079466366}
-  - component: {fileID: 114952284407135704}
+  - component: {fileID: 114148366564854812}
   m_Layer: 0
   m_Name: NoName_Thug_4_L5
   m_TagString: Untagged
@@ -2342,6 +2342,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114148366564854812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532889930503668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114352145899232634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2479,18 +2491,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114952284407135704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1532889930503668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114999395996911606
 MonoBehaviour:
   m_ObjectHideFlags: 1

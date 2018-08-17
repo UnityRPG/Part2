@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 114492752675541092}
   - component: {fileID: 114632770573084194}
   - component: {fileID: 114033808903149820}
-  - component: {fileID: 114069644488387714}
+  - component: {fileID: 114673624116011678}
   m_Layer: 0
   m_Name: Daisy_NPC
   m_TagString: Untagged
@@ -3785,18 +3785,6 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 0e202488e8943e24dbc228cc66ea2809, type: 3}
   playerDistanceThreshold: 5
   isOneTimeOnly: 1
---- !u!114 &114069644488387714
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1050062214668436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114118784582555434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3879,6 +3867,18 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 0
+--- !u!114 &114673624116011678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050062214668436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114804458860413902
 MonoBehaviour:
   m_ObjectHideFlags: 1

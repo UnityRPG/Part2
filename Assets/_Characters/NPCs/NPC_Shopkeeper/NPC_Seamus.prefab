@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 114905535893994454}
   - component: {fileID: 114539867642964736}
   - component: {fileID: 114891119295207550}
-  - component: {fileID: 114140945972521670}
+  - component: {fileID: 114837324686916696}
   m_Layer: 2
   m_Name: NPC_Seamus
   m_TagString: Untagged
@@ -2459,18 +2459,6 @@ MonoBehaviour:
   m_FillAmount: 0.754
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114140945972521670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1600745836666904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114349169036226056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2586,6 +2574,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ffc6aa06e74ff195c3cddcb693c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114837324686916696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600745836666904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114891119295207550
 MonoBehaviour:
   m_ObjectHideFlags: 1

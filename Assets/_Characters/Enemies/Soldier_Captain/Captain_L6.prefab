@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 114269319219693162}
   - component: {fileID: 114352331356530988}
   - component: {fileID: 114519384941257822}
-  - component: {fileID: 114174065199162194}
+  - component: {fileID: 114537987372893620}
   m_Layer: 0
   m_Name: Captain_L6
   m_TagString: Untagged
@@ -2487,18 +2487,6 @@ MonoBehaviour:
   m_FillAmount: 0.754
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114174065199162194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1462810593699298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114269319219693162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2573,6 +2561,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f541dbcdbefd40bf8cf99f78a4ed0ae, type: 3}
   - {fileID: 8300000, guid: a05274881dba546269d71ee2fcfcfbe8, type: 3}
   deathVanishSeconds: 3
+--- !u!114 &114537987372893620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462810593699298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114602696730337358
 MonoBehaviour:
   m_ObjectHideFlags: 1

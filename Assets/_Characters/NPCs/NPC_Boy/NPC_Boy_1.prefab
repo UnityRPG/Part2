@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 114635466640006590}
   - component: {fileID: 114130787191912518}
   - component: {fileID: 114728528649356576}
-  - component: {fileID: 114140976744585848}
+  - component: {fileID: 114047165804264020}
   m_Layer: 2
   m_Name: NPC_Boy_1
   m_TagString: Untagged
@@ -2432,6 +2432,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114047165804264020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818347591821808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114130787191912518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2447,18 +2459,6 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
---- !u!114 &114140976744585848
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1818347591821808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114162351387794472
 MonoBehaviour:
   m_ObjectHideFlags: 1

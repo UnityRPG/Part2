@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114410551150789270}
   - component: {fileID: 114144825385361730}
   - component: {fileID: 114173829901066660}
-  - component: {fileID: 114589981794595382}
+  - component: {fileID: 114817749708316432}
   m_Layer: 2
   m_Name: Shopkeeper_NPC_2
   m_TagString: Untagged
@@ -2599,7 +2599,7 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: 0923ac4e38c741d48aabaf0534a26cf6, type: 3}
   deathVanishSeconds: 2
---- !u!114 &114589981794595382
+--- !u!114 &114817749708316432
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
+  UUID: 
 --- !u!114 &114881763343981208
 MonoBehaviour:
   m_ObjectHideFlags: 1

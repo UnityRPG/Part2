@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 114393881947697572}
   - component: {fileID: 114320634083134076}
   - component: {fileID: 114887284019947676}
-  - component: {fileID: 114203379823756002}
+  - component: {fileID: 114088218535250934}
   m_Layer: 2
   m_Name: Peasant_NPC_1
   m_TagString: Untagged
@@ -2443,7 +2443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610f816287df94a478980beb4ea34d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114203379823756002
+--- !u!114 &114088218535250934
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
+  UUID: 
 --- !u!114 &114304933451451494
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114492752675541092}
   - component: {fileID: 114632770573084194}
   - component: {fileID: 114033808903149820}
-  - component: {fileID: 114439281704448390}
+  - component: {fileID: 114255215231808198}
   m_Layer: 0
   m_Name: Horatio_NPC_6
   m_TagString: Untagged
@@ -2339,6 +2339,18 @@ MonoBehaviour:
   baseDamage: 6
   currentWeaponConfig: {fileID: 11400000, guid: f3f10b56977598949a1a48bc4f0518e9,
     type: 2}
+--- !u!114 &114255215231808198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050062214668436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114271046049449432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2371,18 +2383,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114439281704448390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1050062214668436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114492752675541092
 MonoBehaviour:
   m_ObjectHideFlags: 1

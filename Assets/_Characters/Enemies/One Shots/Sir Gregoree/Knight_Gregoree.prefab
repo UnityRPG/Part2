@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 114281954254207786}
   - component: {fileID: 114709649965190950}
   - component: {fileID: 114102633253641750}
-  - component: {fileID: 114586577632289740}
+  - component: {fileID: 114812715888697808}
   m_Layer: 0
   m_Name: Knight_Gregoree
   m_TagString: Untagged
@@ -2521,18 +2521,6 @@ MonoBehaviour:
   baseDamage: 20
   currentWeaponConfig: {fileID: 11400000, guid: 26370cb4783d1c2468af0b28acc4ed5b,
     type: 2}
---- !u!114 &114586577632289740
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1486831111406190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114662931775325726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2604,6 +2592,18 @@ MonoBehaviour:
   m_FillAmount: 0.754
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114812715888697808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486831111406190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114851906869251424
 MonoBehaviour:
   m_ObjectHideFlags: 1

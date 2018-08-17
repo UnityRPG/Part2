@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 114677474818924042}
   - component: {fileID: 114377026006073856}
   - component: {fileID: 114157080985673254}
-  - component: {fileID: 114170488572845092}
+  - component: {fileID: 114343009012344750}
   m_Layer: 0
   m_Name: Knight_Gregoree
   m_TagString: Untagged
@@ -2489,18 +2489,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f541dbcdbefd40bf8cf99f78a4ed0ae, type: 3}
   - {fileID: 8300000, guid: a05274881dba546269d71ee2fcfcfbe8, type: 3}
   deathVanishSeconds: 3
---- !u!114 &114170488572845092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525774213957906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!114 &114251339478245412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2533,6 +2521,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ffc6aa06e74ff195c3cddcb693c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114343009012344750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525774213957906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114377026006073856
 MonoBehaviour:
   m_ObjectHideFlags: 1

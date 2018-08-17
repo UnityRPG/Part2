@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEditor;
+    using UnityEditor.SceneManagement;
 
     [ExecuteInEditMode]
     public class SaveableEntity : MonoBehaviour
@@ -9,11 +11,13 @@
         [SerializeField]
         string UUID;
 
-        void Awake()
+        void Update()
         {
             if (UUID == "")
             {
+                Undo.RecordObject(this, "Added UUID");
                 UUID = System.Guid.NewGuid().ToString();
+                EditorSceneManager.MarkSceneDirty(gameObject.scene);
             }
         }
 

@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 114360881527013450}
   - component: {fileID: 114006651402873604}
   - component: {fileID: 114660569749535786}
-  - component: {fileID: 114723518103204138}
+  - component: {fileID: 114318520537903934}
   m_Layer: 2
   m_Name: Peasant_NPC_1
   m_TagString: Untagged
@@ -2490,6 +2490,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114318520537903934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067069360506010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114360881527013450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2610,18 +2622,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   playerDistanceThreshold: 5
   isOneTimeOnly: 1
---- !u!114 &114723518103204138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067069360506010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!137 &137104919947817260
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 114635466640006590}
   - component: {fileID: 114130787191912518}
   - component: {fileID: 114728528649356576}
-  - component: {fileID: 114196033099232660}
+  - component: {fileID: 114297991788341826}
   m_Layer: 2
   m_Name: NPC_Boy_2
   m_TagString: Untagged
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshAgentSteeringSpeed: 1
   navMeshAgentStoppingDistance: 1.3
---- !u!114 &114196033099232660
+--- !u!114 &114297991788341826
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
+  UUID: 
 --- !u!114 &114340394192242252
 MonoBehaviour:
   m_ObjectHideFlags: 1

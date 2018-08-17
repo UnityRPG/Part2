@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 114394803810738532}
   - component: {fileID: 114799688659692078}
   - component: {fileID: 114193308085739980}
-  - component: {fileID: 114870745525024732}
+  - component: {fileID: 114795561593435032}
   m_Layer: 0
   m_Name: Soldier L5 Sgt Pike
   m_TagString: Untagged
@@ -1938,6 +1938,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114795561593435032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1737010128293950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114799688659692078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1969,18 +1981,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20ec4e81eb3fcb74799149848b3d0470, type: 3}
   - {fileID: 8300000, guid: 1bb13271ca2c16e44b5c68cd6d212d53, type: 3}
   deathVanishSeconds: 3
---- !u!114 &114870745525024732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1737010128293950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!137 &137657415937219260
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

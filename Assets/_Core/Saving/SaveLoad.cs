@@ -3,6 +3,7 @@
     using System.Runtime.Serialization.Formatters.Binary;
     using System.IO;
     using UnityEngine;
+    using System.Collections.Generic;
     using LevelState = System.Collections.Generic.Dictionary<string, object>;
 
     public class SaveLoad : MonoBehaviour
@@ -72,6 +73,7 @@
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
                     Debug.LogErrorFormat("Cannot have Saveables with the same name. This id duplicates another: {0}", saveable);
+
                     continue;
                 }
 
@@ -82,16 +84,23 @@
 
         void UpdateLevelFromState(LevelState levelState)
         {
+            foreach (KeyValuePair<string, object> entry in levelState)
+            {
+            }
             var saveables = FindObjectsOfType<SaveableEntity>();
             foreach (var saveable in saveables)
             {
+                if (saveable.gameObject.name == "Player")
+                {
+                    Debug.Log(saveable.UniqueIdentifier);
+                    Debug.Log(levelState.ContainsKey(saveable.UniqueIdentifier));
+                }
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
                     var saveableState = levelState[saveable.UniqueIdentifier];
                     saveable.RestoreState(saveableState);
                 } else
                 {
-                    Debug.Log(saveable.UniqueIdentifier);
                     Destroy(saveable.gameObject);
                 }
             }

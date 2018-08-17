@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 114650105343292788}
   - component: {fileID: 114081527545175250}
   - component: {fileID: 114189812947737878}
-  - component: {fileID: 114993073340219950}
+  - component: {fileID: 114517802128324940}
   m_Layer: 0
   m_Name: Captain_L6 Spooner
   m_TagString: Untagged
@@ -2605,6 +2605,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114517802128324940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1332565602710890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114650105343292788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2646,18 +2658,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114993073340219950
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1332565602710890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!137 &137192667648285198
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

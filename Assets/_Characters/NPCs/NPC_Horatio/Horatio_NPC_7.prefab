@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114492752675541092}
   - component: {fileID: 114632770573084194}
   - component: {fileID: 114033808903149820}
-  - component: {fileID: 114491858484538214}
+  - component: {fileID: 114461273578081664}
   m_Layer: 0
   m_Name: Horatio_NPC_7
   m_TagString: Untagged
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114491858484538214
+--- !u!114 &114461273578081664
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2382,7 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
+  UUID: 
 --- !u!114 &114492752675541092
 MonoBehaviour:
   m_ObjectHideFlags: 1

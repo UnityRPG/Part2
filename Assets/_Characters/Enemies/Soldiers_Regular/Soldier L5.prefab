@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 114400832240702410}
   - component: {fileID: 114329968651795108}
   - component: {fileID: 114223074170241778}
-  - component: {fileID: 114904704216977146}
+  - component: {fileID: 114315303832725590}
   m_Layer: 0
   m_Name: Soldier L5
   m_TagString: Untagged
@@ -1828,6 +1828,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20ec4e81eb3fcb74799149848b3d0470, type: 3}
   - {fileID: 8300000, guid: 1bb13271ca2c16e44b5c68cd6d212d53, type: 3}
   deathVanishSeconds: 3
+--- !u!114 &114315303832725590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583086263313450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114329968651795108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1954,18 +1966,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114904704216977146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1583086263313450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
 --- !u!137 &137694432790741024
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

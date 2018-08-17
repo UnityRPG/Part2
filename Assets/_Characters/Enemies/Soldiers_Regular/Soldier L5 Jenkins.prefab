@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 114411544785089248}
   - component: {fileID: 114912093992132600}
   - component: {fileID: 114740708404572130}
-  - component: {fileID: 114676121543371042}
+  - component: {fileID: 114629032023173700}
   m_Layer: 0
   m_Name: Soldier L5 Jenkins
   m_TagString: Untagged
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114676121543371042
+--- !u!114 &114629032023173700
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UniqueIdentifier: 
+  UUID: 
 --- !u!114 &114740708404572130
 MonoBehaviour:
   m_ObjectHideFlags: 1
