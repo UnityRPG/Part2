@@ -10,6 +10,12 @@
     public class SaveLoad : MonoBehaviour
     {
 
+        [SerializeField]
+        [Tooltip("In seconds")]
+        float AutoSaveInterval = 60;
+
+        float TimeSinceLastSave = 0;
+
         void Start()
         {
             Load();
@@ -29,6 +35,8 @@
             {
                 Clear();
             }
+
+            HandleAutoSave();
         }
 
         public void Save(bool isAuto = false)
@@ -62,6 +70,16 @@
             if (File.Exists(GetSavePath()))
             {
                 File.Delete(GetSavePath());
+            }
+        }
+
+        private void HandleAutoSave()
+        {
+            TimeSinceLastSave += Time.deltaTime;
+            if (TimeSinceLastSave > AutoSaveInterval)
+            {
+                TimeSinceLastSave = 0;
+                Save(isAuto: true);
             }
         }
 
