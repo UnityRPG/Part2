@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114492752675541092}
   - component: {fileID: 114632770573084194}
   - component: {fileID: 114033808903149820}
-  - component: {fileID: 114255215231808198}
+  - component: {fileID: 114165987688910078}
   m_Layer: 0
   m_Name: Horatio_NPC_6
   m_TagString: Untagged
@@ -2339,7 +2339,7 @@ MonoBehaviour:
   baseDamage: 6
   currentWeaponConfig: {fileID: 11400000, guid: f3f10b56977598949a1a48bc4f0518e9,
     type: 2}
---- !u!114 &114255215231808198
+--- !u!114 &114165987688910078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

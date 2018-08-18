@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 114393881947697572}
   - component: {fileID: 114320634083134076}
   - component: {fileID: 114887284019947676}
-  - component: {fileID: 114088218535250934}
+  - component: {fileID: 114399886505426652}
   m_Layer: 2
   m_Name: Peasant_NPC_1
   m_TagString: Untagged
@@ -2443,18 +2443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610f816287df94a478980beb4ea34d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114088218535250934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1834662532546518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114304933451451494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2556,6 +2544,18 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: 0923ac4e38c741d48aabaf0534a26cf6, type: 3}
   deathVanishSeconds: 2
+--- !u!114 &114399886505426652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834662532546518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114417556015729248
 MonoBehaviour:
   m_ObjectHideFlags: 1

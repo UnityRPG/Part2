@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 114360881527013450}
   - component: {fileID: 114006651402873604}
   - component: {fileID: 114660569749535786}
-  - component: {fileID: 114318520537903934}
+  - component: {fileID: 114144473067263412}
   m_Layer: 2
   m_Name: Peasant_NPC_1
   m_TagString: Untagged
@@ -2474,6 +2474,18 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshAgentSteeringSpeed: 1
   navMeshAgentStoppingDistance: 1.3
+--- !u!114 &114144473067263412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067069360506010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114232493387291374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2490,18 +2502,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114318520537903934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067069360506010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114360881527013450
 MonoBehaviour:
   m_ObjectHideFlags: 1

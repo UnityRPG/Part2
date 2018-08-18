@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 114335978492760508}
   - component: {fileID: 114034784660579658}
   - component: {fileID: 114754278042512418}
-  - component: {fileID: 114706997341251050}
+  - component: {fileID: 114037608070649818}
   m_Layer: 0
   m_Name: Good_Char_Knight
   m_TagString: Untagged
@@ -2409,6 +2409,18 @@ MonoBehaviour:
   damageSounds: []
   deathSounds: []
   deathVanishSeconds: 2
+--- !u!114 &114037608070649818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419835741894398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114288268827128604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2450,18 +2462,6 @@ MonoBehaviour:
   baseDamage: 10
   currentWeaponConfig: {fileID: 11400000, guid: efc53e53a1eee0a40bfb5a2461799a56,
     type: 2}
---- !u!114 &114706997341251050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1419835741894398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114754278042512418
 MonoBehaviour:
   m_ObjectHideFlags: 1

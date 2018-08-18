@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 114068517584525354}
   - component: {fileID: 114522197855074184}
   - component: {fileID: 114934913486481486}
-  - component: {fileID: 114254264298532376}
+  - component: {fileID: 114961884842979426}
   m_Layer: 0
   m_Name: NoName_Thug_3_L5
   m_TagString: Untagged
@@ -2361,18 +2361,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114254264298532376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268567170220282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114501767588365366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2491,6 +2479,18 @@ MonoBehaviour:
   clip: {fileID: 0}
   playerDistanceThreshold: 5
   isOneTimeOnly: 1
+--- !u!114 &114961884842979426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268567170220282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114974258572285378
 MonoBehaviour:
   m_ObjectHideFlags: 1

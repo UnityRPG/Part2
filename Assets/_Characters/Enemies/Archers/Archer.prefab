@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 114195704325129442}
   - component: {fileID: 114613607804237348}
   - component: {fileID: 114325590087660600}
-  - component: {fileID: 114265743379858976}
+  - component: {fileID: 114288682347082528}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610f816287df94a478980beb4ea34d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114265743379858976
+--- !u!114 &114288682347082528
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

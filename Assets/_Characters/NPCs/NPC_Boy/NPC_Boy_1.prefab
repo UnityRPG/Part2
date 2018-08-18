@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 114635466640006590}
   - component: {fileID: 114130787191912518}
   - component: {fileID: 114728528649356576}
-  - component: {fileID: 114047165804264020}
+  - component: {fileID: 114108449324545520}
   m_Layer: 2
   m_Name: NPC_Boy_1
   m_TagString: Untagged
@@ -2432,7 +2432,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114047165804264020
+--- !u!114 &114108449324545520
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

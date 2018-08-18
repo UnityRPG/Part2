@@ -1047,7 +1047,7 @@ GameObject:
   - component: {fileID: 114522012863052836}
   - component: {fileID: 114761616014824774}
   - component: {fileID: 114073655906348336}
-  - component: {fileID: 114396446782087858}
+  - component: {fileID: 114083505670916624}
   m_Layer: 2
   m_Name: Peasant_NPC_2
   m_TagString: Untagged
@@ -2446,7 +2446,7 @@ MonoBehaviour:
   clip: {fileID: 0}
   playerDistanceThreshold: 2
   isOneTimeOnly: 1
---- !u!114 &114396446782087858
+--- !u!114 &114083505670916624
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

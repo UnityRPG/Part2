@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 114402736582090080}
   - component: {fileID: 114479742700449284}
   - component: {fileID: 114533676433309646}
-  - component: {fileID: 114261763674269404}
+  - component: {fileID: 114617273258952026}
   m_Layer: 0
   m_Name: Archer L5
   m_TagString: Untagged
@@ -1846,18 +1846,6 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshAgentSteeringSpeed: 1
   navMeshAgentStoppingDistance: 8
---- !u!114 &114261763674269404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618878261957734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114311651929857686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1950,6 +1938,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20ec4e81eb3fcb74799149848b3d0470, type: 3}
   - {fileID: 8300000, guid: 1bb13271ca2c16e44b5c68cd6d212d53, type: 3}
   deathVanishSeconds: 3
+--- !u!114 &114617273258952026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618878261957734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114884688905196262
 MonoBehaviour:
   m_ObjectHideFlags: 1

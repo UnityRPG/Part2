@@ -17,7 +17,6 @@
             {
                 Undo.RecordObject(this, "Added UUID");
                 UUID = System.Guid.NewGuid().ToString();
-                EditorSceneManager.MarkSceneDirty(gameObject.scene);
             }
         }
 

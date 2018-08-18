@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 114377634792853636}
   - component: {fileID: 114140806834125944}
   - component: {fileID: 114728684770413070}
-  - component: {fileID: 114842614629686106}
+  - component: {fileID: 114642310961943744}
   m_Layer: 0
   m_Name: Swamp_Donkey
   m_TagString: Untagged
@@ -3761,6 +3761,18 @@ MonoBehaviour:
   baseDamage: 10
   currentWeaponConfig: {fileID: 11400000, guid: 9412983e19d7e3147a8ad5cc7d5a5d4c,
     type: 2}
+--- !u!114 &114642310961943744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644343180643156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114728684770413070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3776,18 +3788,6 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
---- !u!114 &114842614629686106
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1644343180643156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!137 &137411244978839420
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

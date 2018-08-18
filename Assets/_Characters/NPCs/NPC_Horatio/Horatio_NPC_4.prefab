@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114492752675541092}
   - component: {fileID: 114632770573084194}
   - component: {fileID: 114033808903149820}
-  - component: {fileID: 114707616793637088}
+  - component: {fileID: 114732357383268204}
   m_Layer: 0
   m_Name: Horatio_NPC_4
   m_TagString: Untagged
@@ -2408,7 +2408,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
---- !u!114 &114707616793637088
+--- !u!114 &114732357383268204
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

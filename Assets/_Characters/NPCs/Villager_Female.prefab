@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114304720335189586}
   - component: {fileID: 114374358224641704}
   - component: {fileID: 114488848298041266}
-  - component: {fileID: 114850035951811384}
+  - component: {fileID: 114794529525905184}
   m_Layer: 0
   m_Name: Villager_Female
   m_TagString: Untagged
@@ -3806,7 +3806,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
---- !u!114 &114850035951811384
+--- !u!114 &114794529525905184
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

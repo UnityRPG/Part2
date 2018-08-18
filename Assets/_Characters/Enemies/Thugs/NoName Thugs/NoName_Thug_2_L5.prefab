@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 114068517584525354}
   - component: {fileID: 114522197855074184}
   - component: {fileID: 114934913486481486}
-  - component: {fileID: 114444890243802216}
+  - component: {fileID: 114244430349810406}
   m_Layer: 0
   m_Name: NoName_Thug_2_L5
   m_TagString: Untagged
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114444890243802216
+--- !u!114 &114244430349810406
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

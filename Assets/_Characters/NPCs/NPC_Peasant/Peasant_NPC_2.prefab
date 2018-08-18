@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 114740123620068104}
   - component: {fileID: 114725464500507310}
   - component: {fileID: 114322127694906154}
-  - component: {fileID: 114781238999870070}
+  - component: {fileID: 114301873791900276}
   m_Layer: 2
   m_Name: Peasant_NPC_2
   m_TagString: Untagged
@@ -2462,6 +2462,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114301873791900276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284558968659494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114322127694906154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2551,18 +2563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ffc6aa06e74ff195c3cddcb693c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114781238999870070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284558968659494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114894419471337596
 MonoBehaviour:
   m_ObjectHideFlags: 1

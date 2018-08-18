@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 114984623176712144}
   - component: {fileID: 114876919019122038}
   - component: {fileID: 114600306344670762}
-  - component: {fileID: 114593959874231928}
+  - component: {fileID: 114049023989718562}
   m_Layer: 0
   m_Name: Archer L5 Aaron
   m_TagString: Untagged
@@ -1781,6 +1781,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792770026274784}
   m_Mesh: {fileID: 4300000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+--- !u!114 &114049023989718562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924827831893540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114063642952163102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1862,18 +1874,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114593959874231928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1924827831893540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114600306344670762
 MonoBehaviour:
   m_ObjectHideFlags: 1

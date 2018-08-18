@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 114833484877768604}
   - component: {fileID: 114865434409854674}
   - component: {fileID: 114532781327685962}
-  - component: {fileID: 114396635472112150}
+  - component: {fileID: 114723358552535602}
   m_Layer: 0
   m_Name: Good_Char_Viking
   m_TagString: Untagged
@@ -2669,18 +2669,6 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshAgentSteeringSpeed: 1
   navMeshAgentStoppingDistance: 1.3
---- !u!114 &114396635472112150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441603743753456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UUID: 
 --- !u!114 &114532781327685962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2696,6 +2684,18 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
+--- !u!114 &114723358552535602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441603743753456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: 
 --- !u!114 &114833484877768604
 MonoBehaviour:
   m_ObjectHideFlags: 1
