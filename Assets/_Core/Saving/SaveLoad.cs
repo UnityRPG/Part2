@@ -18,7 +18,7 @@
 
         void Start()
         {
-            Load();
+            Load(GetLastSaveFile());
         }
 
         void Update()
@@ -29,7 +29,7 @@
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                Load();
+                Load(GetLastSaveFile());
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
@@ -49,20 +49,49 @@
             }
         }
 
-        public bool Load()
+        public bool Load(string saveFile)
         {
-            if (!File.Exists(GetSavePath()))
+            var savePath = GetPathFromSaveFile(saveFile);
+            if (!File.Exists(savePath))
             {
                 return false;
             }
 
             var formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(GetSavePath(), FileMode.Open))
+            using (FileStream stream = new FileStream(savePath, FileMode.Open))
             {
                 var levelState = (LevelState)formatter.Deserialize(stream);
                 UpdateLevelFromState(levelState);
             }
             return true;
+        }
+
+        public string[] GetSaveFileList()
+        {
+            var filePaths = Directory.GetFiles(Application.persistentDataPath);
+            var fileNames = new string[filePaths.Length];
+            for (int i = 0; i < filePaths.Length; ++i)
+            {
+                fileNames[i] = Path.GetFileNameWithoutExtension(filePaths[i]);
+            }
+            return fileNames;
+        }
+
+        public string GetLastSaveFile()
+        {
+            var saveFiles = GetSaveFileList();
+            string lastSaveFile = null;
+            DateTime lastSaveFileWriteTime = DateTime.MinValue;
+            foreach (var saveFile in saveFiles)
+            {
+                var writeTime = File.GetLastWriteTime(GetPathFromSaveFile(saveFile));
+                if (writeTime > lastSaveFileWriteTime)
+                {
+                    lastSaveFileWriteTime = writeTime;
+                    lastSaveFile = saveFile;
+                }
+            }
+            return lastSaveFile;
         }
 
         public void Clear()
@@ -109,11 +138,6 @@
             var saveables = FindObjectsOfType<SaveableEntity>();
             foreach (var saveable in saveables)
             {
-                if (saveable.gameObject.name == "Player")
-                {
-                    Debug.Log(saveable.UniqueIdentifier);
-                    Debug.Log(levelState.ContainsKey(saveable.UniqueIdentifier));
-                }
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
                     var saveableState = levelState[saveable.UniqueIdentifier];
@@ -133,7 +157,12 @@
                 prefix = "Auto Save";
             }
             var dateString = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
-            return Path.Combine(Application.persistentDataPath, String.Format("{0} {1}.sav", prefix, dateString));
+            return GetPathFromSaveFile(String.Format("{0} {1}", prefix, dateString));
+        }
+
+        private string GetPathFromSaveFile(string saveFile)
+        {
+            return Path.Combine(Application.persistentDataPath, String.Format("{0}.sav", saveFile));
         }
     }
 }
