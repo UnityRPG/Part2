@@ -4,6 +4,7 @@
     using System.IO;
     using UnityEngine;
     using System.Collections.Generic;
+    using System;
     using LevelState = System.Collections.Generic.Dictionary<string, object>;
 
     public class SaveLoad : MonoBehaviour
@@ -30,11 +31,11 @@
             }
         }
 
-        public void Save()
+        public void Save(bool isAuto = false)
         {
             var levelState = GetLevelState();
             var formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(GetSavePath(), FileMode.Create))
+            using (FileStream stream = new FileStream(GetSavePath(isAuto), FileMode.Create))
             {
                 formatter.Serialize(stream, levelState);
             }
@@ -106,9 +107,15 @@
             }
         }
 
-        string GetSavePath()
+        string GetSavePath(bool isAuto = true)
         {
-            return Path.Combine(Application.persistentDataPath, "savegame.sav");
+            var prefix = "Manual Save";
+            if (isAuto)
+            {
+                prefix = "Auto Save";
+            }
+            var dateString = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
+            return Path.Combine(Application.persistentDataPath, String.Format("{0} {1}.sav", prefix, dateString));
         }
     }
 }
