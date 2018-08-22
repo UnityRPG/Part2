@@ -16,8 +16,12 @@
 
         float TimeSinceLastSave = 0;
 
+        SaveableEntity[] saveables;
+
         void Start()
         {
+            saveables = FindObjectsOfType<SaveableEntity>();
+
             Load(GetLastSaveFile());
         }
 
@@ -114,28 +118,25 @@
 
         LevelState GetLevelState()
         {
-            var saveables = Resources.FindObjectsOfTypeAll(typeof(SaveableEntity));
             var levelState = new LevelState();
+            var debugState = new LevelState();
             foreach (SaveableEntity saveable in saveables)
             {
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
-                    Debug.LogErrorFormat("Cannot have Saveables with the same name. This id duplicates another: {0}", saveable);
+                    Debug.LogErrorFormat("Cannot have Saveables with the same name. This id duplicates another: {0}, {1}", saveable, debugState[saveable.UniqueIdentifier]);
 
                     continue;
                 }
 
                 levelState[saveable.UniqueIdentifier] = saveable.CaptureState();
+                debugState[saveable.UniqueIdentifier] = saveable;
             }
             return levelState;
         }
 
         void UpdateLevelFromState(LevelState levelState)
         {
-            foreach (KeyValuePair<string, object> entry in levelState)
-            {
-            }
-            var saveables = Resources.FindObjectsOfTypeAll(typeof(SaveableEntity));
             foreach (SaveableEntity saveable in saveables)
             {
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))

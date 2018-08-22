@@ -27,6 +27,14 @@ namespace RPG.Characters
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
+        public bool isAlive
+        {
+            get
+            {
+                return currentHealthPoints > 0;
+            }
+        }
+        
         void Start()
         {
             animator = GetComponent<Animator>();
@@ -62,8 +70,7 @@ namespace RPG.Characters
 
         private void CheckShouldCharacterDie()
         {
-            bool characterDies = currentHealthPoints <= 0;
-            if (characterDies)
+            if (!isAlive)
             {
                 StartCoroutine(KillCharacter());
             }
@@ -76,7 +83,6 @@ namespace RPG.Characters
 
         IEnumerator KillCharacter()
         {
-            characterMovement.Kill();
             animator.SetTrigger(DEATH_TRIGGER);
 
             audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
@@ -104,7 +110,7 @@ namespace RPG.Characters
         {
             currentHealthPoints = (float)state["currentHealthPoints"];
             healthPointsSetByRestore = true;
-            gameObject.SetActive(currentHealthPoints > 0);
+            gameObject.SetActive(isAlive);
         }
     }
 }

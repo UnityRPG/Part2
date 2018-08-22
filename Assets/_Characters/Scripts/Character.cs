@@ -36,8 +36,7 @@ namespace RPG.Characters
 		// private instance variables for state
         float turnAmount;
         float forwardAmount;
-        bool isAlive = true;
-		
+				
 		// cached references for readability
         NavMeshAgent navMeshAgent;
         Animator animator;
@@ -96,11 +95,6 @@ namespace RPG.Characters
             return animator.speed;
         }
 
-        public void Kill()
-        {
-            isAlive = false;
-        }
-
         public void SetDestination(Vector3 worldPos)
         {
             navMeshAgent.destination = worldPos;
@@ -156,6 +150,15 @@ namespace RPG.Characters
                 // we preserve the existing y part of the current velocity.
                 velocity.y = ridigBody.velocity.y;
                 ridigBody.velocity = velocity;
+            }
+        }
+
+        private bool isAlive
+        {
+            get
+            {
+                var healthSystem = GetComponent<HealthSystem>();
+                return !healthSystem || healthSystem.isAlive;
             }
         }
 

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114523103870230838}
   - component: {fileID: 114569131102921112}
   - component: {fileID: 114184209217532634}
+  - component: {fileID: 114181422564893474}
   m_Layer: 5
   m_Name: SaveItem
   m_TagString: Untagged
@@ -47,6 +48,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114181422564893474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966971877791188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d833b52f389f71b45af11b1ba2841da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114184209217532634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,7 +143,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114523103870230838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114181422564893474}
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114810070956119068
