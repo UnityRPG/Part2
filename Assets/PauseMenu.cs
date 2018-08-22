@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour {
     {
         mainMenu.SetActive(false);
         loadMenu.SetActive(false);
+        saveConfirmationMenu.SetActive(false);
         SaveSystem = FindObjectOfType<SaveLoad>();
     }
 
@@ -40,6 +41,7 @@ public class PauseMenu : MonoBehaviour {
 
     private void OpenMenu()
     {
+        Time.timeScale = 0;
         currentlyActiveMenu = mainMenu;
         currentlyActiveMenu.SetActive(true);
     }
@@ -48,6 +50,7 @@ public class PauseMenu : MonoBehaviour {
     {
         currentlyActiveMenu.SetActive(false);
         currentlyActiveMenu = null;
+        Time.timeScale = 1;
     }
 
     public void ShowLoadMenu()
