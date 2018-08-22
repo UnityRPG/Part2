@@ -114,9 +114,9 @@
 
         LevelState GetLevelState()
         {
-            var saveables = FindObjectsOfType<SaveableEntity>();
+            var saveables = Resources.FindObjectsOfTypeAll(typeof(SaveableEntity));
             var levelState = new LevelState();
-            foreach (var saveable in saveables)
+            foreach (SaveableEntity saveable in saveables)
             {
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
@@ -135,16 +135,13 @@
             foreach (KeyValuePair<string, object> entry in levelState)
             {
             }
-            var saveables = FindObjectsOfType<SaveableEntity>();
-            foreach (var saveable in saveables)
+            var saveables = Resources.FindObjectsOfTypeAll(typeof(SaveableEntity));
+            foreach (SaveableEntity saveable in saveables)
             {
                 if (levelState.ContainsKey(saveable.UniqueIdentifier))
                 {
                     var saveableState = levelState[saveable.UniqueIdentifier];
                     saveable.RestoreState(saveableState);
-                } else
-                {
-                    Destroy(saveable.gameObject);
                 }
             }
         }

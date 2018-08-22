@@ -90,7 +90,8 @@ namespace RPG.Characters
             }
             else // assume is enemy fr now, reconsider on other NPCs
             {
-                Destroy(gameObject, deathVanishSeconds);
+                yield return new WaitForSecondsRealtime(deathVanishSeconds);
+                gameObject.SetActive(false);
             }
         }
 
@@ -103,6 +104,7 @@ namespace RPG.Characters
         {
             currentHealthPoints = (float)state["currentHealthPoints"];
             healthPointsSetByRestore = true;
+            gameObject.SetActive(currentHealthPoints > 0);
         }
     }
 }

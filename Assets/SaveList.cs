@@ -8,13 +8,14 @@ public class SaveList : MonoBehaviour {
 
     [SerializeField]
     GameObject SaveItemPrefab;
-    
+
     void OnEnable()
     {
+        Debug.Log("loading");
         var SaveLoad = FindObjectOfType<SaveLoad>();
-        foreach (GameObject item in GetComponent<Transform>())
+        foreach (RectTransform item in GetComponent<Transform>())
         {
-            Destroy(item);
+            Destroy(item.gameObject);
         }
         foreach (var save in SaveLoad.GetSaveFileList())
         {
@@ -23,5 +24,4 @@ public class SaveList : MonoBehaviour {
             textComponent.text = save;
         }
     }
-
 }
