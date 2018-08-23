@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using RPG.Dialogue;
+using System.Linq;
 
 namespace RPG.Editor.Dialogue
 {
@@ -20,15 +21,25 @@ namespace RPG.Editor.Dialogue
             GetWindow(typeof(DialogueEditor), false, "Dialogue Editor");
         }
 
+        void OnInspectorUpdate()
+        {
+            currentSelection = Selection.activeObject as Conversation;
+            if (currentSelection.HasCycle())
+            {
+                currentSelection = null;
+                return;
+            }
+            var newNodeViews = ReloadNodes();
+            if (!newNodeViews.SequenceEqual(nodeViews))
+            {
+                nodeViews = newNodeViews;
+                Debug.Log("repaint");
+                Repaint();
+            }
+        }
+
         void OnGUI()
         {
-            var conversation = Selection.activeObject as Conversation;
-            if (currentSelection != conversation)
-            {
-                currentSelection = conversation;
-                GUI.changed = true;
-                ReloadNodes();
-            }
             if (!currentSelection) return;
 
             scrollPosition = GUI.BeginScrollView(new Rect(Vector2.zero, position.size), scrollPosition, Canvas);
@@ -48,11 +59,12 @@ namespace RPG.Editor.Dialogue
             }
         }
 
-        private void ReloadNodes()
+        private List<Node> ReloadNodes()
         {
-            if (!currentSelection) return;
+            var nodeViews = new List<Node>();
 
-            nodeViews.Clear();
+            if (!currentSelection) return nodeViews;
+
             foreach (var node in currentSelection.nodes)
             {
                 nodeViews.Add(new Node(node));
@@ -65,6 +77,8 @@ namespace RPG.Editor.Dialogue
                     nodeViews[i].AddChild(nodeViews[childIndex]);
                 }
             }
+
+            return nodeViews;
         }
     }
 }
