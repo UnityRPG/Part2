@@ -10,7 +10,6 @@ namespace RPG.Editor.Dialogue
     public class Node
     {
         private GUIStyle style = new GUIStyle();
-        private string text;
         private Vector2 size = new Vector2(200, 200);
         private ConversationNode source;
         Vector2? draggingOffset = null;
@@ -26,7 +25,12 @@ namespace RPG.Editor.Dialogue
         public void Draw()
         {
             GUILayout.BeginArea(GetRect(), style);
-            text = GUILayout.TextArea(text);
+            var textChanged = GUILayout.TextArea(source.text);
+            if (textChanged != source.text)
+            {
+                source.text = textChanged;
+                GUI.changed = true;
+            }
             GUILayout.EndArea();
         }
 
