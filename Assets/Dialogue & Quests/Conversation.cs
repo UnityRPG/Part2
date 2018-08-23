@@ -9,6 +9,21 @@ namespace RPG.Dialogue
     {
         [TextArea] [SerializeField] string openingGambit;
         [TextArea] [SerializeField] string playerResponse;
+        [SerializeField] List<ConversationNode> _nodes;
+
+        public List<ConversationNode> nodes
+        {
+            get
+            {
+                return _nodes;
+            }
+        }
+
+        public Conversation()
+        {
+            _nodes = new List<ConversationNode>();
+            _nodes.Add(new ConversationNode());
+        }
 
         public string getConvoAsString()
         {

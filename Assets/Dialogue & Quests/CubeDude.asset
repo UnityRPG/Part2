@@ -13,3 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingGambit: Ere, find me a cube
   playerResponse: OK
+  _nodes:
+  - position: {x: 142, y: 33}
+    text: 

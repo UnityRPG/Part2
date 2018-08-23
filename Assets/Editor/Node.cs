@@ -11,21 +11,21 @@ namespace RPG.Editor.Dialogue
     {
         private GUIStyle style = new GUIStyle();
         private string text;
-        private Rect rect = new Rect();
+        private Vector2 size = new Vector2(200, 200);
+        private ConversationNode source;
         Vector2? draggingOffset = null;
 
-        public Node(Vector2 position)
+        public Node(ConversationNode src)
         {
             style.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             style.border = new RectOffset(12, 12, 12, 12);
             style.padding = new RectOffset(20, 20, 20, 20);
-            rect.size = new Vector2(200, 200);
-            rect.position = position;
+            source = src;
         }
 
         public void Draw()
         {
-            GUILayout.BeginArea(rect, style);
+            GUILayout.BeginArea(GetRect(), style);
             text = GUILayout.TextArea(text);
             GUILayout.EndArea();
         }
@@ -48,21 +48,26 @@ namespace RPG.Editor.Dialogue
 
         private void StartDragging(Event e)
         {
-            if (!rect.Contains(e.mousePosition)) return;
-            draggingOffset = e.mousePosition - rect.position;
+            if (!GetRect().Contains(e.mousePosition)) return;
+            draggingOffset = e.mousePosition - GetRect().position;
         }
 
         private void ExecuteDragging(Event e)
         {
             if (!draggingOffset.HasValue) return;
 
-            rect.position = e.mousePosition - draggingOffset.Value;
+            source.position = e.mousePosition - draggingOffset.Value;
             GUI.changed = true;
         }
 
         private void StopDragging(Event e)
         {
             draggingOffset = null;
+        }
+
+        private Rect GetRect()
+        {
+            return new Rect(source.position, size);
         }
 
     }
