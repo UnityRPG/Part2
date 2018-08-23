@@ -104,6 +104,7 @@ namespace RPG.Editor.Dialogue
         {
             if (!GetRect().Contains(e.mousePosition)) return;
             draggingOffset = e.mousePosition - GetRect().position;
+            e.Use();
         }
 
         private void ExecuteDragging(Event e)
@@ -111,12 +112,17 @@ namespace RPG.Editor.Dialogue
             if (!draggingOffset.HasValue) return;
 
             SetPosition(e.mousePosition - draggingOffset.Value);
+            e.Use();
             GUI.changed = true;
         }
 
         private void StopDragging(Event e)
         {
-            draggingOffset = null;
+            if (draggingOffset.HasValue)
+            {
+                draggingOffset = null;
+                e.Use();
+            }
         }
 
         private Rect GetRect()
