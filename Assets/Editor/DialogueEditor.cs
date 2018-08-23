@@ -32,9 +32,15 @@ namespace RPG.Editor.Dialogue
             foreach (var node in nodes)
             {
                 node.Draw();
+                node.ProcessEvent(Event.current);
             }
     
             GUI.EndScrollView();
+
+            if (GUI.changed)
+            {
+                Repaint();
+            }
         }
     }
 }
