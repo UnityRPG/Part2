@@ -9,5 +9,6 @@ namespace RPG.Dialogue
     {
         public Vector2 position;
         public string text;
+        public int[] children;
     }
 }

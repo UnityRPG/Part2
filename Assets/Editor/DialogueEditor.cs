@@ -25,7 +25,6 @@ namespace RPG.Editor.Dialogue
             var conversation = Selection.activeObject as Conversation;
             if (currentSelection != conversation)
             {
-                Debug.Log("Changed");
                 currentSelection = conversation;
                 GUI.changed = true;
                 ReloadNodes();
@@ -57,6 +56,14 @@ namespace RPG.Editor.Dialogue
             foreach (var node in currentSelection.nodes)
             {
                 nodeViews.Add(new Node(node));
+            }
+
+            for (int i = 0; i < nodeViews.Count; ++i)
+            {
+                foreach (int childIndex in currentSelection.nodes[i].children)
+                {
+                    nodeViews[i].AddChild(nodeViews[childIndex]);
+                }
             }
         }
     }
