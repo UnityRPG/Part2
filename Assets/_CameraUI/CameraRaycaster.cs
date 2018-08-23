@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System;
 using RPG.Characters; // So we can detect by type
+using RPG.Dialogue;
 
 namespace RPG.CameraUI
 {

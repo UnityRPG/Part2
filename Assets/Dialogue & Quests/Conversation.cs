@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Dialogue
 {
     [CreateAssetMenu(menuName = ("RPG/Conversation"))]
     public class Conversation : ScriptableObject

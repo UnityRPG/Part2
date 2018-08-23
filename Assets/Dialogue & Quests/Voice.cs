@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.Questing;
 
-namespace RPG.Characters
+namespace RPG.Dialogue
 {
     public class Voice : MonoBehaviour
     {

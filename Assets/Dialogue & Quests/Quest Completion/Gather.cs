@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
 
-namespace RPG.Characters
+namespace RPG.Questing
 {
     public class Gather : QuestCompletion
     {

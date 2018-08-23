@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
 
-namespace RPG.Characters
+namespace RPG.Questing
 {
     [RequireComponent(typeof(Character))]
     public class Escort : QuestCompletion

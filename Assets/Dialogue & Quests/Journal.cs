@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Characters
+namespace RPG.Questing
 {
     public class Journal : MonoBehaviour
     {
