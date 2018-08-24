@@ -11,6 +11,8 @@ namespace RPG.Dialogue
         [TextArea] [SerializeField] string openingGambit;
         [TextArea] [SerializeField] string playerResponse;
         [SerializeField] List<ConversationNode> _nodes;
+        public delegate void ValidateDelegate();
+        public event ValidateDelegate onValidated;
 
         public List<ConversationNode> nodes
         {
@@ -22,6 +24,7 @@ namespace RPG.Dialogue
 
         void OnValidate()
         {
+            Debug.Log("validate");
             string defaultUUID = null;
             var UUIDs = new HashSet<string>();
             foreach (var node in _nodes)
@@ -51,6 +54,8 @@ namespace RPG.Dialogue
                     }
                 }
             }
+
+            onValidated();
         }
 
         public string getConvoAsString()

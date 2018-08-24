@@ -21,7 +21,6 @@ namespace RPG.Editor.Dialogue
 
         void SetPosition(Vector2 _position)
         {
-            Undo.RecordObject(source, "Update position");
             source.position = position = _position;
         }
 

@@ -21,16 +21,26 @@ namespace RPG.Editor.Dialogue
             GetWindow(typeof(DialogueEditor), false, "Dialogue Editor");
         }
 
-        void OnInspectorUpdate()
+        void OnEnable()
         {
+            Selection.selectionChanged += SelectionChanged;
+
+            SelectionChanged();
+        }
+
+        void SelectionChanged()
+        {
+            Debug.Log("SelectionChanged");
             currentSelection = Selection.activeObject as Conversation;
-            var newNodeViews = ReloadNodes();
-            if (!newNodeViews.SequenceEqual(nodeViews))
-            {
-                nodeViews = newNodeViews;
-                Debug.Log("repaint");
-                Repaint();
-            }
+            currentSelection.onValidated += OnModelUpdated;
+
+            OnModelUpdated();
+        }
+
+        void OnModelUpdated()
+        {
+            nodeViews = ReloadNodes();
+            Repaint();
         }
 
         void OnGUI()
