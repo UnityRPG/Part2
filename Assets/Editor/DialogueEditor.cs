@@ -14,6 +14,7 @@ namespace RPG.Editor.Dialogue
         Rect Canvas = new Rect(0, 0, 4000, 4000);
         List<Node> nodeViews = new List<Node>();
         Conversation currentSelection;
+        Vector2 lastMousePosition = new Vector2(0, 0);
 
         public Node linkingNode { get; set; }
 
@@ -58,11 +59,32 @@ namespace RPG.Editor.Dialogue
     
             GUI.EndScrollView();
 
+            lastMousePosition =  Event.current.mousePosition + scrollPosition;
+            ProcessEvent(Event.current);
+
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(currentSelection);
                 Repaint();
             }
+        }
+
+        void ProcessEvent(Event e)
+        {
+            switch (e.type)
+            {
+                case EventType.ContextClick:
+                    ShowContextMenu();
+                    e.Use();
+                    break;
+            }
+        }
+
+        void ShowContextMenu()
+        {
+            var menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Add node"), false, () => currentSelection?.AddNode(lastMousePosition));
+            menu.ShowAsContext();
         }
 
         private void ReloadNodes()

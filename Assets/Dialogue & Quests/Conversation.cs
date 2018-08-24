@@ -25,37 +25,42 @@ namespace RPG.Dialogue
         void OnValidate()
         {
             Debug.Log("validate");
-            string defaultUUID = null;
             var UUIDs = new HashSet<string>();
             foreach (var node in _nodes)
             {
-                while (UUIDs.Contains(node.UUID))
+                while (UUIDs.Contains(node.UUID) || node.UUID == "")
                 {
                     node.UUID = System.Guid.NewGuid().ToString();
                     EditorUtility.SetDirty(this);
-                }
-
-                if (defaultUUID == null)
-                {
-                    defaultUUID = node.UUID;
                 }
 
                 UUIDs.Add(node.UUID);
             }
             foreach (var node in _nodes)
             {
-                for (int i = 0; i < node.children.Count; ++i)
+                var childrenCopy = node.children.ToArray();
+                foreach (var child in childrenCopy)
                 {
-                    var child = node.children[i];
                     if (!UUIDs.Contains(child))
                     {
-                        node.children[i] = defaultUUID;
+                        node.children.Remove(child);
                         EditorUtility.SetDirty(this);
                     }
                 }
             }
 
             onValidated?.Invoke();
+        }
+
+        public void AddNode(Vector2 position)
+        {
+            Undo.RecordObject(this, "Add node.");
+
+            var node = new ConversationNode();
+            node.position = position;
+            nodes.Add(node);
+
+            OnValidate();
         }
 
         public ConversationNode GetNodeByUUID(string UUID)
@@ -74,6 +79,8 @@ namespace RPG.Dialogue
         {
             Undo.RecordObject(this, "Delete node.");
             _nodes.Remove(node);
+
+            OnValidate();
         }
 
         public string getConvoAsString()
