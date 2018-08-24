@@ -20,10 +20,37 @@ namespace RPG.Dialogue
             }
         }
 
-        public Conversation()
+        void OnValidate()
         {
-            _nodes = new List<ConversationNode>();
-            _nodes.Add(new ConversationNode());
+            string defaultUUID = null;
+            var UUIDs = new HashSet<string>();
+            foreach (var node in _nodes)
+            {
+                while (UUIDs.Contains(node.UUID))
+                {
+                    node.UUID = System.Guid.NewGuid().ToString();
+                    EditorUtility.SetDirty(this);
+                }
+
+                if (defaultUUID == null)
+                {
+                    defaultUUID = node.UUID;
+                }
+
+                UUIDs.Add(node.UUID);
+            }
+            foreach (var node in _nodes)
+            {
+                foreach (var child in node.children)
+                {
+                    if (!UUIDs.Contains(child))
+                    {
+                        int i = node.children.IndexOf(child);
+                        node.children[i] = defaultUUID;
+                        EditorUtility.SetDirty(this);
+                    }
+                }
+            }
         }
 
         public string getConvoAsString()
