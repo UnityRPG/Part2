@@ -12,7 +12,7 @@ namespace RPG.Editor.Dialogue
 
         Vector2 scrollPosition = Vector2.zero;
         Rect Canvas = new Rect(0, 0, 4000, 4000);
-        Dictionary<string, Node> nodeViews = new Dictionary<string, Node>();
+        List<Node> nodeViews = new List<Node>();
         Conversation currentSelection;
 
         [MenuItem("Window/Dialogue Editor")]
@@ -30,7 +30,6 @@ namespace RPG.Editor.Dialogue
 
         void SelectionChanged()
         {
-            Debug.Log("SelectionChanged");
             currentSelection = Selection.activeObject as Conversation;
             currentSelection.onValidated += OnModelUpdated;
 
@@ -39,7 +38,7 @@ namespace RPG.Editor.Dialogue
 
         void OnModelUpdated()
         {
-            nodeViews = ReloadNodes();
+            ReloadNodes();
             Repaint();
         }
 
@@ -49,10 +48,10 @@ namespace RPG.Editor.Dialogue
 
             scrollPosition = GUI.BeginScrollView(new Rect(Vector2.zero, position.size), scrollPosition, Canvas);
 
-            foreach (KeyValuePair<string, Node> nodeViewPair in nodeViews)
+            foreach (Node nodeView in nodeViews)
             {
-                nodeViewPair.Value.Draw();
-                nodeViewPair.Value.ProcessEvent(Event.current);
+                nodeView.Draw();
+                nodeView.ProcessEvent(Event.current);
             }
     
             GUI.EndScrollView();
@@ -64,18 +63,16 @@ namespace RPG.Editor.Dialogue
             }
         }
 
-        private Dictionary<string, Node> ReloadNodes()
+        private void ReloadNodes()
         {
-            var nodeViews = new Dictionary<string, Node>();
+            nodeViews.Clear();
 
-            if (!currentSelection) return nodeViews;
+            if (!currentSelection) return;
 
             foreach (var node in currentSelection.nodes)
             {
-                nodeViews[node.UUID] = new Node(node, currentSelection);
+                nodeViews.Add(new Node(node, currentSelection));
             }
-
-            return nodeViews;
         }
 
     }
