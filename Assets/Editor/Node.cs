@@ -12,23 +12,22 @@ namespace RPG.Editor.Dialogue
     {
         private GUIStyle style = new GUIStyle();
         private Vector2 size = new Vector2(200, 200);
-        private ConversationNode source;
-        private DialogueEditor dialogueEditor;
+        private ConversationNode nodeModel;
+        private Conversation conversationModel;
         Vector2? draggingOffset = null;
 
         public int index { get; }
 
         public string id { get; }
 
-        public Node(int in_index, ConversationNode src, DialogueEditor _dialogueEditor)
+        public Node(ConversationNode node, Conversation conversation)
         {
             style.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             style.border = new RectOffset(12, 12, 12, 12);
             style.padding = new RectOffset(20, 20, 20, 20);
-            source = src;
-            dialogueEditor = _dialogueEditor;
-            index = in_index;
-            id = source.UUID;
+
+            nodeModel = node;
+            conversationModel = conversation;
         }
 
         public void Draw()
@@ -36,12 +35,14 @@ namespace RPG.Editor.Dialogue
             GUILayout.BeginArea(GetRect(), style);
             var textStyle = new GUIStyle(EditorStyles.textArea);
             textStyle.wordWrap = true;
-            source.text = EditorGUILayout.TextArea(source.text, textStyle);
+            nodeModel.text = EditorGUILayout.TextArea(nodeModel.text, textStyle);
             GUILayout.EndArea();
 
-            foreach (var childId in source.children)
+            foreach (var childId in nodeModel.children)
             {
-                var child = dialogueEditor.GetNodeAtID(childId);
+                var childModel = conversationModel.GetNodeByUUID(childId);
+                if (childModel == null) continue;
+                var child = new Node(childModel, conversationModel);
                 Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 100, child.GetCentreTop() + Vector2.down * 100, Color.white, null, 3);
             }
         }
@@ -81,7 +82,7 @@ namespace RPG.Editor.Dialogue
         {
             if (!draggingOffset.HasValue) return;
 
-            source.position = e.mousePosition - draggingOffset.Value;
+            nodeModel.position = e.mousePosition - draggingOffset.Value;
             e.Use();
             GUI.changed = true;
         }
@@ -98,7 +99,7 @@ namespace RPG.Editor.Dialogue
         private void ShowContextMenu(Event e)
         {
             var menu = new GenericMenu();
-            menu.AddItem(new GUIContent("Delete"), false, () => dialogueEditor.RemoveNodeAtID(id));
+            menu.AddItem(new GUIContent("Delete"), false, () => conversationModel.DeleteNode(nodeModel));
             menu.AddItem(new GUIContent("Add connection"), false, null);
             menu.ShowAsContext();
             e.Use();
@@ -106,7 +107,7 @@ namespace RPG.Editor.Dialogue
 
         private Rect GetRect()
         {
-            return new Rect(source.position, size);
+            return new Rect(nodeModel.position, size);
         }
 
         private Vector2 GetCentreBottom()

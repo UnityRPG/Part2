@@ -64,19 +64,6 @@ namespace RPG.Editor.Dialogue
             }
         }
 
-        public Node GetNodeAtID(string id)
-        {
-            Node ret;
-            return nodeViews.TryGetValue(id, out ret) ? ret : null;
-        }
-
-        public void RemoveNodeAtID(string id)
-        {
-            currentSelection.nodes.RemoveAt(nodeViews[id].index);
-            nodeViews.Remove(id);
-            GUI.changed = true;
-        }
-
         private Dictionary<string, Node> ReloadNodes()
         {
             var nodeViews = new Dictionary<string, Node>();
@@ -85,7 +72,7 @@ namespace RPG.Editor.Dialogue
 
             foreach (var node in currentSelection.nodes)
             {
-                nodeViews[node.UUID] = new Node(nodeViews.Count, node, this);
+                nodeViews[node.UUID] = new Node(node, currentSelection);
             }
 
             return nodeViews;

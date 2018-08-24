@@ -44,18 +44,36 @@ namespace RPG.Dialogue
             }
             foreach (var node in _nodes)
             {
-                foreach (var child in node.children)
+                for (int i = 0; i < node.children.Count; ++i)
                 {
+                    var child = node.children[i];
                     if (!UUIDs.Contains(child))
                     {
-                        int i = node.children.IndexOf(child);
                         node.children[i] = defaultUUID;
                         EditorUtility.SetDirty(this);
                     }
                 }
             }
 
-            onValidated();
+            onValidated?.Invoke();
+        }
+
+        public ConversationNode GetNodeByUUID(string UUID)
+        {
+            foreach (var node in _nodes)
+            {
+                if (node.UUID == UUID)
+                {
+                    return node;
+                }
+            }
+            return null;
+        }
+
+        public void DeleteNode(ConversationNode node)
+        {
+            Undo.RecordObject(this, "Delete node.");
+            _nodes.Remove(node);
         }
 
         public string getConvoAsString()
