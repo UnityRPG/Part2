@@ -15,7 +15,8 @@ namespace RPG.Editor.Dialogue
         private Vector2 position;
         private string text;
         private ConversationNode source;
-        private List<Node> children = new List<Node>();
+        private DialogueEditor dialogueEditor;
+        private int[] children;
         Vector2? draggingOffset = null;
 
         void SetPosition(Vector2 _position)
@@ -28,7 +29,7 @@ namespace RPG.Editor.Dialogue
             source.text = text = _text;
         }
 
-        public Node(ConversationNode src)
+        public Node(ConversationNode src, DialogueEditor _dialogueEditor)
         {
             style.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             style.border = new RectOffset(12, 12, 12, 12);
@@ -36,11 +37,13 @@ namespace RPG.Editor.Dialogue
             source = src;
             text = source.text;
             position = source.position;
+            children = new int[source.children.Count()];
+            source.children.CopyTo(children, 0);
+            dialogueEditor = _dialogueEditor;
         }
 
         public override bool Equals(object other)
         {
-            Debug.Log("Checking equal");
             return Equals(other as Node);
         }
 
@@ -50,14 +53,11 @@ namespace RPG.Editor.Dialogue
             areEqual &= text == other.text;
             areEqual &= position == other.position;
             areEqual &= children.SequenceEqual(other.children);
-            Debug.Log("Checking equal node" + areEqual);
             return areEqual;
         }
 
         public override int GetHashCode()
         {
-            Debug.Log("Checking equal hash");
-
             int hash = source.text.GetHashCode() ^ source.position.GetHashCode();
             foreach (var child in children)
             {
@@ -66,20 +66,17 @@ namespace RPG.Editor.Dialogue
             return hash;
         }
 
-        public void AddChild(Node child)
-        {
-            children.Add(child);
-        }
-
         public void Draw()
         {
             GUILayout.BeginArea(GetRect(), style);
-            SetText(GUILayout.TextArea(source.text));
+            var textStyle = new GUIStyle(EditorStyles.textArea);
+            textStyle.wordWrap = true;
+            SetText(EditorGUILayout.TextArea(source.text, textStyle));
             GUILayout.EndArea();
 
-            foreach (var child in children)
+            foreach (var childIndex in children)
             {
-
+                var child = dialogueEditor.GetNodeAtIndex(childIndex);
                 Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 100, child.GetCentreTop() + Vector2.down * 100, Color.white, null, 3);
             }
         }

@@ -24,11 +24,6 @@ namespace RPG.Editor.Dialogue
         void OnInspectorUpdate()
         {
             currentSelection = Selection.activeObject as Conversation;
-            if (currentSelection.HasCycle())
-            {
-                currentSelection = null;
-                return;
-            }
             var newNodeViews = ReloadNodes();
             if (!newNodeViews.SequenceEqual(nodeViews))
             {
@@ -59,6 +54,11 @@ namespace RPG.Editor.Dialogue
             }
         }
 
+        public Node GetNodeAtIndex(int index)
+        {
+            return nodeViews[index];
+        }
+
         private List<Node> ReloadNodes()
         {
             var nodeViews = new List<Node>();
@@ -67,18 +67,11 @@ namespace RPG.Editor.Dialogue
 
             foreach (var node in currentSelection.nodes)
             {
-                nodeViews.Add(new Node(node));
-            }
-
-            for (int i = 0; i < nodeViews.Count; ++i)
-            {
-                foreach (int childIndex in currentSelection.nodes[i].children)
-                {
-                    nodeViews[i].AddChild(nodeViews[childIndex]);
-                }
+                nodeViews.Add(new Node(node, this));
             }
 
             return nodeViews;
         }
+
     }
 }

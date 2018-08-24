@@ -25,30 +25,6 @@ namespace RPG.Dialogue
             _nodes.Add(new ConversationNode());
         }
 
-        public bool HasCycle()
-        {
-            if (_nodes.Count == 0) return false;
-
-            bool[] visited = new bool[_nodes.Count];
-            var nextNodes = new Queue<int>();
-            nextNodes.Enqueue(0);
-            do
-            {
-                int index = nextNodes.Dequeue();
-                if (visited[index])
-                {
-                    return true;
-                }
-                visited[index] = true;
-                foreach (int child in _nodes[index].children)
-                {
-                    nextNodes.Enqueue(child);
-                }
-            } while (nextNodes.Count > 0);
-
-            return false;
-        }
-
         public string getConvoAsString()
         {
             return "NPC says: " + openingGambit + "\nYou reply: " + playerResponse;
