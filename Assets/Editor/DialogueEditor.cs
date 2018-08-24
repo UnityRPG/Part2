@@ -12,7 +12,7 @@ namespace RPG.Editor.Dialogue
 
         Vector2 scrollPosition = Vector2.zero;
         Rect Canvas = new Rect(0, 0, 4000, 4000);
-        List<Node> nodeViews = new List<Node>();
+        Dictionary<string, Node> nodeViews = new Dictionary<string, Node>();
         Conversation currentSelection;
 
         [MenuItem("Window/Dialogue Editor")]
@@ -39,10 +39,10 @@ namespace RPG.Editor.Dialogue
 
             scrollPosition = GUI.BeginScrollView(new Rect(Vector2.zero, position.size), scrollPosition, Canvas);
 
-            foreach (var nodeView in nodeViews)
+            foreach (KeyValuePair<string, Node> nodeViewPair in nodeViews)
             {
-                nodeView.Draw();
-                nodeView.ProcessEvent(Event.current);
+                nodeViewPair.Value.Draw();
+                nodeViewPair.Value.ProcessEvent(Event.current);
             }
     
             GUI.EndScrollView();
@@ -54,27 +54,28 @@ namespace RPG.Editor.Dialogue
             }
         }
 
-        public Node GetNodeAtIndex(int index)
+        public Node GetNodeAtID(string id)
         {
-            return nodeViews[index];
+            Node ret;
+            return nodeViews.TryGetValue(id, out ret) ? ret : null;
         }
 
-        public void RemoveNodeAtIndex(int index)
+        public void RemoveNodeAtID(string id)
         {
-            nodeViews.RemoveAt(index);
-            currentSelection.nodes.RemoveAt(index);
+            currentSelection.nodes.RemoveAt(nodeViews[id].index);
+            nodeViews.Remove(id);
             GUI.changed = true;
         }
 
-        private List<Node> ReloadNodes()
+        private Dictionary<string, Node> ReloadNodes()
         {
-            var nodeViews = new List<Node>();
+            var nodeViews = new Dictionary<string, Node>();
 
             if (!currentSelection) return nodeViews;
 
             foreach (var node in currentSelection.nodes)
             {
-                nodeViews.Add(new Node(nodeViews.Count, node, this));
+                nodeViews[node.UUID] = new Node(nodeViews.Count, node, this);
             }
 
             return nodeViews;

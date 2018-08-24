@@ -16,12 +16,12 @@ namespace RPG.Editor.Dialogue
         private string text;
         private ConversationNode source;
         private DialogueEditor dialogueEditor;
-        private int index;
-        private int[] children;
+        private string[] children;
         Vector2? draggingOffset = null;
 
         void SetPosition(Vector2 _position)
         {
+            Undo.RecordObject(source, "Update position");
             source.position = position = _position;
         }
 
@@ -30,7 +30,11 @@ namespace RPG.Editor.Dialogue
             source.text = text = _text;
         }
 
-        public Node(int _index, ConversationNode src, DialogueEditor _dialogueEditor)
+        public int index { get; }
+
+        public string id { get; }
+
+        public Node(int in_index, ConversationNode src, DialogueEditor _dialogueEditor)
         {
             style.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             style.border = new RectOffset(12, 12, 12, 12);
@@ -38,9 +42,10 @@ namespace RPG.Editor.Dialogue
             source = src;
             text = source.text;
             position = source.position;
-            children = (int[])source.children.Clone();
+            children = source.children.ToArray();
             dialogueEditor = _dialogueEditor;
-            index = _index;
+            index = in_index;
+            id = source.UUID;
         }
 
         public override bool Equals(object other)
@@ -75,9 +80,9 @@ namespace RPG.Editor.Dialogue
             SetText(EditorGUILayout.TextArea(source.text, textStyle));
             GUILayout.EndArea();
 
-            foreach (var childIndex in children)
+            foreach (var childId in children)
             {
-                var child = dialogueEditor.GetNodeAtIndex(childIndex);
+                var child = dialogueEditor.GetNodeAtID(childId);
                 Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 100, child.GetCentreTop() + Vector2.down * 100, Color.white, null, 3);
             }
         }
@@ -134,7 +139,7 @@ namespace RPG.Editor.Dialogue
         private void ShowContextMenu(Event e)
         {
             var menu = new GenericMenu();
-            menu.AddItem(new GUIContent("Delete"), false, () => dialogueEditor.RemoveNodeAtIndex(index));
+            menu.AddItem(new GUIContent("Delete"), false, () => dialogueEditor.RemoveNodeAtID(id));
             menu.AddItem(new GUIContent("Add connection"), false, null);
             menu.ShowAsContext();
             e.Use();

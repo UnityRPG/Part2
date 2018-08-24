@@ -14,16 +14,18 @@ MonoBehaviour:
   openingGambit: Ere, find me a cube
   playerResponse: OK
   _nodes:
-  - position: {x: 260, y: 53}
+  - UUID: 1
+    position: {x: 260, y: 53}
     text: "Stop! Who would cross the Bridge of Death must answer me these questions
       three, ere the other side he see.\r"
-    children: 0100000002000000
-  - position: {x: 429, y: 349}
+    children:
+    - 2
+    - 3
+  - UUID: 2
+    position: {x: 429, y: 349}
     text: Go ahead old man
-    children: 03000000
-  - position: {x: 84, y: 352}
-    text: Ask me the questions, bridgekeeper. I am not afraid.
-    children: 03000000
-  - position: {x: 248, y: 680}
+    children: []
+  - UUID: 2
+    position: {x: 243, y: 644}
     text: What is the airspeed velocity of an unladden swallow?
-    children: 
+    children: []

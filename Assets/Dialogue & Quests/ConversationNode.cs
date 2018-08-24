@@ -10,6 +10,6 @@ namespace RPG.Dialogue
         public string UUID;
         public Vector2 position;
         public string text;
-        public string[] children;
+        public List<string> children;
     }
 }

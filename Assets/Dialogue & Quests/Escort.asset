@@ -14,9 +14,7 @@ MonoBehaviour:
   openingGambit: Hey, take me to the bridge!
   playerResponse: Errrrr. OK!
   _nodes:
-  - position: {x: 210, y: 11}
-    text: Hey, take me to the bridge!
-    children: 01000000
-  - position: {x: 87, y: 320}
+  - UUID: cca6224a-69fa-4d6a-af6e-f853ed3781e2
+    position: {x: 141, y: 74}
     text: Errrrr. OK!
-    children: 
+    children: []
