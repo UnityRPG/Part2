@@ -14,9 +14,9 @@ MonoBehaviour:
   openingGambit: Hey, take me to the bridge!
   playerResponse: Errrrr. OK!
   _nodes:
-  - position: {x: 300, y: -7}
-    text: Boo
+  - position: {x: 210, y: 11}
+    text: Hey, take me to the bridge!
     children: 01000000
-  - position: {x: 138, y: 286}
-    text: Hello world
+  - position: {x: 87, y: 320}
+    text: Errrrr. OK!
     children: 

@@ -59,6 +59,13 @@ namespace RPG.Editor.Dialogue
             return nodeViews[index];
         }
 
+        public void RemoveNodeAtIndex(int index)
+        {
+            nodeViews.RemoveAt(index);
+            currentSelection.nodes.RemoveAt(index);
+            GUI.changed = true;
+        }
+
         private List<Node> ReloadNodes()
         {
             var nodeViews = new List<Node>();
@@ -67,7 +74,7 @@ namespace RPG.Editor.Dialogue
 
             foreach (var node in currentSelection.nodes)
             {
-                nodeViews.Add(new Node(node, this));
+                nodeViews.Add(new Node(nodeViews.Count, node, this));
             }
 
             return nodeViews;

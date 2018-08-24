@@ -7,8 +7,9 @@ namespace RPG.Dialogue
     [System.Serializable]
     public class ConversationNode
     {
+        public string UUID;
         public Vector2 position;
         public string text;
-        public int[] children;
+        public string[] children;
     }
 }

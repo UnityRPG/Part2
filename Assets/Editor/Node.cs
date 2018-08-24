@@ -16,6 +16,7 @@ namespace RPG.Editor.Dialogue
         private string text;
         private ConversationNode source;
         private DialogueEditor dialogueEditor;
+        private int index;
         private int[] children;
         Vector2? draggingOffset = null;
 
@@ -29,7 +30,7 @@ namespace RPG.Editor.Dialogue
             source.text = text = _text;
         }
 
-        public Node(ConversationNode src, DialogueEditor _dialogueEditor)
+        public Node(int _index, ConversationNode src, DialogueEditor _dialogueEditor)
         {
             style.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             style.border = new RectOffset(12, 12, 12, 12);
@@ -37,9 +38,9 @@ namespace RPG.Editor.Dialogue
             source = src;
             text = source.text;
             position = source.position;
-            children = new int[source.children.Count()];
-            source.children.CopyTo(children, 0);
+            children = (int[])source.children.Clone();
             dialogueEditor = _dialogueEditor;
+            index = _index;
         }
 
         public override bool Equals(object other)
@@ -86,7 +87,16 @@ namespace RPG.Editor.Dialogue
             switch(e.type)
             {
                 case EventType.MouseDown:
-                    StartDragging(e);
+                    if (!GetRect().Contains(e.mousePosition)) break;
+                    switch (e.button)
+                    {
+                        case 0:
+                            StartDragging(e);
+                            break;
+                        case 1:
+                            ShowContextMenu(e);
+                            break;
+                    }
                     break;
                 case EventType.MouseDrag:
                     ExecuteDragging(e);
@@ -99,7 +109,6 @@ namespace RPG.Editor.Dialogue
 
         private void StartDragging(Event e)
         {
-            if (!GetRect().Contains(e.mousePosition)) return;
             draggingOffset = e.mousePosition - GetRect().position;
             e.Use();
         }
@@ -120,6 +129,15 @@ namespace RPG.Editor.Dialogue
                 draggingOffset = null;
                 e.Use();
             }
+        }
+
+        private void ShowContextMenu(Event e)
+        {
+            var menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Delete"), false, () => dialogueEditor.RemoveNodeAtIndex(index));
+            menu.AddItem(new GUIContent("Add connection"), false, null);
+            menu.ShowAsContext();
+            e.Use();
         }
 
         private Rect GetRect()
