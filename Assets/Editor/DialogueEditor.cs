@@ -15,6 +15,8 @@ namespace RPG.Editor.Dialogue
         List<Node> nodeViews = new List<Node>();
         Conversation currentSelection;
 
+        public Node linkingNode { get; set; }
+
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowWindow()
         {
@@ -71,7 +73,7 @@ namespace RPG.Editor.Dialogue
 
             foreach (var node in currentSelection.nodes)
             {
-                nodeViews.Add(new Node(node, currentSelection));
+                nodeViews.Add(new Node(node, currentSelection, this));
             }
         }
 

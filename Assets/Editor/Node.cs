@@ -14,13 +14,14 @@ namespace RPG.Editor.Dialogue
         private Vector2 size = new Vector2(200, 200);
         private ConversationNode nodeModel;
         private Conversation conversationModel;
+        private DialogueEditor editor;
         Vector2? draggingOffset = null;
 
         public int index { get; }
 
         public string id { get; }
 
-        public Node(ConversationNode node, Conversation conversation)
+        public Node(ConversationNode node, Conversation conversation, DialogueEditor dialogueEditor)
         {
             style.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             style.border = new RectOffset(12, 12, 12, 12);
@@ -28,23 +29,41 @@ namespace RPG.Editor.Dialogue
 
             nodeModel = node;
             conversationModel = conversation;
+            editor = dialogueEditor;
         }
 
         public void Draw()
+        {
+            DrawBox();
+            DrawLinks();
+            DrawDraggingLink();
+        }
+
+        private void DrawBox()
         {
             GUILayout.BeginArea(GetRect(), style);
             var textStyle = new GUIStyle(EditorStyles.textArea);
             textStyle.wordWrap = true;
             nodeModel.text = EditorGUILayout.TextArea(nodeModel.text, textStyle);
             GUILayout.EndArea();
+        }
 
+        private void DrawLinks()
+        {
             foreach (var childId in nodeModel.children)
             {
                 var childModel = conversationModel.GetNodeByUUID(childId);
                 if (childModel == null) continue;
-                var child = new Node(childModel, conversationModel);
+                var child = new Node(childModel, conversationModel, editor);
                 Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 100, child.GetCentreTop() + Vector2.down * 100, Color.white, null, 3);
             }
+        }
+
+        private void DrawDraggingLink()
+        {
+            if (editor.linkingNode != this) return;
+            Handles.DrawBezier(GetCentreBottom(), Event.current.mousePosition, GetCentreBottom() + Vector2.up * 100, Event.current.mousePosition + Vector2.down * 100, Color.white, null, 3);
+            GUI.changed = true;
         }
 
         public void ProcessEvent(Event e)
@@ -56,10 +75,10 @@ namespace RPG.Editor.Dialogue
                     switch (e.button)
                     {
                         case 0:
-                            StartDragging(e);
+                            LeftClick(e);
                             break;
                         case 1:
-                            ShowContextMenu(e);
+                            RightClick(e);
                             break;
                     }
                     break;
@@ -67,14 +86,23 @@ namespace RPG.Editor.Dialogue
                     ExecuteDragging(e);
                     break;
                 case EventType.MouseUp:
-                    StopDragging(e);
+                    MouseUp(e);
                     break;
             }
         }
 
-        private void StartDragging(Event e)
+        private void LeftClick(Event e)
         {
-            draggingOffset = e.mousePosition - GetRect().position;
+            if (editor.linkingNode != null)
+            {
+                editor.linkingNode.nodeModel.children.Add(nodeModel.UUID);
+                editor.linkingNode = null;
+                GUI.changed = true;
+            }
+            else
+            {
+                draggingOffset = e.mousePosition - GetRect().position;
+            }
             e.Use();
         }
 
@@ -87,7 +115,7 @@ namespace RPG.Editor.Dialogue
             GUI.changed = true;
         }
 
-        private void StopDragging(Event e)
+        private void MouseUp(Event e)
         {
             if (draggingOffset.HasValue)
             {
@@ -96,13 +124,25 @@ namespace RPG.Editor.Dialogue
             }
         }
 
-        private void ShowContextMenu(Event e)
+        private void RightClick(Event e)
         {
             var menu = new GenericMenu();
             menu.AddItem(new GUIContent("Delete"), false, () => conversationModel.DeleteNode(nodeModel));
-            menu.AddItem(new GUIContent("Add connection"), false, null);
+            menu.AddItem(new GUIContent("Add connection"), false, () => StartLinking());
+            menu.AddItem(new GUIContent("Break child connections"), false, () => BreakChildConnections());
             menu.ShowAsContext();
             e.Use();
+        }
+
+        private void StartLinking()
+        {
+            editor.linkingNode = this;
+        }
+
+        private void BreakChildConnections()
+        {
+            nodeModel.children.Clear();
+            GUI.changed = true;
         }
 
         private Rect GetRect()
