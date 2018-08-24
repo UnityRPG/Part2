@@ -8,26 +8,13 @@ using System.Linq;
 
 namespace RPG.Editor.Dialogue
 {
-    public class Node : IEquatable<Node>
+    public class Node
     {
         private GUIStyle style = new GUIStyle();
         private Vector2 size = new Vector2(200, 200);
-        private Vector2 position;
-        private string text;
         private ConversationNode source;
         private DialogueEditor dialogueEditor;
-        private string[] children;
         Vector2? draggingOffset = null;
-
-        void SetPosition(Vector2 _position)
-        {
-            source.position = position = _position;
-        }
-
-        void SetText(string _text)
-        {
-            source.text = text = _text;
-        }
 
         public int index { get; }
 
@@ -39,36 +26,9 @@ namespace RPG.Editor.Dialogue
             style.border = new RectOffset(12, 12, 12, 12);
             style.padding = new RectOffset(20, 20, 20, 20);
             source = src;
-            text = source.text;
-            position = source.position;
-            children = source.children.ToArray();
             dialogueEditor = _dialogueEditor;
             index = in_index;
             id = source.UUID;
-        }
-
-        public override bool Equals(object other)
-        {
-            return Equals(other as Node);
-        }
-
-        public bool Equals(Node other)
-        {
-            bool areEqual = true;
-            areEqual &= text == other.text;
-            areEqual &= position == other.position;
-            areEqual &= children.SequenceEqual(other.children);
-            return areEqual;
-        }
-
-        public override int GetHashCode()
-        {
-            int hash = source.text.GetHashCode() ^ source.position.GetHashCode();
-            foreach (var child in children)
-            {
-                hash ^= child.GetHashCode();
-            }
-            return hash;
         }
 
         public void Draw()
@@ -76,10 +36,10 @@ namespace RPG.Editor.Dialogue
             GUILayout.BeginArea(GetRect(), style);
             var textStyle = new GUIStyle(EditorStyles.textArea);
             textStyle.wordWrap = true;
-            SetText(EditorGUILayout.TextArea(source.text, textStyle));
+            source.text = EditorGUILayout.TextArea(source.text, textStyle);
             GUILayout.EndArea();
 
-            foreach (var childId in children)
+            foreach (var childId in source.children)
             {
                 var child = dialogueEditor.GetNodeAtID(childId);
                 Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 100, child.GetCentreTop() + Vector2.down * 100, Color.white, null, 3);
@@ -121,7 +81,7 @@ namespace RPG.Editor.Dialogue
         {
             if (!draggingOffset.HasValue) return;
 
-            SetPosition(e.mousePosition - draggingOffset.Value);
+            source.position = e.mousePosition - draggingOffset.Value;
             e.Use();
             GUI.changed = true;
         }
