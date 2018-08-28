@@ -34,6 +34,8 @@ namespace RPG.Editor.Dialogue
         void SelectionChanged()
         {
             currentSelection = Selection.activeObject as Conversation;
+            if (currentSelection == null) return;
+
             currentSelection.onValidated += OnModelUpdated;
 
             OnModelUpdated();

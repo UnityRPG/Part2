@@ -15,6 +15,16 @@ MonoBehaviour:
   playerResponse: Errrrr. OK!
   _nodes:
   - UUID: cca6224a-69fa-4d6a-af6e-f853ed3781e2
-    position: {x: 141, y: 74}
-    text: Errrrr. OK!
+    position: {x: 586, y: 14}
+    text: Errrrr. OK...
+    children:
+    - b5e254f1-542d-4587-9a63-7229d029e7c7
+  - UUID: 7e91dc4e-4216-4b72-9f53-cc6fddf3bd88
+    position: {x: 373, y: 161}
+    text: response 1
+    children:
+    - b5e254f1-542d-4587-9a63-7229d029e7c7
+  - UUID: b5e254f1-542d-4587-9a63-7229d029e7c7
+    position: {x: 756, y: 343}
+    text: response 2
     children: []

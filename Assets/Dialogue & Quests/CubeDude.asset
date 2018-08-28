@@ -16,30 +16,30 @@ MonoBehaviour:
   _nodes:
   - UUID: 08fad32a-6fe9-4f43-bdae-825312cdf5f0
     position: {x: 264, y: 47}
-    text: "Stop! Who would cross the Bridge of Death must answer me these questions
-      three, ere the other side he see.\r\n\r\n"
+    text: "Hi Stop! Who would cross the Bridge of Death must answer me these questions
+      three, ere the other side he see.\r\n\r\nhello"
     children:
     - 88a63984-9ed1-4ad1-b6c8-e18f6310b3df
     - 34a11603-c1f2-4388-899f-46ed8105ce1e
   - UUID: 88a63984-9ed1-4ad1-b6c8-e18f6310b3df
-    position: {x: 56, y: 352}
+    position: {x: 28, y: 250}
     text: Ask me the questions, bridgekeeper. I am not afraid.
     children:
     - 9ef32feb-ba63-4a1e-97e8-b3338327ee4f
   - UUID: 34a11603-c1f2-4388-899f-46ed8105ce1e
-    position: {x: 458, y: 355}
+    position: {x: 501, y: 326}
     text: Never mind then!
     children:
     - b436e89a-9162-4f46-a85b-0fd3169e2410
   - UUID: 9ef32feb-ba63-4a1e-97e8-b3338327ee4f
-    position: {x: 78, y: 685}
+    position: {x: 41, y: 683}
     text: "What... is your name?\r\n\r\n"
     children:
     - 6263d649-5977-412d-b915-6cb4a40c71fd
     - 853863b4-1407-47aa-8f72-2f5484c697d7
   - UUID: b436e89a-9162-4f46-a85b-0fd3169e2410
     position: {x: 459, y: 689}
-    text: Oh, of you go then!
+    text: Oh, off you go then!
     children: []
   - UUID: 6263d649-5977-412d-b915-6cb4a40c71fd
     position: {x: 19, y: 989}
@@ -47,7 +47,7 @@ MonoBehaviour:
     children:
     - 69b73b27-9d9b-4d57-b89f-ad0b50c27dbb
   - UUID: 853863b4-1407-47aa-8f72-2f5484c697d7
-    position: {x: 300, y: 992}
+    position: {x: 344, y: 988}
     text: '''Sir Robin of Camelot''.'
     children:
     - 5b119cfc-c914-4c0f-9734-41d7d6879912
@@ -62,7 +62,7 @@ MonoBehaviour:
     children:
     - 16316ab5-a2d3-4367-9b92-c774d507f373
   - UUID: f3797bf3-505e-437d-8915-87a938281e80
-    position: {x: 75, y: 1521}
+    position: {x: 32, y: 1487}
     text: "What... is your favorite color?\r\n\r\n"
     children:
     - adf4fe57-a1bf-496b-9038-64f8aa149644
@@ -78,32 +78,32 @@ MonoBehaviour:
     children:
     - c1d34dd0-2099-49d6-ba1e-926744fb0d2a
   - UUID: 16316ab5-a2d3-4367-9b92-c774d507f373
-    position: {x: 403, y: 1524}
+    position: {x: 355, y: 1487}
     text: What... is the capital of Assyria?
     children:
     - aeb94a97-3df8-42a6-bc5e-c4dcac8c2eff
     - 66e42e05-f07b-4294-9e62-89c1702c831c
-    - 
+    - a1a433b4-2781-4877-9ad0-50b3c8ff66aa
   - UUID: aeb94a97-3df8-42a6-bc5e-c4dcac8c2eff
-    position: {x: 793, y: 1780}
+    position: {x: 886, y: 1752}
     text: Babylon
     children:
     - c1d34dd0-2099-49d6-ba1e-926744fb0d2a
   - UUID: 66e42e05-f07b-4294-9e62-89c1702c831c
-    position: {x: 1012, y: 1780}
+    position: {x: 1188, y: 1753}
     text: I don't know
     children:
     - c1d34dd0-2099-49d6-ba1e-926744fb0d2a
   - UUID: 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d
     position: {x: 259, y: 2116}
-    text: Of you go then!
+    text: Off you go then!
     children: []
   - UUID: c1d34dd0-2099-49d6-ba1e-926744fb0d2a
     position: {x: 791, y: 2128}
     text: AAARGH!
     children: []
-  - UUID: 
-    position: {x: 540, y: 1776}
+  - UUID: a1a433b4-2781-4877-9ad0-50b3c8ff66aa
+    position: {x: 577, y: 1755}
     text: Assur
     children:
     - 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d

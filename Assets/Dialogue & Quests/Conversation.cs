@@ -83,9 +83,43 @@ namespace RPG.Dialogue
             OnValidate();
         }
 
-        public string getConvoAsString()
+        public ConversationNode GetRootNode()
         {
-            return "NPC says: " + openingGambit + "\nYou reply: " + playerResponse;
+            var rootNodes = new Dictionary<string, ConversationNode>();
+            foreach (var node in _nodes)
+            {
+                rootNodes[node.UUID] = node;
+            }
+
+            foreach (var node in _nodes)
+            {
+                foreach (var child in node.children)
+                {
+                    if (rootNodes.ContainsKey(child))
+                    {
+                        rootNodes.Remove(child);
+                    }
+                }
+            }
+
+            foreach (var item in rootNodes)
+            {
+                return item.Value;
+            }
+            return null;
+        }
+
+            public ConversationNode GetNodeByUUId(string UUID)
+        {
+            foreach (var node in _nodes)
+            {
+                if (node.UUID == UUID)
+                {
+                    return node;
+                }
+            }
+
+            return null;
         }
     }
 }

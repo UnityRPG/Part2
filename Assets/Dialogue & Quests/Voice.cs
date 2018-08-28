@@ -19,13 +19,13 @@ namespace RPG.Dialogue
         // private instance variables for state
 
         // cached references for readability
-        Text dialogBox;
+        DialogueDisplay dialogDisplay;
 
         // messages, then public methods, then private methods...
         void Start()
         {
             Instantiate(speechBubblePrefab, canvas);
-            dialogBox = GameObject.FindWithTag("DialogBox").GetComponent<Text>();
+            dialogDisplay = FindObjectOfType<DialogueDisplay>();
         }
 
         public void VoiceClicked()
@@ -45,14 +45,7 @@ namespace RPG.Dialogue
 
         private void ShowDialog()
         {
-            dialogBox.text = conversation.getConvoAsString();
-            StartCoroutine(ExpireDialog());
-        }
-
-        IEnumerator ExpireDialog()
-        {
-            yield return new WaitForSeconds(DIALOG_LIFETIME);
-            dialogBox.text = "";
+            dialogDisplay.activeConversation = conversation;
         }
     }
 }

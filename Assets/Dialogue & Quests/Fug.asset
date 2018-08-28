@@ -14,3 +14,9 @@ MonoBehaviour:
   openingGambit: Ere mate, kill that they purple torso'd warrior and I'll give you
     a Power Moon!
   playerResponse: Sure, I'm on it!
+  _nodes:
+  - UUID: a6c8627d-18cb-455f-8bd3-b9796d2c4daa
+    position: {x: 320, y: 90}
+    text: Ere mate, kill that they purple torso'd warrior and I'll give you a Power
+      Moon!
+    children: []

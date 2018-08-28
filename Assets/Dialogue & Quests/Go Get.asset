@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingGambit: Go drop that there thing over there mate
   playerResponse: Can you be more specific?
+  _nodes: []
