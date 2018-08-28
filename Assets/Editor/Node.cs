@@ -11,7 +11,7 @@ namespace RPG.Editor.Dialogue
     public class Node
     {
         private GUIStyle style = new GUIStyle();
-        private Vector2 size = new Vector2(200, 200);
+        private Vector2 size = new Vector2(300, 100);
         private ConversationNode nodeModel;
         private Conversation conversationModel;
         private DialogueEditor editor;
@@ -55,14 +55,14 @@ namespace RPG.Editor.Dialogue
                 var childModel = conversationModel.GetNodeByUUID(childId);
                 if (childModel == null) continue;
                 var child = new Node(childModel, conversationModel, editor);
-                Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 100, child.GetCentreTop() + Vector2.down * 100, Color.white, null, 3);
+                Handles.DrawBezier(GetCentreBottom(), child.GetCentreTop(), GetCentreBottom() + Vector2.up * 10, child.GetCentreTop() + Vector2.down * 10, Color.white, null, 3);
             }
         }
 
         private void DrawDraggingLink()
         {
             if (editor.linkingNode != this) return;
-            Handles.DrawBezier(GetCentreBottom(), Event.current.mousePosition, GetCentreBottom() + Vector2.up * 100, Event.current.mousePosition + Vector2.down * 100, Color.white, null, 3);
+            Handles.DrawBezier(GetCentreBottom(), Event.current.mousePosition, GetCentreBottom() + Vector2.up * 10, Event.current.mousePosition + Vector2.down * 10, Color.white, null, 3);
             GUI.changed = true;
         }
 
