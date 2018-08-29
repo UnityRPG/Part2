@@ -45,7 +45,7 @@ namespace RPG.Dialogue
 
         private void ShowDialog()
         {
-            dialogDisplay.activeConversation = conversation;
+            dialogDisplay.SetActiveConversation(conversation);
         }
     }
 }

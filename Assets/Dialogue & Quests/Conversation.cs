@@ -108,18 +108,5 @@ namespace RPG.Dialogue
             }
             return null;
         }
-
-            public ConversationNode GetNodeByUUId(string UUID)
-        {
-            foreach (var node in _nodes)
-            {
-                if (node.UUID == UUID)
-                {
-                    return node;
-                }
-            }
-
-            return null;
-        }
     }
 }

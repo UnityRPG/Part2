@@ -15,12 +15,13 @@ public class DialogueDisplay : MonoBehaviour {
     [SerializeField]
     GameObject responsePrefab;
 
-    public Conversation activeConversation { get; set; }
+    Conversation activeConversation;
 
     ConversationNode currentNode = null;
 
-    void Update()
+    public void SetActiveConversation(Conversation conversation)
     {
+        activeConversation = conversation;
         if (activeConversation != null)
         {
             currentNode = activeConversation.GetRootNode();
@@ -29,11 +30,41 @@ public class DialogueDisplay : MonoBehaviour {
         {
             currentNode = null;
         }
+        UpdateDisplayForNode(currentNode);
+    }
 
-        if (currentNode != null)
+    private void UpdateDisplayForNode(ConversationNode node)
+    {
+        NPCTextField.text = node != null ? node.text : "";
+
+        foreach (Transform child in responseHolder)
         {
-            NPCTextField.text = currentNode.text;
+            Destroy(child.gameObject);
+        }
+
+        if (node != null)
+        {
+            foreach (var child in node.children)
+            {
+                var responseObject = Instantiate(responsePrefab, responseHolder);
+                var childNode = activeConversation.GetNodeByUUID(child);
+                responseObject.GetComponent<Text>().text = childNode.text;
+                responseObject.GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    if (childNode.children.Count == 0)
+                    {
+                        currentNode = null;
+                        activeConversation = null;
+                    }
+                    else
+                    {
+                        currentNode = activeConversation.GetNodeByUUID(childNode.children[0]);
+                    }
+                    UpdateDisplayForNode(currentNode);
+                });
+            }
         }
     }
+
 
 }

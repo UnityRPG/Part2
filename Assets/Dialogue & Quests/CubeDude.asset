@@ -52,15 +52,15 @@ MonoBehaviour:
     children:
     - 5b119cfc-c914-4c0f-9734-41d7d6879912
   - UUID: 69b73b27-9d9b-4d57-b89f-ad0b50c27dbb
-    position: {x: 32, y: 1278}
+    position: {x: 29, y: 1210}
     text: "What... is your quest?\r\n\n\r\n"
     children:
-    - f3797bf3-505e-437d-8915-87a938281e80
+    - fee3a03e-b441-448d-9bb2-29d78bf2d0e6
   - UUID: 5b119cfc-c914-4c0f-9734-41d7d6879912
-    position: {x: 350, y: 1286}
+    position: {x: 355, y: 1207}
     text: "What... is your quest?\r\n\r\n"
     children:
-    - 16316ab5-a2d3-4367-9b92-c774d507f373
+    - 893ef4f0-081a-4f21-b99f-cd91d31056a5
   - UUID: f3797bf3-505e-437d-8915-87a938281e80
     position: {x: 32, y: 1487}
     text: "What... is your favorite color?\r\n\r\n"
@@ -107,3 +107,13 @@ MonoBehaviour:
     text: Assur
     children:
     - 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d
+  - UUID: fee3a03e-b441-448d-9bb2-29d78bf2d0e6
+    position: {x: 35, y: 1345}
+    text: To seek the holy grail.
+    children:
+    - f3797bf3-505e-437d-8915-87a938281e80
+  - UUID: 893ef4f0-081a-4f21-b99f-cd91d31056a5
+    position: {x: 360, y: 1342}
+    text: To seek the holy grail.
+    children:
+    - 16316ab5-a2d3-4367-9b92-c774d507f373
