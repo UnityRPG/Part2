@@ -15,19 +15,19 @@ MonoBehaviour:
   playerResponse: OK
   _nodes:
   - UUID: 08fad32a-6fe9-4f43-bdae-825312cdf5f0
-    position: {x: 264, y: 47}
-    text: "Hi Stop! Who would cross the Bridge of Death must answer me these questions
-      three, ere the other side he see.\r\n\r\nhello"
+    position: {x: 264, y: 62}
+    text: "Stop! Who would cross the Bridge of Death must answer me these questions
+      three, ere the other side he see.\r"
     children:
     - 88a63984-9ed1-4ad1-b6c8-e18f6310b3df
     - 34a11603-c1f2-4388-899f-46ed8105ce1e
   - UUID: 88a63984-9ed1-4ad1-b6c8-e18f6310b3df
-    position: {x: 28, y: 250}
+    position: {x: 42, y: 240}
     text: Ask me the questions, bridgekeeper. I am not afraid.
     children:
     - 9ef32feb-ba63-4a1e-97e8-b3338327ee4f
   - UUID: 34a11603-c1f2-4388-899f-46ed8105ce1e
-    position: {x: 501, y: 326}
+    position: {x: 453, y: 252}
     text: Never mind then!
     children:
     - b436e89a-9162-4f46-a85b-0fd3169e2410

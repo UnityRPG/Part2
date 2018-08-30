@@ -15,6 +15,7 @@ namespace RPG.Editor.Dialogue
         List<Node> nodeViews = new List<Node>();
         Conversation currentSelection;
         Vector2 lastMousePosition = new Vector2(0, 0);
+        float zoomLevel = 5f;
 
         public Node linkingNode { get; set; }
 
@@ -53,12 +54,16 @@ namespace RPG.Editor.Dialogue
 
             scrollPosition = GUI.BeginScrollView(new Rect(Vector2.zero, position.size), scrollPosition, Canvas);
 
+            GUI.BeginGroup(Canvas);
+
+            GUIUtility.ScaleAroundPivot(new Vector2(zoomLevel, zoomLevel), Vector2.zero);
+
             foreach (Node nodeView in nodeViews)
             {
-                nodeView.Draw();
+                nodeView.Draw(zoomLevel);
                 nodeView.ProcessEvent(Event.current);
             }
-    
+            GUI.EndGroup();
             GUI.EndScrollView();
 
             lastMousePosition =  Event.current.mousePosition + scrollPosition;

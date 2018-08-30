@@ -32,23 +32,24 @@ namespace RPG.Editor.Dialogue
             editor = dialogueEditor;
         }
 
-        public void Draw()
+        public void Draw(float zoomLevel)
         {
-            DrawBox();
-            DrawLinks();
-            DrawDraggingLink();
+            DrawBox(zoomLevel);
+            DrawLinks(zoomLevel);
+            DrawDraggingLink(zoomLevel);
         }
 
-        private void DrawBox()
+        private void DrawBox(float zoomLevel)
         {
             GUILayout.BeginArea(GetRect(), style);
             var textStyle = new GUIStyle(EditorStyles.textArea);
             textStyle.wordWrap = true;
+            //nodeModel.text = GUILayout.TextArea(nodeModel.text, textStyle);
             nodeModel.text = EditorGUILayout.TextArea(nodeModel.text, textStyle);
             GUILayout.EndArea();
         }
 
-        private void DrawLinks()
+        private void DrawLinks(float zoomLevel)
         {
             foreach (var childId in nodeModel.children)
             {
@@ -59,7 +60,7 @@ namespace RPG.Editor.Dialogue
             }
         }
 
-        private void DrawDraggingLink()
+        private void DrawDraggingLink(float zoomLevel)
         {
             if (editor.linkingNode != this) return;
             Handles.DrawBezier(GetCentreBottom(), Event.current.mousePosition, GetCentreBottom() + Vector2.up * 10, Event.current.mousePosition + Vector2.down * 10, Color.white, null, 3);
