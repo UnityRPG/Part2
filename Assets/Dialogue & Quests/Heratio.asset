@@ -11,6 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786cd7087a4b0491485f1e957801c859, type: 3}
   m_Name: Heratio
   m_EditorClassIdentifier: 
-  openingGambit: Why you old duffer, I'm surprised you made it this far! Go find the
-    bridge!
-  playerResponse: Why I'll get you you young whipper-snapper.
+  _nodes:
+  - UUID: a98402ce-8d52-46fe-bc21-898008f4b94a
+    position: {x: 313, y: 112}
+    text: Ho there mear peasant!
+    children:
+    - 6a63bd99-ed48-49a9-ab2e-924075458209
+    - d12aa0f4-fc9b-4dc5-95ce-4160e3648210
+    actionToTrigger: 
+  - UUID: 6a63bd99-ed48-49a9-ab2e-924075458209
+    position: {x: 95, y: 311}
+    text: I don't much like your tone!
+    children: []
+    actionToTrigger: 
+  - UUID: d12aa0f4-fc9b-4dc5-95ce-4160e3648210
+    position: {x: 504, y: 313}
+    text: Ho there imperialist pig!
+    children: []
+    actionToTrigger: 

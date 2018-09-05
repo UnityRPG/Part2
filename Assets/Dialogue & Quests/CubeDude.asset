@@ -42,7 +42,8 @@ MonoBehaviour:
   - UUID: b436e89a-9162-4f46-a85b-0fd3169e2410
     position: {x: 468, y: 301}
     text: Oh, off you go then!
-    children: []
+    children:
+    - f7d796f0-81c0-4c8c-a569-15a99319569c
     actionToTrigger: 
   - UUID: 6263d649-5977-412d-b915-6cb4a40c71fd
     position: {x: 4, y: 485}
@@ -110,12 +111,14 @@ MonoBehaviour:
   - UUID: 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d
     position: {x: 77, y: 1337}
     text: Off you go then!
-    children: []
+    children:
+    - 9462a547-8db0-4198-bbb1-b225a87dd00c
     actionToTrigger: 
   - UUID: c1d34dd0-2099-49d6-ba1e-926744fb0d2a
     position: {x: 525, y: 1335}
     text: AAARGH!
-    children: []
+    children:
+    - 9462a547-8db0-4198-bbb1-b225a87dd00c
     actionToTrigger: 
   - UUID: a1a433b4-2781-4877-9ad0-50b3c8ff66aa
     position: {x: 663, y: 1093}
@@ -143,5 +146,15 @@ MonoBehaviour:
   - UUID: 14329e79-7a5f-4611-96d5-4ba5d3b67f94
     position: {x: 1024, y: 590}
     text: 
+    children: []
+    actionToTrigger: 
+  - UUID: f7d796f0-81c0-4c8c-a569-15a99319569c
+    position: {x: 760, y: 409}
+    text: Bye!
+    children: []
+    actionToTrigger: 
+  - UUID: 9462a547-8db0-4198-bbb1-b225a87dd00c
+    position: {x: 304, y: 1516}
+    text: Bye!
     children: []
     actionToTrigger: 

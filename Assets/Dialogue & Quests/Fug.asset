@@ -11,12 +11,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786cd7087a4b0491485f1e957801c859, type: 3}
   m_Name: Fug
   m_EditorClassIdentifier: 
-  openingGambit: Ere mate, kill that they purple torso'd warrior and I'll give you
-    a Power Moon!
-  playerResponse: Sure, I'm on it!
   _nodes:
   - UUID: a6c8627d-18cb-455f-8bd3-b9796d2c4daa
     position: {x: 320, y: 90}
     text: Ere mate, kill that they purple torso'd warrior and I'll give you a Power
       Moon!
+    children:
+    - 0c3c50eb-ee5f-4db7-ab59-a2edfb17cc95
+    - da523cf4-8dc8-4ba8-9e81-00c5b93e439d
+    - 22d336a6-ee4d-4985-a3cc-3e174aec9c99
+    actionToTrigger: 
+  - UUID: 22d336a6-ee4d-4985-a3cc-3e174aec9c99
+    position: {x: 80, y: 271.2058}
+    text: You aint the boss of me!
     children: []
+    actionToTrigger: 
+  - UUID: 0c3c50eb-ee5f-4db7-ab59-a2edfb17cc95
+    position: {x: 427, y: 268.2058}
+    text: Don't wanna.
+    children: []
+    actionToTrigger: 
+  - UUID: da523cf4-8dc8-4ba8-9e81-00c5b93e439d
+    position: {x: 765, y: 273.2058}
+    text: Okay!
+    children: []
+    actionToTrigger: Start Quest
