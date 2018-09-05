@@ -15,21 +15,23 @@ public class DialogueDisplay : MonoBehaviour {
     [SerializeField]
     GameObject responsePrefab;
 
-    Conversation activeConversation;
+    Voice activeVoice;
 
     ConversationNode currentNode = null;
 
-    public void SetActiveConversation(Conversation conversation)
+    public void SetActiveVoice(Voice voice)
     {
-        activeConversation = conversation;
-        if (activeConversation != null)
+        activeVoice = voice;
+        if (activeVoice != null)
         {
-            currentNode = activeConversation.GetRootNode();
+            var conversation = activeVoice.GetConversation();
+            currentNode = conversation.GetRootNode();
         }
         else
         {
             currentNode = null;
         }
+
         UpdateDisplayForNode(currentNode);
     }
 

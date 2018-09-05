@@ -45,6 +45,7 @@ namespace RPG.Editor.Dialogue
             var textStyle = new GUIStyle(EditorStyles.textArea);
             textStyle.wordWrap = true;
             nodeModel.text = EditorGUILayout.TextArea(nodeModel.text, textStyle);
+            nodeModel.actionToTrigger = EditorGUILayout.TextArea(nodeModel.actionToTrigger, textStyle);
             GUILayout.EndArea();
         }
 

@@ -11,5 +11,6 @@ namespace RPG.Dialogue
         public Vector2 position;
         public string text;
         public List<string> children = new List<string>();
+        public string actionToTrigger;
     }
 }

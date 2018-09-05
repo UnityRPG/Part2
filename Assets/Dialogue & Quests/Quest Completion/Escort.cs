@@ -11,16 +11,19 @@ namespace RPG.Questing
         // configuration parameters, consider SO
 
         // private instance variables for state
-        bool isEscorting = false;
+        Coroutine escortingRoutine = null;
 
         void Update()
         {
             var questStarted = questToComplete.QuestState == QuestState.Started;
-            if (questStarted && isEscorting == false)
+            if (questStarted && escortingRoutine == null)
             {
                 var player = GameObject.FindWithTag("Player");
-                StartCoroutine(FollowPlayer(player));
-                isEscorting = true;
+                escortingRoutine = StartCoroutine(FollowPlayer(player));
+            }
+            if (!questStarted && escortingRoutine != null)
+            {
+                StopCoroutine(escortingRoutine);
             }
         }
 

@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using RPG.Questing;
 
 namespace RPG.Dialogue
@@ -13,6 +12,23 @@ namespace RPG.Dialogue
         [Space(15)]
         [SerializeField] Transform canvas;
         [SerializeField] GameObject speechBubblePrefab;
+        public List<VoiceEventMapping> dialogueEventBindings;
+
+        public Conversation GetConversation()
+        {
+            return conversation;
+        }
+
+        public void TriggerEventForAction(string action)
+        {
+            foreach (var mapping in dialogueEventBindings)
+            {
+                if (mapping.name == action)
+                {
+                    mapping.callback.Invoke();
+                }
+            }
+        }
 
         const float DIALOG_LIFETIME = 5.0f;
 
@@ -33,19 +49,24 @@ namespace RPG.Dialogue
             if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
             {
                 ShowDialog();
-                TriggerQuestIfAny();
             }
         }
 
-        private void TriggerQuestIfAny()
+        public void TriggerQuestIfAny()
         {
             if (!quest) { return; }
             FindObjectOfType<Journal>().AddQuest(quest);
         }
 
+        public void CompleteQuestIfAny()
+        {
+            if (!quest) { return; }
+            FindObjectOfType<Journal>().CompleteQuest(quest);
+        }
+
         private void ShowDialog()
         {
-            dialogDisplay.SetActiveConversation(conversation);
+            dialogDisplay.SetActiveVoice(this);
         }
     }
 }

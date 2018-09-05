@@ -11,109 +11,137 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786cd7087a4b0491485f1e957801c859, type: 3}
   m_Name: CubeDude
   m_EditorClassIdentifier: 
-  openingGambit: Ere, find me a cube
-  playerResponse: OK
   _nodes:
   - UUID: 08fad32a-6fe9-4f43-bdae-825312cdf5f0
     position: {x: 264, y: 47}
-    text: "Hi Stop! Who would cross the Bridge of Death must answer me these questions
+    text: "Stop! Who would cross the Bridge of Death must answer me these questions
       three, ere the other side he see.\r\n\r\nhello"
     children:
     - 88a63984-9ed1-4ad1-b6c8-e18f6310b3df
     - 34a11603-c1f2-4388-899f-46ed8105ce1e
+    actionToTrigger: 
   - UUID: 88a63984-9ed1-4ad1-b6c8-e18f6310b3df
-    position: {x: 28, y: 250}
+    position: {x: 53, y: 170}
     text: Ask me the questions, bridgekeeper. I am not afraid.
     children:
     - 9ef32feb-ba63-4a1e-97e8-b3338327ee4f
+    actionToTrigger: Start Quest
   - UUID: 34a11603-c1f2-4388-899f-46ed8105ce1e
-    position: {x: 501, y: 326}
+    position: {x: 464, y: 165}
     text: Never mind then!
     children:
     - b436e89a-9162-4f46-a85b-0fd3169e2410
+    actionToTrigger: Stop Quest
   - UUID: 9ef32feb-ba63-4a1e-97e8-b3338327ee4f
-    position: {x: 41, y: 683}
+    position: {x: 50, y: 302}
     text: "What... is your name?\r\n\r\n"
     children:
     - 6263d649-5977-412d-b915-6cb4a40c71fd
     - 853863b4-1407-47aa-8f72-2f5484c697d7
+    actionToTrigger: 
   - UUID: b436e89a-9162-4f46-a85b-0fd3169e2410
-    position: {x: 459, y: 689}
+    position: {x: 468, y: 301}
     text: Oh, off you go then!
     children: []
+    actionToTrigger: 
   - UUID: 6263d649-5977-412d-b915-6cb4a40c71fd
-    position: {x: 19, y: 989}
+    position: {x: 4, y: 485}
     text: "My name is 'Sir Lancelot of Camelot'.\r\n\r\n"
     children:
     - 69b73b27-9d9b-4d57-b89f-ad0b50c27dbb
+    actionToTrigger: 
   - UUID: 853863b4-1407-47aa-8f72-2f5484c697d7
-    position: {x: 344, y: 988}
+    position: {x: 339, y: 483}
     text: '''Sir Robin of Camelot''.'
     children:
     - 5b119cfc-c914-4c0f-9734-41d7d6879912
+    actionToTrigger: 
   - UUID: 69b73b27-9d9b-4d57-b89f-ad0b50c27dbb
-    position: {x: 29, y: 1210}
+    position: {x: 4, y: 616}
     text: "What... is your quest?\r\n\n\r\n"
     children:
     - fee3a03e-b441-448d-9bb2-29d78bf2d0e6
+    actionToTrigger: 
   - UUID: 5b119cfc-c914-4c0f-9734-41d7d6879912
-    position: {x: 355, y: 1207}
+    position: {x: 525, y: 618}
     text: "What... is your quest?\r\n\r\n"
     children:
     - 893ef4f0-081a-4f21-b99f-cd91d31056a5
+    actionToTrigger: 
   - UUID: f3797bf3-505e-437d-8915-87a938281e80
-    position: {x: 32, y: 1487}
+    position: {x: 18, y: 922}
     text: "What... is your favorite color?\r\n\r\n"
     children:
     - adf4fe57-a1bf-496b-9038-64f8aa149644
     - ec096bb9-becd-4fa3-ac07-7177f313348a
+    actionToTrigger: 
   - UUID: adf4fe57-a1bf-496b-9038-64f8aa149644
-    position: {x: 29, y: 1774}
+    position: {x: 15, y: 1098}
     text: Blue
     children:
     - 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d
+    actionToTrigger: 
   - UUID: ec096bb9-becd-4fa3-ac07-7177f313348a
-    position: {x: 245, y: 1771}
+    position: {x: 345, y: 1096}
     text: Pink
     children:
     - c1d34dd0-2099-49d6-ba1e-926744fb0d2a
+    actionToTrigger: 
   - UUID: 16316ab5-a2d3-4367-9b92-c774d507f373
-    position: {x: 355, y: 1487}
+    position: {x: 822, y: 917}
     text: What... is the capital of Assyria?
     children:
     - aeb94a97-3df8-42a6-bc5e-c4dcac8c2eff
     - 66e42e05-f07b-4294-9e62-89c1702c831c
     - a1a433b4-2781-4877-9ad0-50b3c8ff66aa
+    actionToTrigger: 
   - UUID: aeb94a97-3df8-42a6-bc5e-c4dcac8c2eff
-    position: {x: 886, y: 1752}
+    position: {x: 977, y: 1091}
     text: Babylon
     children:
     - c1d34dd0-2099-49d6-ba1e-926744fb0d2a
+    actionToTrigger: 
   - UUID: 66e42e05-f07b-4294-9e62-89c1702c831c
-    position: {x: 1188, y: 1753}
+    position: {x: 1280, y: 1088}
     text: I don't know
     children:
     - c1d34dd0-2099-49d6-ba1e-926744fb0d2a
+    actionToTrigger: 
   - UUID: 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d
-    position: {x: 259, y: 2116}
+    position: {x: 77, y: 1337}
     text: Off you go then!
     children: []
+    actionToTrigger: 
   - UUID: c1d34dd0-2099-49d6-ba1e-926744fb0d2a
-    position: {x: 791, y: 2128}
+    position: {x: 525, y: 1335}
     text: AAARGH!
     children: []
+    actionToTrigger: 
   - UUID: a1a433b4-2781-4877-9ad0-50b3c8ff66aa
-    position: {x: 577, y: 1755}
+    position: {x: 663, y: 1093}
     text: Assur
     children:
     - 00b973df-77ea-4fc6-b5a3-e3705e0b4e0d
+    actionToTrigger: 
   - UUID: fee3a03e-b441-448d-9bb2-29d78bf2d0e6
-    position: {x: 35, y: 1345}
+    position: {x: 1, y: 764}
     text: To seek the holy grail.
     children:
     - f3797bf3-505e-437d-8915-87a938281e80
+    actionToTrigger: 
   - UUID: 893ef4f0-081a-4f21-b99f-cd91d31056a5
-    position: {x: 360, y: 1342}
+    position: {x: 349, y: 766}
     text: To seek the holy grail.
     children:
     - 16316ab5-a2d3-4367-9b92-c774d507f373
+    actionToTrigger: 
+  - UUID: 60f42571-1557-4e20-bf2a-73d3a0dd5716
+    position: {x: 739, y: 758}
+    text: I don't have one.
+    children: []
+    actionToTrigger: 
+  - UUID: 14329e79-7a5f-4611-96d5-4ba5d3b67f94
+    position: {x: 1024, y: 590}
+    text: 
+    children: []
+    actionToTrigger: 
