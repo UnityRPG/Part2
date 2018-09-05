@@ -8,8 +8,6 @@ namespace RPG.Dialogue
     [CreateAssetMenu(menuName = ("RPG/Conversation"))]
     public class Conversation : ScriptableObject
     {
-        [TextArea] [SerializeField] string openingGambit;
-        [TextArea] [SerializeField] string playerResponse;
         [SerializeField] List<ConversationNode> _nodes;
         public delegate void ValidateDelegate();
         public event ValidateDelegate onValidated;
@@ -20,36 +18,6 @@ namespace RPG.Dialogue
             {
                 return _nodes;
             }
-        }
-
-        void OnValidate()
-        {
-            Debug.Log("validate");
-            var UUIDs = new HashSet<string>();
-            foreach (var node in _nodes)
-            {
-                while (UUIDs.Contains(node.UUID) || node.UUID == "")
-                {
-                    node.UUID = System.Guid.NewGuid().ToString();
-                    EditorUtility.SetDirty(this);
-                }
-
-                UUIDs.Add(node.UUID);
-            }
-            foreach (var node in _nodes)
-            {
-                var childrenCopy = node.children.ToArray();
-                foreach (var child in childrenCopy)
-                {
-                    if (!UUIDs.Contains(child))
-                    {
-                        node.children.Remove(child);
-                        EditorUtility.SetDirty(this);
-                    }
-                }
-            }
-
-            onValidated?.Invoke();
         }
 
         public void AddNode(Vector2 position)
@@ -107,6 +75,49 @@ namespace RPG.Dialogue
                 return item.Value;
             }
             return null;
+        }
+
+        // Called when the model is updated in any way.
+        void OnValidate()
+        {
+            HashSet<string> UUIDs = AssignUUIDs();
+
+            RemoveNonExistantChildLinks(UUIDs);
+
+            onValidated?.Invoke();
+        }
+
+        private void RemoveNonExistantChildLinks(HashSet<string> UUIDs)
+        {
+            foreach (var node in _nodes)
+            {
+                var childrenCopy = node.children.ToArray();
+                foreach (var child in childrenCopy)
+                {
+                    if (!UUIDs.Contains(child))
+                    {
+                        node.children.Remove(child);
+                        EditorUtility.SetDirty(this);
+                    }
+                }
+            }
+        }
+
+        private HashSet<string> AssignUUIDs()
+        {
+            var UUIDs = new HashSet<string>();
+            foreach (var node in _nodes)
+            {
+                while (UUIDs.Contains(node.UUID) || node.UUID == "")
+                {
+                    node.UUID = System.Guid.NewGuid().ToString();
+                    EditorUtility.SetDirty(this);
+                }
+
+                UUIDs.Add(node.UUID);
+            }
+
+            return UUIDs;
         }
     }
 }
