@@ -10,7 +10,18 @@ namespace RPG.Characters
 {
     public class HealthSystem : MonoBehaviour, ISaveable
     {
-        [SerializeField] float maxHealthPoints = 100f;
+        float maxHealthPoints
+        {
+            get
+            {
+                var ec = GetComponent<EnemyClass>();
+                if (ec == null)
+                {
+                    return 0;
+                }
+                return ec.GetEnemy().health[ec.level];
+            }
+        }
         [SerializeField] Image healthBar;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
