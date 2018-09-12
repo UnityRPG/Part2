@@ -6,6 +6,6 @@ namespace RPG.Core.Stats
     public class EnemyClass
     {
         public string className;
-        public EnemyLevel[] enemyLevels;
+        public EnemyStats enemyStats;
     }
 }

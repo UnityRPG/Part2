@@ -35,14 +35,14 @@ namespace RPG.Core.Stats
 
         private void ImportPlayer()
         {
-            var property = serializedObject.FindProperty("playerLevels");
+            var playerStatsProperty = serializedObject.FindProperty("playerStats");
 
-            ImportProperty(property, "Base Health", "Player", "health");
-            ImportProperty(property, "Base Damage (per hit)", "Player", "damagePerHit");
-            ImportProperty(property, "Typical Ability Damage", "Player", "specialDamage");
+            ImportProperty(playerStatsProperty, "Base Health", "Player", "health");
+            ImportProperty(playerStatsProperty, "Base Damage (per hit)", "Player", "damagePerHit");
+            ImportProperty(playerStatsProperty, "Typical Ability Damage", "Player", "specialDamage");
 
-            ImportProperty(property, "XP to level up", "Player", "XPToLevelUp");
-            ImportProperty(property, "Experience per enemy kill", "Player", "XPPerEnemyKill");
+            ImportProperty(playerStatsProperty, "XP to level up", "Player", "XPToLevelUp");
+            ImportProperty(playerStatsProperty, "Experience per enemy kill", "Player", "XPPerEnemyKill");
         }
 
         private void ImportEnemies()
@@ -53,37 +53,37 @@ namespace RPG.Core.Stats
             {
                 var enemyClassProperty = property.GetArrayElementAtIndex(i);
                 var enemyClassName = enemyClassProperty.FindPropertyRelative("className").stringValue;
-                var levelsProperty = enemyClassProperty.FindPropertyRelative("enemyLevels");
+                var statsProperty = enemyClassProperty.FindPropertyRelative("enemyStats");
 
-                ImportProperty(levelsProperty, "Health", enemyClassName, "health");
-                ImportProperty(levelsProperty, "Damage per hit", enemyClassName, "damagePerHit");
-                ImportProperty(levelsProperty, "Hit speed / DPS", enemyClassName, "hitsPerSecond");
-                ImportProperty(levelsProperty, "Big Hit / special", enemyClassName, "specialDamage");
+                ImportProperty(statsProperty, "Health", enemyClassName, "health");
+                ImportProperty(statsProperty, "Damage per hit", enemyClassName, "damagePerHit");
+                ImportProperty(statsProperty, "Hit speed / DPS", enemyClassName, "hitsPerSecond");
+                ImportProperty(statsProperty, "Big Hit / special", enemyClassName, "specialDamage");
             }
 
         }
 
-        private void ImportProperty(SerializedProperty property, string statString, string characterClass, string propertyName)
+        private void ImportProperty(SerializedProperty statsProperty, string statString, string characterClass, string propertyName)
         {
-            property.arraySize = GetNumberOfLevels();
-
             int row = GetRowForStat(characterClass, statString);
             if (row == -1)
             {
                 return;
             }
 
-            for (int i = 0; i < property.arraySize; i++)
+            var statProperty = statsProperty.FindPropertyRelative(propertyName);
+            statProperty.arraySize = GetNumberOfLevels();
+
+            for (int i = 0; i < statProperty.arraySize; i++)
             {
                 string stat = currentImporter.GetCell((i + 1).ToString(), row);
 
-                var levelProperty = property.GetArrayElementAtIndex(i);
-                var healthProperty = levelProperty.FindPropertyRelative(propertyName);
+                var levelProperty = statProperty.GetArrayElementAtIndex(i);
 
                 float floatStat;
                 if (float.TryParse(stat, out floatStat))
                 {
-                    healthProperty.floatValue = floatStat;
+                    levelProperty.floatValue = floatStat;
                 }
             }
         }
