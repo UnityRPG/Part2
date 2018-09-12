@@ -7,7 +7,6 @@ namespace RPG.Core.Stats
     {
         public float health;
         public float damagePerHit;
-        public float hitsPerSecond;
         public float specialDamage;
     }
 }

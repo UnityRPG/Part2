@@ -39,7 +39,6 @@ namespace RPG.Core.Stats
 
             ImportProperty(property, "Base Health", "Player", "health");
             ImportProperty(property, "Base Damage (per hit)", "Player", "damagePerHit");
-            ImportProperty(property, "Hit speed / DPS", "Player", "hitsPerSecond");
             ImportProperty(property, "Typical Ability Damage", "Player", "specialDamage");
 
             ImportProperty(property, "XP to level up", "Player", "XPToLevelUp");
