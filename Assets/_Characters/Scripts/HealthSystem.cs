@@ -14,12 +14,12 @@ namespace RPG.Characters
         {
             get
             {
-                var ec = GetComponent<EnemyClass>();
+                var ec = GetComponent<CharacterLevel>();
                 if (ec == null)
                 {
                     return 0;
                 }
-                return ec.GetEnemy().health[ec.level];
+                return ec.health;
             }
         }
         [SerializeField] Image healthBar;

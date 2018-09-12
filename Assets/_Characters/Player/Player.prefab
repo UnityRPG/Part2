@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114999843594506404}
   - component: {fileID: 114677980991204380}
   - component: {fileID: 114164154849791212}
+  - component: {fileID: 114391526407616666}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3868,6 +3869,19 @@ MonoBehaviour:
   maxEnergyPoints: 360
   regenPointsPerSecond: 1
   outOfEnergy: {fileID: 8300000, guid: 8136ff2516a8e4083a19bfd8fad67741, type: 3}
+--- !u!114 &114391526407616666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6d441f6569721458d58739711a5469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statSet: {fileID: 11400000, guid: 3d9055b6e0b43e444b4254f711bd463c, type: 2}
+  level: 5
 --- !u!114 &114455088859074484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3931,7 +3945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fb437e61ff0493b8734b859139a188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 360
   healthBar: {fileID: 0}
   damageSounds:
   - {fileID: 8300000, guid: 8b8b2a645d1a46045962a8ef4bf3c6dd, type: 3}

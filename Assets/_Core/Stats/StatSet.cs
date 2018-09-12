@@ -8,6 +8,11 @@ namespace RPG.Core.Stats
         [SerializeField] PlayerStats playerStats;
         [SerializeField] EnemyClass[] enemyClasses;
 
+        public PlayerStats GetPlayer()
+        {
+            return playerStats;
+        }
+
         public EnemyStats GetEnemy(string className)
         {
             foreach (var enemyClass in enemyClasses)

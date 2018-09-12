@@ -3,13 +3,11 @@ using RPG.Core.Stats;
 
 namespace RPG.Characters
 {
-    public class EnemyClass : MonoBehaviour
+    public class EnemyLevel : CharacterLevel
     {
-        [SerializeField] StatSet statSet;
         [SerializeField] string className;
-        public int level;
 
-        public EnemyStats GetEnemy()
+        override public CoreCharacterStats GetStats()
         {
             return statSet.GetEnemy(className);
         }
