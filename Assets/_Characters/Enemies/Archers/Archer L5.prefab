@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 114479742700449284}
   - component: {fileID: 114533676433309646}
   - component: {fileID: 114617273258952026}
+  - component: {fileID: 114331259243557520}
   m_Layer: 0
   m_Name: Archer L5
   m_TagString: Untagged
@@ -1867,6 +1868,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114331259243557520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618878261957734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c99dc819897c1459d48b3fe928b253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statSet: {fileID: 11400000, guid: 3d9055b6e0b43e444b4254f711bd463c, type: 2}
+  className: Archer
+  level: 5
 --- !u!114 &114402736582090080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1923,7 +1938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fb437e61ff0493b8734b859139a188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 84
   healthBar: {fileID: 114055356311509890}
   damageSounds:
   - {fileID: 8300000, guid: dc0f1ebad6886f946bc3e79240f96110, type: 3}
