@@ -19,6 +19,17 @@ public class DialogueDisplay : MonoBehaviour {
 
     ConversationNode currentNode = null;
 
+    private void Start()
+    {
+        ActivateUI(false);
+    }
+
+    private void ActivateUI(bool activate)
+    {
+        NPCTextField.gameObject.SetActive(activate);
+        responseHolder.gameObject.SetActive(activate);
+    }
+
     public void SetActiveVoice(Voice voice)
     {
         activeVoice = voice;
@@ -37,6 +48,8 @@ public class DialogueDisplay : MonoBehaviour {
 
     private void UpdateDisplayForNode(ConversationNode node)
     {
+        ActivateUI(node != null);
+
         SetNPCText(node);
 
         ClearResponseObjects();
