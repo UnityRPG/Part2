@@ -13,9 +13,22 @@ namespace RPG.Questing
     {
         [SerializeField] protected Quest questToComplete;
 
+        // cached references for readability
+        Journal journal;
+
+        private void Start()
+        {
+            journal = FindObjectOfType<Journal>();
+        }
+
+        protected bool IsActive()
+        {
+            return journal.IsActiveQuest(questToComplete);
+        }
+
         protected void CompleteQuest()
         {
-            FindObjectOfType<Journal>().CompleteQuest(questToComplete);
+            journal.CompleteQuest(questToComplete);
             EarnReward();
         }
 

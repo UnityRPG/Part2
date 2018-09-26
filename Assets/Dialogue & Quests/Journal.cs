@@ -11,9 +11,9 @@ namespace RPG.Questing
         // configuration parameters, consider SO
 
         // private instance variables for state
+        List<Quest> activeQuests = new List<Quest>();
 
         // cached references for readability
-        [SerializeField] Transform questParent;
 
         // messages, then public methods, then private methods...
         private void Update()
@@ -23,31 +23,27 @@ namespace RPG.Questing
 
         public void AddQuest(Quest quest)
         {
-            GetComponent<Text>().text += quest.GetQuestAsString();
-            quest.QuestState = QuestState.Started;
+            activeQuests.Add(quest);
         }
 
         public void CompleteQuest(Quest quest)
         {
+            activeQuests.Remove(quest);
+
             GetComponent<Text>().text = "";
-            quest.QuestState= QuestState.Complete;
+        }
+
+        public bool IsActiveQuest(Quest quest)
+        {
+            return activeQuests.Contains(quest);
         }
 
         private void UpdateQuestsFromScene()
         {
             GetComponent<Text>().text = "";
-            foreach (Transform child in questParent)
+            foreach (var quest in activeQuests)
             {
-                ListQuestIfStarted(child);
-            }
-        }
-
-        private void ListQuestIfStarted(Transform child)
-        {
-            var questState = child.gameObject.GetComponent<Quest>().QuestState;
-            if (questState == QuestState.Started)
-            {
-                GetComponent<Text>().text += child.gameObject.name + '\n';
+                GetComponent<Text>().text += quest.GetQuestAsString();
             }
         }
     }

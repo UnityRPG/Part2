@@ -15,13 +15,13 @@ namespace RPG.Questing
 
         void Update()
         {
-            var questStarted = questToComplete.QuestState == QuestState.Started;
-            if (questStarted && escortingRoutine == null)
+            bool questStarted = IsActive();
+            if (IsActive() && escortingRoutine == null)
             {
                 var player = GameObject.FindWithTag("Player");
                 escortingRoutine = StartCoroutine(FollowPlayer(player));
             }
-            if (!questStarted && escortingRoutine != null)
+            if (!IsActive() && escortingRoutine != null)
             {
                 StopCoroutine(escortingRoutine);
             }

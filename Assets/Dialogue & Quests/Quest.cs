@@ -2,21 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// common data and behaviour for all quests
-
 namespace RPG.Questing
 {
-    public enum QuestState
+    [CreateAssetMenu(menuName = ("RPG/Quest"))]
+    public class Quest : ScriptableObject
     {
-        Available,
-        Started,
-        Complete
-    }
-
-    [DisallowMultipleComponent]
-    public class Quest : MonoBehaviour
-    {
-        [SerializeField] QuestState questState;
+        [SerializeField] string questName;
         [SerializeField] int rewardCoin;
 
         // This code written by refactor tool
@@ -28,22 +19,9 @@ namespace RPG.Questing
             }
         }
 
-        public QuestState QuestState
-        {
-            get
-            {
-                return questState;
-            }
-
-            set
-            {
-                questState = value;
-            }
-        }
-
         public string GetQuestAsString()
         {
-            return gameObject.name;
+            return questName;
         }
     }
 }

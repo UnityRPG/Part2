@@ -9,7 +9,7 @@ namespace RPG.Questing
     {
         void OnCollisionEnter(Collision collision) // 1st copy from Collision.cs
         {
-            if (questToComplete.QuestState == QuestState.Started)
+            if (IsActive())
             {   
                 var player = GameObject.FindWithTag("Player");
                 player.GetComponent<PlayerInventory>().AddToInventory(gameObject);
