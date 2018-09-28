@@ -3210,7 +3210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080b179c276ec4763894753d793a603e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 423000217}
+  questToComplete: {fileID: 0}
 --- !u!4 &99928079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281756155853874, guid: fd357f8e35696d344a3655f42fa1d281,
@@ -9030,7 +9030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1f7d33bb324446487bc882069ed0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 376643407}
+  questToComplete: {fileID: 0}
 --- !u!65 &302778166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9217,7 +9217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: b05552c2c6ff744af9f61ebe71ddde8e, type: 2}
-  quest: {fileID: 423000217}
+  quest: {fileID: 0}
   canvas: {fileID: 310759533}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -11023,7 +11023,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 376643406}
-  - component: {fileID: 376643407}
   m_Layer: 0
   m_Name: Take Me To The Bridge
   m_TagString: Untagged
@@ -11044,19 +11043,6 @@ Transform:
   m_Father: {fileID: 2104960936}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &376643407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 376643405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 0
 --- !u!1001 &379000815
 Prefab:
   m_ObjectHideFlags: 0
@@ -11868,7 +11854,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 423000216}
-  - component: {fileID: 423000217}
   m_Layer: 0
   m_Name: Gather The Cube
   m_TagString: Untagged
@@ -11889,19 +11874,6 @@ Transform:
   m_Father: {fileID: 2104960936}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &423000217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 423000215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 0
 --- !u!4 &425315990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 432296, guid: 2e767aec4381a214f902df4ac3e94fc9,
@@ -13585,7 +13557,7 @@ Transform:
   m_LocalPosition: {x: 116.61, y: 2.6, z: -95.4}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 1511804968}
+  - {fileID: 958262366}
   m_Father: {fileID: 1313306363}
   m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: -1.1, y: 49.77, z: -2.7680001}
@@ -16785,6 +16757,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4813294931787184, guid: 12f912cf22db3d948a728f686b6a022c,
     type: 2}
   m_PrefabInternal: {fileID: 1780396960}
+--- !u!1 &567507889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567507890}
+  - component: {fileID: 567507892}
+  - component: {fileID: 567507891}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &567507890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567507889}
+  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
+  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
+  m_LocalScale: {x: 2, y: 1.25, z: 3}
+  m_Children: []
+  m_Father: {fileID: 958262366}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
+--- !u!23 &567507891
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567507889}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &567507892
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567507889}
+  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1 &567619580
 GameObject:
   m_ObjectHideFlags: 0
@@ -24075,7 +24119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f925899236694fe999d50ae060948c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1291537802}
+  questToComplete: {fileID: 0}
 --- !u!65 &765093901
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29146,7 +29190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f925899236694fe999d50ae060948c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1291537802}
+  questToComplete: {fileID: 0}
 --- !u!65 &943961431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29668,6 +29712,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 455706, guid: 1a114115d90d1424e81192fb8e9d1707,
     type: 2}
   m_PrefabInternal: {fileID: 1710404053}
+--- !u!1 &958262365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958262366}
+  m_Layer: 0
+  m_Name: Sword(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958262366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958262365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 567507890}
+  m_Father: {fileID: 470464124}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &958554589
 Prefab:
   m_ObjectHideFlags: 0
@@ -35374,7 +35447,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107961417}
-  - component: {fileID: 1107961418}
   m_Layer: 0
   m_Name: Find the bridge
   m_TagString: Untagged
@@ -35395,19 +35467,6 @@ Transform:
   m_Father: {fileID: 2104960936}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1107961418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1107961416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 0
 --- !u!1001 &1109746425
 Prefab:
   m_ObjectHideFlags: 0
@@ -40704,7 +40763,6 @@ GameObject:
   - component: {fileID: 1224068249}
   - component: {fileID: 1224068248}
   - component: {fileID: 1224068247}
-  - component: {fileID: 1224068250}
   m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
@@ -40767,19 +40825,6 @@ Transform:
   m_Father: {fileID: 1244648622}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.091000006, y: -0.0050000004, z: 0.051000003}
---- !u!114 &1224068250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1224068246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 0
 --- !u!4 &1224385800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 427352, guid: 81eee2803704cfc4f907203e8771e94b,
@@ -42553,7 +42598,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1291537801}
-  - component: {fileID: 1291537802}
   m_Layer: 0
   m_Name: Escape the pen
   m_TagString: Untagged
@@ -42574,19 +42618,6 @@ Transform:
   m_Father: {fileID: 2104960936}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1291537802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1291537800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 100
 --- !u!1001 &1292360849
 Prefab:
   m_ObjectHideFlags: 0
@@ -46621,7 +46652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: fea838e0d167b402fbde18d267d5c66a, type: 2}
-  quest: {fileID: 1291537802}
+  quest: {fileID: 0}
   canvas: {fileID: 1266296794}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -48002,7 +48033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc38e353787de45fe88fa8b0b7f73fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1791929754}
+  questToComplete: {fileID: 11400000, guid: 72e8fa9653d7800448efb42c62e286ac, type: 2}
 --- !u!1001 &1421297526
 Prefab:
   m_ObjectHideFlags: 0
@@ -49783,78 +49814,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4281756155853874, guid: fd357f8e35696d344a3655f42fa1d281,
     type: 2}
   m_PrefabInternal: {fileID: 1382557728}
---- !u!1 &1479096798
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1479096799}
-  - component: {fileID: 1479096801}
-  - component: {fileID: 1479096800}
-  m_Layer: 0
-  m_Name: Sword
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1479096799
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1479096798}
-  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
-  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
-  m_LocalScale: {x: 2, y: 1.25, z: 3}
-  m_Children: []
-  m_Father: {fileID: 1511804968}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
---- !u!23 &1479096800
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1479096798}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1479096801
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1479096798}
-  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1001 &1484683516
 Prefab:
   m_ObjectHideFlags: 0
@@ -50563,35 +50522,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 478910, guid: bddb857dccb8156419a78be08cb4b651,
     type: 2}
   m_PrefabInternal: {fileID: 1510917721}
---- !u!1 &1511804967
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1511804968}
-  m_Layer: 0
-  m_Name: Sword(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1511804968
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1511804967}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1479096799}
-  m_Father: {fileID: 470464124}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1512040217
 Prefab:
   m_ObjectHideFlags: 0
@@ -52511,7 +52441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: b05552c2c6ff744af9f61ebe71ddde8e, type: 2}
-  quest: {fileID: 376643407}
+  quest: {fileID: 11400000, guid: 5c31a4557ae89a3499f46c14798a7fb6, type: 2}
   canvas: {fileID: 1567819233}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -52561,7 +52491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1f7d33bb324446487bc882069ed0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 376643407}
+  questToComplete: {fileID: 0}
 --- !u!1001 &1568371436
 Prefab:
   m_ObjectHideFlags: 0
@@ -52733,7 +52663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: b05552c2c6ff744af9f61ebe71ddde8e, type: 2}
-  quest: {fileID: 1709630750}
+  quest: {fileID: 0}
   canvas: {fileID: 1385918598}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -56491,7 +56421,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1709630749}
-  - component: {fileID: 1709630750}
   m_Layer: 0
   m_Name: Deliver The Thing
   m_TagString: Untagged
@@ -56512,19 +56441,6 @@ Transform:
   m_Father: {fileID: 2104960936}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1709630750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1709630748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 1000
 --- !u!1001 &1710404053
 Prefab:
   m_ObjectHideFlags: 0
@@ -58751,7 +58667,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791929753}
-  - component: {fileID: 1791929754}
   m_Layer: 0
   m_Name: Kill PurpleGuy
   m_TagString: Untagged
@@ -58772,19 +58687,6 @@ Transform:
   m_Father: {fileID: 2104960936}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1791929754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1791929752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questState: 0
-  rewardCoin: 0
 --- !u!1001 &1792429769
 Prefab:
   m_ObjectHideFlags: 0
@@ -64942,7 +64844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: 94a97b44844a94cefa3df0f9ec38b72a, type: 2}
-  quest: {fileID: 1791929754}
+  quest: {fileID: 11400000, guid: 72e8fa9653d7800448efb42c62e286ac, type: 2}
   canvas: {fileID: 285062117}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -68013,7 +67915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e63b8d0fa424a3b975a628849843cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1709630750}
+  questToComplete: {fileID: 0}
 --- !u!65 &2083991651
 BoxCollider:
   m_ObjectHideFlags: 0
