@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using RPG.Core.Saving;
+
 namespace RPG.Questing
 {
-    public class Journal : MonoBehaviour
+    public class Journal : MonoBehaviour, ISaveable
     {
         // configuration parameters, consider SO
 
@@ -23,6 +25,7 @@ namespace RPG.Questing
 
         public void AddQuest(Quest quest)
         {
+            print(quest.name);
             activeQuests.Add(quest);
         }
 
@@ -45,6 +48,16 @@ namespace RPG.Questing
             {
                 GetComponent<Text>().text += quest.GetQuestAsString();
             }
+        }
+
+        public void CaptureState(IDictionary<string, object> state)
+        {
+            state["activeQuests"] = activeQuests[0].RewardCoin;
+        }
+
+        public void RestoreState(IReadOnlyDictionary<string, object> state)
+        {
+            throw new NotImplementedException();
         }
     }
 }
