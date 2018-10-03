@@ -9,7 +9,7 @@
     public class SaveableEntity : MonoBehaviour
     {
         [SerializeField]
-        string UUID;
+        string UUID = System.Guid.NewGuid().ToString();
 
         void Update()
         {

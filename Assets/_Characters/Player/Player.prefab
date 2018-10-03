@@ -58,6 +58,8 @@ GameObject:
   - component: {fileID: 114677980991204380}
   - component: {fileID: 114164154849791212}
   - component: {fileID: 114391526407616666}
+  - component: {fileID: 114897035312934696}
+  - component: {fileID: 114907076556123406}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1603,7 +1605,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083351766544182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -132.09, y: 10.51, z: -105.41}
+  m_LocalPosition: {x: -72.246315, y: 11.179769, z: -99.46037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4782618932690172}
@@ -3838,7 +3840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UUID: 
+  UUID: f9796d03-ef78-441e-bbec-2a10603760dd
 --- !u!114 &114187468422045664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3866,8 +3868,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87b1244f6029d4a0f850297a5dfedd7a, type: 2}
   - {fileID: 11400000, guid: 8f838734eb7a749009a3315fd6312191, type: 2}
   energyBar: {fileID: 0}
-  maxEnergyPoints: 360
-  regenPointsPerSecond: 1
+  maxEnergyPoints: 200
+  regenPointsPerSecond: 10
   outOfEnergy: {fileID: 8300000, guid: 8136ff2516a8e4083a19bfd8fad67741, type: 3}
 --- !u!114 &114391526407616666
 MonoBehaviour:
@@ -3903,7 +3905,7 @@ MonoBehaviour:
   colliderRadius: 0.2
   colliderHeight: 1.02
   moveSpeedMultiplier: 0.8
-  animationSpeedMultiplier: 1.3
+  animationSpeedMultiplier: 1.2
   movingTurnSpeed: 1000
   stationaryTurnSpeed: 800
   moveThreshold: 1
@@ -3923,6 +3925,30 @@ MonoBehaviour:
   baseDamage: 30
   currentWeaponConfig: {fileID: 11400000, guid: 188c3fbc5f4054fd794091d51bfbd863,
     type: 2}
+--- !u!114 &114897035312934696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8d8a98674e752429dc43cea7a430ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: UIScene
+--- !u!114 &114907076556123406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1d2e5844eb04e57b839c7d3991c896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDeliveryItem: 0
 --- !u!114 &114936645733200856
 MonoBehaviour:
   m_ObjectHideFlags: 1
