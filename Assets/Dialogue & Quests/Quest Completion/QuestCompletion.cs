@@ -11,7 +11,8 @@ namespace RPG.Questing
 
     public class QuestCompletion : MonoBehaviour
     {
-        [SerializeField] protected Quest questToComplete;
+        [SerializeField] protected string questIdToComplete;
+        Quest questToComplete;
 
         // cached references for readability
         Journal journal;
@@ -19,6 +20,7 @@ namespace RPG.Questing
         private void Start()
         {
             journal = FindObjectOfType<Journal>();
+            questToComplete = journal.GetQuestById(questIdToComplete);
         }
 
         protected bool IsActive()

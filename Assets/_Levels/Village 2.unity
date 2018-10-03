@@ -3067,7 +3067,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4100413592745620, guid: becf74f2b08e153448f19786cba8db24, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4100413592745620, guid: becf74f2b08e153448f19786cba8db24, type: 2}
       propertyPath: m_LocalScale.x
@@ -3210,7 +3210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080b179c276ec4763894753d793a603e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 423000217}
+  questIdToComplete: 
 --- !u!4 &99928079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281756155853874, guid: fd357f8e35696d344a3655f42fa1d281,
@@ -7318,7 +7318,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1389537634}
+    m_TransformParent: {fileID: 2042568434}
     m_Modifications:
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -7350,7 +7350,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224453551399887970, guid: 67afb18965122f642872b8710f9a45e4,
         type: 2}
@@ -7382,6 +7382,14 @@ Prefab:
     - target: {fileID: 1532889930503668, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_Name
       value: Kill
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
@@ -7854,7 +7862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4100413592745620, guid: becf74f2b08e153448f19786cba8db24, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1618878261957734, guid: becf74f2b08e153448f19786cba8db24, type: 2}
       propertyPath: m_Name
@@ -9030,7 +9038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1f7d33bb324446487bc882069ed0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 376643407}
+  questIdToComplete: 
 --- !u!65 &302778166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9114,7 +9122,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1389537634}
+    m_TransformParent: {fileID: 2042568434}
     m_Modifications:
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -9146,7 +9154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 224453551399887970, guid: 67afb18965122f642872b8710f9a45e4,
         type: 2}
@@ -9164,11 +9172,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.0000012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1.0000012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532889930503668, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_Name
@@ -9217,7 +9225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: b05552c2c6ff744af9f61ebe71ddde8e, type: 2}
-  quest: {fileID: 423000217}
+  questId: 
   canvas: {fileID: 310759533}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -11055,7 +11063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 0
 --- !u!1001 &379000815
 Prefab:
@@ -11900,7 +11908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 0
 --- !u!4 &425315990 stripped
 Transform:
@@ -13585,7 +13593,7 @@ Transform:
   m_LocalPosition: {x: 116.61, y: 2.6, z: -95.4}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 1600560151}
+  - {fileID: 1816782808}
   m_Father: {fileID: 1313306363}
   m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: -1.1, y: 49.77, z: -2.7680001}
@@ -17644,6 +17652,78 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3f475dd16e018846819c0234e9d6886, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &586537083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586537084}
+  - component: {fileID: 586537086}
+  - component: {fileID: 586537085}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586537084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586537083}
+  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
+  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
+  m_LocalScale: {x: 2, y: 1.25, z: 3}
+  m_Children: []
+  m_Father: {fileID: 1816782808}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
+--- !u!23 &586537085
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586537083}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &586537086
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586537083}
+  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1001 &588873799
 Prefab:
   m_ObjectHideFlags: 0
@@ -24075,7 +24155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f925899236694fe999d50ae060948c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1291537802}
+  questIdToComplete: 
 --- !u!65 &765093901
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27515,7 +27595,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_LocalScale.x
@@ -29146,7 +29226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f925899236694fe999d50ae060948c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1291537802}
+  questIdToComplete: 
 --- !u!65 &943961431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32522,7 +32602,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114585847089741524, guid: b9a372922b4566147ab5be21b526d341,
         type: 2}
@@ -35311,6 +35391,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114749972298663390, guid: 920903eef9c0fdc4ca4315130ff355d6,
+        type: 2}
+      propertyPath: questList
+      value: 
+      objectReference: {fileID: 11400000, guid: d10ebebb53c600b4098751d53876c402,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 920903eef9c0fdc4ca4315130ff355d6, type: 2}
   m_IsPrefabAsset: 0
@@ -35406,7 +35492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 0
 --- !u!1001 &1109746425
 Prefab:
@@ -36309,7 +36395,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1389537634}
+    m_TransformParent: {fileID: 2042568434}
     m_Modifications:
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -36341,7 +36427,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224453551399887970, guid: 67afb18965122f642872b8710f9a45e4,
         type: 2}
@@ -36359,11 +36445,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.0000012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1.0000012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532889930503668, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_Name
@@ -37601,7 +37687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_LocalScale.x
@@ -40778,7 +40864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 0
 --- !u!4 &1224385800 stripped
 Transform:
@@ -40972,78 +41058,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4489140927154420, guid: cdb35b1e4e9fbdf46b434c997b7fb214,
     type: 2}
   m_PrefabInternal: {fileID: 1231643141}
---- !u!1 &1233250427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1233250428}
-  - component: {fileID: 1233250430}
-  - component: {fileID: 1233250429}
-  m_Layer: 0
-  m_Name: Sword
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1233250428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1233250427}
-  m_LocalRotation: {x: 0.6276118, y: 0.085392535, z: -0.75404984, w: 0.17384031}
-  m_LocalPosition: {x: -0.066, y: 0.069, z: -0.043}
-  m_LocalScale: {x: 2, y: 1.25, z: 3}
-  m_Children: []
-  m_Father: {fileID: 1600560151}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.303001, y: -77.836006, z: -170.488}
---- !u!23 &1233250429
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1233250427}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: df74529c4c90e08408943381120d08a1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1233250430
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1233250427}
-  m_Mesh: {fileID: 4300000, guid: c28c33c5313042340a8c0b59d16c37b5, type: 3}
 --- !u!1001 &1233541194
 Prefab:
   m_ObjectHideFlags: 0
@@ -42657,7 +42671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 100
 --- !u!1001 &1292360849
 Prefab:
@@ -44461,6 +44475,23 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd357f8e35696d344a3655f42fa1d281, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1335993990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1519641962020488, guid: 920903eef9c0fdc4ca4315130ff355d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1106166636}
+--- !u!114 &1335993991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1335993990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UUID: Journal
 --- !u!4 &1336769515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4762903522661780, guid: e16837f04a71f5a48bda5fb84c7d059b,
@@ -46693,7 +46724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: fea838e0d167b402fbde18d267d5c66a, type: 2}
-  quest: {fileID: 1291537802}
+  questId: 
   canvas: {fileID: 1266296794}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -46949,7 +46980,6 @@ Transform:
   - {fileID: 1506514877}
   - {fileID: 92139276}
   - {fileID: 1452257569}
-  - {fileID: 1786925985}
   - {fileID: 324023218}
   - {fileID: 533530565}
   - {fileID: 1474644020}
@@ -46959,9 +46989,6 @@ Transform:
   - {fileID: 646103305}
   - {fileID: 1721044980}
   - {fileID: 252323455}
-  - {fileID: 1567819232}
-  - {fileID: 310759532}
-  - {fileID: 1569357295}
   m_Father: {fileID: 654365294}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48074,7 +48101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc38e353787de45fe88fa8b0b7f73fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1791929754}
+  questIdToComplete: 
 --- !u!1001 &1421297526
 Prefab:
   m_ObjectHideFlags: 0
@@ -50151,7 +50178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_LocalScale.x
@@ -52370,7 +52397,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1389537634}
+    m_TransformParent: {fileID: 2042568434}
     m_Modifications:
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -52402,7 +52429,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224453551399887970, guid: 67afb18965122f642872b8710f9a45e4,
         type: 2}
@@ -52420,11 +52447,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.0000012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4060488844785118, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1.0000012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532889930503668, guid: 67afb18965122f642872b8710f9a45e4, type: 2}
       propertyPath: m_Name
@@ -52482,7 +52509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: b05552c2c6ff744af9f61ebe71ddde8e, type: 2}
-  quest: {fileID: 376643407}
+  questId: 
   canvas: {fileID: 1567819233}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -52532,7 +52559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1f7d33bb324446487bc882069ed0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 376643407}
+  questIdToComplete: 
 --- !u!1001 &1568371436
 Prefab:
   m_ObjectHideFlags: 0
@@ -52704,7 +52731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: b05552c2c6ff744af9f61ebe71ddde8e, type: 2}
-  quest: {fileID: 1709630750}
+  questId: 
   canvas: {fileID: 1385918598}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -53886,35 +53913,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 497614, guid: cb70b578d1fec1e4892024ee505eda1b,
     type: 2}
   m_PrefabInternal: {fileID: 1598670296}
---- !u!1 &1600560150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1600560151}
-  m_Layer: 0
-  m_Name: Sword(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1600560151
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1600560150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1233250428}
-  m_Father: {fileID: 470464124}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1601071870
 GameObject:
   m_ObjectHideFlags: 0
@@ -56080,7 +56078,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_LocalScale.x
@@ -56523,7 +56521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 1000
 --- !u!1001 &1710404053
 Prefab:
@@ -58391,7 +58389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4100413592745620, guid: becf74f2b08e153448f19786cba8db24, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1618878261957734, guid: becf74f2b08e153448f19786cba8db24, type: 2}
       propertyPath: m_Name
@@ -58783,7 +58781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4ba557d1bcb4243b91511ea33ff0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questState: 0
+  questName: 
   rewardCoin: 0
 --- !u!1001 &1792429769
 Prefab:
@@ -59123,7 +59121,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4613274070832884, guid: b9a372922b4566147ab5be21b526d341, type: 2}
       propertyPath: m_LocalScale.x
@@ -59238,6 +59236,35 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc48ed9141fa7149b80ca55dd0928f2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1816782807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1816782808}
+  m_Layer: 0
+  m_Name: Sword(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1816782808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816782807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 586537084}
+  m_Father: {fileID: 470464124}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1817375109
 Prefab:
   m_ObjectHideFlags: 0
@@ -64942,7 +64969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 11400000, guid: 94a97b44844a94cefa3df0f9ec38b72a, type: 2}
-  quest: {fileID: 1791929754}
+  questId: kill
   canvas: {fileID: 285062117}
   speechBubblePrefab: {fileID: 1093351813481988, guid: 2d09fd28eebdb44c6856c2f9c1d1e7c9,
     type: 2}
@@ -66766,6 +66793,10 @@ Transform:
   - {fileID: 1351782411}
   - {fileID: 963083205}
   - {fileID: 1419413848}
+  - {fileID: 1786925985}
+  - {fileID: 1567819232}
+  - {fileID: 310759532}
+  - {fileID: 1569357295}
   m_Father: {fileID: 1444601505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68013,7 +68044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e63b8d0fa424a3b975a628849843cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToComplete: {fileID: 1709630750}
+  questIdToComplete: 
 --- !u!65 &2083991651
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace RPG.Questing
 {
-    [CreateAssetMenu(menuName = ("RPG/Quest"))]
-    public class Quest : ScriptableObject
+    [Serializable]
+    public class Quest
     {
-        [SerializeField] string questName;
-        [SerializeField] int rewardCoin;
+        public string uniqueName;
+        public string displayName;
+        public int rewardCoin;
 
         // This code written by refactor tool
         public int RewardCoin
@@ -21,7 +23,15 @@ namespace RPG.Questing
 
         public string GetQuestAsString()
         {
-            return questName;
+            return displayName;
+        }
+
+        public string uniqueId
+        {
+            get
+            {
+                return uniqueName;
+            }
         }
     }
 }

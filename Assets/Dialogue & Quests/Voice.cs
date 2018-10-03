@@ -8,7 +8,7 @@ namespace RPG.Dialogue
     {
         // configuration parameters, consider SO
         [SerializeField] Conversation conversation;
-        [SerializeField] [Tooltip("Optional")] Quest quest;
+        [SerializeField] [Tooltip("Optional")] string questId;
         [Space(15)]
         [SerializeField] Transform canvas;
         [SerializeField] GameObject speechBubblePrefab;
@@ -54,14 +54,19 @@ namespace RPG.Dialogue
 
         public void TriggerQuestIfAny()
         {
-            if (!quest) { return; }
-            FindObjectOfType<Journal>().AddQuest(quest);
+            var journal = FindObjectOfType<Journal>();
+            var quest = journal.GetQuestById(questId);
+            if (quest == null) return;
+            journal.AddQuest(quest);
         }
 
         public void CompleteQuestIfAny()
         {
-            if (!quest) { return; }
-            FindObjectOfType<Journal>().CompleteQuest(quest);
+            if (questId == null) { return; }
+            var journal = FindObjectOfType<Journal>();
+            var quest = journal.GetQuestById(questId);
+            if (quest == null) return;
+            journal.CompleteQuest(quest);
         }
 
         private void ShowDialog()
