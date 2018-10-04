@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Levels/Showcase.unity
     guid: 658c2c40b1ef1a34f90c6347f28e5130
+  - enabled: 1
+    path: Assets/_CameraUI/UIScene.unity
+    guid: 2b3d09479a4ea6040a54df6179cf2a9f
   m_configObjects: {}
