@@ -17,7 +17,7 @@ namespace RPG.Characters
                 var ec = GetComponent<CharacterLevel>();
                 if (ec == null)
                 {
-                    return 0;
+                    return 100;
                 }
                 return ec.health;
             }

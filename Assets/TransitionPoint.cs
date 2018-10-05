@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using RPG.Characters;
 using UnityEngine.SceneManagement;
+using RPG.Core.Saving;
 
 namespace RPG.SceneManagement
 {
@@ -14,6 +13,7 @@ namespace RPG.SceneManagement
         {
             if (other.GetComponent<PlayerControl>())
             {
+                FindObjectOfType<SaveLoad>().Save();
                 SceneManager.LoadScene(newSceneName);
             }
         }

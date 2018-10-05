@@ -32,8 +32,11 @@ namespace RPG.Characters
         [SerializeField] float navMeshAgentSteeringSpeed = 1.0f;
         [SerializeField] float navMeshAgentStoppingDistance = 1.3f;
 
+        [Header("Saving")]
+        [SerializeField] bool shouldLoadOrSaveLocation = true;
 
-		// private instance variables for state
+
+        // private instance variables for state
         float turnAmount;
         float forwardAmount;
 				
@@ -164,11 +167,15 @@ namespace RPG.Characters
 
         public void CaptureState(IDictionary<string, object> state)
         {
+            if (!shouldLoadOrSaveLocation) return;
+
             state["position"] = (SerializableVector3)GetComponent<Transform>().position;
         }
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
+            if (!shouldLoadOrSaveLocation) return;
+
             gameObject.SetActive(false);
             GetComponent<Transform>().position = (SerializableVector3)state["position"];
             gameObject.SetActive(true);

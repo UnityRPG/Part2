@@ -9,7 +9,7 @@ namespace RPG.Core
         [SerializeField] string sceneName;
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             var uiScene = SceneManager.GetSceneByName(sceneName);
             if (!uiScene.isLoaded)

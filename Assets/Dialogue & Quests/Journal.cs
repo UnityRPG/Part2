@@ -14,7 +14,7 @@ namespace RPG.Questing
         [SerializeField] QuestList questList;
 
         // private instance variables for state
-List<Quest> activeQuests = new List<Quest>();
+        List<Quest> activeQuests = new List<Quest>();
 
         // cached references for readability
 
@@ -65,6 +65,7 @@ List<Quest> activeQuests = new List<Quest>();
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
+            activeQuests.Clear();
             var activeQuestIds = (string[])state["activeQuests"];
             for (int i = 0; i < activeQuestIds.Length; i++)
             {

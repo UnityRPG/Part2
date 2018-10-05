@@ -3911,6 +3911,7 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshAgentSteeringSpeed: 1
   navMeshAgentStoppingDistance: 1.3
+  shouldLoadOrSaveLocation: 0
 --- !u!114 &114677980991204380
 MonoBehaviour:
   m_ObjectHideFlags: 1
