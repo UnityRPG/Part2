@@ -113,7 +113,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &490143613
+--- !u!1001 &330554787
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -210,12 +210,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114020269127578112, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+    - target: {fileID: 114816127028322590, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114020269127578112, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+    - target: {fileID: 114816127028322590, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -226,6 +226,36 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114624768180834898, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020269127578112, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020269127578112, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114639783418105776, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114639783418105776, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114247223833070948, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114247223833070948, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -340,6 +370,10 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: 1.21875
       objectReference: {fileID: 0}
+    - target: {fileID: 1955992840395140, guid: 01816fc8ed387d14f8cf108a0ec925d7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01816fc8ed387d14f8cf108a0ec925d7, type: 2}
   m_IsPrefabAsset: 0
@@ -439,6 +473,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225727471296870, guid: 6f6c02e8e59ea4643bc1b622d15d897d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c02e8e59ea4643bc1b622d15d897d, type: 2}
@@ -605,6 +643,10 @@ Prefab:
     - target: {fileID: 1203542839134912, guid: c466bd11dc6943e4d9400e07bf7f765f, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580864441998330, guid: c466bd11dc6943e4d9400e07bf7f765f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c466bd11dc6943e4d9400e07bf7f765f, type: 2}
