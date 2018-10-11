@@ -68,13 +68,15 @@ namespace RPG.Characters
             animator = gameObject.AddComponent<Animator>();
             animator.runtimeAnimatorController = animatorController;
             animator.avatar = characterAvatar;
+            animator.applyRootMotion = true;
 
             navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
             navMeshAgent.speed = navMeshAgentSteeringSpeed;
             navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
             navMeshAgent.autoBraking = false;
             navMeshAgent.updateRotation = false;
-            navMeshAgent.updatePosition = true;
+            navMeshAgent.updatePosition = false;
+            navMeshAgent.autoRepath = true;
         }
 
         void Update()
@@ -113,6 +115,7 @@ namespace RPG.Characters
             SetForwardAndTurn(movement);
             ApplyExtraTurnRotation();
             UpdateAnimator();
+            navMeshAgent.nextPosition = transform.position;
         }
 
         void SetForwardAndTurn(Vector3 movement)
