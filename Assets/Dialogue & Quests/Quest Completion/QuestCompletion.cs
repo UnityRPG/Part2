@@ -11,11 +11,17 @@ namespace RPG.Questing
 
     public class QuestCompletion : MonoBehaviour
     {
+        #region Configuration
         [SerializeField] protected string questIdToComplete;
-        Quest questToComplete;
+        #endregion
 
-        // cached references for readability
+        #region State
+        Quest questToComplete;
+        #endregion
+
+        #region References
         Journal journal;
+        #endregion
 
         private void Start()
         {
