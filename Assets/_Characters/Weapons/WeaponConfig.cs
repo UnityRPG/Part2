@@ -1,6 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace RPG.Characters
 {
@@ -13,8 +14,22 @@ namespace RPG.Characters
         [SerializeField] AnimationClip attackAnimation;
         [SerializeField] float timeBetweenAnimationCycles = .5f;
         [SerializeField] float maxAttackRange = 2f;
-        [SerializeField] float additionalDamage = 10f;
+        [SerializeField] DamageRange damageRange = new DamageRange(-1, -1);
         [SerializeField] float damageDelay = .5f;
+
+        #region Deprecation and Migration
+        [HideInInspector]
+        [SerializeField]
+        float additionalDamage = 10f;
+
+        void OnValidate()
+        {
+            if (damageRange.min == -1 && damageRange.max == -1)
+            {
+                damageRange = DamageRange.FromPercentage(additionalDamage, 0.1f);
+            }
+        }
+        #endregion
 
         public float GetTimeBetweenAnimationCycles()
         {
@@ -44,7 +59,7 @@ namespace RPG.Characters
 
         public float GetAdditionalDamage()
         {
-            return additionalDamage;
+            return damageRange.min;
         }
 
         // So that asset packs cannot cause crashes
