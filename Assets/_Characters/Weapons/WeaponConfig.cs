@@ -57,9 +57,15 @@ namespace RPG.Characters
             return attackAnimation;
         }
 
+        [System.Obsolete("Use the range function instead.")]
         public float GetAdditionalDamage()
         {
-            return damageRange.min;
+            return damageRange.RandomlyChooseDamage();
+        }
+
+        public DamageRange GetDamageRange()
+        {
+            return damageRange;
         }
 
         // So that asset packs cannot cause crashes

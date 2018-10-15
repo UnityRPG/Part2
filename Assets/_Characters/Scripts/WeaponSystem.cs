@@ -149,7 +149,12 @@ namespace RPG.Characters
 
         float CalculateDamage()
         {
-            return baseDamage + currentWeaponConfig.GetAdditionalDamage();
+            var stats = GetComponent<Stats>();
+            if (stats == null)
+            {
+                return baseDamage + currentWeaponConfig.GetAdditionalDamage();
+            }
+            return stats.GetDamage().RandomlyChooseDamage();
         }
     }
 }

@@ -12,9 +12,11 @@ namespace RPG.Characters
         [SerializeField] int intelligencePoints;
         [SerializeField] int constitutionPoints;
 
-        public DamageRange GetDamage(WeaponConfig weaponUsed)
+
+        public DamageRange GetDamage()
         {
-            return DamageRange.FromPercentage(weaponUsed.GetAdditionalDamage(), 0.1f);
+            var baseWeaponDamage = GetComponent<WeaponSystem>().GetCurrentWeapon().GetDamageRange();
+            return baseWeaponDamage + strengthPoints;
         }
 
     }
