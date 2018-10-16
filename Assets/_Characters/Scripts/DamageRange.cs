@@ -32,6 +32,11 @@ namespace RPG.Characters
             return new DamageRange(min, max);
         }
 
+        public static DamageRange operator*(DamageRange a, float b)
+        {
+            return new DamageRange(a.min * b, a.max * b);
+        }
+
         public float RandomlyChooseDamage()
         {
             return UnityEngine.Random.Range(min, max);
