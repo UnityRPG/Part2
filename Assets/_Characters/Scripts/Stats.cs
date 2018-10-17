@@ -42,5 +42,13 @@ namespace RPG.Characters
             return (baseWeaponDamage + inventory.GetAdditiveModifiers(Attribute.Damage)) * (1 + strengthPoints / 100f) * inventory.GetMultiplicativeModifiers(Attribute.Damage);
         }
 
+        public float GetHitsPerSecond()
+        {
+            var baseWeaponHPS = GetComponent<WeaponSystem>().GetCurrentWeapon().GetHitsPerSecond();
+            var inventory = GetComponent<PlayerInventory>();
+
+            return (baseWeaponHPS + inventory.GetAdditiveModifiers(Attribute.HitSpeed)) * (1 + dexterityPoints / 100f) * inventory.GetMultiplicativeModifiers(Attribute.HitSpeed);
+        }
+
     }
 }

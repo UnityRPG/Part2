@@ -13,6 +13,7 @@ namespace RPG.Characters
         GameObject weaponObject;
         Animator animator;
         Character character;
+        Stats stats;
         float lastHitTime;
 
         const string ATTACK_TRIGGER = "Attack";
@@ -22,6 +23,7 @@ namespace RPG.Characters
         {
             animator = GetComponent<Animator>();
             character = GetComponent<Character>();
+            stats = GetComponent<Stats>();
 
             PutWeaponInHand(currentWeaponConfig);
             SetAttackAnimation();
@@ -91,6 +93,10 @@ namespace RPG.Characters
                 var animationClip = currentWeaponConfig.GetAttackAnimClip();
                 float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
                 float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
+                if (stats)
+                {
+                    timeToWait = 1 / stats.GetHitsPerSecond();
+                }
 
                 bool isTimeToHitAgain = Time.time - lastHitTime > timeToWait;
 
@@ -149,7 +155,6 @@ namespace RPG.Characters
 
         float CalculateDamage()
         {
-            var stats = GetComponent<Stats>();
             if (stats == null)
             {
                 return baseDamage + currentWeaponConfig.GetAdditionalDamage();

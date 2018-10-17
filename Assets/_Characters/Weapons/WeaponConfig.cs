@@ -16,6 +16,7 @@ namespace RPG.Characters
         [SerializeField] float maxAttackRange = 2f;
         [SerializeField] DamageRange damageRange = new DamageRange(-1, -1);
         [SerializeField] float damageDelay = .5f;
+        [SerializeField] float hitsPerSecond = 0.1f;
 
         #region Deprecation and Migration
         [HideInInspector]
@@ -66,6 +67,11 @@ namespace RPG.Characters
         public DamageRange GetDamageRange()
         {
             return damageRange;
+        }
+
+        public float GetHitsPerSecond()
+        {
+            return hitsPerSecond;
         }
 
         // So that asset packs cannot cause crashes
