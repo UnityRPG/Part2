@@ -8,6 +8,8 @@ namespace RPG.Characters
     {
         IStatsModifierProvider[] modifierProviders;
         WeaponSystem weaponSystem;
+        [SerializeField] float baseCriticalHit = 20;
+        [SerializeField] float baseCriticalHitChance = 5;
 
         public DamageRange totalDamage
         {
@@ -37,7 +39,7 @@ namespace RPG.Characters
         {
             get
             {
-                return 0;
+                return baseCriticalHit + SumModifiersForAttribute(StatsModifier.Attribute.CriticalHitBonus);
             }
         }
 
@@ -45,7 +47,7 @@ namespace RPG.Characters
         {
             get
             {
-                return 0;
+                return baseCriticalHitChance + SumModifiersForAttribute(StatsModifier.Attribute.CriticalHitChance);
             }
         }
 

@@ -95,10 +95,6 @@ namespace RPG.Characters
                 float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
                 if (attributes)
                 {
-                    print(attributes.hitSpeed);
-                    print(attributes.hitSpeedBonus);
-                    print(attributes.totalHitSpeed);
-
                     timeToWait = 1 / attributes.totalHitSpeed;
                 }
 
@@ -163,7 +159,10 @@ namespace RPG.Characters
             {
                 return baseDamage + currentWeaponConfig.GetAdditionalDamage();
             }
-            return attributes.totalDamage.RandomlyChooseDamage();
+
+            float bonus = Random.value < attributes.criticalHitChance / 100 ? attributes.criticalHitBonus : 0;
+
+            return attributes.totalDamage.RandomlyChooseDamage() * (1 + bonus / 100);
         }
     }
 }
