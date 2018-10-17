@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class Stats : MonoBehaviour
+    public class Stats : MonoBehaviour, IStatsModifierProvider
     {
         public enum Attribute
         {
@@ -23,9 +23,6 @@ namespace RPG.Characters
         [System.Serializable]
         public struct Modifier
         {
-            public Attribute attribute;
-            public ModifierType modifierType;
-            public float value;
         }
 
         [SerializeField] int strengthPoints;
@@ -34,21 +31,9 @@ namespace RPG.Characters
         [SerializeField] int intelligencePoints;
         [SerializeField] int constitutionPoints;
 
-
-        public DamageRange GetDamage()
+        public IEnumerable<StatsModifier> GetModifiersForAttribute(StatsModifier.Attribute attribute)
         {
-            var baseWeaponDamage = GetComponent<WeaponSystem>().GetCurrentWeapon().GetDamageRange();
-            var inventory = GetComponent<PlayerInventory>();
-            return (baseWeaponDamage + inventory.GetAdditiveModifiers(Attribute.Damage)) * (1 + strengthPoints / 100f) * inventory.GetMultiplicativeModifiers(Attribute.Damage);
+            return new StatsModifier[0];
         }
-
-        public float GetHitsPerSecond()
-        {
-            var baseWeaponHPS = GetComponent<WeaponSystem>().GetCurrentWeapon().GetHitsPerSecond();
-            var inventory = GetComponent<PlayerInventory>();
-
-            return (baseWeaponHPS + inventory.GetAdditiveModifiers(Attribute.HitSpeed)) * (1 + dexterityPoints / 100f) * inventory.GetMultiplicativeModifiers(Attribute.HitSpeed);
-        }
-
     }
 }

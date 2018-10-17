@@ -11,7 +11,8 @@ namespace RPG.Characters
 
         public void Activate(float amount, Vector3 position)
         {
-            transform.position = Camera.current.WorldToScreenPoint(position);
+            transform.position = 
+                Camera.main.WorldToScreenPoint(position);
             textMesh.text = amount.ToString();
         }
     }

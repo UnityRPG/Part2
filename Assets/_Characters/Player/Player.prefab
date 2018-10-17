@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: 114391526407616666}
   - component: {fileID: 114897035312934696}
   - component: {fileID: 114907076556123406}
+  - component: {fileID: 2616234064627199943}
+  - component: {fileID: 3893303204675710148}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -300,6 +302,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDeliveryItem: 0
+--- !u!114 &2616234064627199943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa2e8e3784284341956e5184910407b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3893303204675710148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8d5faec6fa62448bc45f588046986b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthPoints: 0
+  dexterityPoints: 0
+  charismaPoints: 0
+  intelligencePoints: 0
+  constitutionPoints: 0
 --- !u!1 &1097972760338172
 GameObject:
   m_ObjectHideFlags: 0
