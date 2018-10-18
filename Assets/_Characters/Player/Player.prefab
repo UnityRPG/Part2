@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDeliveryItem: 0
+  _modifiers: []
 --- !u!114 &2616234064627199943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa2e8e3784284341956e5184910407b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseCriticalHit: 20
+  baseCriticalHitChance: 5
 --- !u!114 &3893303204675710148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,11 +329,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8d5faec6fa62448bc45f588046986b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strengthPoints: 0
-  dexterityPoints: 0
+  strengthPoints: 50
+  dexterityPoints: 50
   charismaPoints: 0
   intelligencePoints: 0
   constitutionPoints: 0
+  damageBonusPerStrengthPoint: 0.4
+  criticalHitBonusPerStrengthPoint: 1
+  criticalHitChancePerDexterityPoint: 0.3
+  armourBonusPerConstitutionPoints: 0.8
 --- !u!1 &1097972760338172
 GameObject:
   m_ObjectHideFlags: 0

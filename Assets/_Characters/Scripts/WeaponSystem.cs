@@ -95,7 +95,7 @@ namespace RPG.Characters
                 float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
                 if (attributes)
                 {
-                    timeToWait = 1 / attributes.totalHitSpeed;
+                    timeToWait = 1 / attributes.hitSpeed;
                 }
 
                 bool isTimeToHitAgain = Time.time - lastHitTime > timeToWait;
@@ -160,7 +160,8 @@ namespace RPG.Characters
                 return baseDamage + currentWeaponConfig.GetAdditionalDamage();
             }
 
-            float bonus = Random.value < attributes.criticalHitChance / 100 ? attributes.criticalHitBonus : 0;
+            bool shouldBeCritical = Random.value < attributes.criticalHitChance / 100;
+            float bonus = shouldBeCritical ? attributes.criticalHitBonus : 0;
 
             return attributes.totalDamage.RandomlyChooseDamage() * (1 + bonus / 100);
         }

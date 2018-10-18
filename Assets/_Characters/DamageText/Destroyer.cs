@@ -8,7 +8,7 @@ namespace RPG.Characters
     {
         [SerializeField] GameObject objectToDestroy;
 
-        public void Destroy()
+        public void DestroyText()
         {
             Destroy(objectToDestroy);
         }

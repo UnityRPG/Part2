@@ -59,27 +59,11 @@ namespace RPG.Characters
             }
         }
 
-        public float hitSpeedBonus
-        {
-            get
-            {
-                return SumModifiersForAttribute(StatsModifier.Attribute.HitSpeedBonus);
-            }
-        }
-
-        public float totalHitSpeed
-        {
-            get
-            {
-                return hitSpeed * (1 + hitSpeedBonus / 100f);
-            }
-        }
-
         public float armour
         {
             get
             {
-                return 0;
+                return SumModifiersForAttribute(StatsModifier.Attribute.Armour);
             }
         }
 
@@ -87,7 +71,7 @@ namespace RPG.Characters
         {
             get
             {
-                return 0;
+                return SumModifiersForAttribute(StatsModifier.Attribute.Armour);
             }
         }
 
@@ -95,7 +79,7 @@ namespace RPG.Characters
         {
             get
             {
-                return 0;
+                return armour * (1 + armourBonus / 100);
             }
         }
 
