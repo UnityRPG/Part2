@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RPG.Characters
 {
@@ -9,7 +10,8 @@ namespace RPG.Characters
         int coin;
         List<GameObject> inventory = new List<GameObject>();
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
-        [SerializeField] StatsModifier[] modifiers; 
+        [FormerlySerializedAs("modifiers")]
+        [SerializeField] StatsModifier[] _modifiers; 
 
         public void AddCoin(int amount)
         {
@@ -31,9 +33,12 @@ namespace RPG.Characters
             return hasDeliveryItem;
         }
 
-        public IEnumerable<StatsModifier> GetModifiersForAttribute(StatsModifier.Attribute attribute)
+        public IEnumerable<StatsModifier> modifiers
         {
-            return modifiers;
+            get
+            {
+                return _modifiers;
+            }
         }
     }
 }

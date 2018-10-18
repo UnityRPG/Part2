@@ -4,6 +4,9 @@ namespace RPG.Characters
 {
     interface IStatsModifierProvider
     {
-        IEnumerable<StatsModifier> GetModifiersForAttribute(StatsModifier.Attribute attribute);
+        IEnumerable<StatsModifier> modifiers
+        {
+            get;
+        }
     }
 }

@@ -31,9 +31,12 @@ namespace RPG.Characters
         [SerializeField] int intelligencePoints;
         [SerializeField] int constitutionPoints;
 
-        public IEnumerable<StatsModifier> GetModifiersForAttribute(StatsModifier.Attribute attribute)
+        public IEnumerable<StatsModifier> modifiers
         {
-            return new StatsModifier[0];
+            get
+            {
+                return new StatsModifier[0];
+            }
         }
     }
 }

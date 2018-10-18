@@ -124,8 +124,7 @@ namespace RPG.Characters
         {
             foreach (var modifierProvider in modifierProviders)
             {
-                var modifiers = modifierProvider.GetModifiersForAttribute(attribute);
-                foreach (var modifier in modifiers)
+                foreach (var modifier in modifierProvider.modifiers)
                 {
                     if (modifier.attribute != attribute) continue;
                     yield return modifier;
