@@ -32,6 +32,7 @@ namespace RPG.Characters
         Animator animator;
         AudioSource audioSource;
         Character characterMovement;
+        Attributes attributes;
         DamageTextSpawner damageTextSpawner;
 		
         float currentHealthPoints;
@@ -53,6 +54,7 @@ namespace RPG.Characters
             audioSource = GetComponent<AudioSource>();
             characterMovement = GetComponent<Character>();
             damageTextSpawner = FindObjectOfType<DamageTextSpawner>();
+            attributes = GetComponent<Attributes>();
 
             if (!healthPointsSetByRestore)
             {
@@ -76,8 +78,13 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-            damageTextSpawner.Create(damage, transform.position);
+            float damageAfterArmour = damage;
+            if (attributes)
+            {
+                damageAfterArmour = Mathf.Clamp(damage - attributes.totalDefence, 0, Mathf.Infinity);
+            }
+            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damageAfterArmour, 0f, maxHealthPoints);
+            damageTextSpawner.Create(damageAfterArmour, transform.position);
             var clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
             audioSource.PlayOneShot(clip);
         }
