@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 114907076556123406}
   - component: {fileID: 2616234064627199943}
   - component: {fileID: 3893303204675710148}
+  - component: {fileID: 2568521727474457999}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -338,6 +339,20 @@ MonoBehaviour:
   criticalHitBonusPerStrengthPoint: 1
   criticalHitChancePerDexterityPoint: 0.3
   armourBonusPerConstitutionPoints: 0.8
+--- !u!114 &2568521727474457999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fc28a888c18ce4a82d521912c49df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItemList: {fileID: 11400000, guid: dcebb19540fd79041ad7ccac3cfd9260, type: 2}
+  inventorySize: 10
 --- !u!1 &1097972760338172
 GameObject:
   m_ObjectHideFlags: 0

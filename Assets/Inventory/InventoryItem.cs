@@ -15,15 +15,17 @@ namespace RPG.Inventory
             Mythical
         }
 
-        [SerializeField] string itemID = System.Guid.NewGuid().ToString();
-        [SerializeField] StatsModifier[] modifiers;
-        [SerializeField] float baseCost;
-        [SerializeField] Rarity rarity;
-        [SerializeField] int level;
-        [SerializeField] string displayName;
+        [SerializeField] string _itemID = System.Guid.NewGuid().ToString();
+        [SerializeField] StatsModifier[] _modifiers;
+        [SerializeField] float _baseCost;
+        [SerializeField] Rarity _rarity;
+        [SerializeField] int _level;
+        [SerializeField] string _displayName;
         [TextArea]
-        [SerializeField] string description;
-        [SerializeField] Texture2D icon;
+        [SerializeField] string _description;
+        [SerializeField] Texture2D _icon;
+
+        public string itemID { get; }
 
     }
 }
