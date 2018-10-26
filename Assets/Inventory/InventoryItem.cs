@@ -3,7 +3,7 @@ using RPG.Characters;
 
 namespace RPG.Inventory
 {
-    public class InventoryItem : ScriptableObject
+    public abstract class InventoryItem : ScriptableObject
     {
         public enum Rarity
         {
@@ -15,10 +15,13 @@ namespace RPG.Inventory
             Mythical
         }
 
+        [SerializeField] string itemID = System.Guid.NewGuid().ToString();
         [SerializeField] StatsModifier[] modifiers;
         [SerializeField] float baseCost;
         [SerializeField] Rarity rarity;
         [SerializeField] int level;
+        [SerializeField] string displayName;
+        [TextArea]
         [SerializeField] string description;
         [SerializeField] Texture2D icon;
 

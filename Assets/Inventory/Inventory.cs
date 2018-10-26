@@ -1,21 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Core.Saving;
 
 namespace RPG.Inventory
 {
-    public class Inventory : MonoBehaviour
+    public class Inventory : MonoBehaviour, ISaveable
     {
-        // Start is called before the first frame update
-        void Start()
+        public struct InventorySlot
         {
-            
+            public InventoryItem item;
         }
 
-        // Update is called once per frame
-        void Update()
+
+        public void CaptureState(IDictionary<string, object> state)
         {
-            
+            throw new System.NotImplementedException();
         }
+
+        public void RestoreState(IReadOnlyDictionary<string, object> state)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
     }
 }
