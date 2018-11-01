@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.InventorySystem;
 
 namespace RPG.Characters
 {
     public class CoinDisplay : MonoBehaviour
     {
 
-        PlayerInventory playerInventory;
+        Inventory playerInventory;
         Text coinText;
 
         // Use this for initialization
         void Start()
         {
-            playerInventory = FindObjectOfType<PlayerInventory>(); // assuming only player
+            playerInventory = FindObjectOfType<Inventory>(); // assuming only player
             coinText = GetComponent<Text>();
         }
 

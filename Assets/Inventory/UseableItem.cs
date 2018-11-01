@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RPG.Inventory
+namespace RPG.InventorySystem
 {
     public abstract class UseableItem : InventoryItem
     {

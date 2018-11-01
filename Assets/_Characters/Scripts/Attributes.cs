@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.InventorySystem;
 
 namespace RPG.Characters
 {
@@ -90,7 +91,7 @@ namespace RPG.Characters
             modifierProviders = new IStatsModifierProvider[]
             {
                 GetComponent<Stats>(),
-                GetComponent<PlayerInventory>()
+                GetComponent<Inventory>()
             };
         }
 

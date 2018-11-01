@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace RPG.Characters
 {
-    interface IStatsModifierProvider
+    public interface IStatsModifierProvider
     {
         IEnumerable<StatsModifier> modifiers
         {

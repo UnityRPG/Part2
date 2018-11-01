@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
+using RPG.InventorySystem;
 
 namespace RPG.Questing
 {
@@ -43,7 +44,7 @@ namespace RPG.Questing
         private void EarnReward()
         {
             var player = GameObject.FindWithTag("Player");
-            player.GetComponent<PlayerInventory>().AddCoin(questToComplete.RewardCoin);
+            player.GetComponent<Inventory>().AddCoin(questToComplete.RewardCoin);
         }
     }
 }

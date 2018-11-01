@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
+using RPG.InventorySystem;
 
 namespace RPG.Questing
 {
@@ -24,7 +25,7 @@ namespace RPG.Questing
 
         private bool PlayerHasRequiredObject(PlayerControl player)
         {
-            bool playerIsCarryingSpecialItem = player.GetComponent<PlayerInventory>().IsPlayerCarrying();
+            bool playerIsCarryingSpecialItem = player.GetComponent<Inventory>().IsPlayerCarrying();
             return playerIsCarryingSpecialItem;
         }
     }

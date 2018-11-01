@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using RPG.Core.Saving;
+using RPG.Characters;
 
-namespace RPG.Inventory
+namespace RPG.InventorySystem
 {
-    public class Inventory : MonoBehaviour, ISaveable
+    public class Inventory : MonoBehaviour, ISaveable, IStatsModifierProvider
     {
+
+        int coin;
+        [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
+        [FormerlySerializedAs("modifiers")]
+        [SerializeField] StatsModifier[] _modifiers; 
         [SerializeField] InventoryItemList inventoryItemList;
         [SerializeField] int inventorySize;
 
@@ -40,6 +47,28 @@ namespace RPG.Inventory
             }
         }
 
+        public void AddCoin(int amount)
+        {
+            coin += amount;
+        }
+
+        public int GetCoinAmount()
+        {
+            return coin;
+        }
+
+        public bool IsPlayerCarrying()  // TODO pass paramater
+        {
+            return hasDeliveryItem;
+        }
+
+        public IEnumerable<StatsModifier> modifiers
+        {
+            get
+            {
+                return _modifiers;
+            }
+        }
 
     }
 }

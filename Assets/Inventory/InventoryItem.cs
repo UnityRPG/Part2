@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using RPG.Characters;
 
-namespace RPG.Inventory
+namespace RPG.InventorySystem
 {
     public abstract class InventoryItem : ScriptableObject
     {
