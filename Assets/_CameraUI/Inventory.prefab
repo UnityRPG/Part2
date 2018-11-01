@@ -988,7 +988,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4760899112133599428}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.8082622
+  m_Size: 0.5
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1978,6 +1978,7 @@ GameObject:
   - component: {fileID: 4761224670759172484}
   - component: {fileID: 4655450183769744452}
   - component: {fileID: 4654683775702427440}
+  - component: {fileID: 8672395156036274949}
   m_Layer: 5
   m_Name: Inventory Items
   m_TagString: Untagged
@@ -2024,7 +2025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -267.104}
+  m_AnchoredPosition: {x: -0.00012207031, y: -218.82907}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4655450183769744452
@@ -2065,6 +2066,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!114 &8672395156036274949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687035224116961016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3828f8622ad6c146b054e041b45ae07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryItemPrefab: {fileID: 9198672312928698095, guid: c594275c434a4ca4da0314f42b0d1e3f,
+    type: 3}
 --- !u!1 &4687043384678622496
 GameObject:
   m_ObjectHideFlags: 0

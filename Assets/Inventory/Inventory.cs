@@ -11,11 +11,22 @@ namespace RPG.InventorySystem
     {
 
         int coin;
+        InventoryItem[] _contents;
+
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
         [FormerlySerializedAs("modifiers")]
         [SerializeField] StatsModifier[] _modifiers; 
         [SerializeField] InventoryItemList inventoryItemList;
         [SerializeField] int inventorySize;
+
+        private void Start() {
+            _contents = new InventoryItem[]{inventoryItemList.GetFromID("1b90eb28-2371-4cd6-b631-4a3232215d08"), inventoryItemList.GetFromID("1b90eb28-2371-4cd6-b631-4a3232215d08")};
+        }
+
+        public InventoryItem[] contents
+        {
+            get { return _contents; }
+        }
 
         public struct InventorySlot
         {

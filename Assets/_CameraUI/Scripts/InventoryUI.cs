@@ -9,17 +9,32 @@ namespace RPG.CameraUI
     {
         Inventory playerInventory;
 
+        [SerializeField] InventoryItemSlotUI InventoryItemPrefab;
+
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
             var player = GameObject.FindWithTag("Player");
             playerInventory = player.GetComponent<Inventory>();
+            while (isActiveAndEnabled)
+            {
+                yield return new WaitForSeconds(2);
+                Redraw();
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Redraw()
         {
-            
+            Debug.Log("Drawing.");
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (var item in playerInventory.contents)
+            {
+                var itemUI = Instantiate(InventoryItemPrefab, transform);
+            }
         }
     }
 }
