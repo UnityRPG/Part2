@@ -25,16 +25,17 @@ namespace RPG.CameraUI
 
         private void Redraw()
         {
-            Debug.Log("Drawing.");
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
             }
 
-            foreach (var slot in playerInventory.slots)
+            for (int i = 0; i < playerInventory.slots.Length; i++)
             {
                 var itemUI = Instantiate(InventoryItemPrefab, transform);
-                itemUI.SetItem(slot.item);
+                itemUI.inventory = playerInventory;
+                itemUI.index = i;
+                itemUI.SetItem(playerInventory.slots[i].item);
             }
         }
     }

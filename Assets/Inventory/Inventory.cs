@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,15 +18,8 @@ namespace RPG.InventorySystem
         [SerializeField] StatsModifier[] _modifiers; 
         [SerializeField] InventoryItemList inventoryItemList;
         [SerializeField] int inventorySize;
-
-        public InventorySlot[] slots
-        {
-            get { 
-                print(inventorySlots[0].item);
-                return inventorySlots;
-            }
-        }
-
+        
+        
         public struct InventorySlot
         {
             public InventoryItem item;
@@ -36,7 +29,29 @@ namespace RPG.InventorySystem
             inventorySlots = new InventorySlot[inventorySize];
             inventorySlots[0].item = inventoryItemList.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5");
             inventorySlots[3].item = inventoryItemList.GetFromID("bedb2849-78fb-4167-af74-96612a5b5229");
-            print(inventoryItemList.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5"));
+        }
+
+        public event Action inventoryUpdated = delegate {};
+
+        public InventorySlot[] slots
+        {
+            get { 
+                return inventorySlots;
+            }
+        }
+
+        public void AddItemToSlot(InventoryItem item, int slot)
+        {
+            inventorySlots[slot].item = item;
+            inventoryUpdated();
+        }
+
+        public InventoryItem PopItemFromSlot(int slot)
+        {
+            var item = inventorySlots[slot].item;
+            inventorySlots[slot].item = null;
+            inventoryUpdated();
+            return item;
         }
 
         public void CaptureState(IDictionary<string, object> state)
@@ -44,18 +59,22 @@ namespace RPG.InventorySystem
             var slotStrings = new string[inventorySize];
             for (int i = 0; i < inventorySize; i++)
             {
-                slotStrings[i] = inventorySlots[i].item.itemID;
+                if (inventorySlots[i].item != null)
+                {
+                    slotStrings[i] = inventorySlots[i].item.itemID;
+                }
             }
             state["inventorySlots"] = slotStrings;
         }
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
-            // var slotStrings = (string[]) state["inventorySlots"];
-            // for (int i = 0; i < inventorySize; i++)
-            // {
-            //     inventorySlots[i].item = inventoryItemList.GetFromID(slotStrings[i]);
-            // }
+            var slotStrings = (string[]) state["inventorySlots"];
+            for (int i = 0; i < inventorySize; i++)
+            {
+                inventorySlots[i].item = inventoryItemList.GetFromID(slotStrings[i]);
+            }
+            inventoryUpdated();
         }
 
         public void AddCoin(int amount)

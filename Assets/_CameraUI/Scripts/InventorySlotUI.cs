@@ -1,21 +1,40 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using RPG.InventorySystem;
 
-public class InventorySlotUI : MonoBehaviour
+namespace RPG.CameraUI
 {
-    [SerializeField] Image iconImage;
-
-    public void SetItem(InventoryItem item)
+    public class InventorySlotUI : MonoBehaviour, IDropHandler
     {
-        if (item == null)
+        [SerializeField] Image _iconImage;
+
+        public int index { get; set; }
+
+        Inventory _inventory;
+
+        public Inventory inventory { set { _inventory = value; } }
+
+        public void SetItem(InventoryItem item)
         {
-            iconImage.enabled = false;
+            if (item == null)
+            {
+                _iconImage.enabled = false;
+            }
+            else 
+            {
+                _iconImage.enabled = true;
+                _iconImage.sprite = item.icon;
+            }
         }
-        else 
+
+        public void OnDrop(PointerEventData eventData)
         {
-            iconImage.enabled = true;
-            iconImage.sprite = item.icon;
+            Debug.Log("Dropping " + eventData.pointerDrag);
+            var item = eventData.pointerDrag.GetComponent<InventoryItemUI>();
+            var sendingSlot = item.parentSlot;
+
+            _inventory.AddItemToSlot(_inventory.PopItemFromSlot(item.parentSlot.index), index);
         }
     }
 }

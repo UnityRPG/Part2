@@ -11,7 +11,6 @@ namespace RPG.InventorySystem
         {
             foreach (var item in allInventoryItems)
             {
-                Debug.Log("Item id: " + item.itemID);
                 if (item.itemID == itemID)
                 {
                     return item;
