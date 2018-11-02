@@ -40,10 +40,12 @@ namespace RPG.InventorySystem
             }
         }
 
-        public void AddItemToSlot(InventoryItem item, int slot)
+        public InventoryItem ReplaceItemInSlot(InventoryItem item, int slot)
         {
+            var oldItem = inventorySlots[slot].item;
             inventorySlots[slot].item = item;
             inventoryUpdated();
+            return oldItem;
         }
 
         public InventoryItem PopItemFromSlot(int slot)

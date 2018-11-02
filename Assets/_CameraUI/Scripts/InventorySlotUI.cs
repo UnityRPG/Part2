@@ -32,9 +32,9 @@ namespace RPG.CameraUI
         {
             Debug.Log("Dropping " + eventData.pointerDrag);
             var item = eventData.pointerDrag.GetComponent<InventoryItemUI>();
-            var sendingSlot = item.parentSlot;
-
-            _inventory.AddItemToSlot(_inventory.PopItemFromSlot(item.parentSlot.index), index);
+            var sendingItem = _inventory.PopItemFromSlot(item.parentSlot.index);
+            var swappedItem = _inventory.ReplaceItemInSlot(sendingItem, index);
+            _inventory.ReplaceItemInSlot(swappedItem, item.parentSlot.index);
         }
     }
 }

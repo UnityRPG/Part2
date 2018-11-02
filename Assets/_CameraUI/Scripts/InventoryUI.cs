@@ -7,20 +7,17 @@ namespace RPG.CameraUI
 {
     public class InventoryUI : MonoBehaviour
     {
-        Inventory playerInventory;
+        Inventory _playerInventory;
 
         [SerializeField] InventorySlotUI InventoryItemPrefab;
 
         // Start is called before the first frame update
-        IEnumerator Start()
+        private void Start()
         {
             var player = GameObject.FindWithTag("Player");
-            playerInventory = player.GetComponent<Inventory>();
-            while (isActiveAndEnabled)
-            {
-                Redraw();
-                yield return new WaitForSeconds(10);
-            }
+            _playerInventory = player.GetComponent<Inventory>();
+            _playerInventory.inventoryUpdated += Redraw;
+            Redraw();
         }
 
         private void Redraw()
@@ -30,12 +27,12 @@ namespace RPG.CameraUI
                 Destroy(child.gameObject);
             }
 
-            for (int i = 0; i < playerInventory.slots.Length; i++)
+            for (int i = 0; i < _playerInventory.slots.Length; i++)
             {
                 var itemUI = Instantiate(InventoryItemPrefab, transform);
-                itemUI.inventory = playerInventory;
+                itemUI.inventory = _playerInventory;
                 itemUI.index = i;
-                itemUI.SetItem(playerInventory.slots[i].item);
+                itemUI.SetItem(_playerInventory.slots[i].item);
             }
         }
     }
