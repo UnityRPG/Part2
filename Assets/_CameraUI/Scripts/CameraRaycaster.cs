@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using RPG.Characters; // So we can detect by type
 using RPG.Dialogue;
+using RPG.InventorySystem;
 
 namespace RPG.CameraUI
 {
@@ -11,6 +12,7 @@ namespace RPG.CameraUI
     {
 		[SerializeField] Texture2D walkCursor = null;
         [SerializeField] Texture2D enemyCursor = null;
+        [SerializeField] Texture2D pickupCursor = null;
         [SerializeField] Texture2D talkCursor = null;
 		[SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
@@ -51,6 +53,7 @@ namespace RPG.CameraUI
                 // Specify layer priorities below, order matters
                 if (InteractWithVoice(ray)) { return; }
                 if (InteractWithEnemyAI(ray)) { return; } 
+                if (InteractWithPickup(ray)) { return; } 
                 if (NavigateToWalkable(ray)) { return; }
             }
 		}
@@ -58,9 +61,7 @@ namespace RPG.CameraUI
         private bool InteractWithVoice(Ray ray)
         {
             // Consider making generic RaycastFor<Type>() method
-            RaycastHit hitInfo;
-            Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
-            var gameObjectHit = hitInfo.collider.gameObject;
+            GameObject gameObjectHit = GetFirstHitGameObject(ray);
             var voiceHit = gameObjectHit.GetComponent<Voice>();
             if (voiceHit)
             {
@@ -71,16 +72,30 @@ namespace RPG.CameraUI
             return false;
         }
 
-	    private bool InteractWithEnemyAI(Ray ray)
+        private bool InteractWithEnemyAI(Ray ray)
 		{
-            RaycastHit hitInfo;
-            Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
-            var gameObjectHit = hitInfo.collider.gameObject;
+            GameObject gameObjectHit = GetFirstHitGameObject(ray);
             var enemyHit = gameObjectHit.GetComponent<EnemyAI>();
             if (enemyHit)
             {
                 Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);
                 onMouseOverEnemy(enemyHit);
+                return true;
+            }
+            return false;
+		}
+
+        private bool InteractWithPickup(Ray ray)
+        {
+            GameObject gameObjectHit = GetFirstHitGameObject(ray);
+            var pickupHit = gameObjectHit.GetComponent<Pickup>();
+            if (pickupHit)
+            {
+                Cursor.SetCursor(pickupCursor, cursorHotspot, CursorMode.Auto);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    pickupHit.PickupItem();
+                }
                 return true;
             }
             return false;
@@ -98,6 +113,14 @@ namespace RPG.CameraUI
                 return true;
             }
             return false;
+        }
+                
+        private GameObject GetFirstHitGameObject(Ray ray)
+        {
+            RaycastHit hitInfo;
+            Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
+            var gameObjectHit = hitInfo.collider.gameObject;
+            return gameObjectHit;
         }
     }
 }

@@ -40,6 +40,20 @@ namespace RPG.InventorySystem
             }
         }
 
+        public bool AddToFirstEmptySlot(InventoryItem item)
+        {
+            for (int i = 0; i < inventorySlots.Length; i++)
+            {
+                if (inventorySlots[i].item == null)
+                {
+                    inventorySlots[i].item = item;
+                    inventoryUpdated();
+                    return true;
+                }               
+            }
+            return false;
+        }
+
         public InventoryItem ReplaceItemInSlot(InventoryItem item, int slot)
         {
             var oldItem = inventorySlots[slot].item;
