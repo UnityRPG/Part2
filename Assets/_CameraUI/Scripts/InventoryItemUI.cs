@@ -41,6 +41,13 @@ namespace RPG.CameraUI
             transform.position = _startPosition;
             transform.parent = _originalParent;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
+            
+            // Not over UI we should drop.
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                _parentSlot.DiscardItem();
+            }
+
         }
 
     }

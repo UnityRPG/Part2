@@ -30,11 +30,15 @@ namespace RPG.CameraUI
 
         public void OnDrop(PointerEventData eventData)
         {
-            Debug.Log("Dropping " + eventData.pointerDrag);
             var item = eventData.pointerDrag.GetComponent<InventoryItemUI>();
             var sendingItem = _inventory.PopItemFromSlot(item.parentSlot.index);
             var swappedItem = _inventory.ReplaceItemInSlot(sendingItem, index);
             _inventory.ReplaceItemInSlot(swappedItem, item.parentSlot.index);
+        }
+
+        public void DiscardItem()
+        {
+            _inventory.PopItemFromSlot(index);
         }
     }
 }
