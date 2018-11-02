@@ -18,8 +18,8 @@ namespace RPG.CameraUI
             playerInventory = player.GetComponent<Inventory>();
             while (isActiveAndEnabled)
             {
-                yield return new WaitForSeconds(2);
                 Redraw();
+                yield return new WaitForSeconds(10);
             }
         }
 
