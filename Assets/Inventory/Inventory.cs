@@ -54,6 +54,16 @@ namespace RPG.InventorySystem
             return false;
         }
 
+        public bool DropItem(int slot)
+        {
+            var item = PopItemFromSlot(slot);
+            if (item == null) return false;
+
+            item.SpawnPickup(transform.position);
+
+            return true;
+        }
+
         public InventoryItem ReplaceItemInSlot(InventoryItem item, int slot)
         {
             var oldItem = inventorySlots[slot].item;

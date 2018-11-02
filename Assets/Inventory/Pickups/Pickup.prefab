@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f208ba0dbe65d478b628ca24b59c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  _item: {fileID: 0}
 --- !u!135 &6997811445119991105
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28ede36dccb55964482c9195b4eb2a91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.284
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28ede36dccb55964482c9195b4eb2a91, type: 3}
       propertyPath: m_LocalPosition.z

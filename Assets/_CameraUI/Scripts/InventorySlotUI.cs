@@ -38,7 +38,7 @@ namespace RPG.CameraUI
 
         public void DiscardItem()
         {
-            _inventory.PopItemFromSlot(index);
+            _inventory.DropItem(index);
         }
     }
 }
