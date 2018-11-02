@@ -3365,6 +3365,7 @@ GameObject:
   - component: {fileID: 223862058288242234}
   - component: {fileID: 114908635035062308}
   - component: {fileID: 114852176729683902}
+  - component: {fileID: 4214965815229376162}
   m_Layer: 5
   m_Name: Stats Canvas
   m_TagString: Untagged
@@ -3452,6 +3453,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4214965815229376162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618136693512946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527c67af14b0bb547ad2d632e0479ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiContainer: {fileID: 1348038619519922}
 --- !u!1 &1626691338163540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5571,7 +5585,7 @@ PrefabInstance:
     - target: {fileID: 4761224670759172484, guid: 9f83b4029f4b8bf48933ffe33ed0dd3e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -514.4499
+      value: -514.4498
       objectReference: {fileID: 0}
     - target: {fileID: 4760697281274336610, guid: 9f83b4029f4b8bf48933ffe33ed0dd3e,
         type: 3}
@@ -6281,7 +6295,7 @@ PrefabInstance:
     - target: {fileID: 4655522953391929268, guid: 9f83b4029f4b8bf48933ffe33ed0dd3e,
         type: 3}
       propertyPath: m_Size
-      value: 0.8989221
+      value: 0.89891756
       objectReference: {fileID: 0}
     - target: {fileID: 4760689008345574182, guid: 9f83b4029f4b8bf48933ffe33ed0dd3e,
         type: 3}
