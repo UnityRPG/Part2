@@ -3,19 +3,33 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e75182c88b14ee7bf56210b44f90a3, type: 3}
   m_Name: Hammer_L0
   m_EditorClassIdentifier: 
+  _itemID: ba374279-da85-4530-8052-4c10a8ce03b5
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 21300000, guid: 9415af11d73bb804c8d24343e1351132, type: 3}
+  _allowedEquipLocation: 0
   gripTransform: {fileID: 4219815134937942, guid: 5ee654896d74cf148a65d7a5d2009c20,
-    type: 2}
-  weaponPrefab: {fileID: 187076, guid: 5f0d6fe004d65ce4b80315c55184e912, type: 2}
+    type: 3}
+  weaponPrefab: {fileID: 187076, guid: 5f0d6fe004d65ce4b80315c55184e912, type: 3}
   attackAnimation: {fileID: 7400000, guid: f94c62a8b96f5a7469ce0da8ccac09b3, type: 3}
-  timeBetweenHitAnimations: 1
+  timeBetweenAnimationCycles: 0.5
   maxAttackRange: 3
-  additionalDamage: 0
+  damageRange:
+    min: 0
+    max: 0
   damageDelay: 0.7
+  hitsPerSecond: 0.1
+  additionalDamage: 0

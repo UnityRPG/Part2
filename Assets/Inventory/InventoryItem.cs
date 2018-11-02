@@ -23,9 +23,10 @@ namespace RPG.InventorySystem
         [SerializeField] string _displayName;
         [TextArea]
         [SerializeField] string _description;
-        [SerializeField] Texture2D _icon;
+        [SerializeField] Sprite _icon;
 
-        public string itemID { get; }
+        public string itemID { get { return _itemID; } }
+        public Sprite icon { get { return _icon; } } 
 
     }
 }

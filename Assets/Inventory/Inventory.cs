@@ -11,7 +11,7 @@ namespace RPG.InventorySystem
     {
 
         int coin;
-        InventoryItem[] _contents;
+        private InventorySlot[] inventorySlots;
 
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
         [FormerlySerializedAs("modifiers")]
@@ -19,24 +19,24 @@ namespace RPG.InventorySystem
         [SerializeField] InventoryItemList inventoryItemList;
         [SerializeField] int inventorySize;
 
-        private void Start() {
-            _contents = new InventoryItem[]{inventoryItemList.GetFromID("1b90eb28-2371-4cd6-b631-4a3232215d08"), inventoryItemList.GetFromID("1b90eb28-2371-4cd6-b631-4a3232215d08")};
-        }
-
-        public InventoryItem[] contents
+        public InventorySlot[] slots
         {
-            get { return _contents; }
+            get { 
+                print(inventorySlots[0].item);
+                return inventorySlots;
+            }
         }
 
         public struct InventorySlot
         {
             public InventoryItem item;
         }
-        
-        private InventorySlot[] inventorySlots;
 
         private void Awake() {
             inventorySlots = new InventorySlot[inventorySize];
+            inventorySlots[0].item = inventoryItemList.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5");
+            inventorySlots[3].item = inventoryItemList.GetFromID("bedb2849-78fb-4167-af74-96612a5b5229");
+            print(inventoryItemList.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5"));
         }
 
         public void CaptureState(IDictionary<string, object> state)
@@ -51,11 +51,11 @@ namespace RPG.InventorySystem
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
-            var slotStrings = (string[]) state["inventorySlots"];
-            for (int i = 0; i < inventorySize; i++)
-            {
-                inventorySlots[i].item = inventoryItemList.GetFromID(slotStrings[i]);
-            }
+            // var slotStrings = (string[]) state["inventorySlots"];
+            // for (int i = 0; i < inventorySize; i++)
+            // {
+            //     inventorySlots[i].item = inventoryItemList.GetFromID(slotStrings[i]);
+            // }
         }
 
         public void AddCoin(int amount)

@@ -9,7 +9,7 @@ namespace RPG.CameraUI
     {
         Inventory playerInventory;
 
-        [SerializeField] InventoryItemSlotUI InventoryItemPrefab;
+        [SerializeField] InventorySlotUI InventoryItemPrefab;
 
         // Start is called before the first frame update
         IEnumerator Start()
@@ -31,9 +31,10 @@ namespace RPG.CameraUI
                 Destroy(child.gameObject);
             }
 
-            foreach (var item in playerInventory.contents)
+            foreach (var slot in playerInventory.slots)
             {
                 var itemUI = Instantiate(InventoryItemPrefab, transform);
+                itemUI.SetItem(slot.item);
             }
         }
     }
