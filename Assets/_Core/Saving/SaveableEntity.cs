@@ -25,7 +25,7 @@
             get { return UUID; }
         }
 
-        public object CaptureState()
+        public Dictionary<string, object> CaptureState()
         {
             foreach (var component in GetComponents<MonoBehaviour>())
             { 
@@ -41,14 +41,28 @@
             return entityState;
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(Dictionary<string, object> entityState)
         {
-            var entityState = (Dictionary<string, object>) state;
+            if (UUID == "7c9ffbd0-1f51-4d37-adf5-637ba1728daf")
+            {
+                print("restoring");
+            }
             var saveables = GetComponents<ISaveable>();
             foreach (var saveable in saveables)
             {
-                saveable.RestoreState((Dictionary<string, object>)entityState[saveable.GetType().ToString()]);
+                saveable.RestoreState(GetSaveableState(entityState, saveable));
             }
+        }
+
+        private static Dictionary<string, object> GetSaveableState(Dictionary<string, object> entityState, ISaveable saveable)
+        {
+            var saveableName = saveable.GetType().ToString();
+            if (entityState.ContainsKey(saveableName))
+            {
+                return (Dictionary<string, object>)entityState[saveableName];
+            }
+
+            return new Dictionary<string, object>();
         }
     }
 }

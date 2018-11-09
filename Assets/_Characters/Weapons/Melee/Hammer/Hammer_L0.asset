@@ -19,7 +19,8 @@ MonoBehaviour:
   _level: 0
   _displayName: 
   _description: 
-  _icon: {fileID: 21300000, guid: 9415af11d73bb804c8d24343e1351132, type: 3}
+  _icon: {fileID: 21300000, guid: 8a643972f87118047a1d7d1b3186644d, type: 3}
+  _pickup: {fileID: 0}
   _allowedEquipLocation: 0
   gripTransform: {fileID: 4219815134937942, guid: 5ee654896d74cf148a65d7a5d2009c20,
     type: 3}

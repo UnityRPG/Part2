@@ -139,12 +139,19 @@
         {
             foreach (SaveableEntity saveable in saveables)
             {
-                if (levelState.ContainsKey(saveable.UniqueIdentifier))
-                {
-                    var saveableState = levelState[saveable.UniqueIdentifier];
-                    saveable.RestoreState(saveableState);
-                }
+                var saveableState = GetSaveableState(levelState, saveable);
+                saveable.RestoreState(saveableState);
             }
+        }
+
+        private static Dictionary<string, object> GetSaveableState(LevelState levelState, SaveableEntity saveable)
+        {
+            if (levelState.ContainsKey(saveable.UniqueIdentifier))
+            {
+                return (Dictionary<string, object>)levelState[saveable.UniqueIdentifier];
+            }
+
+            return new Dictionary<string, object>();
         }
 
         string GetSavePath(bool isAuto = true)
