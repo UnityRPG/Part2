@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using RPG.Core.Saving;
+using RPG.Core.Saving;
 using RPG.Characters;
 
 namespace RPG.InventorySystem
@@ -12,6 +13,7 @@ namespace RPG.InventorySystem
 
         int coin;
         private InventorySlot[] inventorySlots;
+        private List<Pickup> droppedItems = new List<Pickup>();
 
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
         [FormerlySerializedAs("modifiers")]
@@ -59,9 +61,16 @@ namespace RPG.InventorySystem
             var item = PopItemFromSlot(slot);
             if (item == null) return false;
 
-            item.SpawnPickup(transform.position);
+            var spawnLocation = transform.position;
+            SpawnPickup(item, spawnLocation);
 
             return true;
+        }
+
+        private void SpawnPickup(InventoryItem item, Vector3 spawnLocation)
+        {
+            var pickup = item.SpawnPickup(spawnLocation);
+            droppedItems.Add(pickup);
         }
 
         public InventoryItem ReplaceItemInSlot(InventoryItem item, int slot)
@@ -82,6 +91,12 @@ namespace RPG.InventorySystem
 
         public void CaptureState(IDictionary<string, object> state)
         {
+            CaptureInventoryState(state);
+            CaptureDropState(state);
+        }
+
+        private void CaptureInventoryState(IDictionary<string, object> state)
+        {
             var slotStrings = new string[inventorySize];
             for (int i = 0; i < inventorySize; i++)
             {
@@ -93,14 +108,67 @@ namespace RPG.InventorySystem
             state["inventorySlots"] = slotStrings;
         }
 
+        private void CaptureDropState(IDictionary<string, object> state)
+        {
+            RemoveDestroyedDrops();
+            var droppedItemsList = new Dictionary<string, object>[droppedItems.Count];
+            for (int i = 0; i < droppedItemsList.Length; i++)
+            {
+                droppedItemsList[i] = new Dictionary<string, object>();
+                droppedItemsList[i]["itemID"] = droppedItems[i].item.itemID;
+                droppedItemsList[i]["position"] = (SerializableVector3)droppedItems[i].transform.position;
+            }
+            state["droppedItems"] = droppedItemsList;
+        }
+
+        private void RemoveDestroyedDrops()
+        {
+            var newList = new List<Pickup>();
+            foreach (var item in droppedItems)
+            {
+                if (item != null)
+                {
+                    newList.Add(item);
+                }
+            }
+            droppedItems = newList;
+        }
+
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
-            var slotStrings = (string[]) state["inventorySlots"];
+            RestoreInventory(state);
+            inventoryUpdated();
+
+            DeleteAllDrops();
+            if (state.ContainsKey("droppedItems"))
+            {
+                var droppedItemsList = (Dictionary<string, object>[])state["droppedItems"];
+                foreach (var item in droppedItemsList)
+                {
+                    print("Spawning " + item);
+                    var pickupItem = inventoryItemList.GetFromID((string)item["itemID"]);
+                    Vector3 position = (SerializableVector3)item["position"];
+                    SpawnPickup(pickupItem, position);
+                }
+            }
+        }
+
+        private void DeleteAllDrops()
+        {
+            RemoveDestroyedDrops();
+            foreach (var item in droppedItems)
+            {
+                Destroy(item.gameObject);
+            }
+        }
+
+        private void RestoreInventory(IReadOnlyDictionary<string, object> state)
+        {
+            var slotStrings = (string[])state["inventorySlots"];
             for (int i = 0; i < inventorySize; i++)
             {
                 inventorySlots[i].item = inventoryItemList.GetFromID(slotStrings[i]);
             }
-            inventoryUpdated();
         }
 
         public void AddCoin(int amount)

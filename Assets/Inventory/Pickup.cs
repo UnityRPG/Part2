@@ -53,6 +53,6 @@ namespace RPG.InventorySystem
             Collect(wasCollected);
         }
 
-        public InventoryItem item { set { _item = value; } }
+        public InventoryItem item { get { return _item; } set { _item = value; } }
     }
 }

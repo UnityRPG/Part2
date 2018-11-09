@@ -29,12 +29,13 @@ namespace RPG.InventorySystem
         public string itemID { get { return _itemID; } }
         public Sprite icon { get { return _icon; } } 
 
-        public void SpawnPickup(Vector3 position)
+        public Pickup SpawnPickup(Vector3 position)
         {
             var pickup = Instantiate(_pickup);
             pickup.wasFromInventory = true;
             pickup.transform.position = position;
             pickup.item = this;
+            return pickup;
         }
 
     }
