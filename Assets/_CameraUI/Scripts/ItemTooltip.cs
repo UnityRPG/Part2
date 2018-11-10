@@ -1,12 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 namespace RPG.CameraUI
 {
     public class ItemTooltip : MonoBehaviour
     {
-        public string title { get; set; }
-        public string body { get; set; }
+        [SerializeField] TextMeshProUGUI titleText;
+        [SerializeField] TextMeshProUGUI bodyText;
+
+        public string title
+        {
+            set
+            {
+                titleText.text = value;
+            }
+            get
+            {
+                return titleText.text;
+            }
+        }
+
+        public string body
+        {
+            set
+            {
+                bodyText.text = value;
+            }
+            get
+            {
+                return bodyText.text;
+            }
+        }
     }
 }

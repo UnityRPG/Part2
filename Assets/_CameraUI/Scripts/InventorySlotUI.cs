@@ -21,6 +21,10 @@ namespace RPG.CameraUI
             ClearTooltip();
         }
 
+        private void OnDisable() {
+            ClearTooltip();
+        }
+
         public void SetItem(InventoryItem item)
         {
             if (item == null)
@@ -60,12 +64,14 @@ namespace RPG.CameraUI
             {
                 _tooltip = Instantiate(tooltipPrefab, parentCanvas.transform);
             }
-            bool below = transform.position.y > Screen.height / 2;
-            bool right = transform.position.x < Screen.width / 2;
-            PositionTooltip(below, right);
+
+            _tooltip.title = item.displayName;
+            _tooltip.body = item.description;
+
+            PositionTooltip();
         }
 
-        private void PositionTooltip(bool below, bool right)
+        private void PositionTooltip()
         {
             // Required to ensure corners are updated by positioning elements.
             Canvas.ForceUpdateCanvases();
@@ -74,6 +80,9 @@ namespace RPG.CameraUI
             _tooltip.GetComponent<RectTransform>().GetWorldCorners(tooltipCorners);
             var slotCorners = new Vector3[4];
             GetComponent<RectTransform>().GetWorldCorners(slotCorners);
+
+            bool below = transform.position.y > Screen.height / 2;
+            bool right = transform.position.x < Screen.width / 2;
 
             int slotCorner = GetCornerIndex(below, right);
             int tooltipCorner = GetCornerIndex(!below, !right);

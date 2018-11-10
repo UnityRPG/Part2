@@ -27,7 +27,9 @@ namespace RPG.InventorySystem
         [SerializeField] Pickup _pickup;
 
         public string itemID { get { return _itemID; } }
-        public Sprite icon { get { return _icon; } } 
+        public Sprite icon { get { return _icon; } }
+        public string displayName { get { return _displayName; } }
+        public string description { get { return _description; } }
 
         public Pickup SpawnPickup(Vector3 position)
         {
