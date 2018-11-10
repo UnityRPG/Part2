@@ -43,10 +43,7 @@
 
         public void RestoreState(Dictionary<string, object> entityState)
         {
-            if (UUID == "7c9ffbd0-1f51-4d37-adf5-637ba1728daf")
-            {
-                print("restoring");
-            }
+
             var saveables = GetComponents<ISaveable>();
             foreach (var saveable in saveables)
             {

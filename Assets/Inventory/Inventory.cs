@@ -81,6 +81,11 @@ namespace RPG.InventorySystem
             return oldItem;
         }
 
+        public InventoryItem GetItemInSlot(int slot)
+        {
+            return inventorySlots[slot].item;
+        }
+
         public InventoryItem PopItemFromSlot(int slot)
         {
             var item = inventorySlots[slot].item;
@@ -145,7 +150,6 @@ namespace RPG.InventorySystem
                 var droppedItemsList = (Dictionary<string, object>[])state["droppedItems"];
                 foreach (var item in droppedItemsList)
                 {
-                    print("Spawning " + item);
                     var pickupItem = inventoryItemList.GetFromID((string)item["itemID"]);
                     Vector3 position = (SerializableVector3)item["position"];
                     SpawnPickup(pickupItem, position);
