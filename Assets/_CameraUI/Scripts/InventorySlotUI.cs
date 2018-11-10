@@ -60,12 +60,34 @@ namespace RPG.CameraUI
             {
                 _tooltip = Instantiate(tooltipPrefab, parentCanvas.transform);
             }
+            bool below = transform.position.y > Screen.height / 2;
+            bool right = transform.position.x < Screen.width / 2;
+            PositionTooltip(below, right);
+        }
+
+        private void PositionTooltip(bool below, bool right)
+        {
+            // Required to ensure corners are updated by positioning elements.
+            Canvas.ForceUpdateCanvases();
+
             var tooltipCorners = new Vector3[4];
-            _tooltip.GetComponent<RectTransform>().GetLocalCorners(tooltipCorners);
+            _tooltip.GetComponent<RectTransform>().GetWorldCorners(tooltipCorners);
             var slotCorners = new Vector3[4];
             GetComponent<RectTransform>().GetWorldCorners(slotCorners);
 
-            _tooltip.transform.position = slotCorners[3];
+            int slotCorner = GetCornerIndex(below, right);
+            int tooltipCorner = GetCornerIndex(!below, !right);
+
+            _tooltip.transform.position = slotCorners[slotCorner] - tooltipCorners[tooltipCorner] + _tooltip.transform.position;
+        }
+
+        private int GetCornerIndex(bool below, bool right)
+        {
+            if (below && !right) return 0;
+            else if (!below && !right) return 1;
+            else if (!below && right) return 2;
+            else return 3;
+
         }
 
         public void OnPointerExit(PointerEventData eventData)
