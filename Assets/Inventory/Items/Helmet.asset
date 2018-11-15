@@ -20,5 +20,5 @@ MonoBehaviour:
   _displayName: 
   _description: 
   _icon: {fileID: 21300000, guid: 1d68107edd3ae9d418087792c2c8ba86, type: 3}
-  _pickup: {fileID: 0}
+  _pickup: {fileID: 7407455738222081930, guid: 7181d1430d597834091af17338d08950, type: 3}
   _allowedEquipLocation: 0

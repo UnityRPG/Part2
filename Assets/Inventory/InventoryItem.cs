@@ -34,7 +34,6 @@ namespace RPG.InventorySystem
         public Pickup SpawnPickup(Vector3 position)
         {
             var pickup = Instantiate(_pickup);
-            pickup.wasFromInventory = true;
             pickup.transform.position = position;
             pickup.item = this;
             return pickup;

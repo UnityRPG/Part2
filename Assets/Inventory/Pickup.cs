@@ -5,15 +5,10 @@ using RPG.Core.Saving;
 
 namespace RPG.InventorySystem
 {
-    public class Pickup : MonoBehaviour, ISaveable
+    public class Pickup : MonoBehaviour
     {
-        [SerializeField] InventoryItem _item;
+        InventoryItem _item;
         
-        bool _wasFromInventory = false;
-        bool _wasCollected = false;
-
-        public bool wasFromInventory { set { _wasFromInventory = value; } }
-
         public void PickupItem()
         {
             var player = GameObject.FindGameObjectWithTag("Player");
@@ -27,30 +22,7 @@ namespace RPG.InventorySystem
 
         private void Collect(bool collect=true)
         {
-            if (_wasFromInventory && collect)
-            {
-                Destroy(gameObject);
-            }
-            if (!_wasFromInventory)
-            {
-                gameObject.SetActive(!collect);
-            }
-            _wasCollected = collect;
-        }
-
-        public void CaptureState(IDictionary<string, object> state)
-        {
-            state["wasCollected"] = _wasCollected;
-        }
-
-        public void RestoreState(IReadOnlyDictionary<string, object> state)
-        {
-            bool wasCollected = false;
-            if (state.ContainsKey("wasCollected"))
-            {
-                wasCollected = (bool)state["wasCollected"];
-            }
-            Collect(wasCollected);
+            Destroy(gameObject);
         }
 
         public InventoryItem item { get { return _item; } set { _item = value; } }
