@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using RPG.CameraUI.Dragging;
 using RPG.InventorySystem;
 
-namespace RPG.CameraUI.Equipment
+namespace RPG.CameraUI.EquipmentUI
 {
     public class EquipmentSlotUI : MonoBehaviour, IDragContainer
     {
@@ -14,12 +14,11 @@ namespace RPG.CameraUI.Equipment
 
         public int index { get; set; }
 
-        Inventory _inventory;
-        InventoryItem _item;
+        EquipableItem _item;
 
-        public Inventory inventory { set { _inventory = value; } }
+        Equipment _playerEquipment;
 
-        public InventoryItem item
+        public EquipableItem item
         {
             get => _item;
             set => SetItem(value);
@@ -27,9 +26,19 @@ namespace RPG.CameraUI.Equipment
 
         private void Start() {
             item = null;
+
+            var player = GameObject.FindGameObjectWithTag("Player");
+            _playerEquipment = player.GetComponent<Equipment>();
+            _playerEquipment.equipmentUpdated += RedrawUI;
+            RedrawUI();
         }
 
-        public void SetItem(InventoryItem item)
+        public void RedrawUI()
+        {
+            item = _playerEquipment.GetItemInSlot(equipLocation);
+        }
+
+        public void SetItem(EquipableItem item)
         {
             _item = item;
 
@@ -46,9 +55,7 @@ namespace RPG.CameraUI.Equipment
 
         public InventoryItem ReplaceItem(InventoryItem item)
         {
-            var oldItem = this.item;
-            this.item = item;
-            return oldItem;
+            return _playerEquipment.ReplaceItemInSlot(equipLocation, (EquipableItem)item);
         }
 
         public bool CanAcceptItem(InventoryItem item)

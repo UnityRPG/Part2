@@ -124,10 +124,10 @@ GameObject:
   - component: {fileID: 114164154849791212}
   - component: {fileID: 114391526407616666}
   - component: {fileID: 114897035312934696}
-  - component: {fileID: 114907076556123406}
   - component: {fileID: 2616234064627199943}
   - component: {fileID: 3893303204675710148}
   - component: {fileID: 2568521727474457999}
+  - component: {fileID: 2010294036090726949}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2d4edee2c92546a0ed78ac1bcbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UUID: f9796d03-ef78-441e-bbec-2a10603760dd
+  UUID: 
 --- !u!114 &114391526407616666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,20 +290,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: UIScene
---- !u!114 &114907076556123406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083351766544182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1d2e5844eb04e57b839c7d3991c896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasDeliveryItem: 0
-  _modifiers: []
 --- !u!114 &2616234064627199943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,8 +337,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fc28a888c18ce4a82d521912c49df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasDeliveryItem: 1
+  _modifiers: []
   inventoryItemList: {fileID: 11400000, guid: dcebb19540fd79041ad7ccac3cfd9260, type: 2}
   inventorySize: 10
+--- !u!114 &2010294036090726949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083351766544182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11801ca435999e4e96afb1bcc282d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097972760338172
 GameObject:
   m_ObjectHideFlags: 0
@@ -5373,7 +5373,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 0
     subEmitters:
-    - serializedVersion: 2
+    - serializedVersion: 3
       emitter: {fileID: 0}
       type: 0
       properties: 0
@@ -11700,7 +11700,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 0
     subEmitters:
-    - serializedVersion: 2
+    - serializedVersion: 3
       emitter: {fileID: 0}
       type: 0
       properties: 0
