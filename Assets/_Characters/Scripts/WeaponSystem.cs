@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine.Assertions;
 using UnityEngine;
+using RPG.InventorySystem;
 
 namespace RPG.Characters
 {
@@ -13,6 +14,7 @@ namespace RPG.Characters
         GameObject weaponObject;
         Animator animator;
         Character character;
+        Equipment equipment;
         Attributes attributes;
         float lastHitTime;
 
@@ -24,8 +26,13 @@ namespace RPG.Characters
             animator = GetComponent<Animator>();
             character = GetComponent<Character>();
             attributes = GetComponent<Attributes>();
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+                UpdateWeapon();
+            }
 
-            PutWeaponInHand(currentWeaponConfig);
             SetAttackAnimation();
         }
 
@@ -59,15 +66,23 @@ namespace RPG.Characters
             }
         }
 
-        public void PutWeaponInHand(WeaponConfig weaponToUse)
+        public void UpdateWeapon()
         {
-            currentWeaponConfig = weaponToUse;
-            var weaponPrefab = weaponToUse.GetWeaponPrefab();
-            GameObject dominantHand = RequestDominantHand();
+            if (equipment)
+            {
+                currentWeaponConfig = equipment.GetItemInSlot(EquipableItem.EquipLocation.Weapon) as WeaponConfig;
+            }
+
             Destroy(weaponObject); // empty hands
-            weaponObject = Instantiate(weaponPrefab, dominantHand.transform);
-            weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
-            weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
+
+            if (currentWeaponConfig != null)
+            {
+                var weaponPrefab = currentWeaponConfig.GetWeaponPrefab();
+                GameObject dominantHand = RequestDominantHand();
+                weaponObject = Instantiate(weaponPrefab, dominantHand.transform);
+                weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
+                weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
+            }
         }
 
         public void AttackTarget(GameObject targetToAttack)
@@ -127,6 +142,12 @@ namespace RPG.Characters
         public WeaponConfig GetCurrentWeapon()
         {
             return currentWeaponConfig;
+        }
+
+        public float GetMaxAttackRange() 
+        {
+            if (currentWeaponConfig == null) return 0;
+            return currentWeaponConfig.GetMaxAttackRange();
         }
 
         void SetAttackAnimation()

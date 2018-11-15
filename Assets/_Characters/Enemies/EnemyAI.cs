@@ -39,7 +39,7 @@ namespace RPG.Characters
         {
             distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-            currentWeaponRange = weaponSystem.GetCurrentWeapon().GetMaxAttackRange();
+            currentWeaponRange = weaponSystem.GetMaxAttackRange();
 
             bool inWeaponCircle = distanceToPlayer <= currentWeaponRange;
             bool inChaseRing = distanceToPlayer > currentWeaponRange 

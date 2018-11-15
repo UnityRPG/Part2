@@ -32,6 +32,7 @@ namespace RPG.Characters
         {
             get
             {
+                if (weaponSystem.GetCurrentWeapon() == null) return 0;
                 return weaponSystem.GetCurrentWeapon().GetDamageRange();
             }
         }
@@ -56,6 +57,7 @@ namespace RPG.Characters
         {
             get
             {
+                if (weaponSystem.GetCurrentWeapon() == null) return 1;
                 return weaponSystem.GetCurrentWeapon().GetHitsPerSecond();
             }
         }

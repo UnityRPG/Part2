@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.InventorySystem;
 
 namespace RPG.Characters
 {
@@ -12,6 +13,8 @@ namespace RPG.Characters
         [SerializeField] AudioClip pickUpSFX;
 
         AudioSource audioSource;
+
+        bool collected = false;
 
         // Use this for initialization
         void Start()
@@ -46,7 +49,12 @@ namespace RPG.Characters
 
         void OnTriggerEnter()
         {
-            FindObjectOfType<PlayerControl>().GetComponent<WeaponSystem>().PutWeaponInHand(weaponConfig);
+            if (collected) return;
+
+            var inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+            inventory.AddToFirstEmptySlot(weaponConfig);
+            collected = true;
+
             audioSource.PlayOneShot(pickUpSFX);
         }
     }
