@@ -43,5 +43,10 @@ namespace RPG.CameraUI
         {
             return _inventory.ReplaceItemInSlot(item, index);
         }
+
+        public bool CanAcceptItem(InventoryItem item)
+        {
+            return true;
+        }
     }
 }

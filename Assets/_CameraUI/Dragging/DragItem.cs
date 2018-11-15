@@ -81,6 +81,12 @@ namespace RPG.CameraUI.Dragging
         private void DropItemIntoContainer(IDragContainer receivingContainer)
         {
             var draggingItem = _parentContainer.ReplaceItem(null);
+            if (!receivingContainer.CanAcceptItem(draggingItem))
+            {
+                _parentContainer.ReplaceItem(draggingItem);
+                return;
+            }
+            
             var swappedItem = receivingContainer.ReplaceItem(draggingItem);
             if (swappedItem != null)
             {

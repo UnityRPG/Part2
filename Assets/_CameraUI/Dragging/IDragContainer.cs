@@ -7,6 +7,7 @@ namespace RPG.CameraUI.Dragging
 {
     public interface IDragContainer
     {
+        bool CanAcceptItem(InventoryItem item);
         InventoryItem ReplaceItem(InventoryItem item);
     }
 }

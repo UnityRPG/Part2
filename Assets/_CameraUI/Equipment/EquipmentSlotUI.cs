@@ -10,6 +10,7 @@ namespace RPG.CameraUI.Equipment
     public class EquipmentSlotUI : MonoBehaviour, IDragContainer
     {
         [SerializeField] Image _iconImage;
+        [SerializeField] EquipableItem.EquipLocation equipLocation;
 
         public int index { get; set; }
 
@@ -43,23 +44,21 @@ namespace RPG.CameraUI.Equipment
             }
         }
 
-        public void DropItem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public InventoryItem PopItem()
-        {
-            var oldItem = item;
-            item = null;
-            return oldItem;
-        }
-
         public InventoryItem ReplaceItem(InventoryItem item)
         {
             var oldItem = this.item;
             this.item = item;
             return oldItem;
+        }
+
+        public bool CanAcceptItem(InventoryItem item)
+        {
+            if (!item is EquipableItem)
+            {
+                return false;
+            }
+            var equipableItem = (EquipableItem)item;
+            return equipableItem.allowedEquipLocation == equipLocation;
         }
     }
 }
