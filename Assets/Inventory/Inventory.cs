@@ -165,6 +165,7 @@ namespace RPG.InventorySystem
 
         private void RestoreInventory(IReadOnlyDictionary<string, object> state)
         {
+            if (!state.ContainsKey("inventorySlots")) return;
             var slotStrings = (string[])state["inventorySlots"];
             for (int i = 0; i < inventorySize; i++)
             {

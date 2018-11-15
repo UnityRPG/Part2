@@ -179,9 +179,12 @@ namespace RPG.Characters
         {
             if (!shouldLoadOrSaveLocation) return;
 
-            gameObject.SetActive(false);
-            GetComponent<Transform>().position = (SerializableVector3)state["position"];
-            gameObject.SetActive(true);
+            if (state.ContainsKey("position"))
+            {
+                gameObject.SetActive(false);
+                GetComponent<Transform>().position = (SerializableVector3)state["position"];
+                gameObject.SetActive(true);
+            }
         }
     }
 }

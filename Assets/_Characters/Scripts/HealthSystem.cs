@@ -129,9 +129,12 @@ namespace RPG.Characters
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
-            currentHealthPoints = (float)state["currentHealthPoints"];
-            healthPointsSetByRestore = true;
-            gameObject.SetActive(isAlive);
+            if (state.ContainsKey("currentHealthPoints"))
+            {
+                currentHealthPoints = (float)state["currentHealthPoints"];
+                healthPointsSetByRestore = true;
+                gameObject.SetActive(isAlive);
+            }
         }
     }
 }
