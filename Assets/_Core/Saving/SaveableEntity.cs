@@ -6,19 +6,10 @@
     using UnityEditor.SceneManagement;
 
     [ExecuteInEditMode]
-    public class SaveableEntity : MonoBehaviour
+    public class SaveableEntity : MonoBehaviour, ISerializationCallbackReceiver
     {
         [SerializeField]
-        string UUID = System.Guid.NewGuid().ToString();
-
-        void Update()
-        {
-            if (UUID == "")
-            {
-                Undo.RecordObject(this, "Added UUID");
-                UUID = System.Guid.NewGuid().ToString();
-            }
-        }
+        string UUID = null;
 
         public string UniqueIdentifier
         {
@@ -60,6 +51,24 @@
             }
 
             return new Dictionary<string, object>();
+        }
+
+        public void OnBeforeSerialize()
+        {
+            // Part of scene and not a prefab
+            bool isPartOfScene = string.IsNullOrEmpty(gameObject.scene.path);
+            if (isPartOfScene)
+            {
+                UUID = null;
+            }
+            else if (string.IsNullOrEmpty(UUID))
+            {
+                UUID = System.Guid.NewGuid().ToString();
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
         }
     }
 }
