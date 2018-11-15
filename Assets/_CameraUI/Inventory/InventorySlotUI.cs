@@ -2,10 +2,11 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using RPG.InventorySystem;
+using RPG.CameraUI.Dragging;
 
 namespace RPG.CameraUI
 {
-    public class InventorySlotUI : MonoBehaviour, IItemHolder, IDropHandler
+    public class InventorySlotUI : MonoBehaviour, IItemHolder, IDragContainer
     {
         [SerializeField] Image _iconImage;
 
@@ -38,19 +39,19 @@ namespace RPG.CameraUI
             }
         }
 
-        public void OnDrop(PointerEventData eventData)
-        {
-            var item = eventData.pointerDrag.GetComponent<InventoryItemUI>();
-            if (item.parentSlot.index == index) return;
-
-            var sendingItem = _inventory.PopItemFromSlot(item.parentSlot.index);
-            var swappedItem = _inventory.ReplaceItemInSlot(sendingItem, index);
-            _inventory.ReplaceItemInSlot(swappedItem, item.parentSlot.index);
-        }
-
-        public void DiscardItem()
+        public void DropItem()
         {
             _inventory.DropItem(index);
+        }
+
+        public InventoryItem PopItem()
+        {
+            return _inventory.PopItemFromSlot(index);
+        }
+
+        public InventoryItem ReplaceItem(InventoryItem item)
+        {
+            return _inventory.ReplaceItemInSlot(item, index);
         }
     }
 }
