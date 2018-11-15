@@ -4,7 +4,8 @@
 Preset:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: UI Title
   m_TargetType:
     m_NativeTypeID: 114
@@ -19,10 +20,6 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_EditorHideFlags
     value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_Name
-    value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_EditorClassIdentifier
