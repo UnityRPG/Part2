@@ -21,7 +21,7 @@ MonoBehaviour:
   _description: You might have to hack quite hard to achieve even a flesh wound with
     this sword.
   _icon: {fileID: 21300000, guid: bb1a927d2b2776c4f984c18a89bfc714, type: 3}
-  _pickup: {fileID: 2895857911858175379, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
+  _pickup: {fileID: 3436396787679646286, guid: 9af8a220fc879ba4fb28c5fe767c0e37, type: 3}
   _allowedEquipLocation: 5
   gripTransform: {fileID: 4219815134937942, guid: 01f92f041a02ce04d8b24b849ab5a916,
     type: 3}

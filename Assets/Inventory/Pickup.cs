@@ -16,13 +16,8 @@ namespace RPG.InventorySystem
             bool foundSlot = inventory.AddToFirstEmptySlot(_item);
             if (foundSlot)
             {
-                Collect();
+                Destroy(gameObject);
             }
-        }
-
-        private void Collect(bool collect=true)
-        {
-            Destroy(gameObject);
         }
 
         public InventoryItem item { get { return _item; } set { _item = value; } }

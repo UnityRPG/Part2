@@ -11,25 +11,33 @@ namespace RPG.InventorySystem
 
         public Pickup pickup { get => GetComponentInChildren<Pickup>(); }
 
-        public bool wasCollected { get => pickup == null; }
+        public bool isCollected { get => pickup == null; }
+
+        private void Awake() {
+            SpawnPickup();
+        }
 
         public void CaptureState(IDictionary<string, object> state)
         {
-            state["wasCollected"] = wasCollected;
+            state["wasCollected"] = isCollected;
         }
 
         public void RestoreState(IReadOnlyDictionary<string, object> state)
         {
-            bool wasCollected = false;
+            bool shouldBeCollected = false;
             if (state.ContainsKey("wasCollected"))
             {
-                wasCollected = (bool)state["wasCollected"];
+                shouldBeCollected = (bool)state["wasCollected"];
+            }
+            Debug.Log(shouldBeCollected);
+
+            if (shouldBeCollected && !isCollected)
+            {
+                DestroyPickup();
             }
 
-            DestroyPickup();
-            if (!wasCollected)
+            if (!shouldBeCollected && isCollected)
             {
-                Debug.Log("Spawning.");
                 SpawnPickup();
             }
         }
@@ -37,7 +45,7 @@ namespace RPG.InventorySystem
         private void SpawnPickup()
         {   
             var spawnedPickup = item.SpawnPickup(transform.position);
-            spawnedPickup.transform.parent = transform;
+            spawnedPickup.transform.SetParent(transform);
         }
 
         private void DestroyPickup()

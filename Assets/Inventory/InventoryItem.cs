@@ -24,7 +24,7 @@ namespace RPG.InventorySystem
         [TextArea]
         [SerializeField] string _description;
         [SerializeField] Sprite _icon;
-        [SerializeField] Pickup _pickup;
+        [SerializeField] GameObject _pickup;
 
         public string itemID { get { return _itemID; } }
         public Sprite icon { get { return _icon; } }
@@ -33,7 +33,8 @@ namespace RPG.InventorySystem
 
         public Pickup SpawnPickup(Vector3 position)
         {
-            var pickup = Instantiate(_pickup);
+            var pickupGameObject = Instantiate(_pickup);
+            var pickup = pickupGameObject.AddComponent<Pickup>();
             pickup.transform.position = position;
             pickup.item = this;
             return pickup;
