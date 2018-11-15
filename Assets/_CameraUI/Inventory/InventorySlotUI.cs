@@ -39,16 +39,6 @@ namespace RPG.CameraUI
             }
         }
 
-        public void DropItem()
-        {
-            _inventory.DropItem(index);
-        }
-
-        public InventoryItem PopItem()
-        {
-            return _inventory.PopItemFromSlot(index);
-        }
-
         public InventoryItem ReplaceItem(InventoryItem item)
         {
             return _inventory.ReplaceItemInSlot(item, index);

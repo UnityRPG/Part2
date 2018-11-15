@@ -14,8 +14,7 @@ namespace RPG.CameraUI
         // Start is called before the first frame update
         private void Start()
         {
-            var player = GameObject.FindWithTag("Player");
-            _playerInventory = player.GetComponent<Inventory>();
+            _playerInventory = Inventory.GetPlayerInventory();
             _playerInventory.inventoryUpdated += Redraw;
             Redraw();
         }

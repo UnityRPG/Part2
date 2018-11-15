@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using RPG.InventorySystem;
 
 namespace RPG.CameraUI.Dragging
 {
@@ -44,7 +45,7 @@ namespace RPG.CameraUI.Dragging
             // Not over UI we should drop.
             if (!EventSystem.current.IsPointerOverGameObject())
             {
-                _parentContainer.DropItem();
+                DropItem();
             }
 
             var container = GetContainer(eventData);
@@ -52,6 +53,13 @@ namespace RPG.CameraUI.Dragging
             {
                 DropItemIntoContainer(container);
             }
+        }
+
+        private void DropItem()
+        {
+            var item = _parentContainer.ReplaceItem(null);
+            var inventory = Inventory.GetPlayerInventory();
+            inventory.DropItem(item);
         }
 
         private IDragContainer GetContainer(PointerEventData eventData)
@@ -72,7 +80,7 @@ namespace RPG.CameraUI.Dragging
 
         private void DropItemIntoContainer(IDragContainer receivingContainer)
         {
-            var draggingItem = _parentContainer.PopItem();
+            var draggingItem = _parentContainer.ReplaceItem(null);
             var swappedItem = receivingContainer.ReplaceItem(draggingItem);
             if (swappedItem != null)
             {

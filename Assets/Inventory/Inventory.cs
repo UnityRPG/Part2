@@ -22,6 +22,12 @@ namespace RPG.InventorySystem
         [SerializeField] int inventorySize;
         
         
+        public static Inventory GetPlayerInventory()
+        {
+            var player = GameObject.FindWithTag("Player");
+            return player.GetComponent<Inventory>();
+        }
+
         public struct InventorySlot
         {
             public InventoryItem item;
@@ -56,9 +62,8 @@ namespace RPG.InventorySystem
             return false;
         }
 
-        public bool DropItem(int slot)
+        public bool DropItem(InventoryItem item)
         {
-            var item = PopItemFromSlot(slot);
             if (item == null) return false;
 
             var spawnLocation = transform.position;
@@ -84,14 +89,6 @@ namespace RPG.InventorySystem
         public InventoryItem GetItemInSlot(int slot)
         {
             return inventorySlots[slot].item;
-        }
-
-        public InventoryItem PopItemFromSlot(int slot)
-        {
-            var item = inventorySlots[slot].item;
-            inventorySlots[slot].item = null;
-            inventoryUpdated();
-            return item;
         }
 
         public void CaptureState(IDictionary<string, object> state)
