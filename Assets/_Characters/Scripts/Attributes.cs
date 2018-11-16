@@ -93,7 +93,7 @@ namespace RPG.Characters
             modifierProviders = new IStatsModifierProvider[]
             {
                 GetComponent<Stats>(),
-                GetComponent<Inventory>()
+                GetComponent<Equipment>()
             };
         }
 

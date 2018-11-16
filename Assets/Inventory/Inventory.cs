@@ -8,7 +8,7 @@ using RPG.Characters;
 
 namespace RPG.InventorySystem
 {
-    public class Inventory : MonoBehaviour, ISaveable, IStatsModifierProvider
+    public class Inventory : MonoBehaviour, ISaveable
     {
 
         int coin;
@@ -16,8 +16,6 @@ namespace RPG.InventorySystem
         private List<Pickup> droppedItems = new List<Pickup>();
 
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
-        [FormerlySerializedAs("modifiers")]
-        [SerializeField] StatsModifier[] _modifiers; 
         [SerializeField] int inventorySize;
         
         
@@ -185,14 +183,6 @@ namespace RPG.InventorySystem
         public bool IsPlayerCarrying()  // TODO pass paramater
         {
             return hasDeliveryItem;
-        }
-
-        public IEnumerable<StatsModifier> modifiers
-        {
-            get
-            {
-                return _modifiers;
-            }
         }
 
     }

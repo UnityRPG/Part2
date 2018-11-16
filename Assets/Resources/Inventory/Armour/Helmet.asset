@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Helmet
   m_EditorClassIdentifier: 
   _itemID: 7ab71f77-195f-48f4-98f9-dbc46ee1448e
-  _modifiers: []
+  _modifiers:
+  - attribute: 0
+    value: -100
   _baseCost: 0
   _rarity: 0
   _level: 0

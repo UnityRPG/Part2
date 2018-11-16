@@ -51,10 +51,11 @@ namespace RPG.InventorySystem
             return itemLookupCache[itemID];
         }
 
-        public string itemID { get { return _itemID; } }
-        public Sprite icon { get { return _icon; } }
-        public string displayName { get { return _displayName; } }
-        public string description { get { return _description; } }
+        public string itemID => _itemID;
+        public Sprite icon => _icon;
+        public string displayName => _displayName;
+        public string description => _description;
+        public IEnumerable<StatsModifier> modifiers => _modifiers;
 
         public Pickup SpawnPickup(Vector3 position)
         {
