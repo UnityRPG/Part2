@@ -37,14 +37,7 @@ namespace RPG.Characters
             SetAttackAnimation();
         }
 
-        void Update()
-        {
-            if (characterIsDead || targetIsOutOfRange || targetIsDead)
-            {
-                StopAttacking();
-                StopAllCoroutines();
-            }
-        }
+        public bool canAttack => !characterIsDead && !targetIsOutOfRange && !targetIsDead;
 
         public bool characterIsDead {
             get
@@ -120,11 +113,9 @@ namespace RPG.Characters
 
         IEnumerator AttackTargetRepeatedly()
         {
-            // determine if alive (attacker and defender)
-            bool attackerStillAlive = GetComponent<HealthSystem>().healthAsPercentage >= Mathf.Epsilon;
             bool targetStillAlive = target.GetComponent<HealthSystem>().healthAsPercentage >= Mathf.Epsilon;
 
-            while (attackerStillAlive && targetStillAlive)
+            while (canAttack)
             {
                 var animationClip = currentWeaponConfig.GetAttackAnimClip();
                 float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
@@ -151,7 +142,11 @@ namespace RPG.Characters
         IEnumerator DamageAfterDelay(float delay)
         {
             yield return new WaitForSecondsRealtime(delay);
-            target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
+
+            if (canAttack)
+            {
+                target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
+            }
         }
 
         public WeaponConfig GetCurrentWeapon()

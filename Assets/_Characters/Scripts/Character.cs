@@ -43,7 +43,7 @@ namespace RPG.Characters
 		// cached references for readability
         NavMeshAgent navMeshAgent;
         Animator animator;
-        Rigidbody ridigBody;
+        Rigidbody rigidBody;
 
 
 		// messages, then public methods, then private methods...
@@ -59,8 +59,8 @@ namespace RPG.Characters
             capsuleCollider.radius = colliderRadius;
             capsuleCollider.height = colliderHeight;
 
-            ridigBody = gameObject.AddComponent<Rigidbody>();
-            ridigBody.constraints = RigidbodyConstraints.FreezeRotation;
+            rigidBody = gameObject.AddComponent<Rigidbody>();
+            rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
 
             var audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.spatialBlend = audioSourceSpatialBlend;
@@ -113,6 +113,11 @@ namespace RPG.Characters
         void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
+            if (gameObject.tag == "Player" && (forwardAmount != 0 || turnAmount != 0))
+            {
+                print("Move: "+movement);
+                print("Forward: "+forwardAmount+" Turn: "+turnAmount);
+            }
             ApplyExtraTurnRotation();
             UpdateAnimator();
             navMeshAgent.nextPosition = transform.position;
@@ -154,8 +159,8 @@ namespace RPG.Characters
                 Vector3 velocity = (animator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
 
                 // we preserve the existing y part of the current velocity.
-                velocity.y = ridigBody.velocity.y;
-                ridigBody.velocity = velocity;
+                velocity.y = rigidBody.velocity.y;
+                rigidBody.velocity = velocity;
             }
         }
 

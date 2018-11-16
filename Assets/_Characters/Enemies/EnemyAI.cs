@@ -22,7 +22,6 @@ namespace RPG.Characters
         WeaponSystem weaponSystem;
 
         int nextWaypointIndex;
-        float currentWeaponRange;
         float distanceToPlayer;
 
         enum State { idle, patrolling, attacking, chasing }
@@ -38,13 +37,6 @@ namespace RPG.Characters
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-
-            currentWeaponRange = weaponSystem.GetMaxAttackRange();
-
-            bool inWeaponCircle = distanceToPlayer <= currentWeaponRange;
-            bool inChaseRing = distanceToPlayer > currentWeaponRange 
-                               && 
-                               distanceToPlayer <= chaseRadius;
  
             if (inWeaponCircle)
             {
@@ -60,14 +52,24 @@ namespace RPG.Characters
             }
         }
 
+        float currentWeaponRange
+        {
+            get
+            {
+                if (weaponSystem == null) return 0;
+                return weaponSystem.GetMaxAttackRange();
+            }
+        }
+
+        bool inWeaponCircle => distanceToPlayer <= currentWeaponRange;
+        bool inChaseRing => distanceToPlayer > currentWeaponRange
+                            &&
+                            distanceToPlayer <= chaseRadius;
+
         private void StartAttack()
         {
             if (state != State.attacking)
             {
-                if (gameObject.tag == "Watch")
-                {
-                    Debug.Log("StartAttack", gameObject);
-                }
                 StopAllCoroutines();
                 state = State.attacking;
                 weaponSystem.AttackTarget(player.gameObject);
@@ -79,10 +81,6 @@ namespace RPG.Characters
             if (state != State.chasing)
             {
                 state = State.chasing;
-                if (gameObject.tag == "Watch")
-                {
-                    Debug.Log("StartChase", gameObject);
-                }
                 weaponSystem.StopAttacking();
                 StopAllCoroutines();
                 StartCoroutine(ChasePlayer());
@@ -94,10 +92,6 @@ namespace RPG.Characters
             if (state != State.patrolling)
             {
                 state = State.patrolling;
-                if (gameObject.tag == "Watch")
-                {
-                    Debug.Log("StartPatrol", gameObject);
-                }
                 weaponSystem.StopAttacking();
                 StopAllCoroutines();
                 StartCoroutine(Patrol());
