@@ -92,6 +92,7 @@ namespace RPG.Characters
             else
             {
                 Move(Vector3.zero);
+                navMeshAgent.isStopped = true;
             }
         }
 
@@ -103,6 +104,7 @@ namespace RPG.Characters
         public void SetDestination(Vector3 worldPos)
         {
             navMeshAgent.destination = worldPos;
+            navMeshAgent.isStopped = false;
         }
 
         public AnimatorOverrideController GetOverrideController()
