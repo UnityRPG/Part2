@@ -10,6 +10,8 @@ namespace RPG.Characters
         SpecialAbilities abilities;
         WeaponSystem weaponSystem;
 
+        Coroutine attackingCoroutine;
+
         void Start()
         {
             character = GetComponent<Character>();
@@ -60,32 +62,24 @@ namespace RPG.Characters
 
         void OnMouseOverEnemy(EnemyAI enemy)
         {
-            if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
+            if (Input.GetMouseButton(0))
             {
-                weaponSystem.AttackTarget(enemy.gameObject);
+                StartAttackingCoroutine(MoveAndAttack(enemy));
             }
-            else if (Input.GetMouseButton(0) && !IsTargetInRange(enemy.gameObject))
+            else if (Input.GetMouseButtonDown(1))
             {
-                StartCoroutine(MoveAndAttack(enemy));
-            }
-            else if (Input.GetMouseButtonDown(1) && IsTargetInRange(enemy.gameObject))
-            {
-                abilities.AttemptSpecialAbility(0, enemy.gameObject);
-            }
-            else if (Input.GetMouseButtonDown(1) && !IsTargetInRange(enemy.gameObject))
-            {
-                StartCoroutine(MoveAndPowerAttack(enemy));
+                StartAttackingCoroutine(MoveAndPowerAttack(enemy));
             }
         }
 
-        IEnumerator MoveToTarget(GameObject target)
+        void StartAttackingCoroutine(IEnumerator routine)
         {
-            character.SetDestination(target.transform.position);
-            while (!IsTargetInRange(target))
+            if (attackingCoroutine != null)
             {
-                yield return new WaitForEndOfFrame();
+                weaponSystem.StopAttacking();
+                StopCoroutine(attackingCoroutine);
             }
-            yield return new WaitForEndOfFrame();
+            attackingCoroutine = StartCoroutine(routine);
         }
 
         IEnumerator MoveAndAttack(EnemyAI enemy)
@@ -98,6 +92,15 @@ namespace RPG.Characters
         {
             yield return StartCoroutine(MoveToTarget(enemy.gameObject));
             abilities.AttemptSpecialAbility(0, enemy.gameObject);
+        }
+
+        IEnumerator MoveToTarget(GameObject target)
+        {
+            character.SetDestination(target.transform.position);
+            while (!IsTargetInRange(target))
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }
