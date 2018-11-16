@@ -13,7 +13,8 @@ namespace RPG.InventorySystem
             Trousers,
             Boots,
             Weapon,
-            Shield
+            Shield,
+            Gloves,
         }
         [SerializeField] EquipLocation _allowedEquipLocation;
 

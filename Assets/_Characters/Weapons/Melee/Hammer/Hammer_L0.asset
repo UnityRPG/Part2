@@ -29,8 +29,8 @@ MonoBehaviour:
   timeBetweenAnimationCycles: 0.5
   maxAttackRange: 3
   damageRange:
-    min: 0
-    max: 0
+    min: 2
+    max: 15
   damageDelay: 0.7
-  hitsPerSecond: 0.1
+  hitsPerSecond: 0.5
   additionalDamage: 0
