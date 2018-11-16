@@ -16,7 +16,8 @@ namespace RPG.Characters
         Character character;
         Equipment equipment;
         Attributes attributes;
-        float lastHitTime;
+        Coroutine attackingRepeat;
+        Coroutine damageDelay;
 
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
@@ -38,35 +39,44 @@ namespace RPG.Characters
 
         void Update()
         {
-            bool targetIsDead;
-            bool targetIsOutOfRange;
-
-            if (target == null)
-            {
-                targetIsDead = false;
-                targetIsOutOfRange = false;
-            }
-            else
-            {
-                // test if target is dead
-                var targethealth = target.GetComponent<HealthSystem>().healthAsPercentage;
-                targetIsDead = targethealth <= Mathf.Epsilon;
-
-                // test if target is out of range
-                var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-                targetIsOutOfRange = true;
-                if (currentWeaponConfig != null)
-                {
-                    targetIsOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
-                }
-            }
-
-            float characterHealth = GetComponent<HealthSystem>().healthAsPercentage;
-            bool characterIsDead = (characterHealth <= Mathf.Epsilon);
-
             if (characterIsDead || targetIsOutOfRange || targetIsDead)
             {
+                StopAttacking();
                 StopAllCoroutines();
+            }
+        }
+
+        public bool characterIsDead {
+            get
+            {
+                float characterHealth = GetComponent<HealthSystem>().healthAsPercentage;
+                return (characterHealth <= Mathf.Epsilon);
+            }
+        }
+
+        public bool targetIsOutOfRange
+        {
+            get
+            {
+                if (target == null) return false;
+
+                if (currentWeaponConfig != null)
+                {
+                    var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+                    return distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
+                }
+                return true;
+            }
+        }
+
+        public bool targetIsDead
+        {
+            get
+            {
+                if (target == null) return false;
+
+                var targethealth = target.GetComponent<HealthSystem>().healthAsPercentage;
+                return targethealth <= Mathf.Epsilon;
             }
         }
 
@@ -92,13 +102,20 @@ namespace RPG.Characters
         public void AttackTarget(GameObject targetToAttack)
         {
             target = targetToAttack;
-            StartCoroutine(AttackTargetRepeatedly());
+
+            if (attackingRepeat != null) return;
+            attackingRepeat = StartCoroutine(AttackTargetRepeatedly());
         }
 
         public void StopAttacking()
         {
             animator.StopPlayback();
-            StopAllCoroutines();
+
+            if (attackingRepeat != null)
+            {
+                StopCoroutine(attackingRepeat);
+                attackingRepeat = null;
+            }
         }
 
         IEnumerator AttackTargetRepeatedly()
@@ -117,19 +134,14 @@ namespace RPG.Characters
                     timeToWait = 1 / attributes.hitSpeed;
                 }
 
-                bool isTimeToHitAgain = Time.time - lastHitTime > timeToWait;
-
-                if (isTimeToHitAgain)
-                {
-                    AttackTargetOnce();
-                    lastHitTime = Time.time;
-                }
+                AttackTargetOnce();
                 yield return new WaitForSeconds(timeToWait);
             }
         }
 
         void AttackTargetOnce()
         {
+            Debug.Log("Attacking");
             transform.LookAt(target.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
             float damageDelay = currentWeaponConfig.GetDamageDelay();

@@ -44,6 +44,8 @@ namespace RPG.InventorySystem
             {
                 foreach (var pair in equippedItems)
                 {
+                    if (pair.Value == null) continue;
+                    
                     foreach (var modifier in pair.Value.modifiers)
                     {
                         yield return modifier;
