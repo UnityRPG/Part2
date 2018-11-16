@@ -54,7 +54,11 @@ namespace RPG.Characters
 
                 // test if target is out of range
                 var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-                targetIsOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
+                targetIsOutOfRange = true;
+                if (currentWeaponConfig != null)
+                {
+                    targetIsOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
+                }
             }
 
             float characterHealth = GetComponent<HealthSystem>().healthAsPercentage;
@@ -152,6 +156,8 @@ namespace RPG.Characters
 
         void SetAttackAnimation()
         {
+            if (currentWeaponConfig == null) return;
+
             if (!character.GetOverrideController())
             {
                 Debug.Break();

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using RPG.Characters;
 
 namespace RPG.InventorySystem
 {
-    public abstract class InventoryItem : ScriptableObject
+    public abstract class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {
         public enum Rarity
         {
@@ -15,7 +16,7 @@ namespace RPG.InventorySystem
             Mythical
         }
 
-        [SerializeField] string _itemID = System.Guid.NewGuid().ToString();
+        [SerializeField] string _itemID;
         [SerializeField] StatsModifier[] _modifiers;
         [SerializeField] float _baseCost;
         [SerializeField] Rarity _rarity;
@@ -25,6 +26,30 @@ namespace RPG.InventorySystem
         [SerializeField] string _description;
         [SerializeField] Sprite _icon;
         [SerializeField] GameObject _pickup;
+
+        static Dictionary<string, InventoryItem> itemLookupCache;
+
+        public static InventoryItem GetFromID(string itemID)
+        {
+            if (itemLookupCache == null)
+            {
+                itemLookupCache = new Dictionary<string, InventoryItem>();
+                var itemList = Resources.LoadAll<InventoryItem>("Inventory");
+                foreach (var item in itemList)
+                {
+                    if (itemLookupCache.ContainsKey(item.itemID))
+                    {
+                        Debug.LogError(string.Format("Looks like there's a duplicate inventory ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
+                        continue;
+                    }
+
+                    itemLookupCache[item.itemID] = item;
+                }
+            }
+
+            if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
+            return itemLookupCache[itemID];
+        }
 
         public string itemID { get { return _itemID; } }
         public Sprite icon { get { return _icon; } }
@@ -40,5 +65,16 @@ namespace RPG.InventorySystem
             return pickup;
         }
 
+        public void OnBeforeSerialize()
+        {
+            if (string.IsNullOrWhiteSpace(_itemID))
+            {
+                _itemID = System.Guid.NewGuid().ToString();
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
+        }
     }
 }

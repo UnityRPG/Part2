@@ -29,7 +29,6 @@ namespace RPG.InventorySystem
             {
                 shouldBeCollected = (bool)state["wasCollected"];
             }
-            Debug.Log(shouldBeCollected);
 
             if (shouldBeCollected && !isCollected)
             {

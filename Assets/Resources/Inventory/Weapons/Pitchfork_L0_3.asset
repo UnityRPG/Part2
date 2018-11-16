@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e75182c88b14ee7bf56210b44f90a3, type: 3}
+  m_Name: Pitchfork_L0_3
+  m_EditorClassIdentifier: 
+  _itemID: 99bbddff-72b2-48f4-9c17-f75c3956b69a
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 0}
+  _pickup: {fileID: 0}
+  _allowedEquipLocation: 0
+  gripTransform: {fileID: 4705688508082722, guid: d556888c449d16a40a197e3b683d433a,
+    type: 3}
+  weaponPrefab: {fileID: 116530, guid: ba790c6fd6f7ab24d88313172ed55d92, type: 3}
+  attackAnimation: {fileID: 7400000, guid: 76c5b10e654a5a2429f0f6a6078f95d4, type: 3}
+  timeBetweenAnimationCycles: 0.5
+  maxAttackRange: 3
+  damageRange:
+    min: 0
+    max: 0
+  damageDelay: 0.5
+  hitsPerSecond: 0.1
+  additionalDamage: 0

@@ -18,7 +18,6 @@ namespace RPG.InventorySystem
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
         [FormerlySerializedAs("modifiers")]
         [SerializeField] StatsModifier[] _modifiers; 
-        [SerializeField] InventoryItemList inventoryItemList;
         [SerializeField] int inventorySize;
         
         
@@ -35,8 +34,8 @@ namespace RPG.InventorySystem
 
         private void Awake() {
             inventorySlots = new InventorySlot[inventorySize];
-            inventorySlots[0].item = inventoryItemList.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5");
-            inventorySlots[3].item = inventoryItemList.GetFromID("bedb2849-78fb-4167-af74-96612a5b5229");
+            inventorySlots[0].item = InventoryItem.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5");
+            inventorySlots[3].item = InventoryItem.GetFromID("bedb2849-78fb-4167-af74-96612a5b5229");
         }
 
         public event Action inventoryUpdated = delegate {};
@@ -147,7 +146,7 @@ namespace RPG.InventorySystem
                 var droppedItemsList = (Dictionary<string, object>[])state["droppedItems"];
                 foreach (var item in droppedItemsList)
                 {
-                    var pickupItem = inventoryItemList.GetFromID((string)item["itemID"]);
+                    var pickupItem = InventoryItem.GetFromID((string)item["itemID"]);
                     Vector3 position = (SerializableVector3)item["position"];
                     SpawnPickup(pickupItem, position);
                 }
@@ -169,7 +168,7 @@ namespace RPG.InventorySystem
             var slotStrings = (string[])state["inventorySlots"];
             for (int i = 0; i < inventorySize; i++)
             {
-                inventorySlots[i].item = inventoryItemList.GetFromID(slotStrings[i]);
+                inventorySlots[i].item = InventoryItem.GetFromID(slotStrings[i]);
             }
         }
 

@@ -3,20 +3,35 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e75182c88b14ee7bf56210b44f90a3, type: 3}
-  m_Name: Sword_L2
+  m_Name: Sword_L1
   m_EditorClassIdentifier: 
+  _itemID: 31522b15-4b37-4292-873f-aac91f5bd913
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 0}
+  _pickup: {fileID: 0}
+  _allowedEquipLocation: 0
   gripTransform: {fileID: 4219815134937942, guid: f06719acfc189cb45b902f3f9fbb2a89,
-    type: 2}
+    type: 3}
   weaponPrefab: {fileID: 1277290872445230, guid: 0982ce6c23f616d4bae4c222799510a6,
-    type: 2}
+    type: 3}
   attackAnimation: {fileID: 7400000, guid: 04cb27dc01c081446ba2c02f2761f01d, type: 3}
-  timeBetweenAnimationCycles: 0
-  maxAttackRange: 2.5
-  additionalDamage: 50
+  timeBetweenAnimationCycles: 0.5
+  maxAttackRange: 3
+  damageRange:
+    min: 28.5
+    max: 31.5
   damageDelay: 0.4
+  hitsPerSecond: 0.1
+  additionalDamage: 30

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f20eb1792e8048a46bf5c7c520a3ea3b, type: 3}
-  m_Name: Jacket
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  _itemID: ca70bb66-2f06-4abc-aec7-3d2c15906d9b
+  _itemID: 1827a0b2-fbff-4083-b0c6-2a690440c87a
   _modifiers: []
   _baseCost: 0
   _rarity: 0
   _level: 0
   _displayName: 
   _description: 
-  _icon: {fileID: 21300000, guid: a969172509ba7c6439743e9019a2ec66, type: 3}
+  _icon: {fileID: 21300000, guid: 6d3b0b930b4d3534f8dab740cb047535, type: 3}
   _pickup: {fileID: 1222577395524571727, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
-  _allowedEquipLocation: 2
+  _allowedEquipLocation: 6

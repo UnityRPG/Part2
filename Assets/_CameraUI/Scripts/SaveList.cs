@@ -14,7 +14,6 @@ namespace RPG.UI
 
         void OnEnable()
         {
-            Debug.Log("loading");
             var SaveLoad = FindObjectOfType<SaveLoad>();
             foreach (RectTransform item in GetComponent<Transform>())
             {

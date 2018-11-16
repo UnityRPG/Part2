@@ -8,8 +8,6 @@ namespace RPG.InventorySystem
 {
     public class Equipment : MonoBehaviour, ISaveable
     {
-        [SerializeField] InventoryItemList index;
-
         Dictionary<EquipableItem.EquipLocation, EquipableItem> equippedItems = new Dictionary<EquipableItem.EquipLocation, EquipableItem>();
 
         public event Action equipmentUpdated;
@@ -44,6 +42,7 @@ namespace RPG.InventorySystem
             var equippedItemsForSerialization = new Dictionary<EquipableItem.EquipLocation, string>();
             foreach (var pair in equippedItems)
             {
+                print(pair);
                 equippedItemsForSerialization[pair.Key] = pair.Value.itemID;
             }
             state["equippedItems"] = equippedItemsForSerialization;
@@ -60,7 +59,11 @@ namespace RPG.InventorySystem
 
             foreach (var pair in equippedItemsForSerialization)
             {
-                equippedItems[pair.Key] = (EquipableItem)index.GetFromID(pair.Value);
+                var item =(EquipableItem)InventoryItem.GetFromID(pair.Value);
+                if (item != null)
+                {
+                    equippedItems[pair.Key] = item;
+                }
             }
 
         }

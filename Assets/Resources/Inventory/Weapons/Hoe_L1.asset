@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e75182c88b14ee7bf56210b44f90a3, type: 3}
   m_Name: Hoe_L1
   m_EditorClassIdentifier: 
+  _itemID: 3dc642d3-5293-4fa3-8bea-cd7cfd71a5e2
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 0}
+  _pickup: {fileID: 0}
+  _allowedEquipLocation: 0
   gripTransform: {fileID: 4219815134937942, guid: 51110a05772d4ea44bc054e61245f8e7,
     type: 3}
   weaponPrefab: {fileID: 1274797246840802, guid: cc0dbe33ee8adbe4eb124e2d95d37fe4,

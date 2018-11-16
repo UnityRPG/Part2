@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e75182c88b14ee7bf56210b44f90a3, type: 3}
+  m_Name: Spear_L0_1
+  m_EditorClassIdentifier: 
+  _itemID: 63803f27-b0a6-4e05-a055-eeff4335d279
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 0}
+  _pickup: {fileID: 0}
+  _allowedEquipLocation: 0
+  gripTransform: {fileID: 4705688508082722, guid: 8f7b9e51f12775c488f4fa7905cef68a,
+    type: 3}
+  weaponPrefab: {fileID: 124464, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
+  attackAnimation: {fileID: 7400000, guid: 27eda9f3f990c6840a532a06a17f6e15, type: 3}
+  timeBetweenAnimationCycles: 0.5
+  maxAttackRange: 2.2
+  damageRange:
+    min: 0
+    max: 0
+  damageDelay: 0.8
+  hitsPerSecond: 0.1
+  additionalDamage: 0
