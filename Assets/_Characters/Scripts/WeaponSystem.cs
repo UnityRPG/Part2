@@ -31,8 +31,8 @@ namespace RPG.Characters
             if (equipment)
             {
                 equipment.equipmentUpdated += UpdateWeapon;
-                UpdateWeapon();
             }
+            UpdateWeapon();
 
             SetAttackAnimation();
         }
@@ -141,7 +141,6 @@ namespace RPG.Characters
 
         void AttackTargetOnce()
         {
-            Debug.Log("Attacking");
             transform.LookAt(target.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
             float damageDelay = currentWeaponConfig.GetDamageDelay();

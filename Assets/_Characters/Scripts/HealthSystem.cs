@@ -78,7 +78,6 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
-            Debug.Log("Taking damage");
             float damageAfterArmour = damage;
             if (attributes)
             {
