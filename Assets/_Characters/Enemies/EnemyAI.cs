@@ -20,10 +20,7 @@ namespace RPG.Characters
         WeaponSystem weaponSystem;
 
         int nextWaypointIndex;
-        Coroutine behaviourRoutine;
-
-        enum State { idle, patrolling, attacking, chasing }
-        State state;
+        float timeLeftAtWaypoint;
 
         void Start()
         {
@@ -34,20 +31,19 @@ namespace RPG.Characters
 
         void Update()
         {
+            ClearBehaviours();
+
             if (inWeaponCircle)
             {
-                StartAttack();
+                PerformAttackBehaviour();
             }
             else if (inChaseRing)
             {
-                StartChase();
+                PerformChaseBehaviour();
             }
             else if (hasPatrol)
             {
-                StartPatrol();
-            } else
-            {
-                StartIdle();
+                PerformPatrolBehaviour();
             }
         }
 
@@ -66,84 +62,45 @@ namespace RPG.Characters
             }
         }
 
-        private void StartAttack()
-        {
-            if (Transition(State.attacking))
-            {
-                weaponSystem.AttackTarget(player.gameObject);
-            }
-        }
-
-        private void StartChase()
-        {
-            if (Transition(State.chasing))
-            {
-                behaviourRoutine = StartCoroutine(ChasePlayer());
-            }
-        }
-
-        private void StartPatrol()
-        {
-            if (Transition(State.patrolling))
-            {
-                behaviourRoutine = StartCoroutine(Patrol());
-            }
-        }
-
-        private void StartIdle()
-        {
-            Transition(State.idle);
-        }
-
-        private bool Transition(State newState)
-        {
-            if (state != newState)
-            {
-                state = newState;
-                StopRunningBehaviours();
-                return true;
-            }
-
-            return false;
-        }
-
-        private void StopRunningBehaviours()
+        private void ClearBehaviours()
         {
             weaponSystem.StopAttacking();
             character.ClearDestination();
-            if (behaviourRoutine != null)
-            {
-                StopCoroutine(behaviourRoutine);
-                behaviourRoutine = null;
-            }
         }
 
-        IEnumerator Patrol()
+        private void PerformAttackBehaviour()
         {
-            while (true)
+            weaponSystem.AttackTarget(player.gameObject);
+        }
+
+        private void PerformChaseBehaviour()
+        {
+            character.SetDestination(player.transform.position);
+        }
+
+        private void PerformPatrolBehaviour()
+        {
+            if (timeLeftAtWaypoint > 0)
+            {
+                timeLeftAtWaypoint -= Time.deltaTime;
+            }
+            else
             {
                 character.SetDestination(nextWaypointPos);
-                CycleWaypointWhenClose();
-                yield return new WaitForSeconds(waypointDwellTime);
+                if (isAtWaypoint)
+                {
+                    CycleWaypoint();
+                    timeLeftAtWaypoint = waypointDwellTime;
+                }
             }
         }
 
-        IEnumerator ChasePlayer()
-        {
-            while (true)
-            {
-                character.SetDestination(player.transform.position);
-                yield return new WaitForEndOfFrame();
-            }
-        }
+        bool isAtWaypoint => Vector3.Distance(transform.position, nextWaypointPos) <= waypointTolerance;
         Vector3 nextWaypointPos => patrolPath.transform.GetChild(nextWaypointIndex).position;
 
-        private void CycleWaypointWhenClose()
+        private void CycleWaypoint()
         {
-            if (Vector3.Distance(transform.position, nextWaypointPos) <= waypointTolerance)
-            {
-                nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
-            }
+            nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
         }
 
         void OnDrawGizmos()
