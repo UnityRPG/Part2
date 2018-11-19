@@ -41,36 +41,51 @@ namespace RPG.Characters
 
             if (desiredSpecialAbility != -1)
             {
-                if (target != null)
-                {
-                    if (!IsTargetInRange(target))
-                    {
-                        character.SetDestination(target.transform.position);
-                    }
-                    else
-                    {
-                        AttemptAbility(target);
-                    }
-                }
-                else
-                {
-                    AttemptAbility();
-                }
+                PerformSpecialAbilityBehaviour();
             }
             else if (target)
             {
-                if (!IsTargetInRange(target))
-                {
-                    character.SetDestination(target.transform.position);
-                }
-                else
-                {
-                    weaponSystem.AttackTarget(target);
-                }
+                PerformAttackBehaviour();
             }
             else if (wantsToMove)
             {
                 character.SetDestination(desiredLocation);
+            }
+        }
+
+        private void PerformSpecialAbilityBehaviour()
+        {
+            if (target != null)
+            {
+                PerformTargettedSpecialAbilityBehaviour();
+            }
+            else
+            {
+                AttemptAbility();
+            }
+        }
+
+        private void PerformAttackBehaviour()
+        {
+            if (!IsTargetInRange(target))
+            {
+                character.SetDestination(target.transform.position);
+            }
+            else
+            {
+                weaponSystem.AttackTarget(target);
+            }
+        }
+
+        private void PerformTargettedSpecialAbilityBehaviour()
+        {
+            if (!IsTargetInRange(target))
+            {
+                character.SetDestination(target.transform.position);
+            }
+            else
+            {
+                AttemptAbility(target);
             }
         }
 
