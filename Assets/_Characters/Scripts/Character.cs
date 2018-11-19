@@ -92,7 +92,7 @@ namespace RPG.Characters
             else
             {
                 Move(Vector3.zero);
-                navMeshAgent.isStopped = true;
+                ClearDestination();
             }
         }
 
@@ -105,6 +105,11 @@ namespace RPG.Characters
         {
             navMeshAgent.destination = worldPos;
             navMeshAgent.isStopped = false;
+        }
+
+        public void ClearDestination()
+        {
+            navMeshAgent.isStopped = true;
         }
 
         public AnimatorOverrideController GetOverrideController()

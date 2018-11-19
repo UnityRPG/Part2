@@ -48,8 +48,17 @@ namespace RPG.Characters
         {
             if (Input.GetMouseButton(0))
             {
-                weaponSystem.StopAttacking();
+                StopRunningBehaviours();
                 character.SetDestination(destination);
+            }
+        }
+
+        private void StopRunningBehaviours()
+        {
+            weaponSystem.StopAttacking();
+            if (attackingCoroutine != null)
+            {
+                StopCoroutine(attackingCoroutine);
             }
         }
 
@@ -64,22 +73,14 @@ namespace RPG.Characters
         {
             if (Input.GetMouseButton(0))
             {
-                StartAttackingCoroutine(MoveAndAttack(enemy));
+                StopRunningBehaviours();
+                attackingCoroutine = StartCoroutine(MoveAndAttack(enemy));
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                StartAttackingCoroutine(MoveAndPowerAttack(enemy));
+                StopRunningBehaviours();
+                attackingCoroutine = StartCoroutine(MoveAndPowerAttack(enemy));
             }
-        }
-
-        void StartAttackingCoroutine(IEnumerator routine)
-        {
-            if (attackingCoroutine != null)
-            {
-                weaponSystem.StopAttacking();
-                StopCoroutine(attackingCoroutine);
-            }
-            attackingCoroutine = StartCoroutine(routine);
         }
 
         IEnumerator MoveAndAttack(EnemyAI enemy)
@@ -101,6 +102,7 @@ namespace RPG.Characters
             {
                 yield return new WaitForEndOfFrame();
             }
+            character.ClearDestination();
         }
     }
 }
