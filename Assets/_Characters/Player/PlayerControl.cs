@@ -10,7 +10,11 @@ namespace RPG.Characters
         SpecialAbilities abilities;
         WeaponSystem weaponSystem;
 
-        Coroutine attackingCoroutine;
+        int desiredSpecialAbility = -1;
+        bool shouldAttack;
+        bool wantsToMove = false;
+        Vector3 desiredLocation;
+        GameObject target;
 
         void Start()
         {
@@ -30,7 +34,50 @@ namespace RPG.Characters
 
         void Update()
         {
-             ScanForAbilityKeyDown();
+            ScanForAbilityKeyDown();
+
+            weaponSystem.StopAttacking();
+            character.ClearDestination();
+
+            if (desiredSpecialAbility != -1)
+            {
+                if (target != null)
+                {
+                    if (!IsTargetInRange(target))
+                    {
+                        character.SetDestination(target.transform.position);
+                    }
+                    else
+                    {
+                        AttemptAbility(target);
+                    }
+                }
+                else
+                {
+                    AttemptAbility();
+                }
+            }
+            else if (target)
+            {
+                if (!IsTargetInRange(target))
+                {
+                    character.SetDestination(target.transform.position);
+                }
+                else
+                {
+                    weaponSystem.AttackTarget(target);
+                }
+            }
+            else if (wantsToMove)
+            {
+                character.SetDestination(desiredLocation);
+            }
+        }
+
+        private void AttemptAbility(GameObject target = null)
+        {
+            abilities.AttemptSpecialAbility(desiredSpecialAbility, target);
+            desiredSpecialAbility = -1;
         }
 
         void ScanForAbilityKeyDown()
@@ -39,7 +86,8 @@ namespace RPG.Characters
             {
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    abilities.AttemptSpecialAbility(keyIndex);
+                    target = null;
+                    desiredSpecialAbility = keyIndex;
                 }
             }
         }
@@ -48,17 +96,9 @@ namespace RPG.Characters
         {
             if (Input.GetMouseButton(0))
             {
-                StopRunningBehaviours();
-                character.SetDestination(destination);
-            }
-        }
-
-        private void StopRunningBehaviours()
-        {
-            weaponSystem.StopAttacking();
-            if (attackingCoroutine != null)
-            {
-                StopCoroutine(attackingCoroutine);
+                wantsToMove = true;
+                target = null;
+                desiredLocation = destination;
             }
         }
 
@@ -73,36 +113,13 @@ namespace RPG.Characters
         {
             if (Input.GetMouseButton(0))
             {
-                StopRunningBehaviours();
-                attackingCoroutine = StartCoroutine(MoveAndAttack(enemy));
+                target = enemy.gameObject;
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                StopRunningBehaviours();
-                attackingCoroutine = StartCoroutine(MoveAndPowerAttack(enemy));
+                target = enemy.gameObject;
+                desiredSpecialAbility = 0;
             }
-        }
-
-        IEnumerator MoveAndAttack(EnemyAI enemy)
-        {
-            yield return StartCoroutine(MoveToTarget(enemy.gameObject));
-            weaponSystem.AttackTarget(enemy.gameObject);
-        }
-
-        IEnumerator MoveAndPowerAttack(EnemyAI enemy)
-        {
-            yield return StartCoroutine(MoveToTarget(enemy.gameObject));
-            abilities.AttemptSpecialAbility(0, enemy.gameObject);
-        }
-
-        IEnumerator MoveToTarget(GameObject target)
-        {
-            character.SetDestination(target.transform.position);
-            while (!IsTargetInRange(target))
-            {
-                yield return new WaitForEndOfFrame();
-            }
-            character.ClearDestination();
         }
     }
 }

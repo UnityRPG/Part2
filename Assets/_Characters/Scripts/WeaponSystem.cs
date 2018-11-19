@@ -10,13 +10,13 @@ namespace RPG.Characters
         [SerializeField] float baseDamage = 10f;
         [SerializeField] WeaponConfig currentWeaponConfig = null;
 
-        GameObject target;
+        GameObject currentTarget;
+
         GameObject weaponObject;
         Animator animator;
         Character character;
         Equipment equipment;
         Attributes attributes;
-        Coroutine attackingRepeat;
         Coroutine damageDelay;
 
         const string ATTACK_TRIGGER = "Attack";
@@ -35,9 +35,11 @@ namespace RPG.Characters
             UpdateWeapon();
 
             SetAttackAnimation();
+
+            StartCoroutine(AttackTargetRepeatedly());
         }
 
-        public bool canAttack => !characterIsDead && !targetIsOutOfRange && !targetIsDead;
+        public bool canAttack => !characterIsDead && !targetIsOutOfRange && currentTarget != null && !targetIsDead;
 
         public bool characterIsDead {
             get
@@ -51,11 +53,11 @@ namespace RPG.Characters
         {
             get
             {
-                if (target == null) return false;
+                if (currentTarget == null) return false;
 
                 if (currentWeaponConfig != null)
                 {
-                    var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+                    var distanceToTarget = Vector3.Distance(transform.position, currentTarget.transform.position);
                     return distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
                 }
                 return true;
@@ -66,9 +68,9 @@ namespace RPG.Characters
         {
             get
             {
-                if (target == null) return false;
+                if (currentTarget == null) return false;
 
-                var targethealth = target.GetComponent<HealthSystem>().healthAsPercentage;
+                var targethealth = currentTarget.GetComponent<HealthSystem>().healthAsPercentage;
                 return targethealth <= Mathf.Epsilon;
             }
         }
@@ -94,45 +96,38 @@ namespace RPG.Characters
 
         public void AttackTarget(GameObject targetToAttack)
         {
-            target = targetToAttack;
-
-            if (attackingRepeat != null) return;
-            attackingRepeat = StartCoroutine(AttackTargetRepeatedly());
+            currentTarget = targetToAttack;
         }
 
         public void StopAttacking()
         {
-            animator.StopPlayback();
-
-            if (attackingRepeat != null)
-            {
-                StopCoroutine(attackingRepeat);
-                attackingRepeat = null;
-            }
+            currentTarget = null;
         }
 
         IEnumerator AttackTargetRepeatedly()
         {
-            bool targetStillAlive = target.GetComponent<HealthSystem>().healthAsPercentage >= Mathf.Epsilon;
-
-            while (canAttack)
+            while (true)
             {
-                var animationClip = currentWeaponConfig.GetAttackAnimClip();
-                float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
-                float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
-                if (attributes)
+                yield return new WaitUntil(() => canAttack);
+                while (canAttack)
                 {
-                    timeToWait = 1 / attributes.hitSpeed;
-                }
+                    var animationClip = currentWeaponConfig.GetAttackAnimClip();
+                    float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
+                    float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
+                    if (attributes)
+                    {
+                        timeToWait = 1 / attributes.hitSpeed;
+                    }
 
-                AttackTargetOnce();
-                yield return new WaitForSeconds(timeToWait);
+                    AttackTargetOnce();
+                    yield return new WaitForSeconds(timeToWait);
+                }
             }
         }
 
         void AttackTargetOnce()
         {
-            transform.LookAt(target.transform);
+            transform.LookAt(currentTarget.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
             float damageDelay = currentWeaponConfig.GetDamageDelay();
             SetAttackAnimation();
@@ -145,7 +140,7 @@ namespace RPG.Characters
 
             if (canAttack)
             {
-                target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
+                currentTarget.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
             }
         }
 
