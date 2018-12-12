@@ -9,10 +9,12 @@ namespace RPG.Characters
 
         public override void Use(GameObject target)
         {
-            PlayAbilitySound();
-            DealRadialDamage();
-            PlayParticleEffect();
-            PlayAbilityAnimation();
+            PlayAbilityAnimation(() => 
+            {
+                PlayAbilitySound();
+                DealRadialDamage();
+                PlayParticleEffect();
+            });
         }
 
         private void DealRadialDamage()

@@ -33,9 +33,6 @@ namespace RPG.Characters
                 equipment.equipmentUpdated += UpdateWeapon;
             }
             UpdateWeapon();
-
-            SetAttackAnimation();
-
             StartCoroutine(AttackTargetRepeatedly());
         }
 

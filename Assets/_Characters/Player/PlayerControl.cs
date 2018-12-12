@@ -11,7 +11,6 @@ namespace RPG.Characters
         WeaponSystem weaponSystem;
 
         int desiredSpecialAbility = -1;
-        bool shouldAttack;
         bool wantsToMove = false;
         Vector3 desiredLocation;
         GameObject target;
