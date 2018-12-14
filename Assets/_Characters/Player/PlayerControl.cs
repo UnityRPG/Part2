@@ -66,7 +66,9 @@ namespace RPG.Characters
 
         private void PerformAttackBehaviour()
         {
-            if (!IsTargetInRange(target))
+            if (!weaponSystem.CanAttackWhenInRange(target)) return;
+
+            if (weaponSystem.TargetIsOutOfRange(target))
             {
                 character.SetDestination(target.transform.position);
             }
@@ -78,7 +80,9 @@ namespace RPG.Characters
 
         private void PerformTargettedSpecialAbilityBehaviour()
         {
-            if (!IsTargetInRange(target))
+            if (!abilities.CanUseWhenInRange(desiredSpecialAbility, target)) return;
+
+            if (!abilities.IsInRange(desiredSpecialAbility, target))
             {
                 character.SetDestination(target.transform.position);
             }
@@ -114,13 +118,6 @@ namespace RPG.Characters
                 target = null;
                 desiredLocation = destination;
             }
-        }
-
-        bool IsTargetInRange(GameObject target)
-        {
-            float distanceToTarget = (target.transform.position - transform.position).magnitude;
-            
-            return distanceToTarget <= weaponSystem.GetMaxAttackRange();
         }
 
         void OnMouseOverEnemy(EnemyAI enemy)

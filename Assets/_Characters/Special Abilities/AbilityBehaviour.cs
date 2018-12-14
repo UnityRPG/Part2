@@ -11,6 +11,10 @@ namespace RPG.Characters
 
         public abstract void Use(GameObject target = null);
 
+        public virtual bool IsInRange(GameObject target) => true;
+
+        public virtual bool CanUseWhenInRange(GameObject target) => true;
+
         public void SetConfig(AbilityConfig configToSet)
         {
             config = configToSet;

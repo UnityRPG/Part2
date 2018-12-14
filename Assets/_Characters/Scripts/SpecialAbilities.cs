@@ -44,8 +44,20 @@ namespace RPG.Characters
             }
         }
 
+        public bool CanUseWhenInRange(int abilityIndex, GameObject target = null)
+        {
+            return abilities[abilityIndex].CanUseWhenInRange(target);
+        }
+
+        public bool IsInRange(int abilityIndex, GameObject target)
+        {
+            return abilities[abilityIndex].IsInRange(target);
+        }
+
         public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
+            if (!CanUseWhenInRange(abilityIndex, target)) return;
+
             var energyCost = abilities[abilityIndex].GetEnergyCost();
 
             if (energyCost <= currentEnergyPoints)

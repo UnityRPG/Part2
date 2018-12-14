@@ -36,7 +36,14 @@ namespace RPG.Characters
             StartCoroutine(AttackTargetRepeatedly());
         }
 
-        public bool canAttack => !characterIsDead && !targetIsOutOfRange && currentTarget != null && !targetIsDead;
+        public bool CanAttackWhenInRange(GameObject target)
+        {
+            return target != null && hasWeapon && !characterIsDead && !TargetIsDead(target);
+        }
+
+        public bool canAttack => CanAttackWhenInRange(currentTarget) && !TargetIsOutOfRange(currentTarget);
+
+        public bool hasWeapon => currentWeaponConfig != null;
 
         public bool characterIsDead {
             get
@@ -46,30 +53,24 @@ namespace RPG.Characters
             }
         }
 
-        public bool targetIsOutOfRange
+        public bool TargetIsOutOfRange(GameObject target)
         {
-            get
-            {
-                if (currentTarget == null) return false;
+            if (target == null) return false;
 
-                if (currentWeaponConfig != null)
-                {
-                    var distanceToTarget = Vector3.Distance(transform.position, currentTarget.transform.position);
-                    return distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
-                }
-                return true;
+            if (currentWeaponConfig != null)
+            {
+                var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+                return distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
             }
+            return true;
         }
 
-        public bool targetIsDead
+        public bool TargetIsDead(GameObject target)
         {
-            get
-            {
-                if (currentTarget == null) return false;
+            if (target == null) return false;
 
-                var targethealth = currentTarget.GetComponent<HealthSystem>().healthAsPercentage;
-                return targethealth <= Mathf.Epsilon;
-            }
+            var targethealth = target.GetComponent<HealthSystem>().healthAsPercentage;
+            return targethealth <= Mathf.Epsilon;
         }
 
         public void UpdateWeapon()

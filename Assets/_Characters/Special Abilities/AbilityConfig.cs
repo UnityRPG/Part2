@@ -24,20 +24,15 @@ namespace RPG.Characters
             behaviour = behaviourComponent;
         }
 
-        public void Use(GameObject target)
-        {
-            behaviour.Use(target);
-        }
+        public virtual bool IsInRange(GameObject target) => behaviour.IsInRange(target);
 
-        public float GetEnergyCost()
-        {
-            return energyCost;
-        }
+        public virtual bool CanUseWhenInRange(GameObject target) => behaviour.CanUseWhenInRange(target);
 
-        public GameObject GetParticlePrefab()
-        {
-            return particlePrefab;
-        }
+        public void Use(GameObject target) => behaviour.Use(target);
+
+        public float GetEnergyCost() => energyCost;
+
+        public GameObject GetParticlePrefab() => particlePrefab;
 
         public AnimationClip GetAbilityAnimation()
         {
