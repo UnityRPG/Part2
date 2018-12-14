@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ActionQueue : StateMachineBehaviour
+public class SwappableAction : StateMachineBehaviour
 {
 
     [SerializeField] string conditionName;
@@ -12,16 +12,17 @@ public class ActionQueue : StateMachineBehaviour
 
     public bool hasQueueActions => _actionQueue.Count > 0;
 
-    public void QueueAction(Animator animator, AnimationClip clip, System.Action callback)
+    public void ReplaceNextAction(Animator animator, AnimationClip clip, System.Action callback)
     {
         var attack = new Action();
         attack.clip = clip;
         attack.callback = callback;
+        _actionQueue.Clear();
         _actionQueue.Enqueue(attack);
         animator.SetBool(conditionName, hasQueueActions);
     }
 
-    private Queue<Action> _actionQueue = new Queue<Action>();
+    private Queue<Action> _actionQueue = new Queue<Action>(1);
 
     struct Action
     {

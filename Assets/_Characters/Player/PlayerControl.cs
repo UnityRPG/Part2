@@ -104,7 +104,6 @@ namespace RPG.Characters
             {
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    target = null;
                     desiredSpecialAbility = keyIndex;
                 }
             }

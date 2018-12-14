@@ -102,6 +102,11 @@ namespace RPG.Characters
             currentTarget = null;
         }
 
+        public void Hit()
+        {
+            Debug.Log("Hit");
+        }
+
         IEnumerator AttackTargetRepeatedly()
         {
             while (true)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace RPG.Characters
 {
@@ -9,8 +10,9 @@ namespace RPG.Characters
 
         public override void Use(GameObject target)
         {
-            PlayAbilityAnimation(() => 
+            PlayAbilityAnimation(async () => 
             {
+                await new WaitForSeconds(1);
                 PlayAbilitySound();
                 DealRadialDamage();
                 PlayParticleEffect();

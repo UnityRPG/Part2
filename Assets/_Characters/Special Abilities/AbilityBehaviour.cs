@@ -46,8 +46,8 @@ namespace RPG.Characters
         protected void PlayAbilityAnimation(System.Action callback)
         {
             var animator = GetComponent<Animator>();
-            var switchableAnimation = animator.GetBehaviour<ActionQueue>();
-            switchableAnimation.QueueAction(animator, config.GetAbilityAnimation(), callback);
+            var switchableAnimation = animator.GetBehaviour<SwappableAction>();
+            switchableAnimation.ReplaceNextAction(animator, config.GetAbilityAnimation(), callback);
         }
 
         protected void PlayAbilitySound()
