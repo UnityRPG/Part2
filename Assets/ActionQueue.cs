@@ -29,36 +29,24 @@ public class ActionQueue : StateMachineBehaviour
         public System.Action callback;
     }
 
-    private Action _actionToReset;
-
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_actionToReset.clip == null && _actionQueue.Count > 0)
+        if (hasQueueActions)
         {
-            _actionToReset = new Action();
-
-            var animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-            _actionToReset.clip = animatorOverrideController[animationName];
-
+            var animatorOverrideController =  animator.runtimeAnimatorController as AnimatorOverrideController;
+            if (animatorOverrideController == null)
+            {
+                animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+                animator.runtimeAnimatorController = animatorOverrideController;
+            }
             var animationOverride = _actionQueue.Dequeue();
-            _actionToReset.callback = animationOverride.callback;
 
             animatorOverrideController[animationName] = animationOverride.clip;
-            animator.runtimeAnimatorController = animatorOverrideController;
-        }
-    }
 
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
+            animationOverride.callback();
+        }
+
+
         animator.SetBool(conditionName, hasQueueActions);
-
-        if (_actionToReset.clip != null)
-        {
-            var animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-            animatorOverrideController[animationName] = _actionToReset.clip;
-            animator.runtimeAnimatorController = animatorOverrideController;
-            _actionToReset.callback();
-            _actionToReset.clip = null;
-        }
     }
 }

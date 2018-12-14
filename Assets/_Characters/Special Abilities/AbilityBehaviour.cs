@@ -43,7 +43,6 @@ namespace RPG.Characters
         {
             var animator = GetComponent<Animator>();
             var switchableAnimation = animator.GetBehaviour<ActionQueue>();
-            Debug.Log("Abilitiy " + gameObject.tag);
             switchableAnimation.QueueAction(animator, config.GetAbilityAnimation(), callback);
         }
 

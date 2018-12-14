@@ -120,11 +120,6 @@ namespace RPG.Characters
         void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
-            if (gameObject.tag == "Player" && (forwardAmount != 0 || turnAmount != 0))
-            {
-                print("Move: "+movement);
-                print("Forward: "+forwardAmount+" Turn: "+turnAmount);
-            }
             ApplyExtraTurnRotation();
             UpdateAnimator();
             navMeshAgent.nextPosition = transform.position;
