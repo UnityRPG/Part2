@@ -10,9 +10,8 @@ namespace RPG.Characters
 
         public override void Use(GameObject target)
         {
-            PlayAbilityAnimation(async () => 
+            PlayAbilityAnimation(() => 
             {
-                await new WaitForSeconds(1);
                 PlayAbilitySound();
                 DealRadialDamage();
                 PlayParticleEffect();

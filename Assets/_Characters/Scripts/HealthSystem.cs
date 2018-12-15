@@ -37,6 +37,7 @@ namespace RPG.Characters
 		
         float currentHealthPoints;
         bool healthPointsSetByRestore = false;
+        bool hasBeenKilled = false;
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -91,9 +92,10 @@ namespace RPG.Characters
 
         private void CheckShouldCharacterDie()
         {
-            if (!isAlive)
+            if (!isAlive && !hasBeenKilled)
             {
                 StartCoroutine(KillCharacter());
+                hasBeenKilled = true;
             }
         }
 

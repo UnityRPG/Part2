@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyCost: 50
   particlePrefab: {fileID: 1977060658541122, guid: ddb9eccb541f52c4d91b421e9aba766d,
-    type: 2}
-  abilityAnimation: {fileID: 7400000, guid: 158f3770cb63f864e9917904a4c1c9f1, type: 3}
+    type: 3}
+  abilityAnimation: {fileID: 7400000, guid: c9cdccfb9d6cfef4d9992105a94b5d86, type: 3}
   audioClips:
   - {fileID: 8300000, guid: aa8697103a68b4849802cdbafe9d93b7, type: 3}
   radius: 3
