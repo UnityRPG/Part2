@@ -42,7 +42,7 @@ namespace RPG.Characters
 				
 		// cached references for readability
         NavMeshAgent navMeshAgent;
-        Animator animator;
+        ActionScheduler actionScheduler;
         Rigidbody rigidBody;
 
 
@@ -65,10 +65,9 @@ namespace RPG.Characters
             var audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.spatialBlend = audioSourceSpatialBlend;
 
-            animator = gameObject.AddComponent<Animator>();
-            animator.runtimeAnimatorController = animatorController;
-            animator.avatar = characterAvatar;
-            animator.applyRootMotion = true;
+            actionScheduler = gameObject.AddComponent<ActionScheduler>();
+            actionScheduler.animatorOverrideController = animatorOverrideController;
+            actionScheduler.characterAvatar = characterAvatar;
 
             navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
             navMeshAgent.speed = navMeshAgentSteeringSpeed;
@@ -96,11 +95,6 @@ namespace RPG.Characters
             }
         }
 
-        public float GetAnimSpeedMultiplier()
-        {
-            return animator.speed;
-        }
-
         public void SetDestination(Vector3 worldPos)
         {
             navMeshAgent.destination = worldPos;
@@ -121,7 +115,7 @@ namespace RPG.Characters
         {
             SetForwardAndTurn(movement);
             ApplyExtraTurnRotation();
-            UpdateAnimator();
+            RequestMovement();
             navMeshAgent.nextPosition = transform.position;
         }
 
@@ -138,11 +132,11 @@ namespace RPG.Characters
             forwardAmount = localMove.z;
         }
 
-        void UpdateAnimator()
+        void RequestMovement()
         {
-            animator.SetFloat("Forward", forwardAmount * animatorForwardCap, 0.1f, Time.deltaTime);
-            animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
-            animator.speed = animationSpeedMultiplier;
+            actionScheduler.forwardAmountRequest = forwardAmount * animatorForwardCap;
+            actionScheduler.turnAmountRequest = turnAmount;
+            actionScheduler.animationSpeedMultiplier = animationSpeedMultiplier;
         }
 
         void ApplyExtraTurnRotation()
@@ -158,7 +152,7 @@ namespace RPG.Characters
             // this allows us to modify the positional speed before it's applied.
             if (Time.deltaTime > 0)
             {
-                Vector3 velocity = (animator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
+                Vector3 velocity = (actionScheduler.deltaIKPosition * moveSpeedMultiplier) / Time.deltaTime;
 
                 // we preserve the existing y part of the current velocity.
                 velocity.y = rigidBody.velocity.y;

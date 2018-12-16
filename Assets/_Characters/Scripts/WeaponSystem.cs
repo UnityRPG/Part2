@@ -14,6 +14,7 @@ namespace RPG.Characters
 
         GameObject weaponObject;
         Animator animator;
+        ActionScheduler actionScheduler;
         Character character;
         Equipment equipment;
         Attributes attributes;
@@ -25,6 +26,7 @@ namespace RPG.Characters
         void Start()
         {
             animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
             character = GetComponent<Character>();
             attributes = GetComponent<Attributes>();
             equipment = GetComponent<Equipment>();
@@ -115,7 +117,7 @@ namespace RPG.Characters
                 while (canAttack)
                 {
                     var animationClip = currentWeaponConfig.GetAttackAnimClip();
-                    float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
+                    float animationClipTime = animationClip.length / actionScheduler.animSpeedMultiplier;
                     float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
                     if (attributes)
                     {
