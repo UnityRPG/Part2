@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace RPG.Characters
 {
@@ -54,5 +55,15 @@ namespace RPG.Characters
         public Vector3 deltaIKPosition => animator.deltaPosition;
 
         public float animSpeedMultiplier => animator.speed;
+
+        public event Action<Vector3, Quaternion> onMove;
+
+        public bool isMoving => animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded");
+
+
+        void OnAnimatorMove()
+        {
+            onMove(animator.deltaPosition, animator.deltaRotation);     
+        }
     }
 }

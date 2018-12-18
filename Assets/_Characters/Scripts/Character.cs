@@ -68,6 +68,7 @@ namespace RPG.Characters
             actionScheduler = gameObject.AddComponent<ActionScheduler>();
             actionScheduler.animatorOverrideController = animatorOverrideController;
             actionScheduler.characterAvatar = characterAvatar;
+            actionScheduler.onMove += OnMove;
 
             navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
             navMeshAgent.speed = navMeshAgentSteeringSpeed;
@@ -114,9 +115,7 @@ namespace RPG.Characters
         void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
-            ApplyExtraTurnRotation();
             RequestMovement();
-            navMeshAgent.nextPosition = transform.position;
         }
 
         void SetForwardAndTurn(Vector3 movement)
@@ -146,17 +145,24 @@ namespace RPG.Characters
             transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
         }
 
-        void OnAnimatorMove()
+        void OnMove(Vector3 deltaIKPosition, Quaternion deltaIKRotation)
         {
             // we implement this function to override the default root motion.
             // this allows us to modify the positional speed before it's applied.
             if (Time.deltaTime > 0)
             {
-                Vector3 velocity = (actionScheduler.deltaIKPosition * moveSpeedMultiplier) / Time.deltaTime;
+                Vector3 velocity = (deltaIKPosition * moveSpeedMultiplier) / Time.deltaTime;
 
                 // we preserve the existing y part of the current velocity.
                 velocity.y = rigidBody.velocity.y;
                 rigidBody.velocity = velocity;
+
+                if (actionScheduler.isMoving)
+                {
+                    ApplyExtraTurnRotation();
+                }
+
+                navMeshAgent.nextPosition = transform.position;
             }
         }
 
