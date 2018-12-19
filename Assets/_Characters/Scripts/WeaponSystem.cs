@@ -132,7 +132,7 @@ namespace RPG.Characters
 
         void AttackTargetOnce()
         {
-            var action = new SchedulableAction(isInterruptable:true);
+            var action = new SchedulableAction(isInterruptable:false);
             action.OnStart += () =>
             {
                 transform.LookAt(currentTarget.transform);

@@ -39,6 +39,7 @@ namespace RPG.Characters
         // private instance variables for state
         float turnAmount;
         float forwardAmount;
+        SchedulableAction currentMovementAction;
 				
 		// cached references for readability
         NavMeshAgent navMeshAgent;
@@ -87,11 +88,22 @@ namespace RPG.Characters
             }
             else if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
             {
-                Move(navMeshAgent.desiredVelocity);
+                if (currentMovementAction != null && currentMovementAction.isRunning)
+                {
+                    Move(navMeshAgent.desiredVelocity);
+                } else
+                {
+                    currentMovementAction = new SchedulableAction(isInterruptable:true);
+                    actionScheduler.QueueAction(currentMovementAction);
+                }
             }
             else
             {
                 Move(Vector3.zero);
+                if (currentMovementAction != null)
+                {
+                    currentMovementAction.Finish();
+                }
                 ClearDestination();
             }
         }
@@ -115,6 +127,7 @@ namespace RPG.Characters
         void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
+            ApplyExtraTurnRotation();
             RequestMovement();
         }
 
@@ -156,11 +169,6 @@ namespace RPG.Characters
                 // we preserve the existing y part of the current velocity.
                 velocity.y = rigidBody.velocity.y;
                 rigidBody.velocity = velocity;
-
-                if (actionScheduler.isMoving)
-                {
-                    ApplyExtraTurnRotation();
-                }
 
                 navMeshAgent.nextPosition = transform.position;
             }
