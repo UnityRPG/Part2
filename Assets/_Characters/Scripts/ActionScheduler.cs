@@ -60,6 +60,42 @@ namespace RPG.Characters
 
         public bool isMoving => animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded");
 
+        private SchedulableAction runningAction = null;
+        private SchedulableAction queuedAction = null;
+
+        public void QueueAction(SchedulableAction action)
+        {
+            action.OnFinish += () => FinishAction(action);
+
+            queuedAction = action;
+
+            if (runningAction != null && runningAction.isInterruptable)
+            {
+                runningAction.Cancel();
+                runningAction = null;
+            }
+
+            ProgressQueue();
+        }
+
+        private void FinishAction(SchedulableAction action)
+        {
+            if (runningAction == action)
+            {
+                runningAction = null;
+                ProgressQueue();
+            }
+        }
+
+        private void ProgressQueue()
+        {
+            if (runningAction == null && queuedAction != null)
+            {
+                runningAction = queuedAction;
+                queuedAction = null;
+                runningAction.Start();
+            }
+        }
 
         void OnAnimatorMove()
         {

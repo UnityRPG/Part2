@@ -132,14 +132,19 @@ namespace RPG.Characters
 
         void AttackTargetOnce()
         {
-            transform.LookAt(currentTarget.transform);
-            animator.SetTrigger(ATTACK_TRIGGER);
-            float damageDelay = currentWeaponConfig.GetDamageDelay();
-            SetAttackAnimation();
-            StartCoroutine(DamageAfterDelay(damageDelay));
+            var action = new SchedulableAction(isInterruptable:true);
+            action.OnStart += () =>
+            {
+                transform.LookAt(currentTarget.transform);
+                animator.SetTrigger(ATTACK_TRIGGER);
+                float damageDelay = currentWeaponConfig.GetDamageDelay();
+                SetAttackAnimation();
+                StartCoroutine(DamageAfterDelay(damageDelay, action));
+            };
+            actionScheduler.QueueAction(action);
         }
 
-        IEnumerator DamageAfterDelay(float delay)
+        IEnumerator DamageAfterDelay(float delay, SchedulableAction action)
         {
             yield return new WaitForSecondsRealtime(delay);
 
@@ -147,6 +152,7 @@ namespace RPG.Characters
             {
                 currentTarget.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
             }
+            action.Finish();
         }
 
         public WeaponConfig GetCurrentWeapon()
