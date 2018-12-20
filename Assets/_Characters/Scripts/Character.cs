@@ -44,6 +44,7 @@ namespace RPG.Characters
 		// cached references for readability
         NavMeshAgent navMeshAgent;
         ActionScheduler actionScheduler;
+        Animator animator;
         Rigidbody rigidBody;
 
 
@@ -71,6 +72,8 @@ namespace RPG.Characters
             actionScheduler.characterAvatar = characterAvatar;
             actionScheduler.onMove += OnMove;
 
+            animator = GetComponent<Animator>();
+
             navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
             navMeshAgent.speed = navMeshAgentSteeringSpeed;
             navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
@@ -86,7 +89,7 @@ namespace RPG.Characters
             {
                 Debug.LogError(gameObject.name + " uh oh this guy is not on the navmesh");
             }
-            else if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
+            else if (!navMeshAgent.isStopped && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
             {
                 if (currentMovementAction != null && currentMovementAction.isRunning)
                 {
@@ -135,6 +138,8 @@ namespace RPG.Characters
         {
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired direction
+            animator.SetBool("Move", movement.magnitude > 0);
+
             if (movement.magnitude > moveThreshold)
             {
                 movement.Normalize();
