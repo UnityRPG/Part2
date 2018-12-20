@@ -9,6 +9,7 @@ namespace RPG.Characters
     {
         [Header("Power Attack Specific")]
         [SerializeField] float extraDamage = 10f;
+        [SerializeField] float _damageDelay = 0.2f;
 
         public override AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo)
         {
@@ -18,5 +19,7 @@ namespace RPG.Characters
         {
             return extraDamage;
         }
+
+        public float damageDelay => _damageDelay;
     }
 }

@@ -44,7 +44,7 @@ public class SwappableAction : StateMachineBehaviour
 
             animatorOverrideController[animationName] = animationOverride.clip;
 
-            animationOverride.callback();
+            animationOverride.callback(); // TODO: remove as action system should handle this scheduling.
         }
 
 

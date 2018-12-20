@@ -10,12 +10,16 @@ namespace RPG.Characters
         {
             if (!GetComponent<WeaponSystem>().hasWeapon) return;
 
-            PlayAbilityAnimation(() =>
+            var action = new SchedulableAction(false);
+
+            action.OnStart += () =>
             {
-                PlayAbilitySound();
-                DealDamage(target);
-                PlayParticleEffect();
-            });
+                transform.LookAt(target.transform);
+                PlayAbilityAnimation(() => {});
+                StartCoroutine(EffectsAfterDelay(action, target));
+            };
+
+            GetComponent<ActionScheduler>().QueueAction(action);
         }
 
         public override bool CanUseWhenInRange(GameObject target)
@@ -30,6 +34,20 @@ namespace RPG.Characters
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
             float range = GetComponent<WeaponSystem>().GetMaxAttackRange();
             return distanceToTarget <= range;
+        }
+
+        private IEnumerator EffectsAfterDelay(SchedulableAction action, GameObject target)
+        {
+            float delay =  (config as PowerAttackConfig).damageDelay;
+            yield return new WaitForSeconds(delay);
+
+            PlayAbilitySound();
+            DealDamage(target);
+            PlayParticleEffect();
+
+            yield return new WaitForSeconds(config.GetAbilityAnimation().averageDuration - delay);
+
+            action.Finish();
         }
 
         private void DealDamage(GameObject target)
