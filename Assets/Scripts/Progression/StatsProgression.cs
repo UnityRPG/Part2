@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace RPG.Stats
+namespace RPG.Progression
 {
-    [CreateAssetMenu(menuName = ("RPG/Stat Set"))]
-    public class StatSet : ScriptableObject
+    [CreateAssetMenu(menuName = ("RPG/Stats Progression Set"))]
+    public class StatsProgression : ScriptableObject
     {
         [SerializeField] PlayerStats playerStats;
         [SerializeField] EnemyClass[] enemyClasses;

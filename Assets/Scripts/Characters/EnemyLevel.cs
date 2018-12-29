@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using RPG.Stats;
+using RPG.Progression;
 
 namespace RPG.Characters
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.UI
+namespace RPG.Characters
 {
     public class CameraFollow : MonoBehaviour
     {

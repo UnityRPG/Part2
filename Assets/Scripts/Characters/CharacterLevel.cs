@@ -1,11 +1,11 @@
-﻿using RPG.Stats;
+﻿using RPG.Progression;
 using UnityEngine;
 
 namespace RPG.Characters
 {
     abstract public class CharacterLevel : MonoBehaviour
     {
-        [SerializeField] protected StatSet statSet;
+        [SerializeField] protected StatsProgression statSet;
         public int level;
 
         abstract protected CoreCharacterStats GetStats();

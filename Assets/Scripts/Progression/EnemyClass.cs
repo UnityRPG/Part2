@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RPG.Stats
+namespace RPG.Progression
 {
     [Serializable]
     public class EnemyClass

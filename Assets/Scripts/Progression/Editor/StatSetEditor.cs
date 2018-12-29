@@ -2,10 +2,10 @@
 using UnityEditor;
 using RPG.Core;
 
-namespace RPG.Stats
+namespace RPG.Progression
 {
-    [CustomEditor(typeof(StatSet))]
-    public class StatSetEditor : UnityEditor.Editor
+    [CustomEditor(typeof(StatsProgression))]
+    public class StatsProgressionEditor : UnityEditor.Editor
     {
 
         CSVImporter currentImporter;

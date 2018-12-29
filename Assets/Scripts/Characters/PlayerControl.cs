@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using RPG.UI; // for mouse events
+using RPG.Core;
 
 namespace RPG.Characters
 {
