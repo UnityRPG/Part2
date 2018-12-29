@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Inventories;
 
 namespace RPG.Attributes
 {
@@ -69,11 +68,7 @@ namespace RPG.Attributes
 
         private void Start()
         {
-            modifierProviders = new IAttributeModifierProvider[]
-            {
-                GetComponent<AttributeSet>(),
-                GetComponent<Equipment>()
-            };
+            modifierProviders = GetComponents<IAttributeModifierProvider>();
         }
 
         float SumModifiersForAttribute(AttributeModifier.Attribute attribute)

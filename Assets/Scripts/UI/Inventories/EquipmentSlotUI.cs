@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using RPG.UI.Dragging;
+using RPG.Core.UI.Dragging;
 using RPG.Inventories;
 
 namespace RPG.UI.Inventories
 {
-    public class EquipmentSlotUI : MonoBehaviour, IDragContainer
+    public class EquipmentSlotUI : MonoBehaviour, IDragContainer<InventoryItem>
     {
         [SerializeField] Image _iconImage;
         [SerializeField] EquipableItem.EquipLocation equipLocation;

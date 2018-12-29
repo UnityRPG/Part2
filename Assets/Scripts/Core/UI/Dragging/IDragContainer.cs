@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Inventories;
 
-namespace RPG.UI.Dragging
+namespace RPG.Core.UI.Dragging
 {
-    public interface IDragContainer
+    public interface IDragContainer<T> where T : class
     {
-        bool CanAcceptItem(InventoryItem item);
-        InventoryItem ReplaceItem(InventoryItem item);
+        bool CanAcceptItem(T item);
+        T ReplaceItem(T item);
     }
 }

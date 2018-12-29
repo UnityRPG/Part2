@@ -2,11 +2,11 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using RPG.Inventories;
-using RPG.UI.Dragging;
+using RPG.Core.UI.Dragging;
 
 namespace RPG.UI.Inventories
 {
-    public class InventorySlotUI : MonoBehaviour, IItemHolder, IDragContainer
+    public class InventorySlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
     {
         [SerializeField] Image _iconImage;
 

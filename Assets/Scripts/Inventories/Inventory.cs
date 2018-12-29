@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using RPG.Saving;
-using RPG.Characters;
+using RPG.Core.UI.Dragging;
 
 namespace RPG.Inventories
 {
-    public class Inventory : MonoBehaviour, ISaveable
+    public class Inventory : MonoBehaviour, ISaveable, IDiscardHandler<InventoryItem>
     {
 
         int coin;
-        private InventorySlot[] inventorySlots;
         private List<Pickup> droppedItems = new List<Pickup>();
 
         [SerializeField] bool hasDeliveryItem = true; // TODO go from mock to real
         [SerializeField] int inventorySize;
-        
-        
+
+        public InventorySlot[] slots { get; private set; }
+
         public static Inventory GetPlayerInventory()
         {
             var player = GameObject.FindWithTag("Player");
@@ -30,27 +29,20 @@ namespace RPG.Inventories
         }
 
         private void Awake() {
-            inventorySlots = new InventorySlot[inventorySize];
-            inventorySlots[0].item = InventoryItem.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5");
-            inventorySlots[3].item = InventoryItem.GetFromID("bedb2849-78fb-4167-af74-96612a5b5229");
+            slots = new InventorySlot[inventorySize];
+            slots[0].item = InventoryItem.GetFromID("ba374279-da85-4530-8052-4c10a8ce03b5");
+            slots[3].item = InventoryItem.GetFromID("bedb2849-78fb-4167-af74-96612a5b5229");
         }
 
         public event Action inventoryUpdated = delegate {};
 
-        public InventorySlot[] slots
-        {
-            get { 
-                return inventorySlots;
-            }
-        }
-
         public bool AddToFirstEmptySlot(InventoryItem item)
         {
-            for (int i = 0; i < inventorySlots.Length; i++)
+            for (int i = 0; i < slots.Length; i++)
             {
-                if (inventorySlots[i].item == null)
+                if (slots[i].item == null)
                 {
-                    inventorySlots[i].item = item;
+                    slots[i].item = item;
                     inventoryUpdated();
                     return true;
                 }               
@@ -76,15 +68,15 @@ namespace RPG.Inventories
 
         public InventoryItem ReplaceItemInSlot(InventoryItem item, int slot)
         {
-            var oldItem = inventorySlots[slot].item;
-            inventorySlots[slot].item = item;
+            var oldItem = slots[slot].item;
+            slots[slot].item = item;
             inventoryUpdated();
             return oldItem;
         }
 
         public InventoryItem GetItemInSlot(int slot)
         {
-            return inventorySlots[slot].item;
+            return slots[slot].item;
         }
 
         public void CaptureState(IDictionary<string, object> state)
@@ -98,9 +90,9 @@ namespace RPG.Inventories
             var slotStrings = new string[inventorySize];
             for (int i = 0; i < inventorySize; i++)
             {
-                if (inventorySlots[i].item != null)
+                if (slots[i].item != null)
                 {
-                    slotStrings[i] = inventorySlots[i].item.itemID;
+                    slotStrings[i] = slots[i].item.itemID;
                 }
             }
             state["inventorySlots"] = slotStrings;
@@ -165,7 +157,7 @@ namespace RPG.Inventories
             var slotStrings = (string[])state["inventorySlots"];
             for (int i = 0; i < inventorySize; i++)
             {
-                inventorySlots[i].item = InventoryItem.GetFromID(slotStrings[i]);
+                slots[i].item = InventoryItem.GetFromID(slotStrings[i]);
             }
         }
 

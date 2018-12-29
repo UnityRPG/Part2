@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using RPG.Inventories;
 
-namespace RPG.UI.Dragging
+namespace RPG.Core.UI.Dragging
 {
-    public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class DragItem<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+        where T : class
     {
         Vector3 _startPosition;
         Transform _originalParent;
 
         Canvas _parentCanvas;
-        IDragContainer _parentContainer;
 
         private void Awake()
         {
             _parentCanvas = GetComponentInParent<Canvas>();
-            _parentContainer = GetComponentInParent<IDragContainer>();
+            parentContainer = GetComponentInParent<IDragContainer<T>>();
         }
 
-        public IDragContainer parentContainer { get { return _parentContainer; } }
+        public IDragContainer<T> parentContainer { get; private set; }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -57,18 +56,19 @@ namespace RPG.UI.Dragging
 
         private void DropItem()
         {
-            var item = _parentContainer.ReplaceItem(null);
-            var inventory = Inventory.GetPlayerInventory();
-            inventory.DropItem(item);
+            var item = parentContainer.ReplaceItem(null);
+            var player = GameObject.FindWithTag("Player");
+            var dropHandler = player.GetComponent<IDiscardHandler<T>>();
+            dropHandler.DropItem(item);
         }
 
-        private IDragContainer GetContainer(PointerEventData eventData)
+        private IDragContainer<T> GetContainer(PointerEventData eventData)
         {
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, results);
             foreach (var raycastResult in results)
             {
-                var container = raycastResult.gameObject.GetComponent<IDragContainer>();
+                var container = raycastResult.gameObject.GetComponent<IDragContainer<T>>();
 
                 if (container != null) 
                 {
@@ -78,19 +78,19 @@ namespace RPG.UI.Dragging
             return null;
         }
 
-        private void DropItemIntoContainer(IDragContainer receivingContainer)
+        private void DropItemIntoContainer(IDragContainer<T> receivingContainer)
         {
-            var draggingItem = _parentContainer.ReplaceItem(null);
+            var draggingItem = parentContainer.ReplaceItem(null);
             if (!receivingContainer.CanAcceptItem(draggingItem))
             {
-                _parentContainer.ReplaceItem(draggingItem);
+                parentContainer.ReplaceItem(draggingItem);
                 return;
             }
             
             var swappedItem = receivingContainer.ReplaceItem(draggingItem);
             if (swappedItem != null)
             {
-                _parentContainer.ReplaceItem(swappedItem);
+                parentContainer.ReplaceItem(swappedItem);
             }
         }
     }
