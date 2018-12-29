@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 114677980991204380}
   - component: {fileID: 114164154849791212}
   - component: {fileID: 114391526407616666}
-  - component: {fileID: 114897035312934696}
   - component: {fileID: 2616234064627199943}
   - component: {fileID: 3893303204675710148}
   - component: {fileID: 2568521727474457999}
@@ -277,19 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statSet: {fileID: 11400000, guid: 3d9055b6e0b43e444b4254f711bd463c, type: 2}
   level: 5
---- !u!114 &114897035312934696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083351766544182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8d8a98674e752429dc43cea7a430ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: UIScene
 --- !u!114 &2616234064627199943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,8 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDeliveryItem: 1
-  _modifiers: []
-  inventoryItemList: {fileID: 11400000, guid: dcebb19540fd79041ad7ccac3cfd9260, type: 2}
   inventorySize: 10
 --- !u!114 &2010294036090726949
 MonoBehaviour:
@@ -353,7 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11801ca435999e4e96afb1bcc282d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: {fileID: 11400000, guid: dcebb19540fd79041ad7ccac3cfd9260, type: 2}
 --- !u!1 &1097972760338172
 GameObject:
   m_ObjectHideFlags: 0
