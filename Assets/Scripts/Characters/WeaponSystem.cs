@@ -2,6 +2,7 @@
 using UnityEngine.Assertions;
 using UnityEngine;
 using RPG.Inventories;
+using RPG.Attributes;
 
 namespace RPG.Characters
 {
@@ -17,7 +18,7 @@ namespace RPG.Characters
         ActionScheduler actionScheduler;
         Character character;
         Equipment equipment;
-        Attributes attributes;
+        CharacterAttributes attributes;
         Coroutine damageDelay;
 
         const string ATTACK_TRIGGER = "Attack";
@@ -28,7 +29,7 @@ namespace RPG.Characters
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
             character = GetComponent<Character>();
-            attributes = GetComponent<Attributes>();
+            attributes = GetComponent<CharacterAttributes>();
             equipment = GetComponent<Equipment>();
             if (equipment)
             {
@@ -121,7 +122,7 @@ namespace RPG.Characters
                     float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
                     if (attributes)
                     {
-                        timeToWait = 1 / attributes.hitSpeed;
+                        timeToWait = 1 / currentWeaponConfig.GetHitsPerSecond();
                     }
 
                     AttackTargetOnce();
@@ -199,10 +200,12 @@ namespace RPG.Characters
                 return baseDamage + currentWeaponConfig.GetAdditionalDamage();
             }
 
+            float weaponDamage = currentWeaponConfig.GetDamageRange().RandomlyChooseDamage();
+            float attributeModified = weaponDamage * attributes.damageMultiplier;
             bool shouldBeCritical = Random.value < attributes.criticalHitChance / 100;
             float bonus = shouldBeCritical ? attributes.criticalHitBonus : 0;
-
-            return attributes.totalDamage.RandomlyChooseDamage() * (1 + bonus / 100);
+            float critcalApplied = attributeModified * (1 + bonus / 100);
+            return critcalApplied;
         }
     }
 }

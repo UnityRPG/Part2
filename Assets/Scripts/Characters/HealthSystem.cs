@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using RPG.Saving;
+using RPG.Attributes;
 
 namespace RPG.Characters
 {
@@ -32,7 +33,7 @@ namespace RPG.Characters
         Animator animator;
         AudioSource audioSource;
         Character characterMovement;
-        Attributes attributes;
+        CharacterAttributes attributes;
         DamageTextSpawner damageTextSpawner;
 		
         float currentHealthPoints;
@@ -55,7 +56,7 @@ namespace RPG.Characters
             audioSource = GetComponent<AudioSource>();
             characterMovement = GetComponent<Character>();
             damageTextSpawner = FindObjectOfType<DamageTextSpawner>();
-            attributes = GetComponent<Attributes>();
+            attributes = GetComponent<CharacterAttributes>();
 
             if (!healthPointsSetByRestore)
             {

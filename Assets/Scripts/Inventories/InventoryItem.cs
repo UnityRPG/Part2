@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
+using RPG.Attributes;
 
 namespace RPG.Inventories
 {
@@ -17,7 +18,7 @@ namespace RPG.Inventories
         }
 
         [SerializeField] string _itemID;
-        [SerializeField] StatsModifier[] _modifiers;
+        [SerializeField] AttributeModifier[] _modifiers;
         [SerializeField] float _baseCost;
         [SerializeField] Rarity _rarity;
         [SerializeField] int _level;
@@ -55,7 +56,7 @@ namespace RPG.Inventories
         public Sprite icon => _icon;
         public string displayName => _displayName;
         public string description => _description;
-        public IEnumerable<StatsModifier> modifiers => _modifiers;
+        public IEnumerable<AttributeModifier> modifiers => _modifiers;
 
         public Pickup SpawnPickup(Vector3 position)
         {

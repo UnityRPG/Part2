@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Attributes
 {
-    public class Stats : MonoBehaviour, IStatsModifierProvider
+    public class AttributeSet : MonoBehaviour, IAttributeModifierProvider
     {
         public enum Attribute
         {
@@ -38,16 +38,16 @@ namespace RPG.Characters
         [SerializeField] float criticalHitChancePerDexterityPoint = 1.0f;
         [SerializeField] float armourBonusPerConstitutionPoints = 0.5f;
 
-        public IEnumerable<StatsModifier> modifiers
+        public IEnumerable<AttributeModifier> modifiers
         {
             get
             {
-                return new StatsModifier[]
+                return new AttributeModifier[]
                 {
-                    new StatsModifier(StatsModifier.Attribute.DamageBonus, damageBonusPerStrengthPoint * strengthPoints),
-                    new StatsModifier(StatsModifier.Attribute.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
-                    new StatsModifier(StatsModifier.Attribute.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
-                    new StatsModifier(StatsModifier.Attribute.ArmourBonus, armourBonusPerConstitutionPoints * constitutionPoints)
+                    new AttributeModifier(AttributeModifier.Attribute.DamageBonus, damageBonusPerStrengthPoint * strengthPoints),
+                    new AttributeModifier(AttributeModifier.Attribute.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
+                    new AttributeModifier(AttributeModifier.Attribute.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
+                    new AttributeModifier(AttributeModifier.Attribute.ArmourBonus, armourBonusPerConstitutionPoints * constitutionPoints)
                 };
             }
         }

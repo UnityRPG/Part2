@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
 using RPG.Characters;
+using RPG.Attributes;
 
 namespace RPG.Inventories
 {
-    public class Equipment : MonoBehaviour, ISaveable, IStatsModifierProvider
+    public class Equipment : MonoBehaviour, ISaveable, IAttributeModifierProvider
     {
         Dictionary<EquipableItem.EquipLocation, EquipableItem> equippedItems = new Dictionary<EquipableItem.EquipLocation, EquipableItem>();
 
@@ -37,7 +38,7 @@ namespace RPG.Inventories
             return replacedItem;
         }
 
-        public IEnumerable<StatsModifier> modifiers 
+        public IEnumerable<AttributeModifier> modifiers 
         {
             get
             {
