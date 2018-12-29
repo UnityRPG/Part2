@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Threading.Tasks;
+﻿using UnityEngine;
+using RPG.Combat;
 
-namespace RPG.Characters
+namespace RPG.Abilities
 {
     public class AreaEffectBehaviour : AbilityBehaviour
     {
@@ -31,7 +29,7 @@ namespace RPG.Characters
             foreach (RaycastHit hit in hits)
             {
                 var damageable = hit.collider.gameObject.GetComponent<HealthSystem>();
-                bool hitPlayer = hit.collider.gameObject.GetComponent<PlayerControl>();
+                bool hitPlayer = hit.collider.gameObject.tag == "Player";
                 if (damageable != null && !hitPlayer)
                 {
                     float damageToDeal = (config as AreaEffectConfig).GetDamageToEachTarget();

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using RPG.Characters;
 using UnityEngine.SceneManagement;
 using RPG.Saving;
 
@@ -11,7 +10,7 @@ namespace RPG.SceneManagement
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<PlayerControl>())
+            if (other.tag == "Player")
             {
                 FindObjectOfType<SaveLoad>().Save();
                 SceneManager.LoadScene(newSceneName);

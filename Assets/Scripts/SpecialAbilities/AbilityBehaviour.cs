@@ -2,7 +2,7 @@
 using UnityEngine;
 using RPG.Core;
 
-namespace RPG.Characters
+namespace RPG.Abilities
 {
     public abstract class AbilityBehaviour : MonoBehaviour
     {

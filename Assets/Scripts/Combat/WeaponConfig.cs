@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using RPG.Inventories;
 
-namespace RPG.Characters
+namespace RPG.Combat
 {
     [CreateAssetMenu(menuName = ("RPG/Weapon"))]
     public class WeaponConfig : EquipableItem

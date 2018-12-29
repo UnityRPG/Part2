@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Abilities
 {
     [CreateAssetMenu(menuName = ("RPG/Special Abiltiy/Self Heal"))]
     public class SelfHealConfig : AbilityConfig

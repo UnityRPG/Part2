@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Combat
 {
     [Serializable]
     public struct DamageRange

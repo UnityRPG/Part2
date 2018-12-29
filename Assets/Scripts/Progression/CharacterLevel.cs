@@ -1,7 +1,7 @@
 ﻿using RPG.Progression;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Progression
 {
     abstract public class CharacterLevel : MonoBehaviour
     {

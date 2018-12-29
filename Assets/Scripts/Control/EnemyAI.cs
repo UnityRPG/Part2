@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
+using RPG.Combat;
+using RPG.Movement;
 
-namespace RPG.Characters
+namespace RPG.Control
 {
     [RequireComponent(typeof(HealthSystem))]
     [RequireComponent(typeof(Character))]

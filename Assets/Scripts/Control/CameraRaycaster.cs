@@ -1,12 +1,9 @@
 ﻿﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
-using System;
-using RPG.Characters; // So we can detect by type
 using RPG.Dialogue;
 using RPG.Inventories;
 
-namespace RPG.Core
+namespace RPG.Control
 {
     public class CameraRaycaster : MonoBehaviour
     {

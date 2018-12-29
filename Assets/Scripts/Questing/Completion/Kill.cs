@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RPG.Characters;
-using System;
+﻿using UnityEngine;
+using RPG.Combat;
 
 namespace RPG.Questing.Completion
 {

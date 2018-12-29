@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using RPG.Core;
+using RPG.Combat;
+using RPG.Movement;
+using RPG.Abilities;
 
-namespace RPG.Characters
+namespace RPG.Control
 {
     public class PlayerControl : MonoBehaviour
     {

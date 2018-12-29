@@ -3,8 +3,9 @@ using UnityEngine.Assertions;
 using UnityEngine;
 using RPG.Inventories;
 using RPG.Attributes;
+using RPG.Core;
 
-namespace RPG.Characters
+namespace RPG.Combat
 {
     public class WeaponSystem : MonoBehaviour
     {
@@ -16,7 +17,6 @@ namespace RPG.Characters
         GameObject weaponObject;
         Animator animator;
         ActionScheduler actionScheduler;
-        Character character;
         Equipment equipment;
         CharacterAttributes attributes;
         Coroutine damageDelay;
@@ -28,7 +28,6 @@ namespace RPG.Characters
         {
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
-            character = GetComponent<Character>();
             attributes = GetComponent<CharacterAttributes>();
             equipment = GetComponent<Equipment>();
             if (equipment)
@@ -171,15 +170,14 @@ namespace RPG.Characters
         {
             if (currentWeaponConfig == null) return;
 
-            if (!character.GetOverrideController())
+            var animatorOverrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+            if (!animatorOverrideController)
             {
                 Debug.Break();
                 Debug.LogAssertion("Please provide " + gameObject + " with an animator override controller.");
             }
             else
             {
-                var animatorOverrideController = character.GetOverrideController();
-                animator.runtimeAnimatorController = animatorOverrideController;
                 animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip();
             }
         }

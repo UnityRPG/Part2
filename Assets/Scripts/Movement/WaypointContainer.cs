@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Movement
 {
     public class WaypointContainer : MonoBehaviour
     {

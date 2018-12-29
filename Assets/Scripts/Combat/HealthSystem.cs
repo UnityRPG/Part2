@@ -6,8 +6,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using RPG.Saving;
 using RPG.Attributes;
+using RPG.Progression;
 
-namespace RPG.Characters
+namespace RPG.Combat
 {
     public class HealthSystem : MonoBehaviour, ISaveable
     {
@@ -32,7 +33,6 @@ namespace RPG.Characters
 
         Animator animator;
         AudioSource audioSource;
-        Character characterMovement;
         CharacterAttributes attributes;
         DamageTextSpawner damageTextSpawner;
 		
@@ -54,7 +54,6 @@ namespace RPG.Characters
         {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            characterMovement = GetComponent<Character>();
             damageTextSpawner = FindObjectOfType<DamageTextSpawner>();
             attributes = GetComponent<CharacterAttributes>();
 
@@ -113,8 +112,7 @@ namespace RPG.Characters
             audioSource.Play(); // overrind any existing sounds
             yield return new WaitForSecondsRealtime(audioSource.clip.length);
 
-            var playerComponent = GetComponent<PlayerControl>();
-            if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
+            if (tag == "Player") // relying on lazy evaluation
             {
                 SceneManager.LoadScene(0);
             }

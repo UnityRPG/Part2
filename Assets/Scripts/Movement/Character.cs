@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Saving;
+using RPG.Core;
 using System.Collections.Generic;
+using RPG.Combat; //TODO: Shouldn't need this link.
 
-namespace RPG.Characters
+namespace RPG.Movement
 {
     [SelectionBase]
     public class Character : MonoBehaviour, ISaveable

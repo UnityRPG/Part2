@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Characters
+namespace RPG.Combat
 {
     public class Destroyer : MonoBehaviour
     {

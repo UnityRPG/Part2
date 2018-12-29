@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace RPG.Characters
+namespace RPG.Combat
 {
     public class DamageText : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
 
-namespace RPG.Characters
+namespace RPG.Abilities
 {
     public abstract class AbilityConfig : ScriptableObject
     {

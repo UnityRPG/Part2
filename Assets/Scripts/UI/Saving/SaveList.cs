@@ -4,7 +4,7 @@ using UnityEngine;
 using RPG.Saving;
 using UnityEngine.UI;
 
-namespace RPG.UI
+namespace RPG.UI.Saving
 {
     public class SaveList : MonoBehaviour
     {

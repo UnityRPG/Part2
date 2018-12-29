@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RPG.Characters;
+﻿using UnityEngine;
 using RPG.Inventories;
+using RPG.Control;
 
 namespace RPG.Questing.Completion
 {

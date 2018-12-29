@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using RPG.Progression;
 
-namespace RPG.Characters
+namespace RPG.Progression
 {
     public class EnemyLevel : CharacterLevel
     {

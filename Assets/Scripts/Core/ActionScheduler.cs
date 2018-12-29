@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace RPG.Characters
+namespace RPG.Core
 {
     public class ActionScheduler : MonoBehaviour {
         
