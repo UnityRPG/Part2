@@ -6,7 +6,7 @@ using RPG.Characters; // So we can detect by type
 using RPG.Dialogue;
 using RPG.InventorySystem;
 
-namespace RPG.CameraUI
+namespace RPG.UI
 {
     public class CameraRaycaster : MonoBehaviour
     {

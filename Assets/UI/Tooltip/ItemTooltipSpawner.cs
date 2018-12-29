@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace RPG.CameraUI
+namespace RPG.UI.InventorySystem
 {
     public class ItemTooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

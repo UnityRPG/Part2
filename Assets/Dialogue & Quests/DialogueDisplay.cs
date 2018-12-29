@@ -4,104 +4,107 @@ using UnityEngine;
 using UnityEngine.UI;
 using RPG.Dialogue;
 
-public class DialogueDisplay : MonoBehaviour {
-
-    [SerializeField]
-    Text NPCTextField;
-
-    [SerializeField]
-    Transform responseHolder;
-
-    [SerializeField]
-    GameObject responsePrefab;
-
-    Voice activeVoice;
-
-    ConversationNode currentNode = null;
-
-    private void Start()
+namespace RPG.UI.Dialogue
+{
+    public class DialogueDisplay : MonoBehaviour
     {
-        ActivateUI(false);
-    }
+        [SerializeField]
+        Text NPCTextField;
 
-    private void ActivateUI(bool activate)
-    {
-        NPCTextField.gameObject.SetActive(activate);
-        responseHolder.gameObject.SetActive(activate);
-    }
+        [SerializeField]
+        Transform responseHolder;
 
-    public void SetActiveVoice(Voice voice)
-    {
-        activeVoice = voice;
-        if (activeVoice != null)
+        [SerializeField]
+        GameObject responsePrefab;
+
+        Voice activeVoice;
+
+        ConversationNode currentNode = null;
+
+        private void Start()
         {
-            var conversation = activeVoice.GetConversation();
-            currentNode = conversation.GetRootNode();
-        }
-        else
-        {
-            currentNode = null;
+            ActivateUI(false);
         }
 
-        UpdateDisplayForNode(currentNode);
-    }
-
-    private void UpdateDisplayForNode(ConversationNode node)
-    {
-        ActivateUI(node != null);
-
-        SetNPCText(node);
-
-        ClearResponseObjects();
-
-        if (node != null)
+        private void ActivateUI(bool activate)
         {
-            CreateResponsesForNode(node);
+            NPCTextField.gameObject.SetActive(activate);
+            responseHolder.gameObject.SetActive(activate);
         }
-    }
 
-    private void SetNPCText(ConversationNode node)
-    {
-        NPCTextField.text = node != null ? node.text : "";
-    }
-
-    private void ClearResponseObjects()
-    {
-        foreach (Transform child in responseHolder)
+        public void SetActiveVoice(Voice voice)
         {
-            Destroy(child.gameObject);
-        }
-    }
-
-    private void CreateResponsesForNode(ConversationNode node)
-    {
-        foreach (var child in node.children)
-        {
-            var responseObject = Instantiate(responsePrefab, responseHolder);
-            var childNode = activeVoice.GetConversation().GetNodeByUUID(child);
-            responseObject.GetComponent<Text>().text = childNode.text;
-            responseObject.GetComponent<Button>().onClick.AddListener(() =>
+            activeVoice = voice;
+            if (activeVoice != null)
             {
-              ChooseResponse(childNode);
-            });
-        }
-    }
+                var conversation = activeVoice.GetConversation();
+                currentNode = conversation.GetRootNode();
+            }
+            else
+            {
+                currentNode = null;
+            }
 
-    private void ChooseResponse(ConversationNode childNode)
-    {
-        if (childNode.actionToTrigger != "")
-        {
-            activeVoice.TriggerEventForAction(childNode.actionToTrigger);
+            UpdateDisplayForNode(currentNode);
         }
-        if (childNode.children.Count == 0)
+
+        private void UpdateDisplayForNode(ConversationNode node)
         {
-            currentNode = null;
-            activeVoice = null;
+            ActivateUI(node != null);
+
+            SetNPCText(node);
+
+            ClearResponseObjects();
+
+            if (node != null)
+            {
+                CreateResponsesForNode(node);
+            }
         }
-        else
+
+        private void SetNPCText(ConversationNode node)
         {
-            currentNode = activeVoice.GetConversation().GetNodeByUUID(childNode.children[0]);
+            NPCTextField.text = node != null ? node.text : "";
         }
-        UpdateDisplayForNode(currentNode);
+
+        private void ClearResponseObjects()
+        {
+            foreach (Transform child in responseHolder)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        private void CreateResponsesForNode(ConversationNode node)
+        {
+            foreach (var child in node.children)
+            {
+                var responseObject = Instantiate(responsePrefab, responseHolder);
+                var childNode = activeVoice.GetConversation().GetNodeByUUID(child);
+                responseObject.GetComponent<Text>().text = childNode.text;
+                responseObject.GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    ChooseResponse(childNode);
+                });
+            }
+        }
+
+        private void ChooseResponse(ConversationNode childNode)
+        {
+            if (childNode.actionToTrigger != "")
+            {
+                activeVoice.TriggerEventForAction(childNode.actionToTrigger);
+            }
+            if (childNode.children.Count == 0)
+            {
+                currentNode = null;
+                activeVoice = null;
+            }
+            else
+            {
+                currentNode = activeVoice.GetConversation().GetNodeByUUID(childNode.children[0]);
+            }
+            UpdateDisplayForNode(currentNode);
+        }
     }
 }

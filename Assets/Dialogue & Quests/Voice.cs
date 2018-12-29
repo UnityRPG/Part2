@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RPG.Questing;
+using RPG.UI.Dialogue;
 
 namespace RPG.Dialogue
 {

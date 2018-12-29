@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core.Saving;
 
-namespace RPG.CameraUI
+namespace RPG.UI
 {
     public class PauseMenu : MonoBehaviour
     {

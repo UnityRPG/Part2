@@ -34,12 +34,12 @@ namespace RPG.InventorySystem
             if (itemLookupCache == null)
             {
                 itemLookupCache = new Dictionary<string, InventoryItem>();
-                var itemList = Resources.LoadAll<InventoryItem>("Inventory");
+                var itemList = Resources.LoadAll<InventoryItem>("RPG.UI.InventorySystem");
                 foreach (var item in itemList)
                 {
                     if (itemLookupCache.ContainsKey(item.itemID))
                     {
-                        Debug.LogError(string.Format("Looks like there's a duplicate inventory ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
+                        Debug.LogError(string.Format("Looks like there's a duplicate RPG.UI.InventorySystem ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
                         continue;
                     }
 

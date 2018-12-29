@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using RPG.Core;
 
 namespace RPG.Characters
 {

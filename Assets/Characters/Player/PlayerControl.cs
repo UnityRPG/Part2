@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using RPG.CameraUI; // for mouse events
+using RPG.UI; // for mouse events
 
 namespace RPG.Characters
 {

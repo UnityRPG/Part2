@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.InventorySystem;
 
-namespace RPG.CameraUI
+namespace RPG.UI.InventorySystem
 {
     public class InventoryUI : MonoBehaviour
     {

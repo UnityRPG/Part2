@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.InventorySystem;
 
-namespace RPG.CameraUI.Dragging
+namespace RPG.UI.Dragging
 {
     public interface IDragContainer
     {

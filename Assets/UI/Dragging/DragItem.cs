@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using RPG.InventorySystem;
 
-namespace RPG.CameraUI.Dragging
+namespace RPG.UI.Dragging
 {
     public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {

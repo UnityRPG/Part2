@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using RPG.Core.Saving;
-using RPG.Core.Saving;
 using RPG.Characters;
 
 namespace RPG.InventorySystem
