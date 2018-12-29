@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
-namespace RPG.Questing
+namespace RPG.Questing.Completion
 {
     // Quest completion criteria, idea is to compose more complex criteria
     // Delivery (after inventory)

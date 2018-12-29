@@ -2,7 +2,7 @@
 using UnityEngine;
 using RPG.Characters;
 
-namespace RPG.InventorySystem
+namespace RPG.Inventories
 {
     public abstract class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {

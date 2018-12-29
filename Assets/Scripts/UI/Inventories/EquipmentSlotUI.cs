@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using RPG.UI.Dragging;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
-namespace RPG.UI.EquipmentUI
+namespace RPG.UI.Inventories
 {
     public class EquipmentSlotUI : MonoBehaviour, IDragContainer
     {

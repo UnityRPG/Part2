@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RPG.Core.Saving
+namespace RPG.Saving
 {
     public interface ISaveable
     {

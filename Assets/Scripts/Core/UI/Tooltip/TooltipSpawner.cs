@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace RPG.UI.InventorySystem
+namespace RPG.Core.UI.Tooltips
 {
-    public class ItemTooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public abstract class TooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] ItemTooltip tooltipPrefab;
+        [SerializeField] GameObject tooltipPrefab;
 
-        ItemTooltip _tooltip;
+        GameObject _tooltip;
 
         private void OnDestroy()
         {
@@ -19,11 +19,10 @@ namespace RPG.UI.InventorySystem
             ClearTooltip();
         }
 
+        public abstract void UpdateTooltip(GameObject tooltip);
+
         public void OnPointerEnter(PointerEventData eventData)
         {
-            var item = GetComponent<IItemHolder>().item;
-            if (!item) return;
-
             var parentCanvas = GetComponentInParent<Canvas>();
 
             if (!_tooltip)
@@ -31,8 +30,7 @@ namespace RPG.UI.InventorySystem
                 _tooltip = Instantiate(tooltipPrefab, parentCanvas.transform);
             }
 
-            _tooltip.title = item.displayName;
-            _tooltip.body = item.description;
+            UpdateTooltip(_tooltip);
 
             PositionTooltip();
         }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using RPG.Core;
 
-namespace RPG.Core.Stats
+namespace RPG.Stats
 {
     [CustomEditor(typeof(StatSet))]
     public class StatSetEditor : UnityEditor.Editor

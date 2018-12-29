@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
-namespace RPG.Characters
+namespace RPG.UI.Inventories
 {
     public class CoinDisplay : MonoBehaviour
     {

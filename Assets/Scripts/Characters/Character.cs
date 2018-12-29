@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.Core.Saving;
+using RPG.Saving;
 using System.Collections.Generic;
 
 namespace RPG.Characters

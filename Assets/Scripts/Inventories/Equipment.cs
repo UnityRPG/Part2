@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Core.Saving;
+using RPG.Saving;
 using RPG.Characters;
 
-namespace RPG.InventorySystem
+namespace RPG.Inventories
 {
     public class Equipment : MonoBehaviour, ISaveable, IStatsModifierProvider
     {

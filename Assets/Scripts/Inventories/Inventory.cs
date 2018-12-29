@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using RPG.Core.Saving;
+using RPG.Saving;
 using RPG.Characters;
 
-namespace RPG.InventorySystem
+namespace RPG.Inventories
 {
     public class Inventory : MonoBehaviour, ISaveable
     {

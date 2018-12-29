@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-namespace RPG.UI
+namespace RPG.Core.UI.Tooltips
 {
     public class ItemTooltip : MonoBehaviour
     {

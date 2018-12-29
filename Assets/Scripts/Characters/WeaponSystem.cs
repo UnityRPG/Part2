@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine.Assertions;
 using UnityEngine;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
 namespace RPG.Characters
 {

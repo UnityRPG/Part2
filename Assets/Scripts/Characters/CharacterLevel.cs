@@ -1,4 +1,4 @@
-﻿using RPG.Core.Stats;
+﻿using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Characters

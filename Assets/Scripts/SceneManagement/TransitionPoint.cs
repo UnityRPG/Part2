@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using RPG.Characters;
 using UnityEngine.SceneManagement;
-using RPG.Core.Saving;
+using RPG.Saving;
 
 namespace RPG.SceneManagement
 {

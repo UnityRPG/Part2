@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using RPG.Core.Saving;
+using RPG.Saving;
 
 namespace RPG.Characters
 {

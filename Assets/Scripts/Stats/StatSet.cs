@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RPG.Core.Stats
+namespace RPG.Stats
 {
     [CreateAssetMenu(menuName = ("RPG/Stat Set"))]
     public class StatSet : ScriptableObject

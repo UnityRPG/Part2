@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
-namespace RPG.UI.InventorySystem
+namespace RPG.UI.Inventories
 {
     public interface IItemHolder
     {

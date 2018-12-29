@@ -1,4 +1,4 @@
-﻿namespace RPG.Core.Saving
+﻿namespace RPG.Saving
 {
     using System.Collections.Generic;
     using UnityEngine;

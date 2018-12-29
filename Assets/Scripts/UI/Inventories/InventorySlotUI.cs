@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using RPG.InventorySystem;
+using RPG.Inventories;
 using RPG.UI.Dragging;
 
-namespace RPG.UI.InventorySystem
+namespace RPG.UI.Inventories
 {
     public class InventorySlotUI : MonoBehaviour, IItemHolder, IDragContainer
     {

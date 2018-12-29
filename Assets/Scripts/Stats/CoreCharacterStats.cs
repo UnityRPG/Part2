@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RPG.Core.Stats
+namespace RPG.Stats
 {
     [Serializable]
     public class CoreCharacterStats

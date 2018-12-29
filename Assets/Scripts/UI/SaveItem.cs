@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-namespace RPG.Core.Saving
+using RPG.Saving;
+
+namespace RPG.UI.Saving
 {
     public class SaveItem : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
 namespace RPG.UI.Dragging
 {

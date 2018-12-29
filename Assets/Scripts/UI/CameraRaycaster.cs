@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using RPG.Characters; // So we can detect by type
 using RPG.Dialogue;
-using RPG.InventorySystem;
+using RPG.Inventories;
 
 namespace RPG.UI
 {

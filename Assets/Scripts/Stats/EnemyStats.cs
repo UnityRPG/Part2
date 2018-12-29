@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace RPG.Core.Stats
+namespace RPG.Stats
 {
     [Serializable]
     public class EnemyStats : CoreCharacterStats
