@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RPG.Questing;
-using RPG.UI.Dialogue;
 
 namespace RPG.Dialogue
 {
-    public class Voice : MonoBehaviour
+    public class ConversationSource : MonoBehaviour
     {
         // configuration parameters, consider SO
         [SerializeField] Conversation conversation;
@@ -36,13 +35,13 @@ namespace RPG.Dialogue
         // private instance variables for state
 
         // cached references for readability
-        DialogueDisplay dialogDisplay;
+        Speaker speaker;
 
         // messages, then public methods, then private methods...
         void Start()
         {
             Instantiate(speechBubblePrefab, canvas);
-            dialogDisplay = FindObjectOfType<DialogueDisplay>();
+            speaker = GameObject.FindGameObjectWithTag("Player").GetComponent<Speaker>();
         }
 
         public void VoiceClicked()
@@ -72,7 +71,7 @@ namespace RPG.Dialogue
 
         private void ShowDialog()
         {
-            dialogDisplay.SetActiveVoice(this);
+            speaker.SetActiveConversation(this);
         }
     }
 }

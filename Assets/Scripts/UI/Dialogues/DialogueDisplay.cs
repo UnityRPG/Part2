@@ -17,9 +17,7 @@ namespace RPG.UI.Dialogue
         [SerializeField]
         GameObject responsePrefab;
 
-        Voice activeVoice;
-
-        ConversationNode currentNode = null;
+        private Speaker speaker;
 
         private void Start()
         {
@@ -30,26 +28,16 @@ namespace RPG.UI.Dialogue
         {
             NPCTextField.gameObject.SetActive(activate);
             responseHolder.gameObject.SetActive(activate);
+
+            var player = GameObject.FindGameObjectWithTag("Player");
+            speaker = player.GetComponent<Speaker>();
+            speaker.OnCurrentNodeChanged += UpdateDisplay;
         }
 
-        public void SetActiveVoice(Voice voice)
+        private void UpdateDisplay()
         {
-            activeVoice = voice;
-            if (activeVoice != null)
-            {
-                var conversation = activeVoice.GetConversation();
-                currentNode = conversation.GetRootNode();
-            }
-            else
-            {
-                currentNode = null;
-            }
+            var node = speaker.currentNode;
 
-            UpdateDisplayForNode(currentNode);
-        }
-
-        private void UpdateDisplayForNode(ConversationNode node)
-        {
             ActivateUI(node != null);
 
             SetNPCText(node);
@@ -58,7 +46,7 @@ namespace RPG.UI.Dialogue
 
             if (node != null)
             {
-                CreateResponsesForNode(node);
+                CreateResponsesForNode();
             }
         }
 
@@ -75,36 +63,17 @@ namespace RPG.UI.Dialogue
             }
         }
 
-        private void CreateResponsesForNode(ConversationNode node)
+        private void CreateResponsesForNode()
         {
-            foreach (var child in node.children)
+            foreach (var child in speaker.children)
             {
                 var responseObject = Instantiate(responsePrefab, responseHolder);
-                var childNode = activeVoice.GetConversation().GetNodeByUUID(child);
-                responseObject.GetComponent<Text>().text = childNode.text;
+                responseObject.GetComponent<Text>().text = child.text;
                 responseObject.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    ChooseResponse(childNode);
+                    speaker.ChooseResponse(child);
                 });
             }
-        }
-
-        private void ChooseResponse(ConversationNode childNode)
-        {
-            if (childNode.actionToTrigger != "")
-            {
-                activeVoice.TriggerEventForAction(childNode.actionToTrigger);
-            }
-            if (childNode.children.Count == 0)
-            {
-                currentNode = null;
-                activeVoice = null;
-            }
-            else
-            {
-                currentNode = activeVoice.GetConversation().GetNodeByUUID(childNode.children[0]);
-            }
-            UpdateDisplayForNode(currentNode);
         }
     }
 }

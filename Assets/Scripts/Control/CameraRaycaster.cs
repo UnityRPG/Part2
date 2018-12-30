@@ -21,7 +21,7 @@ namespace RPG.Control
         public delegate void OnMouseOverEnemy(EnemyAI enemy);
 		public event OnMouseOverEnemy onMouseOverEnemy;
 
-        public delegate void OnMouseOverVoice(Voice voice);
+        public delegate void OnMouseOverVoice(ConversationSource voice);
         public event OnMouseOverVoice onMouseOverVoice;
 
 		public delegate void OnMouseOverTerrain(Vector3 destination);
@@ -59,7 +59,7 @@ namespace RPG.Control
         {
             // Consider making generic RaycastFor<Type>() method
             GameObject gameObjectHit = GetFirstHitGameObject(ray);
-            var voiceHit = gameObjectHit.GetComponent<Voice>();
+            var voiceHit = gameObjectHit.GetComponent<ConversationSource>();
             if (voiceHit)
             {
                 Cursor.SetCursor(talkCursor, cursorHotspot, CursorMode.Auto);
