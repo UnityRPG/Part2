@@ -9,7 +9,7 @@ namespace RPG.Control
 {
     public class PlayerControl : MonoBehaviour
     {
-        Character character;
+        Mover mover;
         SpecialAbilities abilities;
         WeaponSystem weaponSystem;
 
@@ -20,7 +20,7 @@ namespace RPG.Control
 
         void Start()
         {
-            character = GetComponent<Character>();
+            mover = GetComponent<Mover>();
             abilities = GetComponent<SpecialAbilities>();
             weaponSystem = GetComponent<WeaponSystem>();
             
@@ -39,7 +39,7 @@ namespace RPG.Control
             ScanForAbilityKeyDown();
 
             weaponSystem.StopAttacking();
-            character.ClearDestination();
+            mover.ClearDestination();
 
             if (desiredSpecialAbility != -1)
             {
@@ -51,7 +51,7 @@ namespace RPG.Control
             }
             else if (wantsToMove)
             {
-                character.SetDestination(desiredLocation);
+                mover.SetDestination(desiredLocation);
             }
         }
 
@@ -73,7 +73,7 @@ namespace RPG.Control
 
             if (weaponSystem.TargetIsOutOfRange(target))
             {
-                character.SetDestination(target.transform.position);
+                mover.SetDestination(target.transform.position);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace RPG.Control
 
             if (!abilities.IsInRange(desiredSpecialAbility, target))
             {
-                character.SetDestination(target.transform.position);
+                mover.SetDestination(target.transform.position);
             }
             else
             {

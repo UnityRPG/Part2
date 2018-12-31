@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using RPG.Saving;
 using RPG.Attributes;
 using RPG.Progression;
+using RPG.Movement;
 
 namespace RPG.Combat
 {
@@ -107,6 +108,8 @@ namespace RPG.Combat
         IEnumerator KillCharacter()
         {
             animator.SetTrigger(DEATH_TRIGGER);
+
+            GetComponent<Mover>().enabled = false;
 
             audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
             audioSource.Play(); // overrind any existing sounds

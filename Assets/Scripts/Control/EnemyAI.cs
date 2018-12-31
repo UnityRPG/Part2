@@ -6,7 +6,7 @@ using RPG.Movement;
 namespace RPG.Control
 {
     [RequireComponent(typeof(HealthSystem))]
-    [RequireComponent(typeof(Character))]
+    [RequireComponent(typeof(Mover))]
     [RequireComponent(typeof(WeaponSystem))]
 
     // TODO consider specialising to NPCMovement
@@ -18,7 +18,7 @@ namespace RPG.Control
         [SerializeField] float waypointDwellTime = 2.0f;
 
         PlayerControl player = null;
-        Character character;
+        Mover mover;
         WeaponSystem weaponSystem;
 
         int nextWaypointIndex;
@@ -26,7 +26,7 @@ namespace RPG.Control
 
         void Start()
         {
-            character = GetComponent<Character>();
+            mover = GetComponent<Mover>();
             player = FindObjectOfType<PlayerControl>();
             weaponSystem = GetComponent<WeaponSystem>();
         }
@@ -67,7 +67,7 @@ namespace RPG.Control
         private void ClearBehaviours()
         {
             weaponSystem.StopAttacking();
-            character.ClearDestination();
+            mover.ClearDestination();
         }
 
         private void PerformAttackBehaviour()
@@ -77,7 +77,7 @@ namespace RPG.Control
 
         private void PerformChaseBehaviour()
         {
-            character.SetDestination(player.transform.position);
+            mover.SetDestination(player.transform.position);
         }
 
         private void PerformPatrolBehaviour()
@@ -88,7 +88,7 @@ namespace RPG.Control
             }
             else
             {
-                character.SetDestination(nextWaypointPos);
+                mover.SetDestination(nextWaypointPos);
                 if (isAtWaypoint)
                 {
                     CycleWaypoint();

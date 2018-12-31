@@ -5,7 +5,7 @@ using RPG.Movement;
 
 namespace RPG.Questing.Completion
 {
-    [RequireComponent(typeof(Character))]
+    [RequireComponent(typeof(Mover))]
     public class Escort : QuestCompletion
     {
         // configuration parameters, consider SO
@@ -31,7 +31,7 @@ namespace RPG.Questing.Completion
         {
             while (true)
             {
-                GetComponent<Character>().SetDestination(player.transform.position);
+                GetComponent<Mover>().SetDestination(player.transform.position);
                 yield return new WaitForEndOfFrame();
             }
         }

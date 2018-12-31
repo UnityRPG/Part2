@@ -3,12 +3,11 @@ using UnityEngine.AI;
 using RPG.Saving;
 using RPG.Core;
 using System.Collections.Generic;
-using RPG.Combat; //TODO: Shouldn't need this link.
 
 namespace RPG.Movement
 {
     [SelectionBase]
-    public class Character : MonoBehaviour, ISaveable
+    public class Mover : MonoBehaviour, ISaveable
     {
         [Header("Animator")] [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
@@ -91,7 +90,7 @@ namespace RPG.Movement
             {
                 Debug.LogError(gameObject.name + " uh oh this guy is not on the navmesh");
             }
-            else if (!navMeshAgent.isStopped && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
+            else if (!navMeshAgent.isStopped && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
                 if (currentMovementAction != null && currentMovementAction.isRunning)
                 {
@@ -178,15 +177,6 @@ namespace RPG.Movement
                 rigidBody.velocity = velocity;
 
                 navMeshAgent.nextPosition = transform.position;
-            }
-        }
-
-        private bool isAlive
-        {
-            get
-            {
-                var healthSystem = GetComponent<HealthSystem>();
-                return !healthSystem || healthSystem.isAlive;
             }
         }
 
