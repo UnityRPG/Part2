@@ -3,7 +3,7 @@ using System.Collections;
 using RPG.Core;
 using RPG.Combat;
 using RPG.Movement;
-using RPG.Abilities;
+using RPG.SpecialActions;
 
 namespace RPG.Control
 {

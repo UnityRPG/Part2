@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using RPG.Combat;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
-    public class AreaEffectBehaviour : AbilityBehaviour
+    public class AreaEffectBehaviour : ActionBehaviour
     {
 
         public override void Use(GameObject target)

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
     [CreateAssetMenu(menuName = ("RPG/Special Abiltiy/Self Heal"))]
-    public class SelfHealConfig : AbilityConfig
+    public class SelfHealConfig : ActionConfig
 	{
 		[Header("Self Heal Specific")]
 		[SerializeField] float extraHealth = 50f;
 
-        public override AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo)
+        public override ActionBehaviour GetBehaviourComponent(GameObject objectToAttachTo)
         {
             return objectToAttachTo.AddComponent<SelfHealBehaviour>();
         }

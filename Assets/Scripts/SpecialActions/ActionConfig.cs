@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
-    public abstract class AbilityConfig : ScriptableObject
+    public abstract class ActionConfig : ScriptableObject
     {
         [Header("Spcial Ability General")]
         [SerializeField] float energyCost = 10f;
@@ -13,13 +13,13 @@ namespace RPG.Abilities
         [SerializeField] AnimationClip abilityAnimation;
         [SerializeField] AudioClip[] audioClips;
 
-        protected AbilityBehaviour behaviour;
+        protected ActionBehaviour behaviour;
 
-        public abstract AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo);
+        public abstract ActionBehaviour GetBehaviourComponent(GameObject objectToAttachTo);
 
         public void AttachAbilityTo(GameObject objectToattachTo)
         {
-            AbilityBehaviour behaviourComponent = GetBehaviourComponent(objectToattachTo);
+            ActionBehaviour behaviourComponent = GetBehaviourComponent(objectToattachTo);
             behaviourComponent.SetConfig(this);
             behaviour = behaviourComponent;
         }

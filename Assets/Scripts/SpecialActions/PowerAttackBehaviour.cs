@@ -4,9 +4,9 @@ using UnityEngine;
 using RPG.Core;
 using RPG.Combat;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
-    public class PowerAttackBehaviour : AbilityBehaviour
+    public class PowerAttackBehaviour : ActionBehaviour
     {
         public override void Use(GameObject target)
         {

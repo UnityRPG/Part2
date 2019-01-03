@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Combat;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
-    public class SelfHealBehaviour : AbilityBehaviour
+    public class SelfHealBehaviour : ActionBehaviour
     {
 		public override void Use(GameObject target)
 		{

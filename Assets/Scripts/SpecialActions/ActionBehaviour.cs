@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿using RPG.Core;
+using System.Collections;
 using UnityEngine;
-using RPG.Core;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
-    public abstract class AbilityBehaviour : MonoBehaviour
+    public abstract class ActionBehaviour : MonoBehaviour
     {
-        protected AbilityConfig config;
+        protected ActionConfig config;
 
         const float PARTICLE_CLEAN_UP_DELAY = 20f;
 
@@ -16,7 +16,7 @@ namespace RPG.Abilities
 
         public virtual bool CanUseWhenInRange(GameObject target) => true;
 
-        public void SetConfig(AbilityConfig configToSet)
+        public void SetConfig(ActionConfig configToSet)
         {
             config = configToSet;
         }

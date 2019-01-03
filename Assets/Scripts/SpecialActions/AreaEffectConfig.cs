@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Abilities
+namespace RPG.SpecialActions
 {
     [CreateAssetMenu(menuName = ("RPG/Special Abiltiy/Area Effect"))]
-    public class AreaEffectConfig : AbilityConfig
+    public class AreaEffectConfig : ActionConfig
     {
         [Header("Area Effect Specific")]
         [SerializeField] float radius = 5f;
         [SerializeField] float damageToEachTarget = 15f;
 
-        public override AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo)
+        public override ActionBehaviour GetBehaviourComponent(GameObject objectToAttachTo)
         {
             return objectToAttachTo.AddComponent<AreaEffectBehaviour>();
         }
