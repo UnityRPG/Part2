@@ -1,9 +1,9 @@
 namespace RPG.Attributes
 {
     [System.Serializable]
-    public class AttributeModifier
+    public class PerformanceModifier
     {
-        public enum Attribute
+        public enum PerformanceStat
         {
             DamageBonus,
             CriticalHitBonus,
@@ -13,12 +13,12 @@ namespace RPG.Attributes
             ArmourBonus
         }
 
-        public Attribute attribute;
+        public PerformanceStat stat;
         public float value;
 
-        public AttributeModifier(Attribute attribute, float value)
+        public PerformanceModifier(PerformanceStat stat, float value)
         {
-            this.attribute = attribute;
+            this.stat = stat;
             this.value = value;
         }
     }

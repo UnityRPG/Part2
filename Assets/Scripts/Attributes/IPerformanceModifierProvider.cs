@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace RPG.Attributes
 {
-    public interface IAttributeModifierProvider
+    public interface IPerformanceModifierProvider
     {
-        IEnumerable<AttributeModifier> modifiers
+        IEnumerable<PerformanceModifier> modifiers
         {
             get;
         }

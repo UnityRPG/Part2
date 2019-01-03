@@ -34,7 +34,7 @@ namespace RPG.Combat
 
         Animator animator;
         AudioSource audioSource;
-        CharacterAttributes attributes;
+        PerformanceStatCalculator attributes;
         DamageTextSpawner damageTextSpawner;
 		
         float currentHealthPoints;
@@ -56,7 +56,7 @@ namespace RPG.Combat
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             damageTextSpawner = FindObjectOfType<DamageTextSpawner>();
-            attributes = GetComponent<CharacterAttributes>();
+            attributes = GetComponent<PerformanceStatCalculator>();
 
             if (!healthPointsSetByRestore)
             {

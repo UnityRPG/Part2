@@ -4,92 +4,43 @@ using UnityEngine;
 
 namespace RPG.Attributes
 {
-    public class CharacterAttributes : MonoBehaviour
+    public class CharacterAttributes : MonoBehaviour, IPerformanceModifierProvider
     {
-        IAttributeModifierProvider[] modifierProviders;
-        [SerializeField] float baseCriticalHit = 20;
-        [SerializeField] float baseCriticalHitChance = 5;
+        public enum ModifierType
+        {
+            Multiplicative,
+            Additive
+        }
 
-        public float damageMultiplier
+        [System.Serializable]
+        public struct Modifier
+        {
+        }
+
+        [Header("Stat Points")]
+        [SerializeField] int strengthPoints;
+        [SerializeField] int dexterityPoints;
+        [SerializeField] int charismaPoints;
+        [SerializeField] int intelligencePoints;
+        [SerializeField] int constitutionPoints;
+
+        [Header("Stat effects on Attributes")]
+        [SerializeField] float damageBonusPerStrengthPoint = 0.5f;
+        [SerializeField] float criticalHitBonusPerStrengthPoint = 1.5f;
+        [SerializeField] float criticalHitChancePerDexterityPoint = 1.0f;
+        [SerializeField] float armourBonusPerConstitutionPoints = 0.5f;
+
+        public IEnumerable<PerformanceModifier> modifiers
         {
             get
             {
-                return (1 + damageBonus / 100f);
-            }
-        }
-
-        public float damageBonus
-        {
-            get
-            {
-                return SumModifiersForAttribute(AttributeModifier.Attribute.DamageBonus);
-            }
-        }
-
-        public float criticalHitBonus
-        {
-            get
-            {
-                return baseCriticalHit + SumModifiersForAttribute(AttributeModifier.Attribute.CriticalHitBonus);
-            }
-        }
-
-        public float criticalHitChance
-        {
-            get
-            {
-                return baseCriticalHitChance + SumModifiersForAttribute(AttributeModifier.Attribute.CriticalHitChance);
-            }
-        }
-
-        public float armour
-        {
-            get
-            {
-                return SumModifiersForAttribute(AttributeModifier.Attribute.Armour);
-            }
-        }
-
-        public float armourBonus
-        {
-            get
-            {
-                return SumModifiersForAttribute(AttributeModifier.Attribute.Armour);
-            }
-        }
-
-        public float totalDefence
-        {
-            get
-            {
-                return armour * (1 + armourBonus / 100);
-            }
-        }
-
-        private void Start()
-        {
-            modifierProviders = GetComponents<IAttributeModifierProvider>();
-        }
-
-        float SumModifiersForAttribute(AttributeModifier.Attribute attribute)
-        {
-            float total = 0;
-            foreach (var modifier in GetAttributeModifiersForAttribute(attribute))
-            {
-                total += modifier.value;
-            }
-            return total;
-        }
-
-        IEnumerable<AttributeModifier> GetAttributeModifiersForAttribute(AttributeModifier.Attribute attribute)
-        {
-            foreach (var modifierProvider in modifierProviders)
-            {
-                foreach (var modifier in modifierProvider.modifiers)
+                return new PerformanceModifier[]
                 {
-                    if (modifier.attribute != attribute) continue;
-                    yield return modifier;
-                }
+                    new PerformanceModifier(PerformanceModifier.PerformanceStat.DamageBonus, damageBonusPerStrengthPoint * strengthPoints),
+                    new PerformanceModifier(PerformanceModifier.PerformanceStat.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
+                    new PerformanceModifier(PerformanceModifier.PerformanceStat.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
+                    new PerformanceModifier(PerformanceModifier.PerformanceStat.ArmourBonus, armourBonusPerConstitutionPoints * constitutionPoints)
+                };
             }
         }
     }
