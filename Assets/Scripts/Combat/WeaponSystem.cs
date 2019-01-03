@@ -18,7 +18,7 @@ namespace RPG.Combat
         Animator animator;
         ActionScheduler actionScheduler;
         Equipment equipment;
-        PerformanceStatCalculator attributes;
+        FinalStatsCalculator attributes;
         Coroutine damageDelay;
 
         const string ATTACK_TRIGGER = "Attack";
@@ -28,7 +28,7 @@ namespace RPG.Combat
         {
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
-            attributes = GetComponent<PerformanceStatCalculator>();
+            attributes = GetComponent<FinalStatsCalculator>();
             equipment = GetComponent<Equipment>();
             if (equipment)
             {

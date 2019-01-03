@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Attributes
 {
-    public class CharacterAttributes : MonoBehaviour, IPerformanceModifierProvider
+    public class CharacterAttributes : MonoBehaviour, IStatModifiersProvider
     {
         public enum ModifierType
         {
@@ -30,16 +30,16 @@ namespace RPG.Attributes
         [SerializeField] float criticalHitChancePerDexterityPoint = 1.0f;
         [SerializeField] float armourBonusPerConstitutionPoints = 0.5f;
 
-        public IEnumerable<PerformanceModifier> modifiers
+        public IEnumerable<StatModifier> modifiers
         {
             get
             {
-                return new PerformanceModifier[]
+                return new StatModifier[]
                 {
-                    new PerformanceModifier(PerformanceModifier.PerformanceStat.DamageBonus, damageBonusPerStrengthPoint * strengthPoints),
-                    new PerformanceModifier(PerformanceModifier.PerformanceStat.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
-                    new PerformanceModifier(PerformanceModifier.PerformanceStat.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
-                    new PerformanceModifier(PerformanceModifier.PerformanceStat.ArmourBonus, armourBonusPerConstitutionPoints * constitutionPoints)
+                    new StatModifier(FinalStat.DamageBonus, damageBonusPerStrengthPoint * strengthPoints),
+                    new StatModifier(FinalStat.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
+                    new StatModifier(FinalStat.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
+                    new StatModifier(FinalStat.ArmourBonus, armourBonusPerConstitutionPoints * constitutionPoints)
                 };
             }
         }

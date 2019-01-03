@@ -5,10 +5,10 @@ namespace RPG.Progression
 {
     abstract public class CharacterLevel : MonoBehaviour
     {
-        [SerializeField] protected StatsProgression statSet;
+        [SerializeField] protected BaseStatsProgression statSet;
         public int level;
 
-        abstract protected CoreCharacterStats GetStats();
+        abstract protected CoreBaseStats GetStats();
 
         public float health
         {

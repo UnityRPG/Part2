@@ -4,7 +4,7 @@ namespace RPG.Progression
 {
     public class PlayerLevel : CharacterLevel
     {
-        override protected CoreCharacterStats GetStats()
+        override protected CoreBaseStats GetStats()
         {
             return statSet.GetPlayer();
         }

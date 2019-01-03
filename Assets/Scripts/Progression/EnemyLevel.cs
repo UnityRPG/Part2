@@ -7,7 +7,7 @@ namespace RPG.Progression
     {
         [SerializeField] string className;
 
-        override protected CoreCharacterStats GetStats()
+        override protected CoreBaseStats GetStats()
         {
             return statSet.GetEnemy(className);
         }

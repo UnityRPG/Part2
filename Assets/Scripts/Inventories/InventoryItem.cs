@@ -17,7 +17,7 @@ namespace RPG.Inventories
         }
 
         [SerializeField] string _itemID;
-        [SerializeField] PerformanceModifier[] _modifiers;
+        [SerializeField] StatModifier[] _modifiers;
         [SerializeField] float _baseCost;
         [SerializeField] Rarity _rarity;
         [SerializeField] int _level;
@@ -55,7 +55,7 @@ namespace RPG.Inventories
         public Sprite icon => _icon;
         public string displayName => _displayName;
         public string description => _description;
-        public IEnumerable<PerformanceModifier> modifiers => _modifiers;
+        public IEnumerable<StatModifier> modifiers => _modifiers;
 
         public Pickup SpawnPickup(Vector3 position)
         {

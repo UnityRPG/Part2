@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RPG.Progression
 {
     [Serializable]
-    public class EnemyStats : CoreCharacterStats
+    public class EnemyBaseStats : CoreBaseStats
     {
         public float[] hitsPerSecond;
     }

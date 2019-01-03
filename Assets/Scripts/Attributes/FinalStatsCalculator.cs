@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace RPG.Attributes
 {
-    public class PerformanceStatCalculator : MonoBehaviour
+    public class FinalStatsCalculator : MonoBehaviour
     {
-        IPerformanceModifierProvider[] modifierProviders;
+        IStatModifiersProvider[] modifierProviders;
         [SerializeField] float baseCriticalHit = 20;
         [SerializeField] float baseCriticalHitChance = 5;
 
@@ -22,7 +22,7 @@ namespace RPG.Attributes
         {
             get
             {
-                return SumModifiersForAttribute(PerformanceModifier.PerformanceStat.DamageBonus);
+                return SumModifiersForAttribute(FinalStat.DamageBonus);
             }
         }
 
@@ -30,7 +30,7 @@ namespace RPG.Attributes
         {
             get
             {
-                return baseCriticalHit + SumModifiersForAttribute(PerformanceModifier.PerformanceStat.CriticalHitBonus);
+                return baseCriticalHit + SumModifiersForAttribute(FinalStat.CriticalHitBonus);
             }
         }
 
@@ -38,7 +38,7 @@ namespace RPG.Attributes
         {
             get
             {
-                return baseCriticalHitChance + SumModifiersForAttribute(PerformanceModifier.PerformanceStat.CriticalHitChance);
+                return baseCriticalHitChance + SumModifiersForAttribute(FinalStat.CriticalHitChance);
             }
         }
 
@@ -46,7 +46,7 @@ namespace RPG.Attributes
         {
             get
             {
-                return SumModifiersForAttribute(PerformanceModifier.PerformanceStat.Armour);
+                return SumModifiersForAttribute(FinalStat.Armour);
             }
         }
 
@@ -54,7 +54,7 @@ namespace RPG.Attributes
         {
             get
             {
-                return SumModifiersForAttribute(PerformanceModifier.PerformanceStat.Armour);
+                return SumModifiersForAttribute(FinalStat.Armour);
             }
         }
 
@@ -68,10 +68,10 @@ namespace RPG.Attributes
 
         private void Start()
         {
-            modifierProviders = GetComponents<IPerformanceModifierProvider>();
+            modifierProviders = GetComponents<IStatModifiersProvider>();
         }
 
-        float SumModifiersForAttribute(PerformanceModifier.PerformanceStat attribute)
+        float SumModifiersForAttribute(FinalStat attribute)
         {
             float total = 0;
             foreach (var modifier in GetAttributeModifiersForAttribute(attribute))
@@ -81,7 +81,7 @@ namespace RPG.Attributes
             return total;
         }
 
-        IEnumerable<PerformanceModifier> GetAttributeModifiersForAttribute(PerformanceModifier.PerformanceStat attribute)
+        IEnumerable<StatModifier> GetAttributeModifiersForAttribute(FinalStat attribute)
         {
             foreach (var modifierProvider in modifierProviders)
             {

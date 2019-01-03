@@ -3,17 +3,17 @@
 namespace RPG.Progression
 {
     [CreateAssetMenu(menuName = ("RPG/Stats Progression Set"))]
-    public class StatsProgression : ScriptableObject
+    public class BaseStatsProgression : ScriptableObject
     {
-        [SerializeField] PlayerStats playerStats;
+        [SerializeField] PlayerBaseStats playerStats;
         [SerializeField] EnemyClass[] enemyClasses;
 
-        public PlayerStats GetPlayer()
+        public PlayerBaseStats GetPlayer()
         {
             return playerStats;
         }
 
-        public EnemyStats GetEnemy(string className)
+        public EnemyBaseStats GetEnemy(string className)
         {
             foreach (var enemyClass in enemyClasses)
             {

@@ -6,6 +6,6 @@ namespace RPG.Progression
     public class EnemyClass
     {
         public string className;
-        public EnemyStats enemyStats;
+        public EnemyBaseStats enemyStats;
     }
 }

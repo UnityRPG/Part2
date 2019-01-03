@@ -4,7 +4,7 @@ using RPG.Core;
 
 namespace RPG.Progression
 {
-    [CustomEditor(typeof(StatsProgression))]
+    [CustomEditor(typeof(BaseStatsProgression))]
     public class StatsProgressionEditor : UnityEditor.Editor
     {
 

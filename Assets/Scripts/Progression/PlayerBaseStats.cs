@@ -3,7 +3,7 @@
 namespace RPG.Progression
 {
     [Serializable]
-    public class PlayerStats : CoreCharacterStats
+    public class PlayerBaseStats : CoreBaseStats
     {
         public float[] XPToLevelUp;
         public float[] XPPerEnemyKill;

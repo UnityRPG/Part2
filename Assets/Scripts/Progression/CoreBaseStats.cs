@@ -3,7 +3,7 @@
 namespace RPG.Progression
 {
     [Serializable]
-    public class CoreCharacterStats
+    public class CoreBaseStats
     {
         public float[] health;
         public float[] damagePerHit;

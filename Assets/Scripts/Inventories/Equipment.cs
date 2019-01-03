@@ -6,7 +6,7 @@ using RPG.Attributes;
 
 namespace RPG.Inventories
 {
-    public class Equipment : MonoBehaviour, ISaveable, IPerformanceModifierProvider
+    public class Equipment : MonoBehaviour, ISaveable, IStatModifiersProvider
     {
         Dictionary<EquipableItem.EquipLocation, EquipableItem> equippedItems = new Dictionary<EquipableItem.EquipLocation, EquipableItem>();
 
@@ -37,7 +37,7 @@ namespace RPG.Inventories
             return replacedItem;
         }
 
-        public IEnumerable<PerformanceModifier> modifiers 
+        public IEnumerable<StatModifier> modifiers 
         {
             get
             {
