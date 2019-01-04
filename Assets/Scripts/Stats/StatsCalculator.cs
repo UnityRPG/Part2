@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Progression;
 
 namespace RPG.Stats
 {
     public class StatsCalculator : MonoBehaviour
     {
         IStatModifiersProvider[] modifierProviders;
+        CharacterLevel baseLevel;
         [SerializeField] float baseCriticalHit = 20;
         [SerializeField] float baseCriticalHitChance = 5;
 
@@ -22,7 +24,7 @@ namespace RPG.Stats
         {
             get
             {
-                return SumModifiersForAttribute(FinalStat.DamageBonus);
+                return GetPercentageBonus("damage");
             }
         }
 
@@ -30,7 +32,7 @@ namespace RPG.Stats
         {
             get
             {
-                return baseCriticalHit + SumModifiersForAttribute(FinalStat.CriticalHitBonus);
+                return baseCriticalHit + GetAdditiveTotal("criticalHitBonus");
             }
         }
 
@@ -38,56 +40,83 @@ namespace RPG.Stats
         {
             get
             {
-                return baseCriticalHitChance + SumModifiersForAttribute(FinalStat.CriticalHitChance);
+                return baseCriticalHitChance + GetAdditiveTotal("criticalHitChance");
             }
         }
 
-        public float armour
-        {
-            get
-            {
-                return SumModifiersForAttribute(FinalStat.Armour);
-            }
-        }
+        //public float armour
+        //{
+        //    get
+        //    {
+        //        return AggregateModifiersForStat(FinalStat.Armour);
+        //    }
+        //}
 
-        public float armourBonus
-        {
-            get
-            {
-                return SumModifiersForAttribute(FinalStat.Armour);
-            }
-        }
+        //public float armourBonus
+        //{
+        //    get
+        //    {
+        //        return AggregateModifiersForStat(FinalStat.Armour);
+        //    }
+        //}
 
         public float totalDefence
         {
             get
             {
-                return armour * (1 + armourBonus / 100);
+                return CalculateStat("armour");
             }
         }
 
         private void Start()
         {
             modifierProviders = GetComponents<IStatModifiersProvider>();
+            baseLevel = GetComponent<CharacterLevel>();
         }
 
-        float SumModifiersForAttribute(FinalStat attribute)
+        float CalculateStat(string statId)
+        {
+            return (GetBaseStat(statId) + GetAdditiveTotal(statId)) * (1 + GetPercentageBonus(statId) / 100);
+        }
+
+        float GetBaseStat(string statId)
+        {
+            return baseLevel.GetBaseStat(statId);
+        }
+
+        float GetAdditiveTotal(string statId)
         {
             float total = 0;
-            foreach (var modifier in GetAttributeModifiersForAttribute(attribute))
+            foreach (var modifier in GetModifiersForStat(statId))
             {
-                total += modifier.value;
+                if (modifier.aggregationType == StatModifier.AggregationType.Additive)
+                {
+                    total += modifier.value;
+                }
             }
             return total;
         }
 
-        IEnumerable<StatModifier> GetAttributeModifiersForAttribute(FinalStat attribute)
+        float GetPercentageBonus(string statId)
+        {
+            float total = 0;
+            foreach (var modifier in GetModifiersForStat(statId))
+            {
+                if (modifier.aggregationType == StatModifier.AggregationType.PercentageBonus)
+                {
+                    total += modifier.value;
+                }
+            }
+            return total;
+        }
+
+        IEnumerable<StatModifier> GetModifiersForStat(string statId)
         {
             foreach (var modifierProvider in modifierProviders)
             {
                 foreach (var modifier in modifierProvider.modifiers)
                 {
-                    if (modifier.stat != attribute) continue;
+                    if (modifier.statId != statId) continue;
                     yield return modifier;
                 }
             }

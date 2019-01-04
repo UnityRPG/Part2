@@ -36,10 +36,10 @@ namespace RPG.Stats
             {
                 return new StatModifier[]
                 {
-                    new StatModifier(FinalStat.DamageBonus, damageBonusPerStrengthPoint * strengthPoints),
-                    new StatModifier(FinalStat.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
-                    new StatModifier(FinalStat.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
-                    new StatModifier(FinalStat.ArmourBonus, armourBonusPerConstitutionPoints * constitutionPoints)
+                    new StatModifier("damage", damageBonusPerStrengthPoint * strengthPoints, StatModifier.AggregationType.PercentageBonus),
+                    new StatModifier("criticalHitBonus", criticalHitBonusPerStrengthPoint * strengthPoints),
+                    new StatModifier("criticalHitChance", criticalHitChancePerDexterityPoint * dexterityPoints),
+                    new StatModifier("armour", armourBonusPerConstitutionPoints * constitutionPoints, StatModifier.AggregationType.PercentageBonus)
                 };
             }
         }

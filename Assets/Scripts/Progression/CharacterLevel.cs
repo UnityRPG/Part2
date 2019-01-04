@@ -10,6 +10,11 @@ namespace RPG.Progression
 
         abstract protected CoreBaseStats GetStats();
 
+        public float GetBaseStat(string statId)
+        {
+            return health; //TODO: Fix;
+        }
+
         public float health
         {
             get

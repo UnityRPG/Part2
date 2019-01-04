@@ -4,12 +4,25 @@ namespace RPG.Stats
     public class StatModifier
     {
         public FinalStat stat;
-        public float value;
-
-        public StatModifier(FinalStat stat, float value)
+        public enum AggregationType
         {
-            this.stat = stat;
+            Additive,
+            PercentageBonus
+        }
+
+        public string statId;
+        public float value;
+        public AggregationType aggregationType;
+
+        public StatModifier(string statId, float value) : this(statId, value, AggregationType.Additive)
+        {
+        }
+
+        public StatModifier(string statId, float value, AggregationType aggregationType)
+        {
+            this.statId = statId;
             this.value = value;
+            this.aggregationType = aggregationType;
         }
     }
 }

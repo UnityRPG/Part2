@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemID: 7ab71f77-195f-48f4-98f9-dbc46ee1448e
   _modifiers:
-  - attribute: 0
+  - stat: 0
+    statId: damage
     value: -200
-  - attribute: 4
+    aggregationType: 1
+  - stat: 0
+    statId: damage
     value: 10
+    aggregationType: 1
   _baseCost: 0
   _rarity: 0
   _level: 0
