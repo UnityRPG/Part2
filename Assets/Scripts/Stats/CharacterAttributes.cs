@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Attributes
+namespace RPG.Stats
 {
     public class CharacterAttributes : MonoBehaviour, IStatModifiersProvider
     {

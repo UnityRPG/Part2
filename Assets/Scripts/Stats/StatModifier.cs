@@ -1,4 +1,4 @@
-namespace RPG.Attributes
+namespace RPG.Stats
 {
     [System.Serializable]
     public class StatModifier

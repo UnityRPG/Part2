@@ -2,7 +2,7 @@
 using UnityEngine.Assertions;
 using UnityEngine;
 using RPG.Inventories;
-using RPG.Attributes;
+using RPG.Stats;
 using RPG.Core;
 
 namespace RPG.Combat
@@ -18,7 +18,7 @@ namespace RPG.Combat
         Animator animator;
         ActionScheduler actionScheduler;
         Equipment equipment;
-        FinalStatsCalculator attributes;
+        StatsCalculator attributes;
         Coroutine damageDelay;
 
         const string ATTACK_TRIGGER = "Attack";
@@ -28,7 +28,7 @@ namespace RPG.Combat
         {
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
-            attributes = GetComponent<FinalStatsCalculator>();
+            attributes = GetComponent<StatsCalculator>();
             equipment = GetComponent<Equipment>();
             if (equipment)
             {

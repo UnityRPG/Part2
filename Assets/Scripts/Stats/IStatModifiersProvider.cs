@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RPG.Attributes
+namespace RPG.Stats
 {
     public interface IStatModifiersProvider
     {

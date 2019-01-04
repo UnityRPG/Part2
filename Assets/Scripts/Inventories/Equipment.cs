@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
-using RPG.Attributes;
+using RPG.Stats;
 
 namespace RPG.Inventories
 {

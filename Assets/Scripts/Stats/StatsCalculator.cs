@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Attributes
+namespace RPG.Stats
 {
-    public class FinalStatsCalculator : MonoBehaviour
+    public class StatsCalculator : MonoBehaviour
     {
         IStatModifiersProvider[] modifierProviders;
         [SerializeField] float baseCriticalHit = 20;
