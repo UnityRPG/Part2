@@ -35,7 +35,7 @@ namespace RPG.Inventories
             if (itemLookupCache == null)
             {
                 itemLookupCache = new Dictionary<string, InventoryItem>();
-                var itemList = Resources.LoadAll<InventoryItem>("RPG.UI.InventorySystem");
+                var itemList = Resources.LoadAll<InventoryItem>("");
                 foreach (var item in itemList)
                 {
                     if (itemLookupCache.ContainsKey(item.itemID))
