@@ -3,7 +3,6 @@ namespace RPG.Stats
     [System.Serializable]
     public class StatModifier
     {
-        public FinalStat stat;
         public enum AggregationType
         {
             Additive,

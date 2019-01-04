@@ -44,22 +44,6 @@ namespace RPG.Stats
             }
         }
 
-        //public float armour
-        //{
-        //    get
-        //    {
-        //        return AggregateModifiersForStat(FinalStat.Armour);
-        //    }
-        //}
-
-        //public float armourBonus
-        //{
-        //    get
-        //    {
-        //        return AggregateModifiersForStat(FinalStat.Armour);
-        //    }
-        //}
-
         public float totalDefence
         {
             get

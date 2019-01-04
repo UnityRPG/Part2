@@ -73,36 +73,6 @@ namespace RPG.Inventories
             {
                 _itemID = System.Guid.NewGuid().ToString();
             }
-
-            foreach (var modifier in _modifiers)
-            {
-                switch (modifier.stat)
-                {
-                    case FinalStat.DamageBonus:
-                        modifier.statId = "damage";
-                        modifier.aggregationType = StatModifier.AggregationType.PercentageBonus;
-                        break;
-                    case FinalStat.CriticalHitBonus:
-                        modifier.statId = "criticalHitBonus";
-                        break;
-                    case FinalStat.CriticalHitChance:
-                        modifier.statId = "criticalHitChance";
-                        break;
-                    case FinalStat.HitSpeedBonus:
-                        modifier.statId = "hitSpeed";
-                        break;
-                    case FinalStat.Armour:
-                        modifier.statId = "Armour";
-                        modifier.aggregationType = StatModifier.AggregationType.Additive;
-                        break;
-                    case FinalStat.ArmourBonus:
-                        modifier.statId = "Armour";
-                        modifier.aggregationType = StatModifier.AggregationType.PercentageBonus;
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
 
         public void OnAfterDeserialize()
