@@ -4,9 +4,6 @@ namespace RPG.Stats
 {
     public interface IStatModifiersProvider
     {
-        IEnumerable<StatModifier> modifiers
-        {
-            get;
-        }
+        IEnumerable<StatModifier> GetModifiers(StatModifier.Filter filter);
     }
 }

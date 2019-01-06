@@ -37,15 +37,15 @@ namespace RPG.Inventories
             return replacedItem;
         }
 
-        public IEnumerable<StatModifier> modifiers 
+        public IEnumerable<StatModifier> GetModifiers(StatModifier.Filter filter)
         {
-            get
+            foreach (var pair in equippedItems)
             {
-                foreach (var pair in equippedItems)
-                {
-                    if (pair.Value == null) continue;
+                if (pair.Value == null) continue;
                     
-                    foreach (var modifier in pair.Value.modifiers)
+                foreach (var modifier in pair.Value.modifiers)
+                {
+                    if (modifier.Matches(filter))
                     {
                         yield return modifier;
                     }

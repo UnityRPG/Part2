@@ -30,17 +30,21 @@ namespace RPG.Stats
         [SerializeField] float criticalHitChancePerDexterityPoint = 1.0f;
         [SerializeField] float armourBonusPerConstitutionPoints = 0.5f;
 
-        public IEnumerable<StatModifier> modifiers
+        public IEnumerable<StatModifier> GetModifiers(StatModifier.Filter filter)
         {
-            get
+            var modifiers = new StatModifier[]
             {
-                return new StatModifier[]
+                new StatModifier("damage", damageBonusPerStrengthPoint * strengthPoints, StatModifier.AggregationType.PercentageBonus),
+                new StatModifier("criticalHitBonus", criticalHitBonusPerStrengthPoint * strengthPoints),
+                new StatModifier("criticalHitChance", criticalHitChancePerDexterityPoint * dexterityPoints),
+                new StatModifier("armour", armourBonusPerConstitutionPoints * constitutionPoints, StatModifier.AggregationType.PercentageBonus)
+            };
+            foreach (var modifier in modifiers)
+            {
+                if (modifier.Matches(filter))
                 {
-                    new StatModifier("damage", damageBonusPerStrengthPoint * strengthPoints, StatModifier.AggregationType.PercentageBonus),
-                    new StatModifier("criticalHitBonus", criticalHitBonusPerStrengthPoint * strengthPoints),
-                    new StatModifier("criticalHitChance", criticalHitChancePerDexterityPoint * dexterityPoints),
-                    new StatModifier("armour", armourBonusPerConstitutionPoints * constitutionPoints, StatModifier.AggregationType.PercentageBonus)
-                };
+                    yield return modifier;
+                }
             }
         }
     }

@@ -71,12 +71,9 @@ namespace RPG.Stats
         float GetAdditiveTotal(string statId)
         {
             float total = 0;
-            foreach (var modifier in GetModifiersForStat(statId))
+            foreach (var modifier in GetModifiersForStat(StatModifier.AdditiveFilter(statId)))
             {
-                if (modifier.aggregationType == StatModifier.AggregationType.Additive)
-                {
-                    total += modifier.value;
-                }
+                total += modifier.value;
             }
             return total;
         }
@@ -84,23 +81,19 @@ namespace RPG.Stats
         float GetPercentageBonus(string statId)
         {
             float total = 0;
-            foreach (var modifier in GetModifiersForStat(statId))
+            foreach (var modifier in GetModifiersForStat(StatModifier.PercentageFilter(statId)))
             {
-                if (modifier.aggregationType == StatModifier.AggregationType.PercentageBonus)
-                {
-                    total += modifier.value;
-                }
+                total += modifier.value;
             }
             return total;
         }
 
-        IEnumerable<StatModifier> GetModifiersForStat(string statId)
+        IEnumerable<StatModifier> GetModifiersForStat(StatModifier.Filter filter)
         {
             foreach (var modifierProvider in modifierProviders)
             {
-                foreach (var modifier in modifierProvider.modifiers)
+                foreach (var modifier in modifierProvider.GetModifiers(filter))
                 {
-                    if (modifier.statId != statId) continue;
                     yield return modifier;
                 }
             }
