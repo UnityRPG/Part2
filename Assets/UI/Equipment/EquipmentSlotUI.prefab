@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4412046375550862971}
   - component: {fileID: 1630807343656392719}
   - component: {fileID: 7995044203599088422}
-  - component: {fileID: 2789828176708072539}
+  - component: {fileID: 4777773695723773773}
   m_Layer: 5
   m_Name: InventoryItem
   m_TagString: Untagged
@@ -178,7 +178,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2789828176708072539
+--- !u!114 &4777773695723773773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,6 +187,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9062860880096009178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991aba315708c7c43ae0700c1f7304fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c02b7f87dd2b1746b0acd2cf9af593c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

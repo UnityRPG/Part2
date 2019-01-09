@@ -25,7 +25,6 @@ namespace RPG.Combat
                 return ec.health;
             }
         }
-        [SerializeField] Image healthBar;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
         [SerializeField] float deathVanishSeconds = 2.0f;
@@ -66,16 +65,7 @@ namespace RPG.Combat
 
         void Update()
         {
-            UpdateHealthBar();
             CheckShouldCharacterDie();
-        }
-
-        void UpdateHealthBar()
-        {
-            if (healthBar) // Enemies may not have health bars to update
-            {
-                healthBar.fillAmount = healthAsPercentage;
-            }
         }
 
         public void TakeDamage(float damage)

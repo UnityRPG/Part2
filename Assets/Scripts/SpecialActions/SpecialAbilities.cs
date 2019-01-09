@@ -7,7 +7,6 @@ namespace RPG.SpecialActions
     public class SpecialAbilities : MonoBehaviour
     {
         [SerializeField] ActionConfig[] abilities;
-        [SerializeField] Image energyBar;
         [SerializeField] float maxEnergyPoints = 100f;
         [SerializeField] float regenPointsPerSecond = 1f;
         [SerializeField] AudioClip outOfEnergy;
@@ -15,7 +14,7 @@ namespace RPG.SpecialActions
         float currentEnergyPoints;
         AudioSource audioSource;
 
-        float energyAsPercent { get { return currentEnergyPoints / maxEnergyPoints; } }
+        public float energyAsPercent { get { return currentEnergyPoints / maxEnergyPoints; } }
 
         // Use this for initialization
         void Start()
@@ -24,7 +23,6 @@ namespace RPG.SpecialActions
 
             currentEnergyPoints = maxEnergyPoints;
             AttachInitialAbilities();
-            UpdateEnergyBar();
         }
 
         void Update()
@@ -32,7 +30,6 @@ namespace RPG.SpecialActions
             if (currentEnergyPoints < maxEnergyPoints)
             {
                 AddEnergyPoints();
-                UpdateEnergyBar();
             }
         }
 
@@ -86,15 +83,6 @@ namespace RPG.SpecialActions
         {
             float newEnergyPoints = currentEnergyPoints - amount;
             currentEnergyPoints = Mathf.Clamp(newEnergyPoints, 0, maxEnergyPoints);
-            UpdateEnergyBar();
-        }
-
-        private void UpdateEnergyBar()
-        {
-            if (energyBar)
-            {
-                energyBar.fillAmount = energyAsPercent;
-            }
         }
     }
 }
