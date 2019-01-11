@@ -7,6 +7,6 @@ namespace RPG.UI.Inventories
 {
     public interface IItemHolder
     {
-        InventoryItem item { get; set; }
+        InventoryItem item { get; }
     }
 }

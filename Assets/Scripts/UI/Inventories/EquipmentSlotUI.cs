@@ -9,7 +9,7 @@ namespace RPG.UI.Inventories
 {
     public class EquipmentSlotUI : MonoBehaviour, IDragContainer<InventoryItem>
     {
-        [SerializeField] Image _iconImage;
+        [SerializeField] InventoryItemIcon _icon;
         [SerializeField] EquipableItem.EquipLocation equipLocation;
 
         public int index { get; set; }
@@ -20,13 +20,10 @@ namespace RPG.UI.Inventories
 
         public EquipableItem item
         {
-            get => _item;
-            set => SetItem(value);
+            get => _playerEquipment.GetItemInSlot(equipLocation);
         }
 
         private void Start() {
-            item = null;
-
             var player = GameObject.FindGameObjectWithTag("Player");
             _playerEquipment = player.GetComponent<Equipment>();
             _playerEquipment.equipmentUpdated += RedrawUI;
@@ -35,22 +32,7 @@ namespace RPG.UI.Inventories
 
         public void RedrawUI()
         {
-            item = _playerEquipment.GetItemInSlot(equipLocation);
-        }
-
-        public void SetItem(EquipableItem item)
-        {
-            _item = item;
-
-            if (item == null)
-            {
-                _iconImage.enabled = false;
-            }
-            else
-            {
-                _iconImage.enabled = true;
-                _iconImage.sprite = item.icon;
-            }
+            _icon.SetItem(_playerEquipment.GetItemInSlot(equipLocation));
         }
 
         public InventoryItem ReplaceItem(InventoryItem item)

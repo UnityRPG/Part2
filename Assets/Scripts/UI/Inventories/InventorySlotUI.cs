@@ -8,7 +8,7 @@ namespace RPG.UI.Inventories
 {
     public class InventorySlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
     {
-        [SerializeField] Image _iconImage;
+        [SerializeField] InventoryItemIcon _icon;
 
         public int index { get; set; }
 
@@ -18,25 +18,12 @@ namespace RPG.UI.Inventories
         public Inventory inventory { set { _inventory = value; } }
 
         public InventoryItem item { 
-            get => _item; 
-            set {
-                SetItem(value);
-            } 
+            get => _inventory.GetItemInSlot(index);
         }
 
         public void SetItem(InventoryItem item)
         {
-            _item = item;
-
-            if (item == null)
-            {
-                _iconImage.enabled = false;
-            }
-            else 
-            {
-                _iconImage.enabled = true;
-                _iconImage.sprite = item.icon;
-            }
+            _icon.SetItem(item);
         }
 
         public InventoryItem ReplaceItem(InventoryItem item)

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58a7a667728d0342a09593ddb800bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iconImage: {fileID: 1630807343656392719}
+  _icon: {fileID: 7308001084569389129}
   equipLocation: 0
 --- !u!1 &9062860880096009178
 GameObject:
@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 1630807343656392719}
   - component: {fileID: 7995044203599088422}
   - component: {fileID: 4777773695723773773}
+  - component: {fileID: 7308001084569389129}
   m_Layer: 5
   m_Name: InventoryItem
   m_TagString: Untagged
@@ -188,5 +189,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c02b7f87dd2b1746b0acd2cf9af593c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7308001084569389129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9062860880096009178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493934aefc2d7c9469174527fc9bf167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
