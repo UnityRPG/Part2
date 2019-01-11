@@ -42,7 +42,7 @@ namespace RPG.UI.Inventories
 
         public bool CanAcceptItem(InventoryItem item)
         {
-            if (!item is EquipableItem)
+            if (!(item is EquipableItem))
             {
                 return false;
             }

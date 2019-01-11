@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
+using RPG.Inventories;
 
 namespace RPG.SpecialActions
 {
-    public abstract class ActionConfig : ScriptableObject
+    public abstract class ActionConfig : InventoryItem
     {
         [Header("Spcial Ability General")]
         [SerializeField] float energyCost = 10f;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RPG.Core.UI.Dragging;
 using RPG.Inventories;
+using RPG.SpecialActions;
 using UnityEngine;
 
 namespace RPG.UI.Inventories
@@ -16,7 +17,7 @@ namespace RPG.UI.Inventories
 
         bool IDragContainer<InventoryItem>.CanAcceptItem(InventoryItem item)
         {
-            return true;
+            return item is ActionConfig;
         }
 
         InventoryItem IDragContainer<InventoryItem>.ReplaceItem(InventoryItem item)
@@ -25,18 +26,6 @@ namespace RPG.UI.Inventories
             this._item = item;
             _icon.SetItem(item);
             return oldItem;
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
         }
     }
 }
