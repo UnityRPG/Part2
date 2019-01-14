@@ -205,11 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba53ee13d7e248d3a3c24b1b38be0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: 7d493ef7d1af04307941d084945693a9, type: 2}
-  - {fileID: 11400000, guid: 87b1244f6029d4a0f850297a5dfedd7a, type: 2}
-  - {fileID: 11400000, guid: 8f838734eb7a749009a3315fd6312191, type: 2}
-  energyBar: {fileID: 0}
+  _numberOfAbilities: 6
   maxEnergyPoints: 200
   regenPointsPerSecond: 10
   outOfEnergy: {fileID: 8300000, guid: 8136ff2516a8e4083a19bfd8fad67741, type: 3}
@@ -225,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fb437e61ff0493b8734b859139a188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   damageSounds:
   - {fileID: 8300000, guid: 8b8b2a645d1a46045962a8ef4bf3c6dd, type: 3}
   - {fileID: 8300000, guid: 3cf37403e57214c41a097f655c940bcf, type: 3}

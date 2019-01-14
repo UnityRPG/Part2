@@ -10,10 +10,15 @@ namespace RPG.UI.Inventories
     public class ActionSlotUI : MonoBehaviour, IItemHolder, IDragContainer<InventoryItem>
     {
         [SerializeField] InventoryItemIcon _icon;
+        [SerializeField] int index = 0;
 
-        InventoryItem _item;
+        SpecialAbilities _abilitiesStore;
 
-        InventoryItem IItemHolder.item { get => _item; }
+        InventoryItem IItemHolder.item { get => _abilitiesStore.GetAbility(index); }
+
+        private void Awake() {
+            _abilitiesStore = GameObject.FindGameObjectWithTag("Player").GetComponent<SpecialAbilities>();
+        }
 
         bool IDragContainer<InventoryItem>.CanAcceptItem(InventoryItem item)
         {
@@ -22,10 +27,8 @@ namespace RPG.UI.Inventories
 
         InventoryItem IDragContainer<InventoryItem>.ReplaceItem(InventoryItem item)
         {
-            var oldItem = this._item;
-            this._item = item;
             _icon.SetItem(item);
-            return oldItem;
+            return _abilitiesStore.ReplaceAbility(item as ActionConfig, index);
         }
     }
 }

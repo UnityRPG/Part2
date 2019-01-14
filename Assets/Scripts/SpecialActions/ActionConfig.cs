@@ -25,6 +25,12 @@ namespace RPG.SpecialActions
             behaviour = behaviourComponent;
         }
 
+        public void DetachAbility()
+        {
+            behaviour.enabled = false;
+            Destroy(behaviour);
+        }
+
         public virtual bool IsInRange(GameObject target) => behaviour.IsInRange(target);
 
         public virtual bool CanUseWhenInRange(GameObject target) => behaviour.CanUseWhenInRange(target);
