@@ -56,7 +56,7 @@ namespace RPG.SpecialActions
             return abilities[index];
         }
 
-        public ActionConfig ReplaceAbility(ActionConfig replacement, int index)
+        public void SetAbility(ActionConfig replacement, int index)
         {
             var oldAbility = abilities[index];
             abilities[index] = replacement;
@@ -65,7 +65,6 @@ namespace RPG.SpecialActions
             {
                 oldAbility.DetachAbility();
             }
-            return oldAbility;
         }
 
         public bool CanUseWhenInRange(int abilityIndex, GameObject target = null)

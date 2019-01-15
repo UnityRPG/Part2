@@ -28,7 +28,10 @@ namespace RPG.UI.Inventories
         InventoryItem IDragContainer<InventoryItem>.ReplaceItem(InventoryItem item)
         {
             _icon.SetItem(item);
-            return _abilitiesStore.ReplaceAbility(item as ActionConfig, index);
+            _abilitiesStore.SetAbility(item as ActionConfig, index);
+
+            // So that it isn't removed from previous place.
+            return item;
         }
     }
 }

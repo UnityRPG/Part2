@@ -3,18 +3,29 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6168bb338b743b4ac6c2783923de66, type: 3}
   m_Name: PA_L2
   m_EditorClassIdentifier: 
+  _itemID: 7151c105-e91a-41fb-b67b-fb5de6662574
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 0}
+  _pickup: {fileID: 0}
   energyCost: 15
   particlePrefab: {fileID: 1033262190146614, guid: 53762eb691d7d024dac64583736160b2,
-    type: 2}
+    type: 3}
   abilityAnimation: {fileID: 7400000, guid: 05576006da3e02b49b96abc065d9f607, type: 3}
   audioClips:
   - {fileID: 8300000, guid: 04ded35442dc94e348573c082094a421, type: 3}
   extraDamage: 150
+  _damageDelay: 0.2

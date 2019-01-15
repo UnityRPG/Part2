@@ -3,17 +3,27 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8938686f2fec74834b463303abe56c16, type: 3}
   m_Name: SH_L1
   m_EditorClassIdentifier: 
+  _itemID: 3268c269-16e7-49e8-8e15-4ec9159235a8
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 21300000, guid: aba0f700d91d4fc4fa8c724899ab04ab, type: 3}
+  _pickup: {fileID: 1222577395524571727, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   energyCost: 50
   particlePrefab: {fileID: 1770094935522392, guid: 7098bdbdcde165049872f566c6a00e5f,
-    type: 2}
+    type: 3}
   abilityAnimation: {fileID: 7400000, guid: 55e87de746eaa574a9affbbe173dcbbd, type: 3}
   audioClips:
   - {fileID: 8300000, guid: 9649646d7f47b498ba586ed695507999, type: 3}

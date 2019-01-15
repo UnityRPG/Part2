@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb6d78ebfbe84c059d6b1ebcf62d8b9, type: 3}
   m_Name: AOE_L1
   m_EditorClassIdentifier: 
+  _itemID: 1f0208e0-f830-438f-afc6-407e7cb142d1
+  _modifiers: []
+  _baseCost: 0
+  _rarity: 0
+  _level: 0
+  _displayName: 
+  _description: 
+  _icon: {fileID: 0}
+  _pickup: {fileID: 0}
   energyCost: 50
   particlePrefab: {fileID: 1977060658541122, guid: ddb9eccb541f52c4d91b421e9aba766d,
     type: 3}
