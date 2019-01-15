@@ -18,6 +18,7 @@ namespace RPG.SpecialActions
 
         public override void Use(GameObject source, GameObject target)
         {
+			base.Use(source, target);
             PlayAbilityAnimation(source, () =>
             {
                 PlayAbilitySound(source);

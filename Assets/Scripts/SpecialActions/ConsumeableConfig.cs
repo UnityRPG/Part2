@@ -9,18 +9,19 @@ namespace RPG.SpecialActions
 {
     public abstract class ConsumableConfig : ActionConfig
     {
-        private Inventory playerInventory => GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-
         public override void Use(GameObject source, GameObject target) 
         {
-            playerInventory.ConsumeItem(this);
+            source.GetComponent<Inventory>().ConsumeItem(this);
         }
 
         public override bool CanUseWhenInRange(GameObject source, GameObject target)
         {
-            return base.CanUseWhenInRange(source, target) && HasAny();
+            return base.CanUseWhenInRange(source, target) && CountRemaining(source) > 0;
         }
 
-        public bool HasAny() => playerInventory.HasItem(this);
+        public int CountRemaining(GameObject source)
+        {
+            return source.GetComponent<Inventory>().HasItem(this) ? 1 : 0;
+        }
     }
 }

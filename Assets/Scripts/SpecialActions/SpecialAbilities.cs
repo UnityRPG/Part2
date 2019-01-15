@@ -38,6 +38,7 @@ namespace RPG.SpecialActions
             {
                 AddEnergyPoints();
             }
+            RemoveDepletedActions();
         }
 
         public event Action OnAbilitiesUpdated;
@@ -89,6 +90,22 @@ namespace RPG.SpecialActions
         public int GetNumberOfAbilities()
         {
             return abilities.Length;
+        }
+
+        private void RemoveDepletedActions()
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                if (abilities[i] is ConsumableConfig)
+                {
+                    var consumable = (ConsumableConfig) abilities[i];
+                    if (consumable.CountRemaining(gameObject) <= 0)
+                    {
+                        abilities[i] = null;
+                        OnAbilitiesUpdated();
+                    }
+                }
+            }
         }
 
         private void RemoveAbility(ActionConfig remove)
