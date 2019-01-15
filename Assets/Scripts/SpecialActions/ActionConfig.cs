@@ -35,7 +35,7 @@ namespace RPG.SpecialActions
 
         public virtual bool CanUseWhenInRange(GameObject target) => behaviour.CanUseWhenInRange(target);
 
-        public void Use(GameObject target) => behaviour.Use(target);
+        public virtual void Use(GameObject target) => behaviour.Use(target);
 
         public float GetEnergyCost() => energyCost;
 

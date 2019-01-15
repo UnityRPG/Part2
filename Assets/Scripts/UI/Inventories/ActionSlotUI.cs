@@ -14,10 +14,11 @@ namespace RPG.UI.Inventories
 
         SpecialAbilities _abilitiesStore;
 
-        InventoryItem IItemHolder.item { get => _abilitiesStore.GetAbility(index); }
+        public InventoryItem item { get => _abilitiesStore.GetAbility(index); }
 
         private void Awake() {
             _abilitiesStore = GameObject.FindGameObjectWithTag("Player").GetComponent<SpecialAbilities>();
+            _abilitiesStore.OnAbilitiesUpdated += UpdateIcon;
         }
 
         bool IDragContainer<InventoryItem>.CanAcceptItem(InventoryItem item)
@@ -27,11 +28,15 @@ namespace RPG.UI.Inventories
 
         InventoryItem IDragContainer<InventoryItem>.ReplaceItem(InventoryItem item)
         {
-            _icon.SetItem(item);
             _abilitiesStore.SetAbility(item as ActionConfig, index);
 
             // So that it isn't removed from previous place.
             return item;
+        }
+
+        void UpdateIcon()
+        {
+            _icon.SetItem(item);
         }
     }
 }

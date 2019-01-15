@@ -57,6 +57,11 @@ namespace RPG.Control
 
         private void PerformSpecialAbilityBehaviour()
         {
+            if (!abilities.CanUseWhenInRange(desiredSpecialAbility, target))
+            {
+                desiredSpecialAbility = -1;
+            }
+
             if (target != null)
             {
                 PerformTargettedSpecialAbilityBehaviour();
@@ -83,8 +88,6 @@ namespace RPG.Control
 
         private void PerformTargettedSpecialAbilityBehaviour()
         {
-            if (!abilities.CanUseWhenInRange(desiredSpecialAbility, target)) return;
-
             if (!abilities.IsInRange(desiredSpecialAbility, target))
             {
                 mover.SetDestination(target.transform.position);
@@ -99,6 +102,7 @@ namespace RPG.Control
         {
             abilities.AttemptSpecialAbility(desiredSpecialAbility, target);
             desiredSpecialAbility = -1;
+            return;
         }
 
         void ScanForAbilityKeyDown()

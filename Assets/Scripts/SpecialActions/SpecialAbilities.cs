@@ -51,6 +51,8 @@ namespace RPG.SpecialActions
             }
         }
 
+        public event Action OnAbilitiesUpdated;
+
         public ActionConfig GetAbility(int index)
         {
             return abilities[index];
@@ -58,13 +60,18 @@ namespace RPG.SpecialActions
 
         public void SetAbility(ActionConfig replacement, int index)
         {
+            RemoveAbility(replacement);
+
             var oldAbility = abilities[index];
+
             abilities[index] = replacement;
             replacement.AttachAbilityTo(gameObject);
             if (oldAbility != null)
             {
                 oldAbility.DetachAbility();
             }
+
+            OnAbilitiesUpdated();
         }
 
         public bool CanUseWhenInRange(int abilityIndex, GameObject target = null)
@@ -98,6 +105,21 @@ namespace RPG.SpecialActions
         public int GetNumberOfAbilities()
         {
             return abilities.Length;
+        }
+
+        private void RemoveAbility(ActionConfig remove)
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                print(abilities[i]);
+                print(remove);
+                print(object.ReferenceEquals(abilities[i], remove));
+                if (object.ReferenceEquals(abilities[i], remove))
+                {
+                    abilities[i].DetachAbility();
+                    abilities[i] = null;
+                }
+            }
         }
 
         private void AddEnergyPoints()

@@ -60,6 +60,32 @@ namespace RPG.Inventories
             return true;
         }
 
+        public bool ConsumeItem(InventoryItem consumeItem)
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (object.ReferenceEquals(slots[i].item, consumeItem))
+                {
+                    slots[i].item = null;
+                    inventoryUpdated();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool HasItem(InventoryItem consumeItem)
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (object.ReferenceEquals(slots[i].item, consumeItem))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void SpawnPickup(InventoryItem item, Vector3 spawnLocation)
         {
             var pickup = item.SpawnPickup(spawnLocation);
