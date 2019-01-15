@@ -11,16 +11,14 @@ namespace RPG.SpecialActions
     {
         private Inventory playerInventory => GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
-        public override void Use(GameObject target) 
+        public override void Use(GameObject source, GameObject target) 
         {
             playerInventory.ConsumeItem(this);
-            
-            base.Use(target);
         }
 
-        public override bool CanUseWhenInRange(GameObject target)
+        public override bool CanUseWhenInRange(GameObject source, GameObject target)
         {
-            return base.CanUseWhenInRange(target) && HasAny();
+            return base.CanUseWhenInRange(source, target) && HasAny();
         }
 
         public bool HasAny() => playerInventory.HasItem(this);

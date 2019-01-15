@@ -30,7 +30,6 @@ namespace RPG.SpecialActions
             audioSource = GetComponent<AudioSource>();
 
             currentEnergyPoints = maxEnergyPoints;
-            AttachInitialAbilities();
         }
 
         void Update()
@@ -38,16 +37,6 @@ namespace RPG.SpecialActions
             if (currentEnergyPoints < maxEnergyPoints)
             {
                 AddEnergyPoints();
-            }
-        }
-
-        void AttachInitialAbilities()
-        {
-            for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex++)
-            {
-                if (abilities[abilityIndex] == null) continue;
-
-                abilities[abilityIndex].AttachAbilityTo(gameObject);
             }
         }
 
@@ -65,11 +54,6 @@ namespace RPG.SpecialActions
             var oldAbility = abilities[index];
 
             abilities[index] = replacement;
-            replacement.AttachAbilityTo(gameObject);
-            if (oldAbility != null)
-            {
-                oldAbility.DetachAbility();
-            }
 
             OnAbilitiesUpdated();
         }
@@ -77,12 +61,12 @@ namespace RPG.SpecialActions
         public bool CanUseWhenInRange(int abilityIndex, GameObject target = null)
         {
             if (abilities[abilityIndex] == null) return false;
-            return abilities[abilityIndex].CanUseWhenInRange(target);
+            return abilities[abilityIndex].CanUseWhenInRange(gameObject, target);
         }
 
         public bool IsInRange(int abilityIndex, GameObject target)
         {
-            return abilities[abilityIndex].IsInRange(target);
+            return abilities[abilityIndex].IsInRange(gameObject, target);
         }
 
         public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
@@ -94,7 +78,7 @@ namespace RPG.SpecialActions
             if (energyCost <= currentEnergyPoints)
             {
                 ConsumeEnergy(energyCost);
-                abilities[abilityIndex].Use(target);
+                abilities[abilityIndex].Use(gameObject, target);
             }
             else
             {
@@ -116,7 +100,6 @@ namespace RPG.SpecialActions
                 print(object.ReferenceEquals(abilities[i], remove));
                 if (object.ReferenceEquals(abilities[i], remove))
                 {
-                    abilities[i].DetachAbility();
                     abilities[i] = null;
                 }
             }

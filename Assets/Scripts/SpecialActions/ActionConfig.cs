@@ -14,28 +14,13 @@ namespace RPG.SpecialActions
         [SerializeField] AnimationClip abilityAnimation;
         [SerializeField] AudioClip[] audioClips;
 
-        protected ActionBehaviour behaviour;
+        const float PARTICLE_CLEAN_UP_DELAY = 20f;
 
-        public abstract ActionBehaviour GetBehaviourComponent(GameObject objectToAttachTo);
+        public virtual bool IsInRange(GameObject source, GameObject target) => true;
 
-        public void AttachAbilityTo(GameObject objectToattachTo)
-        {
-            ActionBehaviour behaviourComponent = GetBehaviourComponent(objectToattachTo);
-            behaviourComponent.SetConfig(this);
-            behaviour = behaviourComponent;
-        }
+        public virtual bool CanUseWhenInRange(GameObject source, GameObject target) => true;
 
-        public void DetachAbility()
-        {
-            behaviour.enabled = false;
-            Destroy(behaviour);
-        }
-
-        public virtual bool IsInRange(GameObject target) => behaviour.IsInRange(target);
-
-        public virtual bool CanUseWhenInRange(GameObject target) => behaviour.CanUseWhenInRange(target);
-
-        public virtual void Use(GameObject target) => behaviour.Use(target);
+        public abstract void Use(GameObject source, GameObject target);
 
         public float GetEnergyCost() => energyCost;
 
@@ -50,6 +35,43 @@ namespace RPG.SpecialActions
         public AudioClip GetRandomAbilitySound()
         {
             return audioClips[Random.Range(0, audioClips.Length)];
+        }
+
+        protected void PlayParticleEffect(GameObject source)
+        {
+            var particlePrefab = GetParticlePrefab();
+            var particleObject = Instantiate(
+                particlePrefab,
+                source.transform.position,
+                particlePrefab.transform.rotation
+            );
+            particleObject.transform.parent = source.transform; // set world space in prefab if required
+            particleObject.GetComponent<ParticleSystem>().Play();
+            source.GetComponent<SpecialAbilities>().StartCoroutine(DestroyParticleWhenFinished(particleObject));
+        }
+
+        IEnumerator DestroyParticleWhenFinished(GameObject particlePrefab)
+        {
+            while (particlePrefab.GetComponent<ParticleSystem>().isPlaying)
+            {
+                yield return new WaitForSeconds(PARTICLE_CLEAN_UP_DELAY);
+            }
+            Destroy(particlePrefab);
+            yield return new WaitForEndOfFrame();
+        }
+
+        protected void PlayAbilityAnimation(GameObject source, System.Action callback)
+        {
+            var animator = source.GetComponent<Animator>();
+            var switchableAnimation = animator.GetBehaviour<SwappableAction>();
+            switchableAnimation.ReplaceNextAction(animator, GetAbilityAnimation(), callback);
+        }
+
+        protected void PlayAbilitySound(GameObject source)
+        {
+            var abilitySound = GetRandomAbilitySound();
+            var audioSource = source.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(abilitySound);
         }
     }
 }

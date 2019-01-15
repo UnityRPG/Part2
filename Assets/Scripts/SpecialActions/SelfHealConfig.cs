@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Combat;
 
 namespace RPG.SpecialActions
 {
@@ -10,14 +11,20 @@ namespace RPG.SpecialActions
 		[Header("Self Heal Specific")]
 		[SerializeField] float extraHealth = 50f;
 
-        public override ActionBehaviour GetBehaviourComponent(GameObject objectToAttachTo)
-        {
-            return objectToAttachTo.AddComponent<SelfHealBehaviour>();
-        }
-
 		public float GetExtraHealth()
 		{
 			return extraHealth;
 		}
-	}
+
+        public override void Use(GameObject source, GameObject target)
+        {
+            PlayAbilityAnimation(source, () =>
+            {
+                PlayAbilitySound(source);
+                var playerHealth = source.GetComponent<HealthSystem>();
+                playerHealth.Heal(GetExtraHealth());
+                PlayParticleEffect(source);
+            });
+        }
+    }
 }
