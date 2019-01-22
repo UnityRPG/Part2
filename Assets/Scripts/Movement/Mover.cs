@@ -41,6 +41,7 @@ namespace RPG.Movement
         float turnAmount;
         float forwardAmount;
         SchedulableAction currentMovementAction;
+        bool shouldMove = false;
 				
 		// cached references for readability
         NavMeshAgent navMeshAgent;
@@ -62,8 +63,8 @@ namespace RPG.Movement
             capsuleCollider.radius = colliderRadius;
             capsuleCollider.height = colliderHeight;
 
-            rigidBody = gameObject.AddComponent<Rigidbody>();
-            rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+            // rigidBody = gameObject.AddComponent<Rigidbody>();
+            // rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
 
             var audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.spatialBlend = audioSourceSpatialBlend;
@@ -75,52 +76,68 @@ namespace RPG.Movement
 
             animator = GetComponent<Animator>();
 
-            navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
-            navMeshAgent.speed = navMeshAgentSteeringSpeed;
-            navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
-            navMeshAgent.autoBraking = false;
-            navMeshAgent.updateRotation = false;
-            navMeshAgent.updatePosition = false;
-            navMeshAgent.autoRepath = true;
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            if (!navMeshAgent)
+            {
+                navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+                navMeshAgent.speed = navMeshAgentSteeringSpeed;
+                navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
+                navMeshAgent.speed = moveSpeedMultiplier;
+                navMeshAgent.autoBraking = true;
+                navMeshAgent.updateRotation = true;
+                navMeshAgent.updatePosition = true;
+                navMeshAgent.autoRepath = true;
+            }
         }
 
         void Update()
         {
-            if (!navMeshAgent.isOnNavMesh)
+            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove)
             {
-                Debug.LogError(gameObject.name + " uh oh this guy is not on the navmesh");
+                StopMoving();
             }
-            else if (!navMeshAgent.isStopped && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+            if (shouldMove)
             {
-                if (currentMovementAction != null && currentMovementAction.isRunning)
-                {
-                    Move(navMeshAgent.desiredVelocity);
-                } else
-                {
-                    currentMovementAction = new SchedulableAction(isInterruptable:true);
-                    actionScheduler.QueueAction(currentMovementAction);
-                }
-            }
-            else
-            {
-                Move(Vector3.zero);
-                if (currentMovementAction != null)
-                {
-                    currentMovementAction.Finish();
-                }
-                ClearDestination();
+                StartMoving();
             }
         }
 
         public void SetDestination(Vector3 worldPos)
         {
             navMeshAgent.destination = worldPos;
-            navMeshAgent.isStopped = false;
+            shouldMove = true;
         }
 
         public void ClearDestination()
         {
+            shouldMove = false;
+        }
+
+        void StartMoving()
+        {
+            if (currentMovementAction != null) return;
+
+            currentMovementAction = new SchedulableAction(isInterruptable: true);
+            currentMovementAction.OnCancel += () =>
+            {
+                ClearDestination();
+            };
+            currentMovementAction.OnStart += () =>
+            {
+                navMeshAgent.isStopped = false;
+                animator.SetTrigger("Move");
+
+            };
+            actionScheduler.QueueAction(currentMovementAction);
+        }
+
+        void StopMoving()
+        {
+            if (currentMovementAction == null) return;
+
             navMeshAgent.isStopped = true;
+            currentMovementAction.Finish();
+            currentMovementAction = null;
         }
 
         public AnimatorOverrideController GetOverrideController()
@@ -139,7 +156,6 @@ namespace RPG.Movement
         {
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired direction
-            animator.SetBool("Move", movement.magnitude > 0);
 
             if (movement.magnitude > moveThreshold)
             {

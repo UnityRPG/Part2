@@ -52,6 +52,7 @@ namespace RPG.Control
             else if (wantsToMove)
             {
                 mover.SetDestination(desiredLocation);
+                wantsToMove = false;
             }
         }
 

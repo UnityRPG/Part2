@@ -8,8 +8,12 @@ namespace RPG.Core
         private Animator animator;
 
         private void Awake() {
-            animator = gameObject.AddComponent<Animator>();
-            animator.applyRootMotion = true;
+            animator = GetComponent<Animator>();
+            if (!animator)
+            {
+                animator = gameObject.AddComponent<Animator>();
+                //animator.applyRootMotion = true;
+            }
         }
 
         public AnimatorOverrideController animatorOverrideController
@@ -95,11 +99,6 @@ namespace RPG.Core
                 queuedAction = null;
                 runningAction.Start();
             }
-        }
-
-        void OnAnimatorMove()
-        {
-            onMove(animator.deltaPosition, animator.deltaRotation);     
         }
     }
 }
