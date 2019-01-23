@@ -84,8 +84,8 @@ namespace RPG.Movement
                 navMeshAgent.speed = moveSpeedMultiplier;
                 navMeshAgent.autoBraking = true;
             }
-            // navMeshAgent.updateRotation = false;
-            // navMeshAgent.updatePosition = false;
+            //navMeshAgent.updateRotation = false;
+            navMeshAgent.updatePosition = false;
             // navMeshAgent.autoRepath = true;
 
         }
@@ -100,6 +100,11 @@ namespace RPG.Movement
                 StartMoving();
             }
             Move(navMeshAgent.velocity);
+
+            var worldDeltaPosition = navMeshAgent.nextPosition - transform.position;
+
+            // Pull agent towards character
+            navMeshAgent.nextPosition = transform.position;
         }
 
         public void SetDestination(Vector3 worldPos)
@@ -158,7 +163,7 @@ namespace RPG.Movement
 
             var localMove = transform.InverseTransformDirection(movement);
             turnAmount = Mathf.Atan2(localMove.x, localMove.z);
-            forwardAmount = localMove.magnitude;
+            forwardAmount = localMove.z;
         }
 
         void RequestMovement()
@@ -166,6 +171,13 @@ namespace RPG.Movement
             actionScheduler.forwardAmountRequest = forwardAmount * animatorForwardCap;
             actionScheduler.turnAmountRequest = turnAmount;
             actionScheduler.animationSpeedMultiplier = animationSpeedMultiplier;
+        }
+
+        private void OnAnimatorMove() {
+            var position = animator.rootPosition;
+            position.y = navMeshAgent.nextPosition.y;
+            //transform.rotation = animator.rootRotation;
+            transform.position = position;
         }
 
         public void CaptureState(IDictionary<string, object> state)
