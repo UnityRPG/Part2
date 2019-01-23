@@ -28,6 +28,7 @@ namespace RPG.Movement
         [SerializeField] float movingTurnSpeed = 360;
         [SerializeField] float stationaryTurnSpeed = 180;
         [SerializeField] float moveThreshold = 1f;
+        [SerializeField] float maxNavDistance = 20f;
 
         [Header("Nav Mesh Agent")]
         [SerializeField] float navMeshAgentSteeringSpeed = 1.0f;
@@ -91,7 +92,7 @@ namespace RPG.Movement
 
         void Update()
         {
-            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove)
+            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove || navMeshAgent.remainingDistance > maxNavDistance)
             {
                 StopMoving();
             } else if (shouldMove)
