@@ -72,7 +72,6 @@ namespace RPG.Movement
             actionScheduler = gameObject.AddComponent<ActionScheduler>();
             actionScheduler.animatorOverrideController = animatorOverrideController;
             actionScheduler.characterAvatar = characterAvatar;
-            actionScheduler.onMove += OnMove;
 
             animator = GetComponent<Animator>();
 
@@ -84,10 +83,11 @@ namespace RPG.Movement
                 navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
                 navMeshAgent.speed = moveSpeedMultiplier;
                 navMeshAgent.autoBraking = true;
-                navMeshAgent.updateRotation = true;
-                navMeshAgent.updatePosition = true;
-                navMeshAgent.autoRepath = true;
             }
+            // navMeshAgent.updateRotation = false;
+            // navMeshAgent.updatePosition = false;
+            // navMeshAgent.autoRepath = true;
+
         }
 
         void Update()
@@ -95,11 +95,11 @@ namespace RPG.Movement
             if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove)
             {
                 StopMoving();
-            }
-            if (shouldMove)
+            } else if (shouldMove)
             {
                 StartMoving();
             }
+            Move(navMeshAgent.velocity);
         }
 
         public void SetDestination(Vector3 worldPos)
@@ -148,7 +148,6 @@ namespace RPG.Movement
         void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
-            ApplyExtraTurnRotation();
             RequestMovement();
         }
 
@@ -157,13 +156,9 @@ namespace RPG.Movement
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired direction
 
-            if (movement.magnitude > moveThreshold)
-            {
-                movement.Normalize();
-            }
             var localMove = transform.InverseTransformDirection(movement);
             turnAmount = Mathf.Atan2(localMove.x, localMove.z);
-            forwardAmount = localMove.z;
+            forwardAmount = localMove.magnitude;
         }
 
         void RequestMovement()
@@ -171,29 +166,6 @@ namespace RPG.Movement
             actionScheduler.forwardAmountRequest = forwardAmount * animatorForwardCap;
             actionScheduler.turnAmountRequest = turnAmount;
             actionScheduler.animationSpeedMultiplier = animationSpeedMultiplier;
-        }
-
-        void ApplyExtraTurnRotation()
-        {
-            // help the character turn faster (this is in addition to root rotation in the animation)
-            float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, forwardAmount);
-            transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
-        }
-
-        void OnMove(Vector3 deltaIKPosition, Quaternion deltaIKRotation)
-        {
-            // we implement this function to override the default root motion.
-            // this allows us to modify the positional speed before it's applied.
-            if (Time.deltaTime > 0)
-            {
-                Vector3 velocity = (deltaIKPosition * moveSpeedMultiplier) / Time.deltaTime;
-
-                // we preserve the existing y part of the current velocity.
-                velocity.y = rigidBody.velocity.y;
-                rigidBody.velocity = velocity;
-
-                navMeshAgent.nextPosition = transform.position;
-            }
         }
 
         public void CaptureState(IDictionary<string, object> state)

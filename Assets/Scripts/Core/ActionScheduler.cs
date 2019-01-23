@@ -12,8 +12,8 @@ namespace RPG.Core
             if (!animator)
             {
                 animator = gameObject.AddComponent<Animator>();
-                //animator.applyRootMotion = true;
             }
+            // animator.applyRootMotion = true;
         }
 
         public AnimatorOverrideController animatorOverrideController
@@ -36,7 +36,7 @@ namespace RPG.Core
         {
             set
             {
-                animator.SetFloat("Forward", value, 0.1f, Time.deltaTime);
+                animator.SetFloat("Forward", value);
             }
         }
 
@@ -44,7 +44,7 @@ namespace RPG.Core
         {
             set
             {
-                animator.SetFloat("Turn", value, 0.1f, Time.deltaTime);
+                animator.SetFloat("Turn", value);
             }
         }
 
