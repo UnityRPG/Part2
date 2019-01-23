@@ -36,7 +36,7 @@ namespace RPG.Core
         {
             set
             {
-                animator.SetFloat("Forward", value, 0.1f, Time.deltaTime);
+                animator.SetFloat("Forward", value, 0.2f, Time.deltaTime);
             }
         }
 
@@ -44,7 +44,7 @@ namespace RPG.Core
         {
             set
             {
-                animator.SetFloat("Turn", value, 0.1f, Time.deltaTime);
+                animator.SetFloat("Turn", value, 0.2f, Time.deltaTime);
             }
         }
 

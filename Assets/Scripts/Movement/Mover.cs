@@ -72,6 +72,7 @@ namespace RPG.Movement
             actionScheduler = gameObject.AddComponent<ActionScheduler>();
             actionScheduler.animatorOverrideController = animatorOverrideController;
             actionScheduler.characterAvatar = characterAvatar;
+            actionScheduler.animationSpeedMultiplier = animationSpeedMultiplier;
 
             animator = GetComponent<Animator>();
 
@@ -84,10 +85,8 @@ namespace RPG.Movement
                 navMeshAgent.speed = moveSpeedMultiplier;
                 navMeshAgent.autoBraking = true;
             }
-            //navMeshAgent.updateRotation = false;
+            // Position is done through root motion
             navMeshAgent.updatePosition = false;
-            // navMeshAgent.autoRepath = true;
-
         }
 
         void Update()
@@ -99,11 +98,10 @@ namespace RPG.Movement
             {
                 StartMoving();
             }
-            Move(navMeshAgent.velocity);
 
-            var worldDeltaPosition = navMeshAgent.nextPosition - transform.position;
+            UpdateAnimator();
 
-            // Pull agent towards character
+            // Pull agent to rootmotion location
             navMeshAgent.nextPosition = transform.position;
         }
 
@@ -150,33 +148,14 @@ namespace RPG.Movement
             return animatorOverrideController;
         }
 
-        void Move(Vector3 movement)
+        void UpdateAnimator()
         {
-            SetForwardAndTurn(movement);
-            RequestMovement();
-        }
-
-        void SetForwardAndTurn(Vector3 movement)
-        {
-            // convert the world relative moveInput vector into a local-relative
-            // turn amount and forward amount required to head in the desired direction
-
-            var localMove = transform.InverseTransformDirection(movement);
-            turnAmount = Mathf.Atan2(localMove.x, localMove.z);
-            forwardAmount = localMove.z;
-        }
-
-        void RequestMovement()
-        {
-            actionScheduler.forwardAmountRequest = forwardAmount * animatorForwardCap;
-            actionScheduler.turnAmountRequest = turnAmount;
-            actionScheduler.animationSpeedMultiplier = animationSpeedMultiplier;
+            actionScheduler.forwardAmountRequest = navMeshAgent.velocity.magnitude / animationSpeedMultiplier;
         }
 
         private void OnAnimatorMove() {
             var position = animator.rootPosition;
             position.y = navMeshAgent.nextPosition.y;
-            //transform.rotation = animator.rootRotation;
             transform.position = position;
         }
 
