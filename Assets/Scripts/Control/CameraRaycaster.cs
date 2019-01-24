@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using RPG.Dialogue;
 using RPG.Inventories;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -100,14 +101,17 @@ namespace RPG.Control
 
         private bool NavigateToWalkable(Ray ray)
         {
-            RaycastHit hitInfo;
             LayerMask potentiallyWalkableLayer = 1 << POTENTIALLY_WALKABLE_LAYER;
-            bool potentiallyWalkableHit = Physics.Raycast(ray, out hitInfo, maxRaycastDepth, potentiallyWalkableLayer);
-            if (potentiallyWalkableHit)
+            var raycastHits = Physics.RaycastAll(ray, maxRaycastDepth, potentiallyWalkableLayer);
+            foreach (var raycasthit in raycastHits)
             {
-                Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
-                onMouseOverPotentiallyWalkable(hitInfo.point);
-                return true;
+                NavMeshHit navMeshHit;
+                if (NavMesh.SamplePosition(raycasthit.point, out navMeshHit, 0.2f, NavMesh.AllAreas))
+                {
+                    Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
+                    onMouseOverPotentiallyWalkable(navMeshHit.position);
+                    return true;
+                }
             }
             return false;
         }
