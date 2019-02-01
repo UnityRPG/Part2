@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using RPG.Core;
+using RPG.Progression;
 
-namespace RPG.Progression
+namespace RPG.ProgressionImport
 {
     [CustomEditor(typeof(BaseStatsProgression))]
     public class StatsProgressionEditor : UnityEditor.Editor

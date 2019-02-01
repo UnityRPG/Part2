@@ -88,6 +88,7 @@ namespace RPG.Movement
             }
             // Position is done through root motion
             navMeshAgent.updatePosition = false;
+            navMeshAgent.updateRotation = false;
         }
 
         void Update()
@@ -151,7 +152,16 @@ namespace RPG.Movement
 
         void UpdateAnimator()
         {
-            actionScheduler.forwardAmountRequest = navMeshAgent.velocity.magnitude / animationSpeedMultiplier;
+            actionScheduler.forwardAmountRequest = 0;
+
+            Vector3 horizontalVelocity = navMeshAgent.velocity;
+            if (horizontalVelocity.magnitude > Mathf.Epsilon)
+            {
+                Vector3 localVelocity = transform.InverseTransformVector(navMeshAgent.velocity);
+                actionScheduler.forwardAmountRequest =  localVelocity.z / animationSpeedMultiplier;
+                horizontalVelocity.y = 0;
+                transform.LookAt(transform.position + horizontalVelocity);
+            }
         }
 
         private void OnAnimatorMove() {

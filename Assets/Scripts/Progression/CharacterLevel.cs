@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using RPG.Progression;
 using RPG.Stats;
 using UnityEngine;
 
@@ -11,11 +10,6 @@ namespace RPG.Progression
         public int level;
 
         abstract protected CoreBaseStats GetStats();
-
-        public float GetBaseStat(string statId)
-        {
-            return health; //TODO: Fix;
-        }
 
         IEnumerable<StatModifier> IStatModifiersProvider.GetModifiers(StatModifier.Filter filter)
         {

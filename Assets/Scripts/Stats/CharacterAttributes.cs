@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Stats;
 
-namespace RPG.Stats
+namespace RPG.Attributes
 {
     public class CharacterAttributes : MonoBehaviour, IStatModifiersProvider
     {

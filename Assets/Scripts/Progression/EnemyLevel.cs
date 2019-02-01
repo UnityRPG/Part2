@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using RPG.Progression;
 
 namespace RPG.Progression
 {

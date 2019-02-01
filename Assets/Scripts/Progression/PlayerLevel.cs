@@ -1,6 +1,4 @@
-﻿using RPG.Progression;
-
-namespace RPG.Progression
+﻿namespace RPG.Progression
 {
     public class PlayerLevel : CharacterLevel
     {

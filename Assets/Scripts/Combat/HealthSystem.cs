@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using RPG.Saving;
 using RPG.Stats;
-using RPG.Progression;
 using RPG.Movement;
 
 namespace RPG.Combat
@@ -17,12 +16,12 @@ namespace RPG.Combat
         {
             get
             {
-                var ec = GetComponent<CharacterLevel>();
+                var ec = GetComponent<StatsCalculator>();
                 if (ec == null)
                 {
                     return 100;
                 }
-                return ec.health;
+                return ec.CalculateStat("health");
             }
         }
         [SerializeField] AudioClip[] damageSounds;

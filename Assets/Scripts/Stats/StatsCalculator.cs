@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Progression;
 
 namespace RPG.Stats
 {
     public class StatsCalculator : MonoBehaviour
     {
         IStatModifiersProvider[] modifierProviders;
-        CharacterLevel baseLevel;
         [SerializeField] float baseCriticalHit = 20;
         [SerializeField] float baseCriticalHitChance = 5;
 
@@ -55,17 +53,11 @@ namespace RPG.Stats
         private void Start()
         {
             modifierProviders = GetComponents<IStatModifiersProvider>();
-            baseLevel = GetComponent<CharacterLevel>();
         }
 
-        float CalculateStat(string statId)
+        public float CalculateStat(string statId)
         {
-            return (GetBaseStat(statId) + GetAdditiveTotal(statId)) * (1 + GetPercentageBonus(statId) / 100);
-        }
-
-        float GetBaseStat(string statId)
-        {
-            return baseLevel.GetBaseStat(statId);
+            return (GetAdditiveTotal(statId)) * (1 + GetPercentageBonus(statId) / 100);
         }
 
         float GetAdditiveTotal(string statId)
