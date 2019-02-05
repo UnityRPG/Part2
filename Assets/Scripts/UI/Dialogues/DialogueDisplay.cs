@@ -9,15 +9,20 @@ namespace RPG.UI.Dialogue
     public class DialogueDisplay : MonoBehaviour
     {
         [SerializeField]
+        RectTransform root;
+
+        [SerializeField]
         Text NPCTextField;
 
         [SerializeField]
         Transform responseHolder;
 
         [SerializeField]
-        GameObject responsePrefab;
+        ResponseDisplay responsePrefab;
 
         private Speaker speaker;
+
+        private ConversationNode lastNode;
 
         private void Start()
         {
@@ -26,12 +31,17 @@ namespace RPG.UI.Dialogue
 
         private void ActivateUI(bool activate)
         {
-            NPCTextField.gameObject.SetActive(activate);
-            responseHolder.gameObject.SetActive(activate);
+
+            root.gameObject.SetActive(activate);
 
             var player = GameObject.FindGameObjectWithTag("Player");
             speaker = player.GetComponent<Speaker>();
-            speaker.OnCurrentNodeChanged += UpdateDisplay;
+            //speaker.OnCurrentNodeChanged += UpdateDisplay;
+        }
+
+        private void Update()
+        {
+            UpdateDisplay();
         }
 
         private void UpdateDisplay()
@@ -40,15 +50,20 @@ namespace RPG.UI.Dialogue
 
             ActivateUI(node != null);
 
-            SetNPCText(node);
-
-            ClearResponseObjects();
-
-            if (node != null)
+            if (node != lastNode)
             {
-                CreateResponsesForNode();
+                SetNPCText(node);
+
+                ClearResponseObjects();
+
+                if (node != null)
+                {
+                    CreateResponsesForNode();
+                }
+                lastNode = node;
             }
         }
+
 
         private void SetNPCText(ConversationNode node)
         {
@@ -68,8 +83,8 @@ namespace RPG.UI.Dialogue
             foreach (var child in speaker.children)
             {
                 var responseObject = Instantiate(responsePrefab, responseHolder);
-                responseObject.GetComponent<Text>().text = child.text;
-                responseObject.GetComponent<Button>().onClick.AddListener(() =>
+                responseObject.text = child.text;
+                responseObject.onClick.AddListener(() =>
                 {
                     speaker.ChooseResponse(child);
                 });
