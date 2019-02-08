@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -25,7 +26,24 @@ MonoBehaviour:
     children: []
     actionToTrigger: 
   - UUID: d12aa0f4-fc9b-4dc5-95ce-4160e3648210
-    position: {x: 504, y: 313}
+    position: {x: 516, y: 324}
     text: Ho there imperialist pig!
+    children: []
+    actionToTrigger: 
+  - UUID: 33176129-6e0b-4242-b830-d926c7cf6b69
+    position: {x: 545, y: 462}
+    text: Who are you calling pig?
+    children:
+    - 2192aacc-8394-417a-acb1-4796ba77304f
+    - 20d206ba-a7d7-437a-829d-bc026890e2b1
+    actionToTrigger: 
+  - UUID: 2192aacc-8394-417a-acb1-4796ba77304f
+    position: {x: 365, y: 655}
+    text: You of course!
+    children: []
+    actionToTrigger: 
+  - UUID: 20d206ba-a7d7-437a-829d-bc026890e2b1
+    position: {x: 797, y: 655}
+    text: Oh nothing!
     children: []
     actionToTrigger: 

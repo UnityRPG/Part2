@@ -123,6 +123,8 @@ namespace RPG.Combat
                     {
                         timeToWait = 1 / currentWeaponConfig.GetHitsPerSecond();
                     }
+                    float percentage_of_time = timeToWait * 0.1f;
+                    timeToWait += Random.Range(-percentage_of_time, percentage_of_time);
 
                     AttackTargetOnce();
                     yield return new WaitForSeconds(timeToWait);

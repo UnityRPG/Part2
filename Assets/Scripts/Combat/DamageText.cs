@@ -13,7 +13,7 @@ namespace RPG.Combat
         {
             transform.position = 
                 Camera.main.WorldToScreenPoint(position);
-            textMesh.text = amount.ToString();
+            textMesh.text = amount.ToString("0.0");
         }
     }
 }

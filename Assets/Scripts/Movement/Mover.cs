@@ -93,7 +93,7 @@ namespace RPG.Movement
 
         void Update()
         {
-            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove || navMeshAgent.remainingDistance > maxNavDistance)
+            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove)
             {
                 StopMoving();
             } else if (shouldMove)

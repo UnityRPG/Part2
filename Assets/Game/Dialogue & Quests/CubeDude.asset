@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -27,7 +28,7 @@ MonoBehaviour:
     - 9ef32feb-ba63-4a1e-97e8-b3338327ee4f
     actionToTrigger: Start Quest
   - UUID: 34a11603-c1f2-4388-899f-46ed8105ce1e
-    position: {x: 464, y: 165}
+    position: {x: 446, y: 176}
     text: Never mind then!
     children:
     - b436e89a-9162-4f46-a85b-0fd3169e2410
@@ -156,5 +157,16 @@ MonoBehaviour:
   - UUID: 9462a547-8db0-4198-bbb1-b225a87dd00c
     position: {x: 304, y: 1516}
     text: Bye!
+    children:
+    - 02860e04-fd3f-470a-8acd-7210daff0c2a
+    actionToTrigger: 
+  - UUID: 75a920f3-bd9f-42e4-af9e-64b6e3f6a1e4
+    position: {x: 66, y: 1688}
+    text: Hello!
+    children: []
+    actionToTrigger: 
+  - UUID: 02860e04-fd3f-470a-8acd-7210daff0c2a
+    position: {x: 551, y: 1685}
+    text: Good bye!
     children: []
     actionToTrigger: 
