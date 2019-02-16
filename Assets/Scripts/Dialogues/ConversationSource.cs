@@ -46,10 +46,7 @@ namespace RPG.Dialogue
 
         public void VoiceClicked()
         {
-            if (Input.GetMouseButtonDown(0))  // "Down" so we only get one event
-            {
-                ShowDialog();
-            }
+            ShowDialog();
         }
 
         public void TriggerQuestIfAny()
