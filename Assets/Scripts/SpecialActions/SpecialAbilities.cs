@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using RPG.Saving;
 using System.Collections.Generic;
+using RPG.Movement;
 
 namespace RPG.SpecialActions
 {
@@ -16,7 +17,11 @@ namespace RPG.SpecialActions
         float currentEnergyPoints;
         ActionConfig[] abilities;
 
+        GameObject target = null;
+        int requestedAbility = -1;
+
         AudioSource audioSource;        
+        Mover mover;
 
         public float energyAsPercent { get { return currentEnergyPoints / maxEnergyPoints; } }
 
@@ -28,6 +33,7 @@ namespace RPG.SpecialActions
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
+            mover = GetComponent<Mover>();
 
             currentEnergyPoints = maxEnergyPoints;
         }
@@ -39,6 +45,19 @@ namespace RPG.SpecialActions
                 AddEnergyPoints();
             }
             RemoveDepletedActions();
+
+            if (requestedAbility >= 0 && CanUseWhenInRange(requestedAbility, target))
+            {
+                if (target != null && !IsInRange(requestedAbility, target))
+                {
+                    mover.SetDestination(target.transform.position);
+                }
+                else
+                {
+                    mover.ClearDestination();
+                    AttemptSpecialAbility();
+                }
+            }
         }
 
         public event Action OnAbilitiesUpdated;
@@ -70,26 +89,39 @@ namespace RPG.SpecialActions
             return abilities[abilityIndex].IsInRange(gameObject, target);
         }
 
-        public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
+        public void RequestSpecialAbility(int abilityIndex, GameObject requestedTarget = null)
         {
-            if (!CanUseWhenInRange(abilityIndex, target)) return;
+            requestedAbility = abilityIndex;
+            target = requestedTarget;
+        }
 
-            var energyCost = abilities[abilityIndex].GetEnergyCost();
-
-            if (energyCost <= currentEnergyPoints)
-            {
-                ConsumeEnergy(energyCost);
-                abilities[abilityIndex].Use(gameObject, target);
-            }
-            else
-            {
-                audioSource.PlayOneShot(outOfEnergy);
-            }
+        public void CancelRequest()
+        {
+            requestedAbility = -1;
+            target = null;
         }
 
         public int GetNumberOfAbilities()
         {
             return abilities.Length;
+        }
+
+        private void AttemptSpecialAbility()
+        {
+            var energyCost = abilities[requestedAbility].GetEnergyCost();
+
+            if (energyCost <= currentEnergyPoints)
+            {
+                ConsumeEnergy(energyCost);
+                abilities[requestedAbility].Use(gameObject, target);
+            }
+            else
+            {
+                audioSource.PlayOneShot(outOfEnergy);
+            }
+
+            requestedAbility = -1;
+            target = null;
         }
 
         private void RemoveDepletedActions()

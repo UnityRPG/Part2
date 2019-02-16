@@ -109,6 +109,7 @@ namespace RPG.Movement
 
         public void SetDestination(Vector3 worldPos)
         {
+            if (gameObject.tag == "Player") print("Dest:" + worldPos);
             navMeshAgent.destination = worldPos;
             shouldMove = true;
         }
@@ -121,6 +122,8 @@ namespace RPG.Movement
         void StartMoving()
         {
             if (currentMovementAction != null) return;
+            if (gameObject.tag == "Player")
+                print("starting to move");
 
             currentMovementAction = new SchedulableAction(isInterruptable: true);
             currentMovementAction.OnCancel += () =>

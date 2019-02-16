@@ -32,5 +32,5 @@ MonoBehaviour:
     min: 1
     max: 2
   damageDelay: 0.7
-  hitsPerSecond: 0.5
+  hitsPerSecond: 0.1
   additionalDamage: 0

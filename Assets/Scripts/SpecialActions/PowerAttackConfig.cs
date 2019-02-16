@@ -40,6 +40,8 @@ namespace RPG.SpecialActions
 
             action.OnStart += () =>
             {
+                Debug.Log(source);
+                Debug.Log(target);
                 source.transform.LookAt(target.transform);
                 PlayAbilityAnimation(source, () => { });
                 source.GetComponent<SpecialAbilities>().StartCoroutine(EffectsAfterDelay(source, action, target));

@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Inventories;
 using RPG.Stats;
 using RPG.Core;
+using RPG.Movement;
 
 namespace RPG.Combat
 {
@@ -16,10 +17,12 @@ namespace RPG.Combat
 
         GameObject weaponObject;
         Animator animator;
+        Mover mover;
         ActionScheduler actionScheduler;
         Equipment equipment;
         StatsCalculator attributes;
         Coroutine damageDelay;
+        float timeTillNextAttack;
 
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
@@ -27,6 +30,7 @@ namespace RPG.Combat
         void Start()
         {
             animator = GetComponent<Animator>();
+            mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
             attributes = GetComponent<StatsCalculator>();
             equipment = GetComponent<Equipment>();
@@ -35,7 +39,22 @@ namespace RPG.Combat
                 equipment.equipmentUpdated += UpdateWeapon;
             }
             UpdateWeapon();
-            StartCoroutine(AttackTargetRepeatedly());
+        }
+
+        private void Update() {
+            if (CanAttackWhenInRange(currentTarget))
+            {
+                if (TargetIsOutOfRange(currentTarget))
+                {
+                    mover.SetDestination(currentTarget.transform.position);
+                }
+                else
+                {
+                    mover.ClearDestination();
+                    AttackBehaviour();
+                }
+            }
+            timeTillNextAttack -= Time.deltaTime;
         }
 
         public bool CanAttackWhenInRange(GameObject target)
@@ -109,32 +128,26 @@ namespace RPG.Combat
             Debug.Log("Hit");
         }
 
-        IEnumerator AttackTargetRepeatedly()
+        void AttackBehaviour()
         {
-            while (true)
-            {
-                yield return new WaitUntil(() => canAttack);
-                while (canAttack)
-                {
-                    var animationClip = currentWeaponConfig.GetAttackAnimClip();
-                    float animationClipTime = animationClip.length / actionScheduler.animSpeedMultiplier;
-                    float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
-                    if (attributes)
-                    {
-                        timeToWait = 1 / currentWeaponConfig.GetHitsPerSecond();
-                    }
-                    float percentage_of_time = timeToWait * 0.1f;
-                    timeToWait += Random.Range(-percentage_of_time, percentage_of_time);
+            if (timeTillNextAttack > 0) return;
 
-                    AttackTargetOnce();
-                    yield return new WaitForSeconds(timeToWait);
-                }
+            var animationClip = currentWeaponConfig.GetAttackAnimClip();
+            float animationClipTime = animationClip.length / actionScheduler.animSpeedMultiplier;
+            timeTillNextAttack = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
+            if (attributes)
+            {
+                timeTillNextAttack = 1 / currentWeaponConfig.GetHitsPerSecond();
             }
+            float percentage_of_time = timeTillNextAttack * 0.1f;
+            timeTillNextAttack += Random.Range(-percentage_of_time, percentage_of_time);
+
+            AttackTargetOnce();
         }
 
         void AttackTargetOnce()
         {
-            var action = new SchedulableAction(isInterruptable:false);
+            var action = new SchedulableAction(isInterruptable:true);
             action.OnStart += () =>
             {
                 transform.LookAt(currentTarget.transform);
