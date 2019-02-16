@@ -33,15 +33,17 @@ namespace RPG.Control
 
         void Update()
         {
-            ClearBehaviours();
-
-            if (inWeaponCircle)
+            ClearAll();
+            if (inChaseRing)
             {
-                PerformAttackBehaviour();
-            }
-            else if (inChaseRing)
-            {
-                PerformChaseBehaviour();
+                if (weaponSystem)
+                {
+                    PerformAttackBehaviour();
+                }
+                else
+                {
+                    PerformFollowBehaviour();
+                }
             }
             else if (hasPatrol)
             {
@@ -49,22 +51,12 @@ namespace RPG.Control
             }
         }
 
-        bool inWeaponCircle => distanceToPlayer <= currentWeaponRange;
         bool inChaseRing => distanceToPlayer <= chaseRadius;
         bool hasPatrol => patrolPath != null;
 
         float distanceToPlayer => Vector3.Distance(player.transform.position, transform.position);
 
-        float currentWeaponRange
-        {
-            get
-            {
-                if (weaponSystem == null) return 0;
-                return weaponSystem.GetMaxAttackRange();
-            }
-        }
-
-        private void ClearBehaviours()
+        private void ClearAll()
         {
             weaponSystem.StopAttacking();
             mover.ClearDestination();
@@ -75,7 +67,7 @@ namespace RPG.Control
             weaponSystem.AttackTarget(player.gameObject);
         }
 
-        private void PerformChaseBehaviour()
+        private void PerformFollowBehaviour()
         {
             mover.SetDestination(player.transform.position);
         }
@@ -107,10 +99,6 @@ namespace RPG.Control
 
         void OnDrawGizmos()
         {
-            // Draw attack sphere 
-            Gizmos.color = new Color(255f, 0, 0, .5f);
-            Gizmos.DrawWireSphere(transform.position, currentWeaponRange);
-
             // Draw chase sphere 
             Gizmos.color = new Color(0, 0, 255, .5f);
             Gizmos.DrawWireSphere(transform.position, chaseRadius);

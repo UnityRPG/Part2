@@ -220,5 +220,15 @@ namespace RPG.Combat
             float critcalApplied = attributeModified * (1 + bonus / 100);
             return critcalApplied;
         }
+
+        void OnDrawGizmos()
+        {
+            if (currentWeaponConfig)
+            {
+                // Draw attack sphere 
+                Gizmos.color = new Color(255f, 0, 0, .5f);
+                Gizmos.DrawWireSphere(transform.position, currentWeaponConfig.GetMaxAttackRange());
+            }
+        }
     }
 }
