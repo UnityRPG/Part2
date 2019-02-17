@@ -5,15 +5,15 @@ using UnityEngine.AI;
 
 namespace RPG.Control
 {
-    class NavMeshRaycaster : RaycasterCallbackBase<Vector3>
+    class NavMeshRaycaster : RaycasterBase<Vector3>
     {
         const int POTENTIALLY_WALKABLE_LAYER = 8;
 
-        public NavMeshRaycaster(Texture2D cursorTexture, Action<Vector3> callback) : base(cursorTexture, callback)
+        public NavMeshRaycaster(Action<Vector3> callback) : base(callback)
         {
         }
 
-        protected override bool InteractWithRay(Ray ray, GameObject owner)
+        protected override bool InteractWithRay(Ray ray, GameObject owner, out Vector3 result)
         {
             LayerMask potentiallyWalkableLayer = 1 << POTENTIALLY_WALKABLE_LAYER;
             var raycastHits = Physics.RaycastAll(ray, maxRaycastDepth, potentiallyWalkableLayer);
@@ -22,10 +22,11 @@ namespace RPG.Control
                 NavMeshHit navMeshHit;
                 if (NavMesh.SamplePosition(raycasthit.point, out navMeshHit, 0.2f, NavMesh.AllAreas))
                 {
-                    callback(navMeshHit.position);
+                    result = navMeshHit.position;
                     return true;
                 }
             }
+            result = default(Vector3);
             return false;
         }
     }

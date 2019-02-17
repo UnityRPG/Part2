@@ -3,22 +3,23 @@ using UnityEngine;
 
 namespace RPG.Control
 {
-    class ComponentRaycaster<C> : RaycasterCallbackBase<C>
+    class ComponentRaycaster<C> : RaycasterBase<C> where C : Component
     {
-        public ComponentRaycaster(Texture2D cursorTexture, Action<C> callback) : base(cursorTexture, callback)
+        public ComponentRaycaster(Action<C> callback) : base(callback)
         {
         }
 
-        protected override bool InteractWithRay(Ray ray, GameObject owner)
+        protected override bool InteractWithRay(Ray ray, GameObject owner, out C result)
         {
-                GameObject gameObjectHit = GetFirstHitGameObject(ray);
-                var hit = gameObjectHit.GetComponent<C>();
-                if (hit != null)
-                {
-                    callback(hit);
-                    return true;
-                }
-                return false;
+            GameObject gameObjectHit = GetFirstHitGameObject(ray);
+            var hit = gameObjectHit.GetComponent<C>();
+            if (hit != null)
+            {
+                result = hit;
+                return true;
+            }
+            result = null;
+            return false;
         }
 
         private GameObject GetFirstHitGameObject(Ray ray)

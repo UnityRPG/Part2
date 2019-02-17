@@ -21,7 +21,7 @@ namespace RPG.Control
         [SerializeField] Texture2D talkCursor = null;
         [SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
-        RaycasterBase[] affordanceStrategies;
+        IRaycastable[] raycasters;
 
         Mover mover;
         SpecialAbilities abilities;
@@ -32,11 +32,11 @@ namespace RPG.Control
             mover = GetComponent<Mover>();
             abilities = GetComponent<SpecialAbilities>();
             weaponSystem = GetComponent<WeaponSystem>();
-            affordanceStrategies = new RaycasterBase[] {
-                new ComponentRaycaster<ConversationSource>(talkCursor, AttemptConversation),
-                new ComponentRaycaster<EnemyAI>(enemyCursor, AttemptAttack),
-                new ComponentRaycaster<Pickup>(pickupCursor, AttemptPickup),
-                new NavMeshRaycaster(walkCursor, AttemptWalk)
+            raycasters = new IRaycastable[] {
+                new ComponentRaycaster<ConversationSource>(OnConversationPossible),
+                new ComponentRaycaster<EnemyAI>(OnAttackPossible),
+                new ComponentRaycaster<Pickup>(OnPickupPossible),
+                new NavMeshRaycaster(OnWalkPossible)
             };
         }
 
@@ -44,26 +44,26 @@ namespace RPG.Control
         {
             ScanForAbilityKeyDown();
 
-            RaycastForAffordanceAndBehaviour();
+            TriggerRaycastCallbacks();
         }
 
-        private void RaycastForAffordanceAndBehaviour()
+        private void TriggerRaycastCallbacks()
         {
-            var requestedCursor = defaultCursor;
-            foreach (var affordanceStrategy in affordanceStrategies)
+            foreach (var raycaster in raycasters)
             {
-                bool canInteract = affordanceStrategy.Interact(gameObject);
-                if (canInteract)
-                {
-                    requestedCursor = affordanceStrategy.cursorTexture;
-                    break;
-                }
+                if (raycaster.Raycast(gameObject)) return;
             }
+            SetCursor(defaultCursor);
+        }
+
+        private void SetCursor(Texture2D requestedCursor)
+        {
             Cursor.SetCursor(requestedCursor, cursorHotspot, CursorMode.Auto);
         }
 
-        void AttemptWalk(Vector3 destination)
+        void OnWalkPossible(Vector3 destination)
         {
+            SetCursor(walkCursor);
             if (Input.GetMouseButton(0))
             {
                 CancelAll();
@@ -71,8 +71,10 @@ namespace RPG.Control
             }
         }
 
-        void AttemptAttack(EnemyAI enemy)
+        void OnAttackPossible(EnemyAI enemy)
         {
+            SetCursor(enemyCursor);
+
             if (Input.GetMouseButtonDown(0))
             {
                 CancelAll();
@@ -85,16 +87,20 @@ namespace RPG.Control
             }
         }
 
-        void AttemptConversation(ConversationSource source)
+        void OnConversationPossible(ConversationSource source)
         {
+            SetCursor(talkCursor);
+            
             if (Input.GetMouseButtonDown(0))
             {
                 source.VoiceClicked();
             }
         }
 
-        void AttemptPickup(Pickup pickup)
+        void OnPickupPossible(Pickup pickup)
         {
+            SetCursor(pickupCursor);
+            
             if (Input.GetMouseButtonDown(0))
             {
                 pickup.PickupItem();
