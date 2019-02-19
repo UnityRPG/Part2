@@ -8,11 +8,12 @@ using RPG.Movement;
 
 namespace RPG.Combat
 {
-    public class WeaponSystem : MonoBehaviour
+    public class WeaponSystem : MonoBehaviour, ISchedulableAction
     {
         [SerializeField] float baseDamage = 10f;
         [SerializeField] WeaponConfig currentWeaponConfig = null;
 
+        GameObject desiredTarget;
         GameObject currentTarget;
         SchedulableAction currentAction;
 
@@ -24,6 +25,8 @@ namespace RPG.Combat
         StatsCalculator attributes;
         Coroutine damageDelay;
         float timeTillNextAttack;
+
+        bool stopRequested = false;
 
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
@@ -55,9 +58,9 @@ namespace RPG.Combat
                     AttackBehaviour();
                 }
             }
-            else if (currentAction != null && currentAction.isStarted)
+            else 
             {
-                currentAction.Finish();
+                StopExecuted();
             }
             timeTillNextAttack -= Time.deltaTime;
         }
@@ -120,22 +123,25 @@ namespace RPG.Combat
 
         public void AttackTarget(GameObject targetToAttack)
         {
-            currentAction = new SchedulableAction();
-            currentAction.OnStart += () =>
-            {
-                currentTarget = targetToAttack;
-            };
-            currentAction.OnFinish += () =>
-            {
-                currentTarget = null;
-                currentAction = null;
-            };
-            actionScheduler.QueueAction(currentAction);
+            desiredTarget = targetToAttack;
+
+            actionScheduler.QueueAction(this);
+        }
+
+
+        void ISchedulableAction.Start()
+        {
+            currentTarget = desiredTarget;
+        }
+
+        void ISchedulableAction.RequestCancel()
+        {
+            StopAttacking();
         }
 
         public void StopAttacking()
         {
-            currentTarget = null;
+            stopRequested = true;
         }
 
         public void Hit()
@@ -177,10 +183,16 @@ namespace RPG.Combat
             {
                 currentTarget.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
             }
-            if (currentAction.cancelRequested)
+            if (stopRequested)
             {
-                currentAction.Finish();
+                StopExecuted();
             }
+        }
+
+        private void StopExecuted()
+        {
+            actionScheduler.FinishAction(this);
+            stopRequested = false;
         }
 
         public WeaponConfig GetCurrentWeapon()

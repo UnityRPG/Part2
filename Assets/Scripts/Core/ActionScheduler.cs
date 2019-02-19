@@ -79,6 +79,7 @@ namespace RPG.Core
 
             if (IsRunningAction(action))
             {
+                action.Start();
                 return;
             }
 

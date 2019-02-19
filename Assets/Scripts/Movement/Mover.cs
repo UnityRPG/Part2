@@ -41,7 +41,8 @@ namespace RPG.Movement
         // private instance variables for state
         float turnAmount;
         float forwardAmount;
-				
+		Vector3 requestedDestination;
+
 		// cached references for readability
         NavMeshAgent navMeshAgent;
         ActionScheduler actionScheduler;
@@ -108,13 +109,14 @@ namespace RPG.Movement
             if (gameObject.tag == "Player")
                 print("starting to move");
 
-            navMeshAgent.destination = worldPos;
+            requestedDestination = worldPos;
 
             actionScheduler.QueueAction(this);
         }
 
         void ISchedulableAction.Start()
         {
+            navMeshAgent.destination = requestedDestination;
             StartMoving();
         }
 
