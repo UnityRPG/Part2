@@ -50,11 +50,11 @@ namespace RPG.SpecialActions
             {
                 if (target != null && !IsInRange(requestedAbility, target))
                 {
-                    mover.SetDestination(target.transform.position);
+                    mover.StartMovementAction(target.transform.position);
                 }
                 else
                 {
-                    mover.ClearDestination();
+                    mover.StopMovementAction();
                     AttemptSpecialAbility();
                 }
             }

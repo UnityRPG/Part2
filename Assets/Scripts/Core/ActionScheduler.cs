@@ -64,25 +64,36 @@ namespace RPG.Core
 
         public bool isMoving => animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded");
 
-        private SchedulableAction runningAction = null;
-        private SchedulableAction queuedAction = null;
+        private ISchedulableAction runningAction = null;
+        private ISchedulableAction queuedAction = null;
 
-        public void QueueAction(SchedulableAction action)
+        public void QueueAction(ISchedulableAction action)
         {
-            action.OnFinish += () => FinishAction(action);
+            // Start hack
+            var scheduleableAction = action as SchedulableAction;
+            if (scheduleableAction != null)
+            {
+                scheduleableAction.scheduler = this;
+            }
+            // end hack
+
+            if (IsRunningAction(action))
+            {
+                return;
+            }
 
             queuedAction = action;
 
-            if (runningAction != null && runningAction.isInterruptable)
+            if (runningAction != null)
             {
-                runningAction.Cancel();
-                runningAction = null;
+                runningAction.RequestCancel();
+            } else
+            {
+                ProgressQueue();
             }
-
-            ProgressQueue();
         }
 
-        private void FinishAction(SchedulableAction action)
+        public void FinishAction(ISchedulableAction action)
         {
             if (runningAction == action)
             {
@@ -90,6 +101,8 @@ namespace RPG.Core
                 ProgressQueue();
             }
         }
+
+        public bool IsRunningAction(ISchedulableAction action) => System.Object.ReferenceEquals(runningAction, action);
 
         private void ProgressQueue()
         {

@@ -2,47 +2,45 @@ using System;
 
 namespace RPG.Core
 {
-    public class SchedulableAction
+    public class SchedulableAction : ISchedulableAction
     {
         public event Action OnStart;
         public event Action OnCancel;
         public event Action OnFinish;
-        public bool isRunning => _isRunning;
-        public bool isCancelled => _isCancelled;
-        public bool isInterruptable => _isInterruptable;
 
-        private bool _isRunning = false;
-        private bool _isCancelled = false;
-        private bool _isInterruptable = false;
+        public ActionScheduler scheduler { get; set; }
+        public bool isStarted { get; private set; } = false;
+        public bool isFinished { get; private set; } = false;
+        public bool cancelRequested { get; private set; } = false;
 
-        public SchedulableAction(bool isInterruptable)
+        public void Finish()
         {
-            _isInterruptable = isInterruptable;
+            isFinished = true;
+            if (scheduler != null)
+            {
+                scheduler.FinishAction(this);
+            }
+            if (OnFinish != null)
+            {
+                OnFinish();
+            }
         }
 
-        public void Start()
+        void ISchedulableAction.Start()
         {
-            _isRunning = true;
+            isStarted = true;
             if (OnStart != null)
             {
                 OnStart();
             }
         }
-        public void Cancel()
+
+        void ISchedulableAction.RequestCancel()
         {
-            _isRunning = false;
-            _isCancelled = true;
+            cancelRequested = true;
             if (OnCancel != null)
             {
                 OnCancel();
-            }
-        }
-        public void Finish()
-        {
-            _isRunning = false;
-            if (OnFinish != null)
-            {
-                OnFinish();
             }
         }
     }

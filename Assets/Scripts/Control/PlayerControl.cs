@@ -66,8 +66,7 @@ namespace RPG.Control
             SetCursor(walkCursor);
             if (Input.GetMouseButton(0))
             {
-                CancelAll();
-                mover.SetDestination(destination);
+                mover.StartMovementAction(destination);
             }
         }
 
@@ -77,12 +76,10 @@ namespace RPG.Control
 
             if (Input.GetMouseButtonDown(0))
             {
-                CancelAll();
                 weaponSystem.AttackTarget(enemy.gameObject);
             }
             if (Input.GetMouseButtonDown(1))
             {
-                CancelAll();
                 abilities.RequestSpecialAbility(0, enemy.gameObject);
             }
         }
@@ -113,18 +110,9 @@ namespace RPG.Control
             {
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    CancelAll();
                     abilities.RequestSpecialAbility(keyIndex);
                 }
             }
         }
-
-        void CancelAll()
-        {
-            weaponSystem.StopAttacking();
-            abilities.CancelRequest();
-            mover.ClearDestination();
-        }
-
     }
 }

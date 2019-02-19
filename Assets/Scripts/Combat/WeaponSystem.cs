@@ -14,6 +14,7 @@ namespace RPG.Combat
         [SerializeField] WeaponConfig currentWeaponConfig = null;
 
         GameObject currentTarget;
+        SchedulableAction currentAction;
 
         GameObject weaponObject;
         Animator animator;
@@ -46,13 +47,17 @@ namespace RPG.Combat
             {
                 if (TargetIsOutOfRange(currentTarget))
                 {
-                    mover.SetDestination(currentTarget.transform.position);
+                    mover.StartMoving(currentTarget.transform.position);
                 }
                 else
                 {
-                    mover.ClearDestination();
+                    mover.StopMoving();
                     AttackBehaviour();
                 }
+            }
+            else if (currentAction != null && currentAction.isStarted)
+            {
+                currentAction.Finish();
             }
             timeTillNextAttack -= Time.deltaTime;
         }
@@ -115,7 +120,17 @@ namespace RPG.Combat
 
         public void AttackTarget(GameObject targetToAttack)
         {
-            currentTarget = targetToAttack;
+            currentAction = new SchedulableAction();
+            currentAction.OnStart += () =>
+            {
+                currentTarget = targetToAttack;
+            };
+            currentAction.OnFinish += () =>
+            {
+                currentTarget = null;
+                currentAction = null;
+            };
+            actionScheduler.QueueAction(currentAction);
         }
 
         public void StopAttacking()
@@ -147,19 +162,14 @@ namespace RPG.Combat
 
         void AttackTargetOnce()
         {
-            var action = new SchedulableAction(isInterruptable:true);
-            action.OnStart += () =>
-            {
-                transform.LookAt(currentTarget.transform);
-                animator.SetTrigger(ATTACK_TRIGGER);
-                float damageDelay = currentWeaponConfig.GetDamageDelay();
-                SetAttackAnimation();
-                StartCoroutine(DamageAfterDelay(damageDelay, action));
-            };
-            actionScheduler.QueueAction(action);
+            transform.LookAt(currentTarget.transform);
+            animator.SetTrigger(ATTACK_TRIGGER);
+            float damageDelay = currentWeaponConfig.GetDamageDelay();
+            SetAttackAnimation();
+            StartCoroutine(DamageAfterDelay(damageDelay));
         }
 
-        IEnumerator DamageAfterDelay(float delay, SchedulableAction action)
+        IEnumerator DamageAfterDelay(float delay)
         {
             yield return new WaitForSecondsRealtime(delay);
 
@@ -167,7 +177,10 @@ namespace RPG.Combat
             {
                 currentTarget.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
             }
-            action.Finish();
+            if (currentAction.cancelRequested)
+            {
+                currentAction.Finish();
+            }
         }
 
         public WeaponConfig GetCurrentWeapon()

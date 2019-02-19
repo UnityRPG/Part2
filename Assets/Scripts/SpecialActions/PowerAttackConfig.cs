@@ -36,7 +36,7 @@ namespace RPG.SpecialActions
         {
             if (!source.GetComponent<WeaponSystem>().hasWeapon) return;
 
-            var action = new SchedulableAction(false);
+            var action = new SchedulableAction();
 
             action.OnStart += () =>
             {

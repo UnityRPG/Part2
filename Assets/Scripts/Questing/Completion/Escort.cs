@@ -31,7 +31,7 @@ namespace RPG.Questing.Completion
         {
             while (true)
             {
-                GetComponent<Mover>().SetDestination(player.transform.position);
+                GetComponent<Mover>().StartMovementAction(player.transform.position);
                 yield return new WaitForEndOfFrame();
             }
         }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace RPG.Movement
 {
     [SelectionBase]
-    public class Mover : MonoBehaviour, ISaveable
+    public class Mover : MonoBehaviour, ISaveable, ISchedulableAction
     {
         [Header("Animator")] [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
@@ -41,8 +41,6 @@ namespace RPG.Movement
         // private instance variables for state
         float turnAmount;
         float forwardAmount;
-        SchedulableAction currentMovementAction;
-        bool shouldMove = false;
 				
 		// cached references for readability
         NavMeshAgent navMeshAgent;
@@ -93,13 +91,10 @@ namespace RPG.Movement
 
         void Update()
         {
-            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance || !shouldMove)
+            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance && actionScheduler.IsRunningAction(this))
             {
                 StopMoving();
-            } else if (shouldMove)
-            {
-                StartMoving();
-            }
+            } 
 
             UpdateAnimator();
 
@@ -107,45 +102,52 @@ namespace RPG.Movement
             navMeshAgent.nextPosition = transform.position;
         }
 
-        public void SetDestination(Vector3 worldPos)
+        public void StartMovementAction(Vector3 worldPos)
         {
             if (gameObject.tag == "Player") print("Dest:" + worldPos);
-            navMeshAgent.destination = worldPos;
-            shouldMove = true;
-        }
-
-        public void ClearDestination()
-        {
-            shouldMove = false;
-        }
-
-        void StartMoving()
-        {
-            if (currentMovementAction != null) return;
             if (gameObject.tag == "Player")
                 print("starting to move");
 
-            currentMovementAction = new SchedulableAction(isInterruptable: true);
-            currentMovementAction.OnCancel += () =>
-            {
-                ClearDestination();
-            };
-            currentMovementAction.OnStart += () =>
-            {
-                navMeshAgent.isStopped = false;
-                animator.SetTrigger("Move");
+            navMeshAgent.destination = worldPos;
 
-            };
-            actionScheduler.QueueAction(currentMovementAction);
+            actionScheduler.QueueAction(this);
         }
 
-        void StopMoving()
+        void ISchedulableAction.Start()
         {
-            if (currentMovementAction == null) return;
+            StartMoving();
+        }
 
+        void ISchedulableAction.RequestCancel()
+        {
+            StopMoving();
+        }
+
+        public void StopMovementAction()
+        {
+            StopMoving();
+        }
+
+        public void StartMoving(Vector3 worldPos)
+        {
+            navMeshAgent.destination = worldPos;
+
+            StartMoving();
+        }
+
+        public void StopMoving()
+        {
             navMeshAgent.isStopped = true;
-            currentMovementAction.Finish();
-            currentMovementAction = null;
+            actionScheduler.FinishAction(this);
+        }
+
+        private void StartMoving()
+        {
+            if (navMeshAgent.isStopped)
+            {
+                animator.SetTrigger("Move");
+            }
+            navMeshAgent.isStopped = false;
         }
 
         public AnimatorOverrideController GetOverrideController()

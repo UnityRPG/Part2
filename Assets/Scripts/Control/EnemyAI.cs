@@ -59,7 +59,7 @@ namespace RPG.Control
         private void ClearAll()
         {
             weaponSystem.StopAttacking();
-            mover.ClearDestination();
+            mover.StopMovementAction();
         }
 
         private void PerformAttackBehaviour()
@@ -69,7 +69,7 @@ namespace RPG.Control
 
         private void PerformFollowBehaviour()
         {
-            mover.SetDestination(player.transform.position);
+            mover.StartMovementAction(player.transform.position);
         }
 
         private void PerformPatrolBehaviour()
@@ -80,7 +80,7 @@ namespace RPG.Control
             }
             else
             {
-                mover.SetDestination(nextWaypointPos);
+                mover.StartMovementAction(nextWaypointPos);
                 if (isAtWaypoint)
                 {
                     CycleWaypoint();
