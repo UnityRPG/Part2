@@ -4,6 +4,19 @@ namespace RPG.Control
 {
     public interface IRaycastable
     {
-        bool Raycast(GameObject owner);
+
+        int priority { get; }
+        CursorType cursor { get; }
+        bool HandleRaycast(PlayerControl playerControl);
+    }
+
+    public enum CursorType
+    {
+        Walk,
+        Attack,
+        Pickup,
+        Talk,
+        None,
+        Default
     }
 }

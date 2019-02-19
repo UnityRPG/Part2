@@ -2,6 +2,7 @@
 using UnityEngine;
 using RPG.Combat;
 using RPG.Movement;
+using RPG.SpecialActions;
 
 namespace RPG.Control
 {
@@ -10,7 +11,7 @@ namespace RPG.Control
     [RequireComponent(typeof(WeaponSystem))]
 
     // TODO consider specialising to NPCMovement
-    public class EnemyAI : MonoBehaviour
+    public class EnemyAI : MonoBehaviour, IRaycastable
     {
         [SerializeField] float chaseRadius = 6f;
         [SerializeField] WaypointContainer patrolPath;
@@ -92,6 +93,10 @@ namespace RPG.Control
         bool isAtWaypoint => Vector3.Distance(transform.position, nextWaypointPos) <= waypointTolerance;
         Vector3 nextWaypointPos => patrolPath.transform.GetChild(nextWaypointIndex).position;
 
+        int IRaycastable.priority => 6;
+
+        CursorType IRaycastable.cursor => CursorType.Attack;
+
         private void CycleWaypoint()
         {
             nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
@@ -102,6 +107,20 @@ namespace RPG.Control
             // Draw chase sphere 
             Gizmos.color = new Color(0, 0, 255, .5f);
             Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        }
+
+        bool IRaycastable.HandleRaycast(PlayerControl playerControl)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                playerControl.GetComponent<WeaponSystem>().AttackTarget(gameObject);
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                playerControl.GetComponent<SpecialAbilities>().RequestSpecialAbility(0, gameObject);
+            }
+
+            return true;
         }
     }
 }

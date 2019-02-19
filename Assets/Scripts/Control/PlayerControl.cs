@@ -1,110 +1,129 @@
 ﻿using UnityEngine;
 using System.Collections;
 using RPG.Core;
-using RPG.Combat;
 using RPG.Movement;
-using RPG.SpecialActions;
-using RPG.Dialogue;
-using RPG.Inventories;
 using UnityEngine.AI;
-using System;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using RPG.SpecialActions;
 
 namespace RPG.Control
 {
     public class PlayerControl : MonoBehaviour
     {
-        [SerializeField] Texture2D defaultCursor = null;
-        [SerializeField] Texture2D walkCursor = null;
-        [SerializeField] Texture2D enemyCursor = null;
-        [SerializeField] Texture2D pickupCursor = null;
-        [SerializeField] Texture2D talkCursor = null;
+        [SerializeField] CursorMapping[] cursors = null;
         [SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
-        IRaycastable[] raycasters;
+        [System.Serializable]
+        public struct CursorMapping
+        {
+            public CursorType type;
+            public Texture2D texture;
+        }
 
         Mover mover;
         SpecialAbilities abilities;
-        WeaponSystem weaponSystem;
+        const int POTENTIALLY_WALKABLE_LAYER = 8;
 
         void Start()
         {
             mover = GetComponent<Mover>();
             abilities = GetComponent<SpecialAbilities>();
-            weaponSystem = GetComponent<WeaponSystem>();
-            raycasters = new IRaycastable[] {
-                new ComponentRaycaster<ConversationSource>(OnConversationPossible),
-                new ComponentRaycaster<EnemyAI>(OnAttackPossible),
-                new ComponentRaycaster<Pickup>(OnPickupPossible),
-                new NavMeshRaycaster(OnWalkPossible)
-            };
         }
 
         void Update()
         {
             ScanForAbilityKeyDown();
 
-            TriggerRaycastCallbacks();
+            RaycastForTargets();
         }
 
-        private void TriggerRaycastCallbacks()
+        private void RaycastForTargets()
         {
-            foreach (var raycaster in raycasters)
+            if (RaycastForComponents()) return;
+            if (RaycastForWalkable()) return;
+            SetCursor(CursorType.None);
+        }
+
+        Texture2D GetCursorTexture(CursorType type)
+        {
+            foreach (var mapping in cursors)
             {
-                if (raycaster.Raycast(gameObject)) return;
+                if (mapping.type == type) return mapping.texture;
             }
-            SetCursor(defaultCursor);
+            return null;
         }
 
-        private void SetCursor(Texture2D requestedCursor)
+        void SetCursor(CursorType requestedCursorType)
         {
-            Cursor.SetCursor(requestedCursor, cursorHotspot, CursorMode.Auto);
+            Cursor.SetCursor(GetCursorTexture(requestedCursorType), cursorHotspot, CursorMode.Auto);
         }
 
         void OnWalkPossible(Vector3 destination)
         {
-            SetCursor(walkCursor);
+            SetCursor(CursorType.Walk);
             if (Input.GetMouseButton(0))
             {
                 mover.StartMovementAction(destination);
             }
         }
 
-        void OnAttackPossible(EnemyAI enemy)
+        bool RaycastForComponents()
         {
-            SetCursor(enemyCursor);
+            var ray = GetRay();
+            if (!ray.HasValue) return false;
 
-            if (Input.GetMouseButtonDown(0))
+            var raycastHits = Physics.RaycastAll(ray.Value, maxRaycastDepth);
+            var raycastables = new List<IRaycastable>();
+            foreach (var raycastHit in raycastHits)
             {
-                weaponSystem.AttackTarget(enemy.gameObject);
+                var componentsRaycastables = raycastHit.transform.GetComponents<IRaycastable>();
+                raycastables.AddRange(componentsRaycastables);
             }
-            if (Input.GetMouseButtonDown(1))
+            raycastables.Sort((x, y) => y.priority.CompareTo(x.priority));
+            foreach (var raycastable in raycastables)
             {
-                abilities.RequestSpecialAbility(0, enemy.gameObject);
+                bool handled = raycastable.HandleRaycast(this);
+                if (handled) 
+                {
+                    SetCursor(raycastable.cursor);
+                    return true;
+                }
             }
+            return false;
         }
 
-        void OnConversationPossible(ConversationSource source)
+        protected const float maxRaycastDepth = 100f; // Hard coded value
+
+        private Ray? GetRay()
         {
-            SetCursor(talkCursor);
-            
-            if (Input.GetMouseButtonDown(0))
-            {
-                source.VoiceClicked();
-            }
+            if (EventSystem.current.IsPointerOverGameObject()) return null;
+
+            var currentScreenRect = new Rect(0, 0, Screen.width, Screen.height);
+            if (!currentScreenRect.Contains(Input.mousePosition)) return null;
+
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
         }
 
-        void OnPickupPossible(Pickup pickup)
+    bool RaycastForWalkable()
+    {
+        var ray = GetRay();
+        if (!ray.HasValue) return false;
+        LayerMask potentiallyWalkableLayer = 1 << POTENTIALLY_WALKABLE_LAYER;
+        var raycastHits = Physics.RaycastAll(ray.Value, maxRaycastDepth, potentiallyWalkableLayer);
+        foreach (var raycasthit in raycastHits)
         {
-            SetCursor(pickupCursor);
-            
-            if (Input.GetMouseButtonDown(0))
+            NavMeshHit navMeshHit;
+            if (NavMesh.SamplePosition(raycasthit.point, out navMeshHit, 0.2f, NavMesh.AllAreas))
             {
-                pickup.PickupItem();
+                OnWalkPossible(navMeshHit.position);
+                return true;
             }
         }
+        return false;
+    }
 
-        void ScanForAbilityKeyDown()
+    void ScanForAbilityKeyDown()
         {
             for (int keyIndex = 1; keyIndex < abilities.GetNumberOfAbilities(); keyIndex++)
             {

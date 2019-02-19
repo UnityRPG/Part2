@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RPG.Questing;
+using RPG.Control;
 
 namespace RPG.Dialogue
 {
-    public class ConversationSource : MonoBehaviour
+    public class ConversationSource : MonoBehaviour, IRaycastable
     {
         // configuration parameters, consider SO
         [SerializeField] Conversation conversation;
@@ -36,6 +37,10 @@ namespace RPG.Dialogue
 
         // cached references for readability
         Speaker speaker;
+
+        int IRaycastable.priority => 8;
+
+        CursorType IRaycastable.cursor => CursorType.Talk;
 
         // messages, then public methods, then private methods...
         void Start()
@@ -69,6 +74,15 @@ namespace RPG.Dialogue
         private void ShowDialog()
         {
             speaker.SetActiveConversation(this);
+        }
+
+        bool IRaycastable.HandleRaycast(PlayerControl playerControl)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShowDialog();
+            }
+            return true;
         }
     }
 }

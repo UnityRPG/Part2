@@ -195,11 +195,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa20532a02ae7493297f190da4cd9981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: ff2cec57e80042440a9b1032a28f316d, type: 3}
-  walkCursor: {fileID: 2800000, guid: 343650ca3dfb2134691998d5e632a729, type: 3}
-  enemyCursor: {fileID: 2800000, guid: a8a7e0e914bfc074790c9249c7e8f2dd, type: 3}
-  pickupCursor: {fileID: 2800000, guid: 64039d4682ca9423c958b8dbf10344dc, type: 3}
-  talkCursor: {fileID: 2800000, guid: 08b43fb74dc7a46ca9bfcd8d4960cf9f, type: 3}
+  cursors:
+  - type: 0
+    texture: {fileID: 2800000, guid: 343650ca3dfb2134691998d5e632a729, type: 3}
+  - type: 1
+    texture: {fileID: 2800000, guid: a8a7e0e914bfc074790c9249c7e8f2dd, type: 3}
+  - type: 2
+    texture: {fileID: 2800000, guid: 08b43fb74dc7a46ca9bfcd8d4960cf9f, type: 3}
+  - type: 3
+    texture: {fileID: 2800000, guid: 08b43fb74dc7a46ca9bfcd8d4960cf9f, type: 3}
+  - type: 4
+    texture: {fileID: 2800000, guid: ff2cec57e80042440a9b1032a28f316d, type: 3}
   cursorHotspot: {x: 0, y: 0}
 --- !u!114 &114323108300252462
 MonoBehaviour:

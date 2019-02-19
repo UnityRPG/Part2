@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Control;
 
 namespace RPG.Inventories
 {
-    public class Pickup : MonoBehaviour
+    public class Pickup : MonoBehaviour, IRaycastable
     {
         InventoryItem _item;
         
@@ -20,6 +21,19 @@ namespace RPG.Inventories
             }
         }
 
+        bool IRaycastable.HandleRaycast(PlayerControl playerControl)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                PickupItem();
+            }
+            return true;
+        }
+
         public InventoryItem item { get { return _item; } set { _item = value; } }
+
+        int IRaycastable.priority => 2;
+
+        CursorType IRaycastable.cursor => CursorType.Pickup;
     }
 }
