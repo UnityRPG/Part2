@@ -29,6 +29,7 @@ namespace RPG.SpecialActions
 
         public override bool CanUseWhenInRange(GameObject source, GameObject target)
         {
+            if (target == null) return false;
             return source.GetComponent<WeaponSystem>().hasWeapon;
         }
 
@@ -36,31 +37,18 @@ namespace RPG.SpecialActions
         {
             if (!source.GetComponent<WeaponSystem>().hasWeapon) return;
 
-            var action = new SchedulableAction();
-
-            action.OnStart += () =>
-            {
-                Debug.Log(source);
-                Debug.Log(target);
-                source.transform.LookAt(target.transform);
-                PlayAbilityAnimation(source, () => { });
-                source.GetComponent<SpecialAbilities>().StartCoroutine(EffectsAfterDelay(source, action, target));
-            };
-
-            source.GetComponent<ActionScheduler>().QueueAction(action);
+            source.transform.LookAt(target.transform);
+            PlayAbilityAnimation(source, () => { });
+            source.GetComponent<SpecialAbilities>().StartCoroutine(EffectsAfterDelay(source, target));
         }
 
-        private IEnumerator EffectsAfterDelay(GameObject source, SchedulableAction action, GameObject target)
+        private IEnumerator EffectsAfterDelay(GameObject source, GameObject target)
         {
             yield return new WaitForSeconds(damageDelay);
 
             PlayAbilitySound(source);
             DealDamage(target);
             PlayParticleEffect(source);
-
-            yield return new WaitForSeconds(GetAbilityAnimation().averageDuration - damageDelay);
-
-            action.Finish();
         }
 
         private void DealDamage(GameObject target)

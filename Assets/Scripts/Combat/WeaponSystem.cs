@@ -15,7 +15,6 @@ namespace RPG.Combat
 
         GameObject desiredTarget;
         GameObject currentTarget;
-        SchedulableAction currentAction;
 
         GameObject weaponObject;
         Animator animator;
@@ -192,6 +191,7 @@ namespace RPG.Combat
         private void StopExecuted()
         {
             actionScheduler.FinishAction(this);
+            currentTarget = null;
             stopRequested = false;
         }
 

@@ -7,4 +7,10 @@ namespace RPG.Core
         void Start();
         void RequestCancel();
     }
+
+    public interface ISchedulableAction<T>
+    {
+        void Start(T data);
+        void RequestCancel(T data);
+    }
 }

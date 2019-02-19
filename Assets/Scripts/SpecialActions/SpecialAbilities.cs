@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 using RPG.Saving;
 using System.Collections.Generic;
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.SpecialActions
 {
-    public class SpecialAbilities : MonoBehaviour, ISaveable
+    public class SpecialAbilities : MonoBehaviour, ISaveable, ISchedulableAction<AbilityRequest>
     {
         [SerializeField] int _numberOfAbilities = 6;
         [SerializeField] float maxEnergyPoints = 100f;
@@ -17,11 +17,9 @@ namespace RPG.SpecialActions
         float currentEnergyPoints;
         ActionConfig[] abilities;
 
-        GameObject target = null;
-        int requestedAbility = -1;
-
         AudioSource audioSource;        
         Mover mover;
+        ActionScheduler actionScheduler;
 
         public float energyAsPercent { get { return currentEnergyPoints / maxEnergyPoints; } }
 
@@ -34,6 +32,7 @@ namespace RPG.SpecialActions
         {
             audioSource = GetComponent<AudioSource>();
             mover = GetComponent<Mover>();
+            actionScheduler = GetComponent<ActionScheduler>();
 
             currentEnergyPoints = maxEnergyPoints;
         }
@@ -48,15 +47,19 @@ namespace RPG.SpecialActions
 
             if (requestedAbility >= 0 && CanUseWhenInRange(requestedAbility, target))
             {
-                if (target != null && !IsInRange(requestedAbility, target))
+                if (!IsInRange(requestedAbility, target))
                 {
-                    mover.StartMovementAction(target.transform.position);
+                    mover.StartMoving(target.transform.position);
                 }
                 else
                 {
-                    mover.StopMovementAction();
+                    mover.StopMoving();
                     AttemptSpecialAbility();
                 }
+            }
+            else
+            {
+                
             }
         }
 
@@ -91,14 +94,57 @@ namespace RPG.SpecialActions
 
         public void RequestSpecialAbility(int abilityIndex, GameObject requestedTarget = null)
         {
-            requestedAbility = abilityIndex;
-            target = requestedTarget;
+            var abilityRequest = new AbilityRequest();
+            abilityRequest.ability = abilityIndex;
+            abilityRequest.target = requestedTarget;
+            actionScheduler.QueueAction(new ScheduledAction<AbilityRequest>(this, abilityRequest));
         }
 
-        public void CancelRequest()
+        void ISchedulableAction<AbilityRequest>.Start(AbilityRequest abilityRequest)
         {
-            requestedAbility = -1;
-            target = null;
+        }
+
+        void ISchedulableAction<AbilityRequest>.RequestCancel(AbilityRequest abilityRequest)
+        {
+            if (currentRequest.HasValue && abilityRequest.Equals(currentRequest.Value))
+            {
+                FinishAbility();
+            }
+        }
+
+        private int requestedAbility
+        {
+            get
+            {
+                if (currentRequest == null) return -1;
+                return currentRequest.Value.ability;
+            }
+        }
+
+        private GameObject target
+        {
+            get
+            {
+                if (currentRequest == null) return null;
+                return currentRequest.Value.target;
+            }
+        }
+
+        private AbilityRequest? currentRequest
+        {
+            get
+            {
+                var request = actionScheduler.runningAction as ScheduledAction<AbilityRequest>;
+                if (request == null) return null;
+                return request.data;
+            }
+        }
+
+        private ScheduledAction<AbilityRequest> currentAction => actionScheduler.runningAction as ScheduledAction<AbilityRequest>;
+
+        void FinishAbility()
+        {
+            actionScheduler.FinishAction(currentAction);
         }
 
         public int GetNumberOfAbilities()
@@ -120,8 +166,7 @@ namespace RPG.SpecialActions
                 audioSource.PlayOneShot(outOfEnergy);
             }
 
-            requestedAbility = -1;
-            target = null;
+            FinishAbility();
         }
 
         private void RemoveDepletedActions()
