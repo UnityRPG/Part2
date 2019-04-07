@@ -5,7 +5,6 @@
     using UnityEngine;
     using System.Collections.Generic;
     using System;
-    using LevelState = System.Collections.Generic.Dictionary<string, object>;
 
     public class SaveLoad : MonoBehaviour
     {
@@ -16,12 +15,8 @@
 
         float TimeSinceLastSave = 0;
 
-        SaveableEntity[] saveables;
-
         void Start()
         {
-            saveables = FindObjectsOfType<SaveableEntity>();
-
             Load(GetLastSaveFile());
         }
 
@@ -45,40 +40,18 @@
 
         public void Save(bool isAuto = false)
         {
-            var levelState = GetLevelState();
-            var formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(GetSavePath(isAuto), FileMode.Create))
-            {
-                formatter.Serialize(stream, levelState);
-            }
+            string saveFile = GetSaveFile(isAuto);
+            GetComponent<SaveSystem>().Save(saveFile);
         }
 
         public bool Load(string saveFile)
         {
-            var savePath = GetPathFromSaveFile(saveFile);
-            if (!File.Exists(savePath))
-            {
-                return false;
-            }
-
-            var formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(savePath, FileMode.Open))
-            {
-                var levelState = (LevelState)formatter.Deserialize(stream);
-                UpdateLevelFromState(levelState);
-            }
-            return true;
+            return GetComponent<SaveSystem>().Load(saveFile);
         }
 
         public string[] GetSaveFileList()
         {
-            var filePaths = Directory.GetFiles(Application.persistentDataPath);
-            var fileNames = new string[filePaths.Length];
-            for (int i = 0; i < filePaths.Length; ++i)
-            {
-                fileNames[i] = Path.GetFileNameWithoutExtension(filePaths[i]);
-            }
-            return fileNames;
+            return GetComponent<SaveSystem>().GetSaveFileList();
         }
 
         public string GetLastSaveFile()
@@ -88,7 +61,8 @@
             DateTime lastSaveFileWriteTime = DateTime.MinValue;
             foreach (var saveFile in saveFiles)
             {
-                var writeTime = File.GetLastWriteTime(GetPathFromSaveFile(saveFile));
+                string path = GetComponent<SaveSystem>().GetPathFromSaveFile(saveFile);
+                var writeTime = File.GetLastWriteTime(path);
                 if (writeTime > lastSaveFileWriteTime)
                 {
                     lastSaveFileWriteTime = writeTime;
@@ -100,10 +74,7 @@
 
         public void Clear()
         {
-            if (File.Exists(GetSavePath()))
-            {
-                File.Delete(GetSavePath());
-            }
+            GetComponent<SaveSystem>().Delete(GetSaveFile());
         }
 
         private void HandleAutoSave()
@@ -116,45 +87,7 @@
             }
         }
 
-        LevelState GetLevelState()
-        {
-            var levelState = new LevelState();
-            var debugState = new LevelState();
-            foreach (SaveableEntity saveable in saveables)
-            {
-                if (levelState.ContainsKey(saveable.UniqueIdentifier))
-                {
-                    Debug.LogErrorFormat("Cannot have Saveables with the same name. This id duplicates another: {0}, {1}", saveable, debugState[saveable.UniqueIdentifier]);
-
-                    continue;
-                }
-
-                levelState[saveable.UniqueIdentifier] = saveable.CaptureState();
-                debugState[saveable.UniqueIdentifier] = saveable;
-            }
-            return levelState;
-        }
-
-        void UpdateLevelFromState(LevelState levelState)
-        {
-            foreach (SaveableEntity saveable in saveables)
-            {
-                var saveableState = GetSaveableState(levelState, saveable);
-                saveable.RestoreState(saveableState);
-            }
-        }
-
-        private static Dictionary<string, object> GetSaveableState(LevelState levelState, SaveableEntity saveable)
-        {
-            if (levelState.ContainsKey(saveable.UniqueIdentifier))
-            {
-                return (Dictionary<string, object>)levelState[saveable.UniqueIdentifier];
-            }
-
-            return new Dictionary<string, object>();
-        }
-
-        string GetSavePath(bool isAuto = true)
+        string GetSaveFile(bool isAuto = true)
         {
             var prefix = "Manual Save";
             if (isAuto)
@@ -162,12 +95,7 @@
                 prefix = "Auto Save";
             }
             var dateString = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
-            return GetPathFromSaveFile(String.Format("{0} {1}", prefix, dateString));
-        }
-
-        private string GetPathFromSaveFile(string saveFile)
-        {
-            return Path.Combine(Application.persistentDataPath, String.Format("{0}.sav", saveFile));
+            return String.Format("{0} {1}", prefix, dateString);
         }
     }
 }
