@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using LevelState = System.Collections.Generic.Dictionary<string, object>;
 
 namespace RPG.Saving
@@ -11,8 +13,11 @@ namespace RPG.Saving
     {
         SaveableEntity[] saveables;
 
+        private void OnEnable() {
+            SceneManager.sceneLoaded += FindSavables;
+        }
 
-        private void Awake() {
+        private void FindSavables(Scene scene, LoadSceneMode mode) {
             saveables = FindObjectsOfType<SaveableEntity>();
         }
 
@@ -38,7 +43,7 @@ namespace RPG.Saving
             using (FileStream stream = new FileStream(savePath, FileMode.Open))
             {
                 var levelState = (LevelState)formatter.Deserialize(stream);
-                UpdateLevelFromState(levelState);
+                StartCoroutine(UpdateLevelFromState(levelState));
             }
             return true;
         }
@@ -85,11 +90,16 @@ namespace RPG.Saving
                 levelState[saveable.UniqueIdentifier] = saveable.CaptureState();
                 debugState[saveable.UniqueIdentifier] = saveable;
             }
+            levelState["sceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex;
             return levelState;
         }
 
-        private void UpdateLevelFromState(LevelState levelState)
+        private IEnumerator UpdateLevelFromState(LevelState levelState)
         {
+            int sceneBuildIndex = (int)levelState["sceneBuildIndex"];
+            print(sceneBuildIndex);
+            yield return SceneManager.LoadSceneAsync(sceneBuildIndex);
+
             foreach (SaveableEntity saveable in saveables)
             {
                 var saveableState = GetSaveableState(levelState, saveable);
