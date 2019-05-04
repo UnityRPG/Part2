@@ -32,6 +32,7 @@ namespace RPG.Inventories
 
             equippedItems[slot] = item;
 
+            item.Equip(slot, this);
             equipmentUpdated();
 
             return replacedItem;

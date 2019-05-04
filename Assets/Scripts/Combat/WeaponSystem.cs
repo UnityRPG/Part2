@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine.Assertions;
 using UnityEngine;
-using RPG.Inventories;
 using RPG.Stats;
 using RPG.Core;
 using RPG.Movement;
@@ -20,7 +19,6 @@ namespace RPG.Combat
         Animator animator;
         Mover mover;
         ActionScheduler actionScheduler;
-        Equipment equipment;
         StatsCalculator attributes;
         Coroutine damageDelay;
         float timeTillNextAttack;
@@ -36,12 +34,8 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
             attributes = GetComponent<StatsCalculator>();
-            equipment = GetComponent<Equipment>();
-            if (equipment)
-            {
-                equipment.equipmentUpdated += UpdateWeapon;
-            }
-            UpdateWeapon();
+
+            UpdateWeapon(currentWeaponConfig);
         }
 
         private void Update() {
@@ -101,12 +95,9 @@ namespace RPG.Combat
             return targethealth <= Mathf.Epsilon;
         }
 
-        public void UpdateWeapon()
+        public void UpdateWeapon(WeaponConfig weapon)
         {
-            if (equipment)
-            {
-                currentWeaponConfig = equipment.GetItemInSlot(EquipableItem.EquipLocation.Weapon) as WeaponConfig;
-            }
+            currentWeaponConfig = weapon;
 
             Destroy(weaponObject); // empty hands
 

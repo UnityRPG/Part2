@@ -26,5 +26,10 @@ namespace RPG.Inventories
             }
         }
 
+        virtual public void Equip(EquipLocation location, Equipment equipement)
+        {
+
+        }
+
     }
 }

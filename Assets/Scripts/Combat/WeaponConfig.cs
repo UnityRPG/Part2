@@ -80,5 +80,10 @@ namespace RPG.Combat
         {
             attackAnimation.events = new AnimationEvent[0];
         }
+
+        override public void Equip(EquipLocation location, Equipment equipement)
+        {
+            equipement.GetComponent<WeaponSystem>().UpdateWeapon(this);
+        }
     }
 }
