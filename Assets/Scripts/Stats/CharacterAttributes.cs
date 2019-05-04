@@ -35,10 +35,10 @@ namespace RPG.Attributes
         {
             var modifiers = new StatModifier[]
             {
-                new StatModifier("damage", damageBonusPerStrengthPoint * strengthPoints, StatModifier.AggregationType.PercentageBonus),
-                new StatModifier("criticalHitBonus", criticalHitBonusPerStrengthPoint * strengthPoints),
-                new StatModifier("criticalHitChance", criticalHitChancePerDexterityPoint * dexterityPoints),
-                new StatModifier("armour", armourBonusPerConstitutionPoints * constitutionPoints, StatModifier.AggregationType.PercentageBonus)
+                new StatModifier(StatId.Damage, damageBonusPerStrengthPoint * strengthPoints, StatModifier.AggregationType.PercentageBonus),
+                new StatModifier(StatId.CriticalHitBonus, criticalHitBonusPerStrengthPoint * strengthPoints),
+                new StatModifier(StatId.CriticalHitChance, criticalHitChancePerDexterityPoint * dexterityPoints),
+                new StatModifier(StatId.Armour, armourBonusPerConstitutionPoints * constitutionPoints, StatModifier.AggregationType.PercentageBonus)
             };
             foreach (var modifier in modifiers)
             {

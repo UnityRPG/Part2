@@ -13,7 +13,7 @@ namespace RPG.Progression
 
         IEnumerable<StatModifier> IStatModifiersProvider.GetModifiers(StatModifier.Filter filter)
         {
-            var modifier = new StatModifier("health", health);
+            var modifier = new StatModifier(StatId.Health, health);
             if (modifier.Matches(filter))
             {
                 yield return modifier;

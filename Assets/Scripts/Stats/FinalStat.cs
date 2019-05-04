@@ -1,9 +1,10 @@
-﻿public enum FinalStat
+﻿public enum StatId
 {
-    DamageBonus,
+    Damage,
     CriticalHitBonus,
     CriticalHitChance,
     HitSpeedBonus,
     Armour,
-    ArmourBonus
+    ArmourBonus,
+    Health
 }

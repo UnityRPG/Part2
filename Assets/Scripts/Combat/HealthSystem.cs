@@ -21,7 +21,7 @@ namespace RPG.Combat
                 {
                     return 100;
                 }
-                return ec.CalculateStat("health");
+                return ec.CalculateStat(StatId.Health);
             }
         }
         [SerializeField] AudioClip[] damageSounds;

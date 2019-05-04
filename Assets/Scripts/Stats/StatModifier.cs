@@ -7,9 +7,9 @@ namespace RPG.Stats
     {
         public class Filter
         {
-            public string statId;
+            public StatId statId;
             public AggregationType aggregationType;
-            public Filter(string statId, AggregationType aggregationType)
+            public Filter(StatId statId, AggregationType aggregationType)
             {
                 this.statId = statId;
                 this.aggregationType = aggregationType;
@@ -22,27 +22,27 @@ namespace RPG.Stats
             PercentageBonus
         }
 
-        public string statId;
+        public StatId statId;
         public float value;
         public AggregationType aggregationType;
 
-        public StatModifier(string statId, float value) : this(statId, value, AggregationType.Additive)
+        public StatModifier(StatId statId, float value) : this(statId, value, AggregationType.Additive)
         {
         }
 
-        public StatModifier(string statId, float value, AggregationType aggregationType)
+        public StatModifier(StatId statId, float value, AggregationType aggregationType)
         {
             this.statId = statId;
             this.value = value;
             this.aggregationType = aggregationType;
         }
 
-        public static Filter PercentageFilter(string statId)
+        public static Filter PercentageFilter(StatId statId)
         {
             return new Filter(statId, AggregationType.PercentageBonus);
         }
 
-        public static Filter AdditiveFilter(string statId)
+        public static Filter AdditiveFilter(StatId statId)
         {
             return new Filter(statId, AggregationType.Additive);
         }

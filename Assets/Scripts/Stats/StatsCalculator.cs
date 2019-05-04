@@ -22,7 +22,7 @@ namespace RPG.Stats
         {
             get
             {
-                return GetPercentageBonus("damage");
+                return GetPercentageBonus(StatId.Damage);
             }
         }
 
@@ -30,7 +30,7 @@ namespace RPG.Stats
         {
             get
             {
-                return baseCriticalHit + GetAdditiveTotal("criticalHitBonus");
+                return baseCriticalHit + GetAdditiveTotal(StatId.CriticalHitBonus);
             }
         }
 
@@ -38,7 +38,7 @@ namespace RPG.Stats
         {
             get
             {
-                return baseCriticalHitChance + GetAdditiveTotal("criticalHitChance");
+                return baseCriticalHitChance + GetAdditiveTotal(StatId.CriticalHitChance);
             }
         }
 
@@ -46,7 +46,7 @@ namespace RPG.Stats
         {
             get
             {
-                return CalculateStat("armour");
+                return CalculateStat(StatId.Armour);
             }
         }
 
@@ -55,12 +55,12 @@ namespace RPG.Stats
             modifierProviders = GetComponents<IStatModifiersProvider>();
         }
 
-        public float CalculateStat(string statId)
+        public float CalculateStat(StatId statId)
         {
             return (GetAdditiveTotal(statId)) * (1 + GetPercentageBonus(statId) / 100);
         }
 
-        float GetAdditiveTotal(string statId)
+        float GetAdditiveTotal(StatId statId)
         {
             float total = 0;
             foreach (var modifier in GetModifiersForStat(StatModifier.AdditiveFilter(statId)))
@@ -70,7 +70,7 @@ namespace RPG.Stats
             return total;
         }
 
-        float GetPercentageBonus(string statId)
+        float GetPercentageBonus(StatId statId)
         {
             float total = 0;
             foreach (var modifier in GetModifiersForStat(StatModifier.PercentageFilter(statId)))
