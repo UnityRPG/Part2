@@ -113,11 +113,11 @@ namespace RPG.Control
         {
             if (Input.GetMouseButtonDown(0))
             {
-                playerControl.GetComponent<WeaponSystem>().AttackTarget(gameObject);
+                playerControl.GetComponent<SpecialAbilities>().RequestSpecialAbility(0, gameObject);
             }
             if (Input.GetMouseButtonDown(1))
             {
-                playerControl.GetComponent<SpecialAbilities>().RequestSpecialAbility(0, gameObject);
+                playerControl.GetComponent<SpecialAbilities>().RequestSpecialAbility(1, gameObject);
             }
 
             return true;
