@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using RPG.Control;
 using UnityEngine;
 
 namespace RPG.UI
@@ -20,6 +21,7 @@ namespace RPG.UI
             if (Input.GetKeyDown(KeyCode.I))
             {
                 uiContainer.SetActive(!uiContainer.activeSelf);
+                GameObject.FindWithTag("Player").GetComponent<PlayerControl>().UIMode = uiContainer.activeSelf;
             }
         }
     }

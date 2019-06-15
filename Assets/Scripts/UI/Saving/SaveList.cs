@@ -15,6 +15,7 @@ namespace RPG.UI.Saving
         void OnEnable()
         {
             var SaveLoad = FindObjectOfType<SaveLoad>();
+            if (SaveLoad == null) return;
             foreach (RectTransform item in GetComponent<Transform>())
             {
                 Destroy(item.gameObject);
